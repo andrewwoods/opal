@@ -1,0 +1,148 @@
+" 
+" HTML for VIM 
+" 
+
+" ------------------------------------------------------------------------------
+" ----[ ENTITIES ]--------------------------------------------------------------
+" ------------------------------------------------------------------------------
+ 
+:ab e_space &nbsp;
+:ab e_ibang &iexcl;  
+:ab e_cent &cent;
+:ab e_pound &pound;
+:ab e_currency &curren;
+:ab e_yen &yen;
+:ab e_pipe &brvbar;
+:ab e_section &sect;
+:ab e_copy &copy;
+:ab e_copyright &copy;
+:ab e_reg &reg;
+:ab e_registered &reg;
+:ab e_female &#x2640; " female symbol 
+:ab e_male &#x2642; " male symbol 
+
+" ---[ TYPOGRAPHY ]---
+:ab e_left_quote &ldquo;
+:ab e_right_quote &rdquo;
+:ab e_apos &rsquo;
+:ab e_ndash &ndash;
+:ab e_mdash &mdash;
+:ab e_ellipsis &hellip;
+:ab e_elipsis &hellip; " This is to help with mis-spellings
+
+
+
+" ------------------------------------------------------------------------------
+" ----[ DOCTYPES ]--------------------------------------------------------------
+" ------------------------------------------------------------------------------
+ 
+:ab d_html5 <!DOCTYPE html>
+:ab d_xhtml_strict <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+:ab d_html4 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+:ab d_xhtml_strict <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+:ab d_xhtml_trans <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+:ab d_xhtml11 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+
+" ------------------------------------------------------------------------------
+" ----[ TAGS - HEAD ]-----------------------------------------------------------
+" ------------------------------------------------------------------------------
+:ab t_html <html lang="en" xmlns="http://www.w3.org/1999/xhtml"></html>
+:ab t_head <head></head>
+:ab t_title <title></title>hhhhhhhha
+:ab t_meta <meta name="" content="" />
+:ab t_link <link href="uri" media="screen" rel="stylesheet" type="text/css"/>
+:ab t_script <script href="uri" type="text/js"></script>
+:ab t_style <style type="text/css"></style>
+
+" ------------------------------------------------------------------------------
+" ---[ TAGS - BODY ]------------------------------------------------------------
+" ------------------------------------------------------------------------------
+ 
+:ab t_body <body></body>
+:ab t_a <a href=""></a>hhhhha
+:ab t_abbr <abbr></abbr>hhhhhhha
+:ab t_acronym <acronym></acronym>hhhhhhhhhha
+:ab t_address <address></address>hhhhhhhhhha
+:ab t_aside <aside></aside>ka
+:ab t_basefont <basefont></basefont>hhhhhhhhhhha
+:ab t_big <big></big>hhhhhha
+:ab t_cite <cite></cite>hhhhhhha
+:ab t_code <code></code>hhhhhhha
+:ab t_comment <comment></comment>hhhhhhhhhha
+:ab t_del <del></del>hhhhhha
+:ab t_dfn <dfn></dfn>hhhhhha
+:ab t_div <div></div>ka
+:ab t_em <em></em>hhhhha
+:ab t_footer <footer></footer>ka
+:ab t_header <header></header>ka
+:ab t_ins <ins></ins>hhhhhha
+:ab t_kbd <kbd></kbd>hhhhhha
+:ab t_marquee <marquee></marquee>hhhhhhhhhha
+:ab t_nobr <nobr></nobr>hhhhhhha
+:ab t_noscript <noscript></noscript>hhhhhhhhhhha
+:ab t_p <p></p>hhhha
+:ab t_plaintext <plaintext></plaintext>hhhhhhhhhhhha
+:ab t_pre <pre></pre>hhhhhha
+:ab t_q <q></q>hhhha
+:ab t_s <s></s>hhhha
+:ab t_samp <samp></samp>hhhhhhha
+:ab t_small <small></small>hhhhhhhha
+:ab t_span <span></span>hhhhhhha
+:ab t_strike <strike></strike>hhhhhhhhha
+:ab t_strong <strong></strong>hhhhhhhhha
+:ab t_sub <sub></sub>hhhhhha
+:ab t_sup <sup></sup>hhhhhha
+:ab t_tt <tt></tt>hhhhha
+:ab t_u <u></u>hhhha
+:ab t_var <var></var>hhhhhha
+:ab t_wbr <wbr></wbr>hhhhhha
+
+" ------------------------------------------------------------------------------
+" --[ TAGS - HEADINGS ]---------------------------------------------------------
+" ------------------------------------------------------------------------------
+:ab t_h1 <h1></h1>
+:ab t_h2 <h2></h2>
+:ab t_h3 <h3></h3>
+:ab t_h4 <h4></h4>
+:ab t_h5 <h5></h5>
+:ab t_h6 <h6></h6>
+
+" ------------------------------------------------------------------------------
+" --[ TAGS - TABLES ]-----------------------------------------------------------
+" ------------------------------------------------------------------------------
+:ab t_table <table summary=""></table>
+:ab t_thead <thead></thead>
+:ab t_tbody <tbody></tbody>
+:ab t_tfoot <tfoot></tfoot>
+:ab t_tr <tr></tr>ka
+:ab t_th <th></th>ka
+:ab t_td <td></td>hhhhha
+
+" ------------------------------------------------------------------------------
+" ---[ TAGS - LISTS ]-----------------------------------------------------------
+" ------------------------------------------------------------------------------
+:ab t_dd <dd></dd>
+:ab t_dl <dl></dl>
+:ab t_dt <dt></dt>hhhhha
+:ab t_ul <ul></ul>
+:ab t_ol <ol></ol>
+:ab t_li <li></li>hhhhha
+ 
+" ------------------------------------------------------------------------------
+" ---[ TAGS - FORMS ]-----------------------------------------------------------
+" ------------------------------------------------------------------------------
+:ab t_checkbox <input type="checkbox" name="" value="" id="">
+:ab t_form <form action="/your/path" method="post" accept-charset="utf-8"></form>
+:ab t_label <label for=""></label>
+:ab t_input <input type="text/number/email/submit/hidden/button" id="" name="" value="">
+:ab t_option <option value="option">option</option>
+:ab t_radio <input type="radio" name="" value="" id="">
+:ab t_select <select name=""></select>ka
+:ab t_fieldset <fieldset></fieldset>
+:ab t_legend <legend></legend>hhhhhhhhha
+:ab t_textarea <textarea></textarea>hhhhhhhhhhha
+
+
+

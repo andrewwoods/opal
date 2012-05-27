@@ -1,0 +1,101 @@
+"
+" Opal Project
+" VIM Editor Settings for Zend
+" by Andrew Woods
+" 2012 Apr 22 Sun 
+"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+"
+" Don't edit this file. Instead create .vimrc_zend in your home directory 
+" and read this file with the following line
+"
+" :source ~/opal/vimrc_zend
+"
+" If you want to change the value, copy the line from this file and change the
+" value in your .vimrc_zend. This will allow you keep your changes after 
+" updates.
+"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+
+source ~/opal/vimrc
+
+"
+" --------[ General VIM ]--------
+"
+
+" Indentation rules
+set autoindent
+set smartindent
+
+" Pattern searches should ignore case
+set ignorecase
+
+" Turn on line numbering
+set number
+
+" helps you find matching { and ( when you type or cursor over ) } 
+set showmatch
+
+" Flash when errors occur 
+set visualbell
+
+" Show the line and column number of the cursor position
+set ruler
+
+" Put a message in the status line for insert, replace, and visual modes
+set showmode
+
+"
+" --------[ Zend Settings ]--------
+"
+
+" Handles the settings for indentation
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+" Determine line endings
+set fileformat=unix
+set fileformats=unix
+
+" When inserting a tab, expand it to spaces
+set expandtab
+
+
+"
+" --[ Abbreviations ]--
+"
+
+" 
+" Never write short tags. 
+" This will make you do the right thing, in case you forget :)
+:ab <?= <?php echo ;?>hhha
+
+" Create 'multi line' Comment in PHP
+:ab mcom /**/ka
+" Create a 'single line' Comment in PHP
+:ab scom /*  */hhhha
+
+
+:ab c_dowhile do{// do stuff} while ( condtion ); 
+:ab c_for for ( $i = 0; $i <= $max; $i++ ) {// do stuff}
+:ab c_foreach foreach ( $array_name AS $key => $value ) {// do stuff}
+:ab c_function function foo($p1, $p2 = '') {  // do something;}
+:ab c_if if (condition) {// do something;}
+:ab c_ifelse if (condition) {// do something;} else {// do something else;}
+:ab c_ifelseif if (condition) {// do something} elseif (condition) {// do something} else {// do something else}
+:ab c_ifelsif if (condition) {// do something} elseif (condition) {// do something} else {// do something else}
+:ab c_switch switch (condition) {case 1:  action1;break;default:  stuff;}kk<kkk
+:ab c_while while (condition) {  // do something;}
+:ab c_for for ($i=0; $i<=10; $i++){//stuff}
+:ab c_foreach for ($array AS $key => $value ){//stuff}
+:ab c_while while ($arg){//stuff}
+:ab c_dowhile do {//stuff} while ($arg)
+
+
+:ab func function foo($p1, $p2 = '') {// do something;}
+
+
+
+
+:source ~/opal/vimrc_html

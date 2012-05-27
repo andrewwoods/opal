@@ -1,0 +1,66 @@
+"
+"	Ruby Coding Standards Settings for VIM
+"	by Andrew Woods
+"	Created April 2012 
+"
+"======================================================
+
+source ~/opal/vimrc
+
+"
+" --------[ General VIM ]--------
+"
+
+" Pattern searches should ignore case
+set ignorecase
+
+" Turn on line numbering
+set number
+
+" helps you find matching { and ( when you type ) } - if on screen
+set showmatch
+
+" Flash when errors occur 
+set visualbell
+
+" Show the line and column number of the cursor position
+set ruler
+
+" Put a message in the status line for insert, replace, and visual modes
+set showmode
+
+" Remove trailing whitespace when file is saved with :w 
+autocmd BufWritePre * :%s/\s\+$//e
+
+"
+" --------[ Formatting Settings ]--------
+"
+
+" Handles the settings for indentation
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+" Determine line endings
+set fileformat=unix
+
+" When inserting a tab, expand it to spaces
+set expandtab
+
+
+"
+" --------[ Abbreviations ]--------
+"
+
+" 
+" Never write short tags. 
+" This will make you do the right thing, in case you forget :)
+:ab shebang #!/usr/bin/ruby 
+
+" Create 'multi line' Comment in Ruby
+:ab mcom ### 
+:ab scom #
+
+
+:source ~/opal/vimrc_html
+
