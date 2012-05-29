@@ -42,8 +42,13 @@ set fileformats=unix,dos
 " When inserting a tab, expand it to the appropriate number of spaces
 set noexpandtab
 
-" Pattern searches should ignore case
-set noignorecase
+" Search case-insensitively
+set ignorecase
+
+" But be smart about it -- if I have any caps in my term, be case-sensitive.
+set smartcase
+
+
 
 "===================================================== 
 "
@@ -116,6 +121,9 @@ set showmode
 set shell=bash
 set nobackup
 set showcmd 
+
+set hlsearch
+
 
 " Abbreviations
 "================================================================================

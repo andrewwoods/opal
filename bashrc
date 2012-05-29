@@ -2,6 +2,114 @@
 # .bashrc - this file runs when any news bash shell is created
 #
 
+################################################################################
+#
+#		COLORS
+#
+#e###############################################################################
+export TERM=xterm-color
+
+# Reset
+Color_Off='\033[0m'       # Text Reset
+
+export Color_Off
+
+# Regular Colors
+#---------------------------------------
+Black='\033[0;30m'        # Black
+Red='\033[0;31m'          # Red
+Green='\033[0;32m'        # Green
+Yellow='\033[0;33m'       # Yellow
+Blue='\033[0;34m'         # Blue
+Purple='\033[0;35m'       # Purple
+Cyan='\033[0;36m'         # Cyan
+White='\033[0;37m'        # White
+
+export Black Red Green Yellow 
+export Blue Purple Cyan White
+
+
+# Bold
+#---------------------------------------
+BBlack='\e[1;30m'       # Black
+BRed='\e[1;31m'         # Red
+BGreen='\e[1;32m'       # Green
+BYellow='\e[1;33m'      # Yellow
+BBlue='\e[1;34m'        # Blue
+BPurple='\e[1;35m'      # Purple
+BCyan='\e[1;36m'        # Cyan
+BWhite='\e[1;37m'       # White
+
+export BBlack BRed BGreen BYellow 
+export BBlue BPurple BCyan BWhite
+
+# Underline
+#---------------------------------------
+UBlack='\e[4;30m'       # Black
+URed='\e[4;31m'         # Red
+UGreen='\e[4;32m'       # Green
+UYellow='\e[4;33m'      # Yellow
+UBlue='\e[4;34m'        # Blue
+UPurple='\e[4;35m'      # Purple
+UCyan='\e[4;36m'        # Cyan
+UWhite='\e[4;37m'       # White
+export UBlack URed UGreen UYellow 
+export UBlue UPurple UCyan UWhite
+
+# Background
+#---------------------------------------
+On_Black='\e[40m'       # Black
+On_Red='\e[41m'         # Red
+On_Green='\e[42m'       # Green
+On_Yellow='\e[43m'      # Yellow
+On_Blue='\e[44m'        # Blue
+On_Purple='\e[45m'      # Purple
+On_Cyan='\e[46m'        # Cyan
+On_White='\e[47m'       # White
+export On_Black On_Red On_Green On_Yellow 
+export On_Blue On_Purple On_Cyan On_White
+
+# High Intensty
+#---------------------------------------
+IBlack='\e[0;90m'       # Black
+IRed='\e[0;91m'         # Red
+IGreen='\e[0;92m'       # Green
+IYellow='\e[0;93m'      # Yellow
+IBlue='\e[0;94m'        # Blue
+IPurple='\e[0;95m'      # Purple
+ICyan='\e[0;96m'        # Cyan
+IWhite='\e[0;97m'       # White
+export IBlack IRed IGreen IYellow 
+export IBlue IPurple ICyan IWhite
+
+# Bold High Intensty
+#---------------------------------------
+BIBlack='\e[1;90m'      # Black
+BIRed='\e[1;91m'        # Red
+BIGreen='\e[1;92m'      # Green
+BIYellow='\e[1;93m'     # Yellow
+BIBlue='\e[1;94m'       # Blue
+BIPurple='\e[1;95m'     # Purple
+BICyan='\e[1;96m'       # Cyan
+BIWhite='\e[1;97m'      # White
+export BIBlack BIRed BIGreen BIYellow 
+export BIBlue BIPurple BICyan BIWhite
+
+# High Intensty backgrounds
+#---------------------------------------
+On_IBlack='\e[0;100m'   # Black
+On_IRed='\e[0;101m'     # Red
+On_IGreen='\e[0;102m'   # Green
+On_IYellow='\e[0;103m'  # Yellow
+On_IBlue='\e[0;104m'    # Blue
+On_IPurple='\e[10;95m'  # Purple
+On_ICyan='\e[0;106m'    # Cyan
+On_IWhite='\e[0;107m'   # White
+export On_IBlack On_IRed On_IGreen On_IYellow 
+export On_IBlue On_IPurple On_ICyan On_IWhite
+
+
+
 
 ################################################################################
 #
@@ -9,12 +117,19 @@
 #
 ################################################################################
 
-PS1="\u@\h:\n\@ \W$ "
-SVN_EDITOR="vim"
+if [ "$UID" = "0" ]; then
+  PS1="${BRed}${On_Black}\u${BBlue}@\h${Color_Off}:\n\@ \W \\$ "
+else
+  PS1="${BYellow}\u@\h:${Color_Off}\n\@ \W $ "
+fi
+
+PAGER="less"
 EDITOR="vim"
+GIT_EDITOR="vim"
+SVN_EDITOR="vim"
 VISUAL="vim"
 
-export EDITOR SVN_EDITOR VISUAL 
+export EDITOR GIT_EDITOR SVN_EDITOR VISUAL 
 
 
 ################################################################################
@@ -25,13 +140,13 @@ export EDITOR SVN_EDITOR VISUAL
 
 alias diff='diff -bB'
 alias ls='ls -F'
+alias ll='ls -lF'
 alias lsdir='ls -l | awk '\''/^d/ {print $9;}'\''' 
 alias luls='ls -1rt | tail -n 20'
 alias localip='ifconfig | grep "inet 192.168"'
 alias myip="curl -s http://checkip.dyndns.org | sed 's/[a-zA-Z/<> :]//g'"
 alias nl="nl -b a"
-alias grep="grep -H -i -n -R "  
-
+alias weather="telnet rainmaker.wunderground.com 3000"
 
 #:::::::[ VIM ALIASES ]:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -92,7 +207,7 @@ punch(){
 #
 # make a directory and go into it 
 #
-mkgo(){
+mkcd (){
 	mkdir $1 && cd $1
 }
 
@@ -213,4 +328,55 @@ function lsd()
 	
 	find $dir -type d
 }
+
+function say_done()
+{
+	if [[ -n $(which say) ]]; then
+		say "done"
+	else 
+		echo "Done"
+	fi
+}
+
+
+function extract()
+{
+	if [ -f $1 ]; then
+		case $1 in
+		*.tar.bz2)  tar xjf $1 ;;
+		*.tar.gz)   tar xzf $1 ;;
+		*.bz2)      bunzip2 $1 ;;
+		*.rar)      rar x $1 ;;
+		*.gz)       gunzip  $1 ;;
+		*.tar)      tar xf $1 ;;
+		*.tbz2)     tar xjf $1 ;;
+		*.tgz)      tar xzf $1 ;;
+		*.zip)      unzip $1 ;;
+		*.Z)        uncompress $1 ;;
+		*.7z)       7z x $1 ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
+}
+
+# otd - On This Day
+function otd()
+{
+	today_date=$(date +"%m/%d")
+	echo ""
+	echo "On this date"
+
+	cals=(/usr/share/calendar/calendar.computer \
+	/usr/share/calendar/calendar.history \
+	/usr/share/calendar/calendar.music \
+	/usr/share/calendar/calendar.judaic \
+	/usr/share/calendar/calendar.christian)
+
+	for i in "${cals[@]}"; do
+		grep -h "^${today_date}" $i
+	done
+}
+
+
 
