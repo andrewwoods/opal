@@ -123,11 +123,11 @@ else
   PS1="${BYellow}\u@\h:${Color_Off}\n\@ \W $ "
 fi
 
-PAGER="less"
 EDITOR="vim"
-GIT_EDITOR="vim"
-SVN_EDITOR="vim"
-VISUAL="vim"
+PAGER="less"
+GIT_EDITOR=$EDITOR
+SVN_EDITOR=$EDITOR
+VISUAL=$EDITOR
 
 export EDITOR GIT_EDITOR SVN_EDITOR VISUAL 
 
@@ -138,14 +138,20 @@ export EDITOR GIT_EDITOR SVN_EDITOR VISUAL
 #
 ################################################################################
 
+alias cls='clear'
+alias copy='cp'
 alias diff='diff -bB'
+alias help='man'
+alias ipconfig='ifconfig'
 alias ls='ls -F'
 alias ll='ls -lF'
 alias lsdir='ls -l | awk '\''/^d/ {print $9;}'\''' 
 alias luls='ls -1rt | tail -n 20'
 alias localip='ifconfig | grep "inet 192.168"'
+alias move='mv'
 alias myip="curl -s http://checkip.dyndns.org | sed 's/[a-zA-Z/<> :]//g'"
 alias nl="nl -b a"
+alias vi="vim"
 alias weather="telnet rainmaker.wunderground.com 3000"
 
 #:::::::[ VIM ALIASES ]:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -305,12 +311,16 @@ function show(){
 }
 
 function preamble {
+	name=$(whoami)
+	host=$(hostname -f)
+	thisday=$(today now)
+
     echo '###########################################################'
     echo '# '
-    echo '# Hello' `whoami` 
-    echo '# You are logged into'  `hostname -f` 
+    prompt "# Hello ${name}"  
+    prompt "# You are logged into ${host}"  
     echo '# '
-    echo '# FYI, Today is' `today`
+    prompt "# Today is ${thisday}" 
     echo '# '
     echo '###########################################################'
 }
@@ -371,12 +381,27 @@ function otd()
 	/usr/share/calendar/calendar.history \
 	/usr/share/calendar/calendar.music \
 	/usr/share/calendar/calendar.judaic \
+	/usr/share/calendar/calendar.mine \
 	/usr/share/calendar/calendar.christian)
 
 	for i in "${cals[@]}"; do
-		grep -h "^${today_date}" $i
+		if [ -f $i ]; then
+			grep -h "^${today_date}" $i
+		fi
 	done
 }
 
+function prompt()
+{
+	$HOME/opal/typer $1
+}
 
+function swap()
+{
+	temp="temp.tmp"
+
+	mv $1 $temp
+	mv $2 $1
+	mv $temp $2
+}
 
