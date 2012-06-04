@@ -1,0 +1,28 @@
+
+# display the lines 159 thru 170 of filename.txt 
+$ awk 'NR >= 159 && NR <= 170 ' filename.txt
+
+# Same thing in SED
+$ sed -n '159,170p' filename.txt
+
+# copy really-long-filename.txt to really-long-filename.txt.bak
+$ cp really-long-filename.txt{,.bak}
+
+# Write one fish two fish red fish blue fish
+$ echo {one,two,red,blue}" fish"
+
+# double space a file which already has blank lines in it. Output file
+# should contain no more than one blank line between lines of text.
+$  sed '/^$/d;G'
+
+# In UNIX environment, Remove every ^M from text files
+sed 's/^M$//g'
+
+# Remove all trailing spaces from end of lines
+sed 's/[ \t]*$//'
+
+# print only lines of 81 characters or longer
+ awk 'length > 80'
+
+
+

@@ -1,0 +1,12 @@
+#!/usr/bin/php
+<?php
+
+array_shift($argv);
+$mesg = implode(" ", $argv);
+
+for ($i=0; $i<strlen($mesg); $i++){
+	print substr($mesg, $i, 1);
+	usleep(50000);
+}
+print "\n";
+

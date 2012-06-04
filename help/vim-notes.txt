@@ -1,0 +1,9 @@
+
+Useful VIM snippets
+
+highlight anything from the 81st column and beyond in red
+:match ErrorMsg '\%>81v.\+' 
+
+
+
+

@@ -1,0 +1,60 @@
+
+OS X Command Line Editing Keyboard Shortcuts
+================================================================================
+
+CTRL+a   Move cursor to beginning of the line. (I think of this as anchoring my 
+         cursor to the start.)
+CTRL+e   Move cursor to the end of the line.
+CTRL+k   Delete everything from under the cursor to the end of the line. (I 
+think of this as killing the rest of my line.)
+CTRL+f   Move forward one character. Identical to →.
+CTRL+b   Move backward one character. Identical to ←.
+ESC+f    Move forward one word.
+ESC+b    Move backward one word.  
+CTRL+u   Delete everything from under the cursor the beginning of the line.
+CTRL+w   Delete from under the cursor to the beginning of the word.
+CTRL+r   Recall previous commands by searching for them.
+CTRL+t   Transpose (swap) the two characters before the cursor with one another.
+ESC+t    Transpose (swap) the two words before the cursor with one another.
+CTRL+y   Paste the most previously-deleted string. Basically a sort of 
+         command-line editting “undo.”
+CTRL+z   Stop the current process and send it to the background.
+CTRL+c   Send an SIG_HUP to the current process. The net effect of doing this 
+         on the command line is that you cancel your current command and are 
+         presented with a blank new line.
+CTRL+d   Send an end-of-file special character to the current process. Doing 
+         this at the command line is identical to closing your terminal window.
+CTRL+p   Recall previous command executed. Identical to ↑.
+CTRL+d   Forward delete.
+CTRL+h   Backspace.
+CTRL+j   Carriage return. Identical to hitting the return key.
+CTRL+m   Newline. Identical to return.
+CTRL+l   Repaint screen. This is useful if a program’s output is overwriting 
+         some text on your terminal. The effect of doing this on a 
+         command line is that you clear the screen. Note than in Apple’s 
+         Terminal.app, you can also press +K to clear the screen.
+CTRL-x + CTRL-x Mark current location in line and jump to beginning of line or 
+           second mark if defined. Repeat to jump to between both marks.
+CTRL+v     Insert next character verbatim. This is how you escape control 
+           sequences. For instance, to literally send a 
+CTRL+[     Identical to ESC.
+ESC+c      Capitolize word under cursor and move to next word.
+ESC+u      Uppercase word under cursor and move to next word.
+ESC+l      Lowercase word under cursor and move to next word.
+ESC+.      Insert last word from previous command after cursor.
+TAB        Auto-completes file, folder, and program names.
+ESC-?      List the possible completions
+CTRL-x /   List the possible filename completions
+ESC-/      Attempt filename completion
+CTRL-x ~   List the possible variable completions
+ESC- ~     Attempt username completion
+CTRL-x $   List the possible variable completions
+ESC-$      Attempt variable completion
+CTRL-x @   List the possible hostname completion
+ESC-@      Attempt hostname completion
+CTRL-x !   List the possible command completions
+ESC-!      Attempt command completion
+ESC-TAB    Attempt completion from previous commands in the history list 
+
+
+
