@@ -141,6 +141,7 @@ export EDITOR GIT_EDITOR SVN_EDITOR VISUAL
 alias cls='clear'
 alias copy='cp'
 alias diff='diff -bB'
+alias empty='truncate'
 alias help='man'
 alias ipconfig='ifconfig'
 alias ls='ls -F'
@@ -404,4 +405,24 @@ function swap()
 	mv $2 $1
 	mv $temp $2
 }
+
+# Display a list of your ssh keys
+function lskeys()
+{
+	prompt "my ssh keys"
+	ls ~/.ssh/*.pub	
+}
+
+# remove the content of a file without destroying the file 
+function truncate()
+{
+	cat /dev/null > $1
+}
+
+# lookup the definition of a word
+function define()
+{
+	curl dict://dict.org/d:"$@";
+}
+
 

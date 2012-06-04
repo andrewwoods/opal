@@ -144,4 +144,18 @@ PREAMBLE: Display a login message about who and where you are.
 
 	$ preamble
 
+LSKEYS: Display a list of your SSH keys
 
+	$ lskeys
+
+TRUNCATE: Remove the *contents* of a file without deleting it. 
+'Empty' is an alias
+
+	$ truncate myfile.txt
+
+	# You can also use
+	$ empty myfile.txt
+
+DEFINE: Retrieve the definition of a word
+
+	$ define ginger
