@@ -87,8 +87,11 @@ PUNCH: keep track of when you start and stop working on things.
 updates a file called timesheet.txt in your home directory. It takes one 
 argument whos value can be 'in' or 'out'
 
-	$ punch in
-	$ punch out
+	$ punch in  
+	$ punch in "type a brief message here" 
+	$ punch out 
+	$ punch out "type a brief message here" 
+	$ punch note "type a brief message here" 
 
 
 MKCD: Create a directory and go into it. accepts a single directory name. 
