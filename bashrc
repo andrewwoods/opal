@@ -181,7 +181,7 @@ alias civi='vim -u ~/opal/vimrc_codeigniter'
 # $ punch out "type a brief message here" 
 # $ punch note "type a brief message here" 
 #
-punch(){
+function punch(){
 	if [[ $1 == "in" ]]; then
 		MESG=$(date +"%a %Y-%m-%d %H:%M:%S") 
 		MESG="$MESG IN"
@@ -214,11 +214,11 @@ punch(){
 #
 # make a directory and go into it 
 #
-mkcd (){
+function mkcd (){
 	mkdir $1 && cd $1
 }
 
-today(){
+function today(){
 	if [[ $1 == "unix" ]]; then
 		echo $(date +"%s") 
 
@@ -252,7 +252,7 @@ today(){
 }
 
 
-touchx(){
+function touchx(){
 	touch $1 && chmod ugo+x $1
 	
 	if [[ $2 == "phpinfo" ]]; then
@@ -262,7 +262,7 @@ touchx(){
 
 
 # mach displays the basic information about the system
-mach(){
+function mach(){
 	echo -e "\nMachine information:" ; uname -a
 	echo -e "\nUsers logged on:" ; w -h
 	echo -e "\nCurrent date :" ; date
