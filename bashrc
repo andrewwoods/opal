@@ -1,6 +1,7 @@
 #
 # .bashrc - this file runs when any news bash shell is created
 #
+export OPAL_DIR="$HOME/opal"
 
 ################################################################################
 #
@@ -152,6 +153,7 @@ alias localip='ifconfig | grep "inet 192.168"'
 alias move='mv'
 alias myip="curl -s http://checkip.dyndns.org | sed 's/[a-zA-Z/<> :]//g'"
 alias nl="nl -b a"
+alias nocomment='grep -Ev '\''^(#|$)'\'''
 alias vi="vim"
 alias weather="telnet rainmaker.wunderground.com 3000"
 
@@ -218,6 +220,17 @@ function mkcd (){
 	mkdir $1 && cd $1
 }
 
+#
+# change to a  directory and list its content 
+#
+function cdls (){
+	cd $1 && ls 
+}
+
+#
+# display a date using the specified format 
+# 
+#
 function today(){
 	if [[ $1 == "unix" ]]; then
 		echo $(date +"%s") 
@@ -251,7 +264,9 @@ function today(){
 	fi
 }
 
-
+#
+# touch a file and make it executable. touch creates the file if it doesn't exist
+#
 function touchx(){
 	touch $1 && chmod ugo+x $1
 	
@@ -260,8 +275,9 @@ function touchx(){
 	fi
 }
 
-
-# mach displays the basic information about the system
+#
+# displays the basic information about the system
+#
 function mach(){
 	echo -e "\nMachine information:" ; uname -a
 	echo -e "\nUsers logged on:" ; w -h
@@ -270,7 +286,9 @@ function mach(){
 	echo -e "\nFilesystem status :"; df -h
 }
 
-
+#
+# display information about an aspect of the bash programming environment
+#
 function show(){
 	echo -e "Inform the user what can be used"
 	echo -e "--------------------------------"
@@ -326,9 +344,9 @@ function preamble {
     echo '###########################################################'
 }
 
-
-# get a list (recursive) of all directories under 'directory'. 
-# defaults to current dir.
+#
+# get a recursive ilist of all directories under 'directory'. defaults to cwd.
+#
 function lsd()
 {
 	if [[ $1 ]]; then
@@ -340,6 +358,9 @@ function lsd()
 	find $dir -type d
 }
 
+#
+# Tell the user whan a command is done
+#
 function say_done()
 {
 	if [[ -n $(which say) ]]; then
@@ -349,7 +370,9 @@ function say_done()
 	fi
 }
 
-
+#
+# "uncompress" a file from a variety of formats
+#
 function extract()
 {
 	if [ -f $1 ]; then
@@ -371,7 +394,9 @@ function extract()
 	fi
 }
 
-# otd - On This Day
+#
+# otd - On This Day. Display what happened on this day in history
+#
 function otd()
 {
 	today_date=$(date +"%m/%d")
@@ -392,11 +417,17 @@ function otd()
 	done
 }
 
+#
+# display a dynamic prompt
+#
 function prompt()
 {
-	$HOME/opal/typer $1
+	$OPAL_DIR/typer $1
 }
 
+#
+# Exchange the contents of two files
+#
 function swap()
 {
 	temp="temp.tmp"
@@ -406,23 +437,51 @@ function swap()
 	mv $temp $2
 }
 
+#
 # Display a list of your ssh keys
+#
 function lskeys()
 {
 	prompt "my ssh keys"
 	ls ~/.ssh/*.pub	
 }
 
-# remove the content of a file without destroying the file 
+#
+# remove the contents of a file without destroying the file 
+#
 function truncate()
 {
 	cat /dev/null > $1
 }
 
+#
 # lookup the definition of a word
+#
 function define()
 {
 	curl dict://dict.org/d:"$@";
+}
+
+#
+# Create a SHA1 digest of a file
+#
+function sha1()
+{
+	if [[ -n $(which openssl) ]]; then
+		openssl sha1 $@
+	else 
+		echo "openssl is required, but not installed"
+	fi
+}
+
+#
+# lookup the http status code by number to refresh your memory
+#
+function htstatus()
+{
+	grep -A 1 ^$1 $OPAL_DIR/data/http-status-codes.txt
+	echo " "
+	echo "see http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html for more information"
 }
 
 
