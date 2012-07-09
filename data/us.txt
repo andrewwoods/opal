@@ -1,0 +1,61 @@
+Name 	Alpha code 	Numeric code 	Status
+Alabama 	AL 	01 	State; counties
+Alaska 	AK 	02 	State; boroughs
+American Samoa 	AS 	60 	Outlying area under U.S. sovereignty
+Arizona 	AZ 	04 	State; counties
+Arkansas 	AR 	05 	State; counties
+California 	CA 	06 	State; counties
+Colorado 	CO 	08 	State; counties
+Connecticut 	CT 	09 	State; counties
+Delaware 	DE 	10 	State; counties
+District of Columbia 	DC 	11 	Federal district
+Florida 	FL 	12 	State; counties
+Federated States of Micronesia 	FM 	64 	Freely associated state
+Georgia 	GA 	13 	State; counties
+Guam 	GU 	66 	Outlying area under U.S. sovereignty
+Hawaii 	HI 	15 	State; counties
+Idaho 	ID 	16 	State; counties
+Illinois 	IL 	17 	State; counties
+Indiana 	IN 	18 	State; counties
+Iowa 	IA 	19 	State; counties
+Kansas 	KS 	20 	State; counties
+Kentucky 	KY 	21 	State; counties
+Louisiana 	LA 	22 	State; parishes
+Maine 	ME 	23 	State; counties
+Marshall Islands 	MH 	68 	Freely associated state
+Maryland 	MD 	24 	State; counties
+Massachusetts 	MA 	25 	State; counties
+Michigan 	MI 	26 	State; counties
+Minnesota 	MN 	27 	State; counties
+Mississippi 	MS 	28 	State; counties
+Missouri 	MO 	29 	State; counties
+Montana 	MT 	30 	State; counties
+Nebraska 	NE 	31 	State; counties
+Nevada 	NV 	32 	State; counties
+New Hampshire 	NH 	33 	State; counties
+New Jersey 	NJ 	34 	State; counties
+New Mexico 	NM 	35 	State; counties
+New York 	NY 	36 	State; counties
+North Carolina 	NC 	37 	State; counties
+North Dakota 	ND 	38 	State; counties
+Northern Mariana Islands 	MP 	69 	Outlying area under U.S. sovereignty
+Ohio 	OH 	39 	State; counties
+Oklahoma 	OK 	40 	State; counties
+Oregon 	OR 	41 	State; counties
+Palau 	PW 	70 	Trust Territory
+Pennsylvania 	PA 	42 	State; counties
+Puerto Rico 	PR 	72 	Outlying area under U.S. sovereignty
+Rhode Island 	RI 	44 	State; counties
+South Carolina 	SC 	45 	State; counties
+South Dakota 	SD 	46 	State; counties
+Tennessee 	TN 	47 	State; counties
+Texas 	TX 	48 	State; counties
+U.S. Minor Outlying Islands 	UM 	74 	Minor outlying island territories (aggregated)
+Utah 	UT 	49 	State; counties
+Vermont 	VT 	50 	State; counties
+Virginia 	VA 	51 	State; counties
+Virgin Islands of the U.S. 	VI 	78 	Outlying area under U.S. sovereignty
+Washington 	WA 	53 	State; counties
+West Virginia 	WV 	54 	State; counties
+Wisconsin 	WI 	55 	State; counties
+Wyoming 	WY 	56 	State; counties
