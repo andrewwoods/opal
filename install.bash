@@ -32,10 +32,14 @@ function heading_box()
 
 install_dir=`pwd`
 ln -s $install_dir ~/opal
+now=$(today unix)
 
 if [ -f ~/.bashrc ]; then
-	now=$(today unix)
 	mv ~/.bashrc ~/.bashrc.${now} 
+fi
+
+if [ -f ~/.bash_profile ]; then
+	mv ~/.bash_profile ~/.bash_profile.${now} 
 fi
 
 intro ~/.bashrc 
@@ -53,11 +57,20 @@ echo '' >> ~/.bashrc
 echo 'source ~/opal/bashrc' >> ~/.bashrc
 echo '' >> ~/.bashrc
 
-
 heading_box 'VARIABLES' ~/.bashrc 
 heading_box 'ALIASES'  ~/.bashrc
 heading_box 'FUNCTIONS' ~/.bashrc
 heading_box 'MAIN' ~/.bashrc
+
+
+intro ~/.bash_profile 
+
+echo '' >> ~/.bash_profile
+echo 'source ~/opal/bash_profile' >> ~/.bash_profile
+echo '' >> ~/.bash_profile
+
+heading_box 'BASH PROFILE' ~/.bash_profile
+
 
 
 

@@ -54,7 +54,7 @@
   The request could not be completed due to a conflict with the current state of the resource
 410:Gone
   The resource the client wanted isn't on the server anymore, and it's not coming back
-411:Length Required
+411:Length Required (That's What She Said)
   The server refuses to accept the request without a defined Content-Length. 
 412:Precondition Failed
   Client can place criteria on request to prevent an incorrect resource from being returned. 

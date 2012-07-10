@@ -110,6 +110,11 @@ export On_IBlack On_IRed On_IGreen On_IYellow
 export On_IBlue On_IPurple On_ICyan On_IWhite
 
 
+if [[ $OPAL_NOOB -eq '1' ]]; then
+	echo "Loading Noob Settings"
+	source $OPAL_DIR/noob.bash
+fi
+
 
 
 ################################################################################
@@ -121,7 +126,7 @@ export On_IBlue On_IPurple On_ICyan On_IWhite
 if [ "$UID" = "0" ]; then
   PS1="${BRed}${On_Black}\u${BBlue}@\h${Color_Off}:\n\@ \W \\$ "
 else
-  PS1="${BYellow}\u@\h:${Color_Off}\n\@ \W $ "
+  PS1="${BGreen}\u@\h:${Color_Off}\n\@ \W $ "
 fi
 
 EDITOR="vim"
@@ -139,20 +144,16 @@ export EDITOR GIT_EDITOR SVN_EDITOR VISUAL
 #
 ################################################################################
 
-alias cls='clear'
-alias copy='cp'
+alias please='sudo'
 alias diff='diff -bB'
 alias empty='truncate'
-alias help='man'
-alias ipconfig='ifconfig'
 alias ls='ls -F'
-alias ll='ls -lF'
 alias lsdir='ls -l | awk '\''/^d/ {print $9;}'\''' 
 alias luls='ls -1rt | tail -n 20'
 alias localip='ifconfig | grep "inet 192.168"'
-alias move='mv'
-alias myip="curl -s http://checkip.dyndns.org | sed 's/[a-zA-Z/<> :]//g'"
+alias myip="curl http://ifconfig.me"
 alias nl="nl -b a"
+alias number="nl -b a"
 alias nocomment='grep -Ev '\''^(#|$)'\'''
 alias vi="vim"
 alias weather="telnet rainmaker.wunderground.com 3000"
@@ -366,7 +367,21 @@ function say_done()
 	if [[ -n $(which say) ]]; then
 		say "done"
 	else 
-		echo "Done"
+		echo "Done!"
+	fi
+}
+
+#
+#
+#
+function bak()
+{
+	if [ -d $1 ]; then
+		tar -zcvf $1{.tar.gz,}
+	elif [ -f $1 ]; then
+		cp $1{,.bak}
+	else
+		echo "do something else"
 	fi
 }
 
@@ -484,4 +499,19 @@ function htstatus()
 	echo "see http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html for more information"
 }
 
+#
+# a floating point calculator
+#
+function calc()
+{ 
+	awk 'BEGIN { OFMT="%f"; print '"$*"'; exit}'; 
+}
+
+#
+# lookup country code
+#
+function country()
+{
+	awk -F "\t" -f $OPAL_DIR/country_lookup.awk -v country=$1  $OPAL_DIR/data/iso-country-codes.txt 
+}
 
