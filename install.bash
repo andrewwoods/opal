@@ -44,6 +44,10 @@ if [ -f ~/.bash_profile ]; then
 	mv ~/.bash_profile ~/.bash_profile.${now} 
 fi
 
+if [ -f ~/.vimrc ]; then
+	mv ~/.vimrc ~/.vimrc.${now} 
+fi
+
 
 #
 # Generate the new bash files in the user's home directory
@@ -77,5 +81,19 @@ echo '' >> ~/.bash_profile
 
 heading_box 'BASH PROFILE' ~/.bash_profile
 
+
+echo '' >> ~/.vimrc
+echo '"' >> ~/.vimrc 
+echo '" Created by Opal on' `date`  >> ~/.vimrc 
+echo '"' >> ~/.vimrc 
+echo '' >> ~/.vimrc 
+echo ':source ~/opal/vimrc' >> ~/.vimrc
+echo ':source ~/opal/vimrc_html' >> ~/.vimrc
+echo '' >> ~/.vimrc
+echo '"' >> ~/.vimrc
+echo '" Put your vim settings below here' >> ~/.vimrc
+echo '"' >> ~/.vimrc
+echo '' >> ~/.vimrc
+echo '' >> ~/.vimrc
 
 
