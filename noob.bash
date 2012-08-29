@@ -20,7 +20,6 @@ set -o ignoreeof       # stops ctrl+d from logging me out
 
 
 # For DOS/Windows users
-alias chdir='echo "you should use the \"pwd\" command"; pwd'
 alias cls='echo "you should use the \"clear\" command"; clear'
 alias copy='echo "you should use the \"cp\" command"; cp -piv'
 alias del='echo "you should use the \"rm\" command"; rm -iv'

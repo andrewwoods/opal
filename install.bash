@@ -30,10 +30,12 @@ function heading_box()
 	echo "" >> $2
 }
 
+# Create a symbolic link to this directory in your home directory
 install_dir=`pwd`
 ln -s $install_dir ~/opal
-now=$(today unix)
 
+# Create backups of your current files if they exist
+now=$(today unix)
 if [ -f ~/.bashrc ]; then
 	mv ~/.bashrc ~/.bashrc.${now} 
 fi
@@ -42,6 +44,10 @@ if [ -f ~/.bash_profile ]; then
 	mv ~/.bash_profile ~/.bash_profile.${now} 
 fi
 
+
+#
+# Generate the new bash files in the user's home directory
+#
 intro ~/.bashrc 
 
 echo "Are you new to UNIX or Linux (y/n)?"
@@ -70,7 +76,6 @@ echo 'source ~/opal/bash_profile' >> ~/.bash_profile
 echo '' >> ~/.bash_profile
 
 heading_box 'BASH PROFILE' ~/.bash_profile
-
 
 
 
