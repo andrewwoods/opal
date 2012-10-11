@@ -148,6 +148,18 @@ set hlsearch
 
 " Write a full php tag to prevent short tags
 :ab <?= <?php echo ; ?>
+:ab x_phpe <?php echo ; ?>hhhhha
+:ab x_phpoc <?php  ?>hhhha
+:ab x_php <?php  
+:ab x_package /*** description of package** @package YourPackage* @subpackage Subpackage name* @author firstname lastname <user@host.com>*/
+:ab x_function /*** Describe your function** @param String $one a necessary parameter* @param String optional $two an optional value* @return void*/
+
+
+" Common Mis-spellings
+:ab wordpress WordPress
+:ab Wordpress WordPress
+
+
 
 :ab -80- --------------------------------------------------------------------------------
 :ab =80= ================================================================================

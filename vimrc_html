@@ -77,6 +77,7 @@
 :ab t_em <em></em>hhhhha
 :ab t_footer <footer></footer>ka
 :ab t_header <header></header>ka
+:ab t_img <img src="" alt="" />hhhhhhhhhhhha
 :ab t_ins <ins></ins>hhhhhha
 :ab t_kbd <kbd></kbd>hhhhhha
 :ab t_marquee <marquee></marquee>hhhhhhhhhha
