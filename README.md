@@ -10,14 +10,14 @@ provide a reusable set of files.
 
 ## GETTING STARTED
 
-1. Download the opal and extract the tarball into your home directory.
-2. Rename the directory directory opal
+1. Download the opal and extract the tarball.
+2. cd into the new directory
+3. Run the install script
 
-These scripts are normally dot files that are located in your home directory.
-The files in this directory don't use dots at the beginning of the file
-for better user experience. They're here to give you a solid 
-foundation for when you encounter a new environment, and to assist you in 
-writing better code faster. 
+	$ ./install.bash 
+
+The vim and bash scripts are normally dot files that are located in your home directory. The files in this directory don't use dots at the beginning of the file for better user experience. They're here to give you a solid foundation for when you encounter a new environment, and to assist you in writing better code faster. You don't need to copy or edit them.
+
 
 One way to get started is to create symbolic links from your home dir to files 
 in this project like so (assuming this directory is named ~/opal) :
@@ -37,42 +37,8 @@ example using the .vimrc file
 	$ cd ~
 	$ vi .vimrc
 
-### Filename: ~/.vimrc 
-```vim
 
-:source ~/opal/vimrc
-
-"
-" Put your vim settings below here
-"
-
-```
-
-
-This is how to do it using BASH.
-
-### Filename: ~/.bashrc
-```vim
-source ~/opal/bashrc
-
-#
-# Put your Bash settings, variables, and functions below here.
-#
-
-```
-
-### Filename: ~/.bash_profile
-```vim
-
-source ~/opal/bash_profile
-
-#
-# Put your Bash settings, variables, and functions below here.
-#
-
-```
-
-# WHAT'S IN HERE
+## WHAT'S IN HERE
 
 This project is about more than just making vim easier to use. It's about 
 making your life on the command line a little easier. This is done thru a 
@@ -162,3 +128,23 @@ TRUNCATE: Remove the *contents* of a file without deleting it.
 DEFINE: Retrieve the definition of a word
 
 	$ define ginger
+
+## Vim Files
+
+There are multiple vimrc files, one per type of programming style - Wordpress, 
+Drupal, CodeIgniter, Zend. If there are others that interest you, feel free to 
+create it and I'll add it. 
+
+Due to the popularity of HTML, there is an HTML vim file that is load by all 
+the others vim files. It helps you write your markup consistently. Vim uses 
+abbreviations to make reduce your typing. Each HTML tag has an associated 
+abbreviation. To create a <title></title>, just type 't_title'. A self-closing 
+tag like <link href="uri" media="screen" rel="stylesheet" type="text/css"/> is 
+created by typing t_link. In short, the formula is 't_' + tagname. Take a look 
+at the vimrc_html to see everything it can do.  
+
+
+
+
+
+
