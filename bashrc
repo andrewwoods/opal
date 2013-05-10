@@ -125,8 +125,6 @@ fi
 
 if [ "$UID" = "0" ]; then
   PS1="${BRed}${On_Black}\u${BBlue}@\h${Color_Off}:\n\@ \W \\$ "
-else
-  PS1="${BGreen}\u@\h:${Color_Off}\n\@ \W $ "
 fi
 
 EDITOR="vim"
@@ -438,6 +436,11 @@ function otd()
 function prompt()
 {
 	$OPAL_DIR/typer $1
+}
+
+function type_file()
+{
+	$OPAL_DIR/typer -f $1
 }
 
 #
