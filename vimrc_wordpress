@@ -90,7 +90,7 @@ set noexpandtab
 :ab c_dowhile do {// do stuff} while ( condtion ); 
 :ab c_for for ( $i = 0; $i <= $max; $i++ ) {// do stuff}
 :ab c_foreach foreach ( $array_name AS $key => $value ) {// do stuff}
-:ab c_function function foo($p1, $p2 = '') {  // do something;}
+:ab c_function function foo($p1, $p2 = '') {// do something;}
 :ab c_if if ( condtion ) {// do stuff}
 :ab c_ifelse if ( condtion ) {// do stuff} else {//something else}
 :ab c_ifelsif if ( condtion ) {// do stuff} else if ( other_condtion ) {// do other stuff} else {//something else}

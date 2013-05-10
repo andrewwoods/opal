@@ -65,7 +65,8 @@ set noexpandtab
 "
 " --[ Abbreviations ]--
 "
-
+	
+	
 " 
 " Never write short tags. 
 " This will make you do the right thing, in case you forget :)
@@ -80,7 +81,7 @@ set noexpandtab
 :ab c_dowhile do{// do stuff} while (condtion); 
 :ab c_for for ($i = 0; $i <= $max; $i++){// do stuff}
 :ab c_foreach foreach ($array_name AS $key => $value){// do stuff}
-:ab c_function function foo($p1, $p2 = ''){  // do something;}
+:ab c_function function foo($p1, $p2 = ''){// do something;}
 :ab c_if if (condition){// do something;}
 :ab c_ifelse if (condition){// do something;}else{// do something else;}
 :ab c_ifelseif if (condition){// do something}elseif (condition){// do something}else{// do something else}
