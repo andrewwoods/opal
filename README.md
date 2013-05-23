@@ -87,6 +87,7 @@ $ today uk text
 TOUCHX: Create an empty file and make it executable 
 
 	$ touchx filename.txt
+	$ touchx info.php phpinfo 
 
 MACH: display information about the current host.
 
@@ -140,10 +141,13 @@ the others vim files. It helps you write your markup consistently. Vim uses
 abbreviations to make reduce your typing. Each HTML tag has an associated 
 abbreviation. To create a <title></title>, just type 't_title'. A self-closing 
 tag like <link href="uri" media="screen" rel="stylesheet" type="text/css"/> is 
-created by typing t_link. In short, the formula is 't_' + tagname. Take a look 
-at the vimrc_html to see everything it can do.  
+created by typing t_link. 
 
+In short, the formula is html tags is 't_' + tagname. 
+html entities have the formula 'e_' + name. 
 
+Take a look at the vimrc_html to see 
+everything it can do.  
 
 
 
