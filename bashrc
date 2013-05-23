@@ -331,7 +331,7 @@ function show(){
 function preamble {
 	name=$(whoami)
 	host=$(hostname -f)
-	thisday=$(today now)
+	thisday=$(today default)
 
     echo '###########################################################'
     echo '# '
@@ -363,7 +363,7 @@ function lsd()
 function say_done()
 {
 	if [[ -n $(which say) ]]; then
-		say "done"
+		say "it is done"
 	else 
 		echo "Done!"
 	fi
@@ -379,7 +379,7 @@ function bak()
 	elif [ -f $1 ]; then
 		cp $1{,.bak}
 	else
-		echo "do something else"
+		echo "BAK: unsupported item type - must be file or directory"
 	fi
 }
 
@@ -403,7 +403,7 @@ function extract()
 		*.7z)       7z x $1 ;;
 		esac
 	else
-		echo "'$1' is not a valid file"
+		echo "File not found: '$1'"
 	fi
 }
 
