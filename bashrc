@@ -518,3 +518,20 @@ function country()
 	awk -F "\t" -f $OPAL_DIR/country_lookup.awk -v country=$1  $OPAL_DIR/data/iso-country-codes.txt 
 }
 
+#
+# name the tab your on
+#
+function tabname()
+{
+	printf "\e]1;$1\a";
+}
+
+#
+# name the window your in
+#
+function winname()
+{
+	printf "\e]2;$1\a";
+}
+
+
