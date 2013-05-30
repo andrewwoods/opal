@@ -58,7 +58,7 @@ set shiftwidth=4
 set fileformat=unix
 set fileformats=unix
 
-" When inserting a tab, expand it to spaces
+" Insert a tab, don't expand it to spaces
 set noexpandtab
 
 
@@ -76,7 +76,7 @@ set noexpandtab
 :ab x_php <?php  
 :ab x_eof /* End of file myfile.php *//* Location: ./system/modules/mymodule/myfile.php */ 
 :ab x_package /*** description of package** @package YourPackage* @subpackage Subpackage name* @author firstname lastname <user@host.com>*/
-:ab x_function /*** Describe your function** @param String $one a necessary parameter* @param String optional $two an optional value* @return void*/
+:ab x_function /*** Describe your function** @param string,boolean,integer,float,array,object,mixed,number $one a necessary parameter* @param $two optional an optional value* @return void*/
 
 :ab c_dowhile do{// do stuff} while (condtion); 
 :ab c_for for ($i = 0; $i <= $max; $i++){// do stuff}
