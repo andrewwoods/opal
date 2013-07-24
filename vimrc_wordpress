@@ -41,6 +41,11 @@ set ruler
 " Put a message in the status line for insert, replace, and visual modes
 set showmode
 
+" Highlight the syntax of a language
+syntax on
+
+
+
 set autoindent
 set smartindent
 
@@ -69,12 +74,9 @@ set noexpandtab
 " Never write short tags. 
 " This will make you do the right thing, in case you forget :)
 :ab <?= <?php echo ;?>hhha
+:ab x_phpe <?php echo ; ?>hhhhha
+:ab x_phpoc <?php  ?>hhhha
 
-" Create 'multi line' Comment in PHP
-:ab x_multi /**/ka
-
-" Create 'single line' Comment in PHP
-:ab x_single /*  */hhhha
 
 " Create Function level PHPDoc 
 :ab x_function /*** Short Description** Long Description** @since version** @param  type $name  it does something* @return type        it does something*/
@@ -87,6 +89,8 @@ set noexpandtab
 :ab x_plugin /*Plugin name: NAME OF PLUGINPlugin URI: http://example.com/wp-plugins/plugin-name Version: 1.0 Author: FIRSTNAME LASTNAME Author URI: http://authorwebsite.comLicense: GPL2*/
 
 
+:ab c_class class NAME extends PARENT{// do something;}
+:ab c_define define('VALUE', '');
 :ab c_dowhile do {// do stuff} while ( condtion ); 
 :ab c_for for ( $i = 0; $i <= $max; $i++ ) {// do stuff}
 :ab c_foreach foreach ( $array_name AS $key => $value ) {// do stuff}
@@ -95,8 +99,11 @@ set noexpandtab
 :ab c_ifelse if ( condtion ) {// do stuff} else {//something else}
 :ab c_ifelsif if ( condtion ) {// do stuff} else if ( other_condtion ) {// do other stuff} else {//something else}
 :ab c_ifelseif if ( condtion ) {// do stuff} else if ( other_condtion ) {// do other stuff} else {//something else}
+:ab c_member public $value = '';
+:ab c_method public,protected,private function foo($p1, $p2 = '') {// do something;}
 :ab c_switch switch ( $i ) {case 0:	// do stuffbreak;	hicase 1:	// do other stuffbreak;	hidefault:	echo "i equals 2";break;}
 :ab c_while while ( condtion ) {// do stuff}
+:ab c_value $value = '';
 
 :source ~/opal/vimrc_html
 

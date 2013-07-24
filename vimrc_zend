@@ -45,6 +45,8 @@ set ruler
 " Put a message in the status line for insert, replace, and visual modes
 set showmode
 
+syntax on
+
 "
 " --------[ Zend Settings ]--------
 "
@@ -70,14 +72,18 @@ set expandtab
 " Never write short tags. 
 " This will make you do the right thing, in case you forget :)
 :ab <?= <?php echo ;?>hhha
+:ab x_phpe <?php echo ; ?>hhhhha
+:ab x_phpoc <?php  ?>hhhha
+:ab x_php <?php  
+:ab x_eof /* End of file myfile.php *//* Location: ./system/modules/mymodule/myfile.php */ 
+:ab x_package /*** description of package** @package YourPackage* @subpackage Subpackage name* @author firstname lastname <user@host.com>*/
+:ab x_function /*** Describe your function** @param string,boolean,integer,float,array,object,mixed,number $one a necessary parameter* @param $two optional an optional value* @return void*/
 
-" Create 'multi line' Comment in PHP
-:ab mcom /**/ka
-" Create a 'single line' Comment in PHP
-:ab scom /*  */hhhha
 
 
-:ab c_dowhile do{// do stuff} while ( condtion ); 
+:ab c_class class NAME extends PARENT {// do something;}
+:ab c_define define('VALUE', '');
+:ab c_dowhile do {// do stuff} while ( condtion ); 
 :ab c_for for ( $i = 0; $i <= $max; $i++ ) {// do stuff}
 :ab c_foreach foreach ( $array_name AS $key => $value ) {// do stuff}
 :ab c_function function foo($p1, $p2 = '') {  // do something;}
@@ -85,16 +91,11 @@ set expandtab
 :ab c_ifelse if (condition) {// do something;} else {// do something else;}
 :ab c_ifelseif if (condition) {// do something} elseif (condition) {// do something} else {// do something else}
 :ab c_ifelsif if (condition) {// do something} elseif (condition) {// do something} else {// do something else}
+:ab c_member public $value = '';
+:ab c_method public,protected,private function foo($p1, $p2 = ''){// do something;}
 :ab c_switch switch (condition) {case 1:  action1;break;default:  stuff;}kk<kkk
 :ab c_while while (condition) {  // do something;}
-:ab c_for for ($i=0; $i<=10; $i++){//stuff}
-:ab c_foreach for ($array AS $key => $value ){//stuff}
-:ab c_while while ($arg){//stuff}
-:ab c_dowhile do {//stuff} while ($arg)
-
-
-:ab func function foo($p1, $p2 = '') {// do something;}
-
+:ab c_value $value = '';
 
 
 

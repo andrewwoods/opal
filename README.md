@@ -48,6 +48,9 @@ included
 
 ## Bash Functions
 
+PROMPT: A great way to display a line to text. Like echo, but types out the 
+characters one at a time, as if you typed it 
+
 PUNCH: keep track of when you start and stop working on things.
 
 updates a file called timesheet.txt in your home directory. It takes one 
@@ -133,21 +136,33 @@ DEFINE: Retrieve the definition of a word
 ## Vim Files
 
 There are multiple vimrc files, one per type of programming style - Wordpress, 
-Drupal, CodeIgniter, Zend. If there are others that interest you, feel free to 
+Drupal, CodeIgniter, Zend, and Ruby. If there are others that interest you, feel free to 
 create it and I'll add it. 
 
 Due to the popularity of HTML, there is an HTML vim file that is load by all 
-the others vim files. It helps you write your markup consistently. Vim uses 
-abbreviations to make reduce your typing. Each HTML tag has an associated 
-abbreviation. To create a <title></title>, just type 't_title'. A self-closing 
-tag like <link href="uri" media="screen" rel="stylesheet" type="text/css"/> is 
-created by typing t_link. 
+the others vim files. 
+
+It helps you write your markup consistently. Vim uses abbreviations to make 
+reduce your typing. Each HTML tag has an associated abbreviation. It's not just 
+HTML though. PHP code and phpdoc blocks. 
+
+To create a piece of code or markeup like <title></title>, just type 't_title'. 
 
 In short, the formula is html tags is 't_' + tagname. 
 html entities have the formula 'e_' + name. 
 
-Take a look at the vimrc_html to see 
-everything it can do.  
+Take a look at the vimrc files to see everything it can do.  
+
+php control structures have the formula 'c_' + name. 
+c_if will create an if block
+c_ifelse will create if/else blocks
+c_while will create a while loop
+c_function will create a function
+
+phpdoc codes have the formula 'x_' + name. 
+x_package will create a package phpdoc block comment
+x_function will create a function phpdoc block comment
+x_method will create a class method phpdoc block comment
 
 
 

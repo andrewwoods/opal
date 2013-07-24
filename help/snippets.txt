@@ -24,5 +24,8 @@ sed 's/[ \t]*$//'
 # print only lines of 81 characters or longer
  awk 'length > 80'
 
+# search thru files and skip the .svn directories
+find . -not \( -name .svn -prune \)
+
 
 
