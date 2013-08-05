@@ -215,12 +215,16 @@ function punch(){
 #
 # make a directory and go into it 
 #
+# mkcd( String directory )
+#
 function mkcd (){
 	mkdir $1 && cd $1
 }
 
 #
-# change to a  directory and list its content 
+# change to a directory and list its content 
+#
+# cdls( String directory )
 #
 function cdls (){
 	cd $1 && ls 
@@ -229,6 +233,9 @@ function cdls (){
 #
 # display a date using the specified format 
 # 
+# today( String style [, String type] )
+#	style = unix|iso|world|us|default
+#	type  = text|numeric 
 #
 function today(){
 	if [[ $1 == "unix" ]]; then
@@ -265,6 +272,10 @@ function today(){
 
 #
 # touch a file and make it executable. touch creates the file if it doesn't exist
+#
+# touchx( String filename [, String content] )
+#	filename - the file you want to create and make executable
+#	content - The type of content to add to the file. Currently, phpinfo is the only value.
 #
 function touchx(){
 	touch $1 && chmod ugo+x $1
@@ -328,6 +339,9 @@ function show(){
 	esac
 }
 
+#
+# Display a block message to the user about who and where they are
+#
 function preamble {
 	name=$(whoami)
 	host=$(hostname -f)
@@ -344,7 +358,10 @@ function preamble {
 }
 
 #
-# get a recursive ilist of all directories under 'directory'. defaults to cwd.
+# get a recursive list of all directories under 'directory'. defaults to cwd.
+#
+# lsd( [String directory] )
+#	directory - the directory you want to recursively list the contents of.
 #
 function lsd()
 {
@@ -358,7 +375,7 @@ function lsd()
 }
 
 #
-# Tell the user whan a command is done
+# Tell the user when a command is done
 #
 function say_done()
 {
@@ -370,7 +387,11 @@ function say_done()
 }
 
 #
+# Create a backup of a file or directory
 #
+# extract( String path )
+#	path - if path is a file, copy of the file will be made with .bak appended to it's name.
+#          if path is a dir, a compressed tarball will be made of the directory 
 #
 function bak()
 {
@@ -384,7 +405,10 @@ function bak()
 }
 
 #
-# "uncompress" a file from a variety of formats
+# "uncompress" a file from a variety of common formats
+#
+# extract( String filename )
+#	filename - must be a common compressed file type like ZIP or Tar
 #
 function extract()
 {
@@ -431,13 +455,22 @@ function otd()
 }
 
 #
-# display a dynamic prompt
+# display a dynamic prompt. Gets it name from displaying message to users in shell scripts
+#
+# prompt( String content )
 #
 function prompt()
 {
 	$OPAL_DIR/typer $1
 }
 
+
+#
+# Display an entire file, in the style of prompt. 
+#
+# type_file( String filename )
+#	filename - the first file 
+#
 function type_file()
 {
 	$OPAL_DIR/typer -f $1
@@ -445,6 +478,10 @@ function type_file()
 
 #
 # Exchange the contents of two files
+#
+# truncate( String file_one, String file_two )
+#	file_one - the first file 
+#	file_two - the two file 
 #
 function swap()
 {
@@ -467,13 +504,19 @@ function lskeys()
 #
 # remove the contents of a file without destroying the file 
 #
+# truncate( String filename )
+#	filename - the file from which you want to remove the contents 
+#
 function truncate()
 {
 	cat /dev/null > $1
 }
 
 #
-# lookup the definition of a word
+# lookup the dictionary definition of a word
+#	
+# define( String word )
+#	word - the word you want to define 
 #
 function define()
 {
@@ -482,6 +525,8 @@ function define()
 
 #
 # Create a SHA1 digest of a file
+#
+# sha1( String filename )
 #
 function sha1()
 {
@@ -495,6 +540,9 @@ function sha1()
 #
 # lookup the http status code by number to refresh your memory
 #
+# htstatus( Integer code )
+#	code - the numeric status code. e.g. 200 
+#
 function htstatus()
 {
 	grep -A 1 ^$1 $OPAL_DIR/data/http-status-codes.txt
@@ -505,6 +553,8 @@ function htstatus()
 #
 # a floating point calculator
 #
+# calc( String equation )
+#
 function calc()
 { 
 	awk 'BEGIN { OFMT="%f"; print '"$*"'; exit}'; 
@@ -512,6 +562,8 @@ function calc()
 
 #
 # lookup country code
+#
+# country( String )
 #
 function country()
 {
@@ -521,6 +573,8 @@ function country()
 #
 # name the tab your on
 #
+# tabname( String name )
+#
 function tabname()
 {
 	printf "\e]1;$1\a";
@@ -529,9 +583,24 @@ function tabname()
 #
 # name the window your in
 #
+# winname( String name )
+#	name = a space delmited string. it's best to keep it short but unique.
+#
 function winname()
 {
 	printf "\e]2;$1\a";
 }
 
+#
+# turn on/off OS X Finders ability to display hidden files
+#
+# toggle_dotfiles( Boolean display )
+#
+function show_dotfiles() 
+{
+	case $# in
+		1) defaults write com.apple.finder AppleShowAllFiles $1; killall Finder ;;
+		*) echo "usage: finder_display_dot_files TRUE\|FALSE" 1>&2
+	esac
+}
 

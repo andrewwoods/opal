@@ -133,6 +133,11 @@ DEFINE: Retrieve the definition of a word
 
 	$ define ginger
 
+SHOW_DOTFILES: enable/disable display of hidden dotfiles in OS X finder
+
+	$ show_dotfiles true
+	$ show_dotfiles false
+
 ## Vim Files
 
 There are multiple vimrc files, one per type of programming style - Wordpress, 
