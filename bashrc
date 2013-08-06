@@ -396,7 +396,11 @@ function say_done()
 function bak()
 {
 	if [ -d $1 ]; then
-		tar -zcvf $1{.tar.gz,}
+		dir=$1
+		dir=${dir%/}
+		echo $dir	
+		tarfile="${dir}.tar.gz"
+		tar -zcvf $tarfile $dir
 	elif [ -f $1 ]; then
 		cp $1{,.bak}
 	else
