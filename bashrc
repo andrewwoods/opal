@@ -2,6 +2,7 @@
 # .bashrc - this file runs when any news bash shell is created
 #
 export OPAL_DIR="$HOME/opal"
+export OPAL_VERSION="1.0"
 
 ################################################################################
 #
