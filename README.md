@@ -138,6 +138,19 @@ SHOW_DOTFILES: enable/disable display of hidden dotfiles in OS X finder
 	$ show_dotfiles true
 	$ show_dotfiles false
 
+
+NUMSEG: display part of a file, with line numbers prepended
+
+disply line 50, the 10 lines before/after it, with line numbers  
+
+	$ numseg /etc/apache2/httpd.conf 50
+
+disply lines 32 through 48 with line numbers  
+
+	$ numseg /etc/apache2/httpd.conf 32 48
+
+
+
 ## Vim Files
 
 There are multiple vimrc files, one per type of programming style - Wordpress, 
