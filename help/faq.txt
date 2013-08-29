@@ -1,15 +1,24 @@
 
 http://en.wikipedia.org/wiki/Opal
 
-Why Opal? 
+Q: Why Opal? 
+
 It's a nice short name. Besides 'ruby' was taken :)
 
-What does the OPAL_NOOB variable do?
+********************************************************************************
+
+
+Q: What does the OPAL_NOOB variable do?
+
 It determines if you want to load noob.bash, which has some conveniences for 
 DOS users to learn UNIX. Also, some prompting was added to help prevent some 
 accidents from occurring.
 
-How can Opal help me?
+********************************************************************************
+
+
+Q: How can Opal help me?
+
 It creates a nice unix setup quickly. It's great when you want a familiar 
 environment on a new machine. If you're a web developer, there are several 
 vimrc files to help you comply to various coding standard - including 
@@ -18,13 +27,21 @@ make things easier - extract, mkcd, bak, and punch are just a few of them.
 There's even a couple of easter eggs :) vimrc_html makes it easy for to create 
 tags correctly, with a poor mans's autocomplete
 
-Why did I create Opal? 
+********************************************************************************
+
+
+Q: Why did I create Opal? 
+
 I wanted to create a reusable unix setup I could use across machines. Also, I 
 thought it'd be a good opportunity for an open source project. I see a lot of 
 people share their dotfiles, and there's a lot of repetition, but I didn't feel 
 they were useful enough.
 
-What if I'm not a developer? 
+********************************************************************************
+
+
+Q: What if I'm not a developer? 
+
 The punch command is great. think punching a timecard. it clocks you in and 
 out.  You can even make notes about what you're working on. Use 'say_done' to 
 inform you when a long running command is complete. 'bak' will create a backup 
@@ -32,9 +49,30 @@ of your file or directory. 'truncate' will remove the contents of a file for
 you - like a huge log file.  Also, 'define' is used to get the defintion of a 
 word.
 
-What is the License for the opal project?
+********************************************************************************
+
+
+Q: What is the License for the opal project?
+
 It's open source under GNU Public License, version 3 (GPLv3).
 http://www.gnu.org/licenses/gpl-3.0.html
+
+********************************************************************************
+
+
+Q: I'm getting an error "/usr/bin/php: bad interpreter: No such file or directory". 
+How do I get rid of it?
+
+
+The error is occuring because /usr/bin/php is not found on your system. 
+Although /usr/bin/php is the most popular location for the PHP interpreter, it 
+can be installed in another location.  To discover where it is installed, use 
+the which command. Then edit the file that caused the error which the new PHP 
+location.
+
+$ which php
+
+
 
 
 
