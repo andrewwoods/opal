@@ -608,3 +608,29 @@ function show_dotfiles()
 	esac
 }
 
+#
+# display a NUMbered SEGment of a file
+#
+# when only the start_line is specified, a range of 10 lines before and after
+# that line will be displayed. when start_line and end_line are specified, those
+# lines and all those between will be displayed
+#
+# numseg( string filename, int start_line [, int last_line] )
+#
+function numseg()
+{
+	range=10
+	filename=$1
+
+	if [[ -z $3 ]]; then
+		start=$( calc $2-$range)
+		end=$(calc $2+$range)
+	else
+		start=$2
+		end=$3
+	fi
+
+	nl $filename | awk "NR >= $start  && NR <=  $end  "
+}
+
+
