@@ -63,11 +63,18 @@ set fileformats=unix
 " Insert a tab, don't expand it to spaces
 set noexpandtab
 
+" Folding Settings
+set foldmarker={,} " This makes it work like other programming editors
+set foldmethod=marker
+set foldlevelstart=1
 
 "
 " --[ Abbreviations ]--
 "
 	
+:ab cw_controller /*** description of package* * @package CafeWorkr * @subpackage Controllers name * @author Andrew Woods <atwoods1@gmail.com>*/
+:ab cw_model /** * description of package * * @package CafeWorkr * @subpackage Models name * @author Andrew Woods <atwoods1@gmail.com> */
+:ab cw_views /** * description of package * * @package CafeWorkr * @subpackage Views name * @author Andrew Woods <atwoods1@gmail.com> */
 	
 " 
 " Never write short tags. 
@@ -77,8 +84,8 @@ set noexpandtab
 :ab x_phpoc <?php  ?>hhhha
 :ab x_php <?php  
 :ab x_eof /* End of file myfile.php *//* Location: ./system/modules/mymodule/myfile.php */ 
-:ab x_package /*** description of package** @package YourPackage* @subpackage Subpackage name* @author firstname lastname <user@host.com>*/
-:ab x_function /*** Describe your function** @param string,boolean,integer,float,array,object,mixed,number $one a necessary parameter* @param $two optional an optional value* @return void*/
+:ab x_package /** * description of package * * @package YourPackage * @subpackage Subpackage name * @author firstname lastname <user@host.com> */
+:ab x_function /** * Describe your function * * @param string,boolean,integer,float,array,object,mixed,number $one a necessary parameter * @param $two optional an optional value * @return void */
 
 :ab c_class class NAME extends PARENT{// do something;}
 :ab c_define define('VALUE', '');
@@ -96,7 +103,16 @@ set noexpandtab
 :ab c_while while (condition){  // do something;}
 :ab c_value $value = '';
 
+"-------------------------------------------------------------------------------
+" Functions
+"-------------------------------------------------------------------------------
 
+function CheckPhpSyntax()
+   let current_file = shellescape(expand('%:p'))
+   let command = '!php --syntax-check ' . current_file 
+   execute command
+endfunction
+autocmd BufWritePost,FileWritePost *.php call CheckPhpSyntax()
 
 
 :source ~/opal/vimrc_html

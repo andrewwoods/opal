@@ -34,6 +34,114 @@ e, E            End of word
 }, {            Beginning of next, previous paragraph
 ]], [[          Beginning of next, previous section
 
+
+--------------------------------------------------------------------------------
+Folding
+--------------------------------------------------------------------------------
+
+zf{motion} or
+{Visual}zf      Operator to create a fold.
+                This only works when 'foldmethod' is "manual" or "marker".
+                The new fold will be closed for the "manual" method.
+                'foldenable' will be set.
+
+
+zF              Create a fold for N lines.  Works like "zf".
+
+
+zd              Delete one fold at the cursor.  When the cursor is on a folded
+                line, that fold is deleted.  Nested folds are moved one level
+                up.  In Visual mode all folds (partially) in the selected area
+                are deleted.  Careful: This easily deletes more folds than you
+                expect and there is no undo.
+                This only works when 'foldmethod' is "manual" or "marker".
+
+
+zD              Delete folds recursively at the cursor.  In Visual mode all
+                folds (partially) in the selected area and all nested folds in
+                them are deleted.
+                This only works when 'foldmethod' is "manual" or "marker".
+
+
+zE              Eliminate all folds in the window.
+				This only works when 'foldmethod' is "manual" or "marker".
+
+
+zo              Open one fold under the cursor.  When a count is given, that
+                many folds deep will be opened.  In Visual mode one level of
+                folds is opened for all lines in the selected area.
+
+
+zO              Open all folds under the cursor recursively.  Folds that don't
+				contain the cursor line are unchanged.
+				In Visual mode it opens all folds that are in the selected
+				area, also those that are only partly selected.
+
+
+zc              Close one fold under the cursor.  When a count is given, that
+                many folds deep are closed.  In Visual mode one level of folds
+                is closed for all lines in the selected area.
+                'foldenable' will be set.
+
+
+zC              Close all folds under the cursor recursively.  Folds that
+                don't contain the cursor line are unchanged.
+                In Visual mode it closes all folds that are in the selected
+                area, also those that are only partly selected.
+                'foldenable' will be set.
+
+
+za              When on a closed fold: open it.  When folds are nested, you
+                may have to use "za" several times.  When a count is given,
+                that many closed folds are opened.
+                When on an open fold: close it and set 'foldenable'.  This
+                will only close one level, since using "za" again will open
+                the fold.  When a count is given that many folds will be
+                closed (that's not the same as repeating "za" that many
+                times).
+
+
+zA              When on a closed fold: open it recursively.
+                When on an open fold: close it recursively and set
+                'foldenable'.
+
+
+zv              View cursor line: Open just enough folds to make the line in
+                which the cursor is located not folded.
+
+
+zx              Update folds: Undo manually opened and closed folds: re-apply
+                'foldlevel', then do "zv": View cursor line.
+
+
+zX              Undo manually opened and closed folds: re-apply 'foldlevel'.
+
+
+zm              Fold more: Subtract one from 'foldlevel'.  If 'foldlevel' was
+                already zero nothing happens.
+                'foldenable' will be set.
+
+
+zM              Close all folds: set 'foldlevel' to 0.
+                'foldenable' will be set.
+
+
+zr              Reduce folding: Add one to 'foldlevel'.
+
+
+zR              Open all folds.  This sets 'foldlevel' to highest fold level.
+
+
+zn              Fold none: reset 'foldenable'.  All folds will be open.
+
+
+zN              Fold normal: set 'foldenable'.  All folds will be as they
+                were before.
+
+
+zi              Invert 'foldenable'.
+
+
 --------------------------------------------------------------------------------
 Lines
 --------------------------------------------------------------------------------

@@ -334,7 +334,7 @@ function show(){
 		echo -e "  names - display function names only" 
 		echo -e "  defs - display functions names and their definitions"
 		echo -e "  readonly - display all the readonly variables"
-		echo -e "  export - display all exported variables"
+		echo -e "  exports - display all exported variables"
 		echo -e "  integers - display all integers"
 		;;
 	esac
@@ -634,4 +634,10 @@ function numseg()
 	nl $filename | awk "NR >= $start  && NR <=  $end  "
 }
 
+function cal3()
+{
+	cal -my $(date -v-1m "+%m %Y")
+	cal
+	cal -my $(date -v+1m "+%m %Y")
+}
 

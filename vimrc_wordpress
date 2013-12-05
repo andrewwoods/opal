@@ -49,6 +49,13 @@ syntax on
 set autoindent
 set smartindent
 
+
+" Folding Settings
+set foldmarker={,} " This makes it work like other programming editors
+set foldmethod=marker
+set foldlevelstart=1
+
+
 "
 " --------[ Wordpress Settings ]--------
 "
