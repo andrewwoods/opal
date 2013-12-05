@@ -149,6 +149,10 @@ disply lines 32 through 48 with line numbers
 
 	$ numseg /etc/apache2/httpd.conf 32 48
 
+CAL3: a 3 month calendar display - previous month, current month, and next month
+
+	$ cal3
+
 
 
 ## Vim Files
