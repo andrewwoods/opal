@@ -2,7 +2,7 @@
 # .bashrc - this file runs when any news bash shell is created
 #
 export OPAL_DIR="$HOME/opal"
-export OPAL_VERSION="1.0"
+export OPAL_VERSION="1.1"
 
 ################################################################################
 #
@@ -639,5 +639,14 @@ function cal3()
 	cal -my $(date -v-1m "+%m %Y")
 	cal
 	cal -my $(date -v+1m "+%m %Y")
+}
+
+function ncal3()
+{
+    ncal -my $(date -v-1m "+%m %Y")
+    echo ' '
+    ncal
+    echo ' '
+    ncal -my $(date -v+1m "+%m %Y")
 }
 
