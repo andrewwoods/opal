@@ -86,9 +86,11 @@ set smartcase
 "syntax on
 
 set cursorline
-" :hi clear cursorline
-:hi cursorline gui=underline guisp=yellow 
-:highlight CursorLine ctermfg=yellow  ctermbg=darkgray cterm=none 
+" Turn Off cursor line
+":hi clear cursorline
+" Turn On cursor line formatting
+":hi cursorline gui=underline guisp=yellow 
+:highlight CursorLine  ctermbg=darkgray cterm=none 
 "set cursorcolumn
 "syntax match Tab /\t/
 "Show each tab in blue
@@ -156,7 +158,6 @@ set hlsearch
 
 
 " Common Mis-spellings
-:ab wordpress WordPress
 :ab Wordpress WordPress
 
 

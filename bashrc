@@ -124,9 +124,6 @@ fi
 #
 ################################################################################
 
-if [ "$UID" = "0" ]; then
-  PS1="${BRed}${On_Black}\u${BBlue}@\h${Color_Off}:\n\@ \W \\$ "
-fi
 
 EDITOR="vim"
 PAGER="less"
@@ -468,6 +465,42 @@ function prompt()
 {
 	$OPAL_DIR/typer $1
 }
+
+
+#
+# set a bash prompt. 
+#
+# set_prompt( String type ) - type can be brief, full, color, or compact
+#
+function set_prompt()
+{
+	case "$1" in
+	brief)
+		PS1="\u@\h \$ "
+		;;
+
+	full)
+		PS1="\u@\H \w\n\d \t [\!]\$ "
+		;;
+
+	color)
+		PS1="\n${BRed}${On_Black}\u@\h \d${Color_Off}\n${BPurple}${On_Black}\@ \W${Color_Off}\$ "
+		;;
+
+	compact)
+		PS1="\u@\h\n\t \W\$> "
+		;;
+
+	debug)
+		PS1="a=\a\nA=\A\nd=\d\nh=\h\nH=\H\nj=\j\nl=\l\ns=\s\nt=\t\nT=\T\n@=\@\nT=\T\nu=\u\nv=\v\nV=\V\nw=\w\nW=\W\n!=\!\n#=\#\n$=\$\n \$ "
+		;;
+
+	*)
+		echo 'Whoops! brief, full, color, or compact'
+		;;
+	esac
+}
+
 
 
 #

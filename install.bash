@@ -78,6 +78,10 @@ intro ~/.bash_profile
 echo '' >> ~/.bash_profile
 echo 'source ~/opal/bash_profile' >> ~/.bash_profile
 echo '' >> ~/.bash_profile
+echo 'preamble' >> ~/.bash_profile
+echo 'otd' >> ~/.bash_profile
+echo '' >> ~/.bash_profile
+echo '' >> ~/.bash_profile
 
 heading_box 'BASH PROFILE' ~/.bash_profile
 
