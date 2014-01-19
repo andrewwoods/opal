@@ -4,112 +4,6 @@
 export OPAL_DIR="$HOME/opal"
 export OPAL_VERSION="1.1"
 
-################################################################################
-#
-#		COLORS
-#
-#e###############################################################################
-export TERM=xterm-color
-
-# Reset
-Color_Off='\033[0m'       # Text Reset
-
-export Color_Off
-
-# Regular Colors
-#---------------------------------------
-Black='\033[0;30m'        # Black
-Red='\033[0;31m'          # Red
-Green='\033[0;32m'        # Green
-Yellow='\033[0;33m'       # Yellow
-Blue='\033[0;34m'         # Blue
-Purple='\033[0;35m'       # Purple
-Cyan='\033[0;36m'         # Cyan
-White='\033[0;37m'        # White
-
-export Black Red Green Yellow 
-export Blue Purple Cyan White
-
-
-# Bold
-#---------------------------------------
-BBlack='\e[1;30m'       # Black
-BRed='\e[1;31m'         # Red
-BGreen='\e[1;32m'       # Green
-BYellow='\e[1;33m'      # Yellow
-BBlue='\e[1;34m'        # Blue
-BPurple='\e[1;35m'      # Purple
-BCyan='\e[1;36m'        # Cyan
-BWhite='\e[1;37m'       # White
-
-export BBlack BRed BGreen BYellow 
-export BBlue BPurple BCyan BWhite
-
-# Underline
-#---------------------------------------
-UBlack='\e[4;30m'       # Black
-URed='\e[4;31m'         # Red
-UGreen='\e[4;32m'       # Green
-UYellow='\e[4;33m'      # Yellow
-UBlue='\e[4;34m'        # Blue
-UPurple='\e[4;35m'      # Purple
-UCyan='\e[4;36m'        # Cyan
-UWhite='\e[4;37m'       # White
-export UBlack URed UGreen UYellow 
-export UBlue UPurple UCyan UWhite
-
-# Background
-#---------------------------------------
-On_Black='\e[40m'       # Black
-On_Red='\e[41m'         # Red
-On_Green='\e[42m'       # Green
-On_Yellow='\e[43m'      # Yellow
-On_Blue='\e[44m'        # Blue
-On_Purple='\e[45m'      # Purple
-On_Cyan='\e[46m'        # Cyan
-On_White='\e[47m'       # White
-export On_Black On_Red On_Green On_Yellow 
-export On_Blue On_Purple On_Cyan On_White
-
-# High Intensty
-#---------------------------------------
-IBlack='\e[0;90m'       # Black
-IRed='\e[0;91m'         # Red
-IGreen='\e[0;92m'       # Green
-IYellow='\e[0;93m'      # Yellow
-IBlue='\e[0;94m'        # Blue
-IPurple='\e[0;95m'      # Purple
-ICyan='\e[0;96m'        # Cyan
-IWhite='\e[0;97m'       # White
-export IBlack IRed IGreen IYellow 
-export IBlue IPurple ICyan IWhite
-
-# Bold High Intensty
-#---------------------------------------
-BIBlack='\e[1;90m'      # Black
-BIRed='\e[1;91m'        # Red
-BIGreen='\e[1;92m'      # Green
-BIYellow='\e[1;93m'     # Yellow
-BIBlue='\e[1;94m'       # Blue
-BIPurple='\e[1;95m'     # Purple
-BICyan='\e[1;96m'       # Cyan
-BIWhite='\e[1;97m'      # White
-export BIBlack BIRed BIGreen BIYellow 
-export BIBlue BIPurple BICyan BIWhite
-
-# High Intensty backgrounds
-#---------------------------------------
-On_IBlack='\e[0;100m'   # Black
-On_IRed='\e[0;101m'     # Red
-On_IGreen='\e[0;102m'   # Green
-On_IYellow='\e[0;103m'  # Yellow
-On_IBlue='\e[0;104m'    # Blue
-On_IPurple='\e[10;95m'  # Purple
-On_ICyan='\e[0;106m'    # Cyan
-On_IWhite='\e[0;107m'   # White
-export On_IBlack On_IRed On_IGreen On_IYellow 
-export On_IBlue On_IPurple On_ICyan On_IWhite
-
 
 if [[ $OPAL_NOOB -eq '1' ]]; then
 	echo "Loading Noob Settings"
@@ -456,6 +350,11 @@ function otd()
 	done
 }
 
+
+parse_git_branch() {
+       git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 #
 # display a dynamic prompt. Gets it name from displaying message to users in shell scripts
 #
@@ -476,19 +375,17 @@ function set_prompt()
 {
 	case "$1" in
 	brief)
-		PS1="\u@\h \$ "
+		PS1="\u@\h \W\$(parse_git_branch)\$ "
 		;;
 
 	full)
-		PS1="\u@\H \w\n\d \t [\!]\$ "
-		;;
-
-	color)
-		PS1="\n${BRed}${On_Black}\u@\h \d${Color_Off}\n${BPurple}${On_Black}\@ \W${Color_Off}\$ "
+		# andrewwoods@tardis.local ~/opal
+		# Sat Jan 18 22:37:10 [626]$ 
+		PS1="\n\u@\H \W\n\d \A[\!]\$(parse_git_branch)\$ "
 		;;
 
 	compact)
-		PS1="\u@\h\n\t \W\$> "
+		PS1="\n\u@\h\n\A \W\$(parse_git_branch)\$ "
 		;;
 
 	debug)
@@ -500,6 +397,7 @@ function set_prompt()
 		;;
 	esac
 }
+
 
 
 
