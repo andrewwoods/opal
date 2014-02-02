@@ -1,6 +1,6 @@
 # opal
 
-a unix bootstrap of dotfiles with some useful additional utilities
+unix/linux dotfiles and utilities, reusable across machines/users, for people who love the command line
 
 There are many different ways you can config a unix or linux system. There are 
 tons of dotfiles spread acoross the internet. But there isn't a cohesive set of 
@@ -14,28 +14,9 @@ provide a reusable set of files.
 2. cd into the new directory
 3. Run the install script
 
-	$ ./install.bash 
+    $ ./install.bash 
 
-The vim and bash scripts are normally dot files that are located in your home directory. The files in this directory don't use dots at the beginning of the file for better user experience. They're here to give you a solid foundation for when you encounter a new environment, and to assist you in writing better code faster. You don't need to copy or edit them.
-
-
-One way to get started is to create symbolic links from your home dir to files 
-in this project like so (assuming this directory is named ~/opal) :
-
-	$ cd ~
-	$ ln -s opal/vimrc .vimrc 
-	$ ln -s opal/bashrc .bashrc
-	$ ln -s opal/bash_profile .bash_profile
-
-While that will work, it's not a good long term strategy. When you get an 
-update from this project, you'll lose your changes. A better way to use is 
-create a file in your home directory, and have it read the contents of the 
-corresponding file in this project. This will allow you to receive all the 
-updates of the project while keeping any customizations you make. Here's an 
-example using the .vimrc file
-
-	$ cd ~
-	$ vi .vimrc
+This creates a symbolic link in your home directory, to the directory where you ran the install script. Also, opal created a some dot files in your home directory - notably the .bashrc, .bash_profile, and .vimrc - to allow for your own customizations, while using opal resources. if you already had those files, don't panic - your files were backed up.
 
 
 ## WHAT'S IN HERE
@@ -47,6 +28,51 @@ included
 
 
 ## Bash Functions
+
+
+CAL3: a 3 month calendar display - previous month, current month, and next month
+
+	$ cal3
+
+
+DEFINE: Retrieve the definition of a word
+
+	$ define ginger
+
+
+LSKEYS: Display a list of your SSH keys
+
+	$ lskeys
+
+
+MACH: display information about the current host.
+
+	$ mach
+
+MKCD: Create a directory and go into it. accepts a single directory name. 
+
+	$ mkcd newdirectory
+
+NCAL3: a 3 month calendar displayed vertically - previous month, current month, and next month
+
+	$ ncal3
+
+
+NUMSEG: display part of a file, with line numbers prepended
+
+display line 50, the 10 lines before/after it, with line numbers  
+
+	$ numseg /etc/apache2/httpd.conf 50
+
+display lines 32 through 48 with line numbers  
+
+	$ numseg /etc/apache2/httpd.conf 32 48
+
+
+PREAMBLE: Display a login message about who and where you are.
+
+	$ preamble
+
 
 PROMPT: A great way to display a line to text. Like echo, but types out the 
 characters one at a time, as if you typed it 
@@ -63,9 +89,29 @@ argument whos value can be 'in' or 'out'
 	$ punch note "type a brief message here" 
 
 
-MKCD: Create a directory and go into it. accepts a single directory name. 
+SHOW: display information about different types of info in the shell. the 
+output for each of the arguments depends on your system. 
 
-	$ mkcd newdirectory
+```bash
+
+$ show
+	
+# arrays -  display known arrays 
+# names - display function names only
+# defs - display functions names and their definitions
+# readonly - display all the readonly variables
+# export - display all exported variables
+# integers - display all integers
+
+$ show names
+```
+
+SHOW_DOTFILES: enable/disable display of hidden dotfiles in OS X finder
+
+	$ show_dotfiles true
+	$ show_dotfiles false
+
+
 
 TODAY: display today's date in a number of formats. There are a few formats 
 to start of with. specify the type and optionally the format.  
@@ -92,35 +138,6 @@ TOUCHX: Create an empty file and make it executable
 	$ touchx filename.txt
 	$ touchx info.php phpinfo 
 
-MACH: display information about the current host.
-
-	$ mach
-
-SHOW: display information about different types of info in the shell. the 
-output for each of the arguments depends on your system. 
-
-```bash
-
-$ show
-	
-# arrays -  display known arrays 
-# names - display function names only
-# defs - display functions names and their definitions
-# readonly - display all the readonly variables
-# export - display all exported variables
-# integers - display all integers
-
-$ show names
-```
-
-PREAMBLE: Display a login message about who and where you are.
-
-	$ preamble
-
-LSKEYS: Display a list of your SSH keys
-
-	$ lskeys
-
 TRUNCATE: Remove the *contents* of a file without deleting it. 
 'Empty' is an alias
 
@@ -128,31 +145,6 @@ TRUNCATE: Remove the *contents* of a file without deleting it.
 
 	# You can also use
 	$ empty myfile.txt
-
-DEFINE: Retrieve the definition of a word
-
-	$ define ginger
-
-SHOW_DOTFILES: enable/disable display of hidden dotfiles in OS X finder
-
-	$ show_dotfiles true
-	$ show_dotfiles false
-
-
-NUMSEG: display part of a file, with line numbers prepended
-
-disply line 50, the 10 lines before/after it, with line numbers  
-
-	$ numseg /etc/apache2/httpd.conf 50
-
-disply lines 32 through 48 with line numbers  
-
-	$ numseg /etc/apache2/httpd.conf 32 48
-
-CAL3: a 3 month calendar display - previous month, current month, and next month
-
-	$ cal3
-
 
 
 ## Vim Files
