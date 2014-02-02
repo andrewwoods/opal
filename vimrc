@@ -35,6 +35,9 @@ set autoindent smartindent
 " Turn on line numbering
 set number
 
+" Display the filename
+set ls=2
+
 " Determine line endings
 set fileformat=unix
 set fileformats=unix,dos

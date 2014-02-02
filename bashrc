@@ -35,7 +35,7 @@ export EDITOR GIT_EDITOR SVN_EDITOR VISUAL
 ################################################################################
 
 alias please='sudo'
-alias diff='diff -bB'
+alias diff='diff -bBs'
 alias empty='truncate'
 alias ls='ls -F'
 alias lsdir='ls -l | awk '\''/^d/ {print $9;}'\''' 
