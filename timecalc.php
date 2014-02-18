@@ -59,9 +59,9 @@ while ( ! feof($fh) )
 {
     $record = fgets($fh);
     $record = rtrim($record);
-    if ( preg_match("/^\s*$/", $record) )
+    if ( preg_match("/^(#|\s*$)/", $record) )
     {
-        continue; // skip empty lines
+        continue; // skip comments and empty lines
     }
     
      
@@ -96,7 +96,13 @@ while ( ! feof($fh) )
 		$end_time = new DateTime($date . ' ' . $time);
 		
 		$interval = $end_time->diff($start_time);
-		printf("%s on %s (%s) for %s\n", $interval->format("%H hours %I minutes"),  $date, $day, $message);
+		$min = $interval->format("%I");
+		$hours = $interval->format("%H");
+		$decimal = $min/60;
+		$timeDecimal = round($hours + $decimal, 2);
+
+
+		printf("%s (%s hours) on %s (%s) for %s\n", $interval->format("%H hours %I minutes"), $timeDecimal,  $date, $day, $message);
 		// echo $interval->format("%H hours %I minutes") . " on " . $date . " for " . $task . "\n";
 	}
 
