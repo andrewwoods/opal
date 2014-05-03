@@ -93,7 +93,7 @@ set cursorline
 ":hi clear cursorline
 " Turn On cursor line formatting
 ":hi cursorline gui=underline guisp=yellow 
-:highlight CursorLine  ctermbg=darkgray cterm=none 
+:highlight CursorLine  ctermbg=darkred ctermfg=white cterm=none 
 "set cursorcolumn
 "syntax match Tab /\t/
 "Show each tab in blue

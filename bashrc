@@ -2,7 +2,7 @@
 # .bashrc - this file runs when any news bash shell is created
 #
 export OPAL_DIR="$HOME/opal"
-export OPAL_VERSION="1.2"
+export OPAL_VERSION="1.3"
 
 
 if [[ $OPAL_NOOB -eq '1' ]]; then
@@ -68,6 +68,8 @@ alias civi='vim -u ~/opal/vimrc_codeigniter'
 # leaving for the day. Use the 'note' option when you wanna say what you worked 
 # on, or even just say how long you took for lunch.
 #
+# 
+#
 # $ punch in 
 # $ punch in "type a brief message here" 
 # $ punch out
@@ -75,29 +77,32 @@ alias civi='vim -u ~/opal/vimrc_codeigniter'
 # $ punch note "type a brief message here" 
 #
 function punch(){
+
+	DATADIR=$(datadir)
+
 	if [[ $1 == "in" ]]; then
-		MESG=$(date +"%a %Y-%m-%d %H:%M:%S") 
+		MESG=$(date +"%a %Y-%m-%d %H:%M:%S")
 		MESG="$MESG IN"
 		if [[ -n $2 ]]; then
 			MESG="$MESG $2"
 		fi
-		echo $MESG >> $HOME/timesheet.txt 
+		echo $MESG >> $DATADIR/timesheet.txt
 
 	elif [[ $1 == "out" ]]; then
-		MESG=$(date +"%a %Y-%m-%d %H:%M:%S") 
+		MESG=$(date +"%a %Y-%m-%d %H:%M:%S")
 		MESG="$MESG OUT"
 		if [[ -n $2 ]]; then
-			MESG="$MESG $2"
+			MESG="$MESG $2
 		fi
-		echo $MESG >> $HOME/timesheet.txt 
+		echo $MESG >> $DATADIR/timesheet.txt
 
 	elif [[ $1 == "note" ]]; then
-		MESG=$(date +"%a %Y-%m-%d %H:%M:%S") 
+		MESG=$(date +"%a %Y-%m-%d %H:%M:%S")
 		MESG="$MESG NOTE"
 		if [[ -n $2 ]]; then
 			MESG="$MESG $2"
 		fi
-		echo $MESG >> $HOME/timesheet.txt 
+		echo $MESG >> $DATADIR/timesheet.txt
 
 	else
 		echo 'punch in OR punch out OR punch note'
@@ -105,7 +110,7 @@ function punch(){
 }
 
 #
-# make a directory and go into it 
+# make a directory and go into it
 #
 # mkcd( String directory )
 #
@@ -114,7 +119,7 @@ function mkcd (){
 }
 
 #
-# change to a directory and list its content 
+# change to a directory and list its content
 #
 # cdls( String directory )
 #
@@ -123,28 +128,28 @@ function cdls (){
 }
 
 #
-# display a date using the specified format 
+# display a date using the specified format
 # 
 # today( String style [, String type] )
 #	style = unix|iso|world|us|default
-#	type  = text|numeric 
+#	type  = text|numeric
 #
 function today(){
 	if [[ $1 == "unix" ]]; then
-		echo $(date +"%s") 
+		echo $(date +"%s")
 
 	elif [[ $1 == "iso" ]]; then
 
 		if [[ $2 == "text" ]]; then
-			echo $(date +"%Y %b %d %H:%M:%S") 
+			echo $(date +"%Y %b %d %H:%M:%S")
 		else
-			echo $(date +"%Y-%m-%d %H:%M:%S") 
+			echo $(date +"%Y-%m-%d %H:%M:%S")
 		fi
 
 	elif [[ $1 == "world" ]]; then
 
 		if [[ $2 == "text" ]]; then
-			echo $(date +"%d %b %Y %H:%M:%S") 
+			echo $(date +"%d %b %Y %H:%M:%S")
 		else
 			echo $(date +"%d/%m/%Y %H:%M:%S") 
 		fi
@@ -152,13 +157,13 @@ function today(){
 	elif [[ $1 == "us" ]]; then
 
 		if [[ $2 == "text" ]]; then
-			echo $(date +"%b %d, %Y %l:%M %p") 
+			echo $(date +"%b %d, %Y %l:%M %p")
 		else
-			echo $(date +"%m/%d/%Y %l:%M %p") 
+			echo $(date +"%m/%d/%Y %l:%M %p")
 		fi
 
 	else
-		echo $(date +"%a %Y %b %d %l:%M %p") 
+		echo $(date +"%a %Y %b %d %l:%M %p")
 	fi
 }
 
@@ -351,6 +356,9 @@ function otd()
 }
 
 
+#
+# get the current git branch your on
+#
 parse_git_branch() {
        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
@@ -362,7 +370,7 @@ parse_git_branch() {
 #
 function prompt()
 {
-	$OPAL_DIR/typer $1
+	$OPAL_DIR/typer "$1"
 }
 
 
@@ -507,7 +515,7 @@ function country()
 }
 
 #
-# name the tab your on
+# name the current Terminal tab
 #
 # tabname( String name )
 #
@@ -535,8 +543,22 @@ function winname()
 function show_dotfiles() 
 {
 	case $# in
-		1) defaults write com.apple.finder AppleShowAllFiles $1; killall Finder ;;
-		*) echo "usage: finder_display_dot_files TRUE\|FALSE" 1>&2
+		1) 
+			if [[ $1 == 'true' ]]
+			then
+				defaults write com.apple.finder AppleShowAllFiles $1
+				killall Finder 
+			elif [[ $1 == 'false' ]]
+			then
+				defaults write com.apple.finder AppleShowAllFiles $1
+				killall Finder
+			else
+				echo "needs to be true or false"
+			fi
+		;;
+
+		*) echo "usage: show_dotfiles true|false" 1>&2
+
 	esac
 }
 
@@ -565,6 +587,35 @@ function numseg()
 	nl $filename | awk "NR >= $start  && NR <=  $end  "
 }
 
+#
+# display a SEGment of a file
+#
+# when only the start_line is specified, a range of 10 lines before and after
+# that line will be displayed. when start_line and end_line are specified, those
+# lines and all those between will be displayed
+#
+# seg( string filename, int start_line [, int last_line] )
+#
+function seg()
+{
+	range=10
+	filename=$1
+
+	if [[ -z $3 ]]; then
+		start=$( calc $2-$range)
+		end=$(calc $2+$range)
+	else
+		start=$2
+		end=$3
+	fi
+
+	awk "NR >= $start  && NR <=  $end  " $filename
+}
+
+
+#
+# Display the previous month, current month, and next month
+#
 function cal3()
 {
 	cal -my $(date -v-1m "+%m %Y")
@@ -572,6 +623,9 @@ function cal3()
 	cal -my $(date -v+1m "+%m %Y")
 }
 
+#
+# Display the previous month, current month, and next month vertically
+#
 function ncal3()
 {
     ncal -my $(date -v-1m "+%m %Y")
@@ -580,4 +634,65 @@ function ncal3()
     echo ' '
     ncal -my $(date -v+1m "+%m %Y")
 }
+
+#
+# Detect if dropbox is available
+#
+function datadir()
+{
+	DROPBOX="$HOME/Dropbox"
+
+	if [[ -d "$1" && -w "$1" ]]
+	then
+		echo $1
+	elif [[ -d "$DROPBOX" && -w "$DROPBOX" ]]
+	then
+		echo $DROPBOX
+	else
+		echo $HOME
+	fi
+}
+
+
+#
+# $ note work "type a brief message here. quotes are required (for now)"
+# $ note type a brief message here
+#
+function note(){
+	NOW=$(today iso)
+	DATADIR=$(datadir)
+
+	if [[ $1 == "work" ]]
+	then
+		MESG="$NOW "
+		shift
+		if [[ -n $2 ]]; then
+			MESG="$MESG $@"
+		fi
+		echo $MESG >> $DATADIR/notes.work.txt
+
+	elif [[ $1 == "dev" ]]
+	then
+		MESG="$NOW "
+		shift
+		if [[ -n $2 ]]; then
+			MESG="$MESG $@"
+		fi
+		echo $MESG >> $DATADIR/notes.development.txt
+
+	elif [[ $1 == "home" ]]
+	then
+		MESG="$NOW "
+		shift
+		if [[ -n $2 ]]; then
+			MESG="$MESG $@"
+		fi
+		echo $MESG >> $DATADIR/notes.home.txt
+
+	else
+		MESG="$NOW $@"
+		echo $MESG >> $DATADIR/notes.txt
+	fi
+}
+
 

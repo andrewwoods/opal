@@ -7,6 +7,10 @@
 * @subpackage Punch
 * @author Andrew Woods <atwoods1@gmail.com>
 */ 
+if (! ini_get('date.timezone')){
+	date_default_timezone_set('America/Los_Angeles');
+}
+
 
 $short_options = "dh";
 $long_options = array('debug', 'help');
@@ -21,7 +25,7 @@ if ( isset($option['h']) || isset($option['help']) )
 	help();
 	exit();
 }
- 
+
 if ( isset($option['d']) || isset($option['debug']) )
 {
 	echo "command line options are:\n";
@@ -33,7 +37,9 @@ $program = array_shift($argv);
 
 if ( sizeof($argv) == 0 )
 {
-	$file = getenv('HOME') . "/timesheet.txt";
+	$data_dir = datadir();
+	echo "data_dir=$data_dir\n";
+	$file = $data_dir . "/timesheet.txt";
 	if ( isset($option['debug']) || isset($option['d']) )
 	{ 
 		echo "Using Default filename=$file";
@@ -48,7 +54,7 @@ else
 $fh = fopen($file, "r");
 if (! $fh)
 {
-    die("Cannot open file\n");
+	die("Cannot open file\n");
 }
 
 $start_time = null;
@@ -128,6 +134,21 @@ function help()
 	echo "-d | --debug         Display debug messages\n";
 	echo "-h | --help          Display this help\n";
 } 
+
+/**
+*/
+function datadir(){
+
+	$home_dir = getenv( 'HOME' );
+	$dropbox_dir = "${home_dir}/Dropbox";
+
+	if (is_dir($dropbox_dir)){
+		return $dropbox_dir;
+	}
+	return $home_dir;
+
+}
+
 
 /**
 * Remove the option arguments from the argv array

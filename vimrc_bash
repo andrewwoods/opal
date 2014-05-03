@@ -1,0 +1,122 @@
+"
+" Opal Project
+" VIM Editor Settings for Wordpress
+" by Andrew Woods
+" Updated 2012 Apr 22 Sun 
+"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+"
+" Don't edit this file. Instead create .vimrc_wordpress in your home directory 
+" and read this file with the following line
+"
+" :source ~/opal/vimrc_bash
+"
+" If you want to change the value, copy the line from this file and change the
+" value in your .vimrc_wordpress. This will allow you keep your changes after 
+" updates.
+"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+
+source ~/opal/vimrc
+
+"
+" --------[ General VIM ]--------
+"
+
+" Pattern searches should ignore case
+set ignorecase
+
+" Turn on line numbering
+set number
+
+" helps you find matching { and ( when you type ) } - if on screen
+set showmatch
+
+" Flash when errors occur 
+set visualbell
+
+" Show the line and column number of the cursor position
+set ruler
+
+" Put a message in the status line for insert, replace, and visual modes
+set showmode
+
+" Highlight the syntax of a language
+syntax on
+
+
+
+set autoindent
+set smartindent
+
+
+" Folding Settings
+set foldmarker={,} " This makes it work like other programming editors
+set foldmethod=marker
+set foldlevelstart=1
+
+
+"
+" --------[ Wordpress Settings ]--------
+"
+
+" Handles the settings for indentation
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+" Determine line endings
+set fileformat=unix
+set fileformats=unix,dos
+
+" When inserting a tab, dont expand it to spaces
+set noexpandtab
+
+
+"
+" --[ Abbreviations ]--
+"
+
+" 
+" Never write short tags. 
+" This will make you do the right thing, in case you forget :)
+:ab <?= <?php echo ;?>hhha
+:ab x_phpe <?php echo ; ?>hhhhha
+:ab x_phpoc <?php  ?>hhhha
+
+
+" Create Function level PHPDoc 
+:ab x_function ## Short Description## Long Description## @since version## @param  type $name  it does something# @return type        it does something#
+
+" Create App level PHPDoc 
+:ab x_app ## A brief one line description of your class## Describe what your class does at a high level, and how it can help the# user. The functions of your class should have their own phpdoc comments.### @package  Example# @author   FIRST_NAME LAST_NAME <author@foobar.com># @author   SECOND AUTHOR <second_author@foobar.com># @access   public#
+
+
+
+
+:ab c_add1 (( name++ ))
+:ab c_export export VALUE='';
+:ab c_if if [ condtion ]; then# do stufffi
+:ab c_ifelse if [ condtion ]then# do stuffelse#something elsefi
+:ab c_ifelif if [ condtion ]; then# do stuffelse if [ other_condtion ]; then// do other stuffelse//somethingfi
+:ab c_ifelseif if [ condtion ]; then# do stuffelse if [ other_condtion ]; then// do other stuffelse//somethingfi
+:ab c_dowhile do {# do stuff} while ( condtion ); 
+:ab c_for for (( EXP1; EXP2; EXP3 ))do# do stuffdone
+:ab c_forin for i in {1..5}do# do stuffdone
+:ab c_forincmd for i in $(seq 1 2 20)do# do stuffdone
+:ab c_foreach for i in $(seq 1 2 20)do# do stuffdone
+:ab c_function function foo() {# do something;}
+:ab c_switch switch ( $i ) {case 0:	// do stuffbreak;	hicase 1:	// do other stuffbreak;	hidefault:	echo "i equals 2";break;}
+:ab c_while while [ condition ]do#do stuffdone
+
+
+:source ~/opal/vimrc_html
+
+function CheckPhpSyntax()
+   let current_file = shellescape(expand('%:p'))
+   let command = '!php --syntax-check ' . current_file
+   execute command
+endfunction
+autocmd BufWritePost,FileWritePost *.php call CheckPhpSyntax()
+
+
