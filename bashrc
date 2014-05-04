@@ -92,7 +92,7 @@ function punch(){
 		MESG=$(date +"%a %Y-%m-%d %H:%M:%S")
 		MESG="$MESG OUT"
 		if [[ -n $2 ]]; then
-			MESG="$MESG $2
+			MESG="$MESG $2"
 		fi
 		echo $MESG >> $DATADIR/timesheet.txt
 
@@ -544,11 +544,11 @@ function show_dotfiles()
 {
 	case $# in
 		1) 
-			if [[ $1 == 'true' ]]
+			if [[ $1 == 'true' || $1 == 'yes' ]]
 			then
 				defaults write com.apple.finder AppleShowAllFiles $1
 				killall Finder 
-			elif [[ $1 == 'false' ]]
+			elif [[ $1 == 'false' || $1 == 'no' ]]
 			then
 				defaults write com.apple.finder AppleShowAllFiles $1
 				killall Finder
