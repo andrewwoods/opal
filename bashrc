@@ -4,6 +4,13 @@
 export OPAL_DIR="$HOME/opal"
 export OPAL_VERSION="1.3"
 
+export cals=(/usr/share/calendar/calendar.computer \
+	/usr/share/calendar/calendar.history \
+	/usr/share/calendar/calendar.holiday \
+	/usr/share/calendar/calendar.usholiday \
+	/usr/share/calendar/calendar.music \
+	/usr/share/calendar/calendar.judaic \
+	/usr/share/calendar/calendar.christian)
 
 if [[ $OPAL_NOOB -eq '1' ]]; then
 	echo "Loading Noob Settings"
@@ -50,11 +57,12 @@ alias weather="telnet rainmaker.wunderground.com 3000"
 
 #:::::::[ VIM ALIASES ]:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+alias bvi='vim -u ~/opal/vimrc_bash'
+alias civi='vim -u ~/opal/vimrc_codeigniter'
 alias druvi='vim -u ~/opal/vimrc_drupal'
+alias rbvi='vim -u ~/opal/vimrc_ruby'
 alias wpvi='vim -u ~/opal/vimrc_wordpress'
 alias zendvi='vim -u ~/opal/vimrc_zend'
-alias rbvi='vim -u ~/opal/vimrc_ruby'
-alias civi='vim -u ~/opal/vimrc_codeigniter'
 
 
 ################################################################################
@@ -341,12 +349,6 @@ function otd()
 	echo ""
 	echo "On this date"
 
-	cals=(/usr/share/calendar/calendar.computer \
-	/usr/share/calendar/calendar.history \
-	/usr/share/calendar/calendar.music \
-	/usr/share/calendar/calendar.judaic \
-	/usr/share/calendar/calendar.mine \
-	/usr/share/calendar/calendar.christian)
 
 	for i in "${cals[@]}"; do
 		if [ -f $i ]; then

@@ -5,6 +5,8 @@
 
 
 if [ -f ~/.bashrc ]; then
-   source ~/.bashrc
+	source ~/.bashrc
+else
+	source ~/opal/bashrc
 fi
 

@@ -107,13 +107,14 @@ while ( ! feof($fh) )
 		$decimal = $min/60;
 		$timeDecimal = round($hours + $decimal, 2);
 
-
-		printf("%s (%s hours) on %s (%s) for %s\n", $interval->format("%H hours %I minutes"), $timeDecimal,  $date, $day, $message);
+		$total_time += $timeDecimal;
+		printf("  %s %s  %s hours ( %s ) for %s\n", $date, $day, $timeDecimal, $interval->format("%H hours %I minutes"),  $message);
 		// echo $interval->format("%H hours %I minutes") . " on " . $date . " for " . $task . "\n";
 	}
 
 }
-
+echo "\n  ---------------------------------------\n";
+echo "  total time = $total_time\n\n";	
 fclose($fh);
 
 /*
