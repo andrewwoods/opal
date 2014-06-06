@@ -56,6 +56,15 @@ set foldmethod=marker
 set foldlevelstart=1
 
 
+set listchars=""
+set listchars+=tab:▸_
+set listchars+=eol:$
+set listchars+=trail:^
+set listchars+=extends:>
+set listchars+=precedes:<
+
+
+
 "
 " --------[ Wordpress Settings ]--------
 "

@@ -87,9 +87,10 @@ alias zendvi='vim -u ~/opal/vimrc_zend'
 function punch(){
 
 	DATADIR=$(datadir)
+	DATESTAMP=$(date +"%a %Y-%m-%d %H:%M:%S")
 
 	if [[ $1 == "in" ]]; then
-		MESG=$(date +"%a %Y-%m-%d %H:%M:%S")
+		MESG=$DATESTAMP
 		MESG="$MESG IN"
 		if [[ -n $2 ]]; then
 			MESG="$MESG $2"
@@ -97,7 +98,7 @@ function punch(){
 		echo $MESG >> $DATADIR/timesheet.txt
 
 	elif [[ $1 == "out" ]]; then
-		MESG=$(date +"%a %Y-%m-%d %H:%M:%S")
+		MESG=$DATESTAMP
 		MESG="$MESG OUT"
 		if [[ -n $2 ]]; then
 			MESG="$MESG $2"
@@ -105,15 +106,27 @@ function punch(){
 		echo $MESG >> $DATADIR/timesheet.txt
 
 	elif [[ $1 == "note" ]]; then
-		MESG=$(date +"%a %Y-%m-%d %H:%M:%S")
+		MESG=$DATESTAMP
 		MESG="$MESG NOTE"
 		if [[ -n $2 ]]; then
 			MESG="$MESG $2"
 		fi
 		echo $MESG >> $DATADIR/timesheet.txt
 
+	elif [[ $1 == "switch" ]]; then
+		MESG=$DATESTAMP
+		MESG="$MESG OUT"
+		if [[ -n $2 ]]; then
+			MESG="$MESG $2"
+		fi
+		echo $MESG >> $DATADIR/timesheet.txt
+
+		MESG=$DATESTAMP
+		MESG="$MESG IN"
+		echo $MESG >> $DATADIR/timesheet.txt
+
 	else
-		echo 'punch in OR punch out OR punch note'
+		echo 'punch in OR punch out OR punch note OR punch switch'
 	fi
 }
 
