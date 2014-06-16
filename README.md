@@ -87,6 +87,7 @@ argument whos value can be 'in' or 'out'
 	$ punch out 
 	$ punch out "type a brief message here" 
 	$ punch note "type a brief message here" 
+	$ punch switch "type a brief message here"
 
 
 SHOW: display information about different types of info in the shell. the 
@@ -145,6 +146,19 @@ TRUNCATE: Remove the *contents* of a file without deleting it.
 
 	# You can also use
 	$ empty myfile.txt
+
+## Present
+
+Present is a command line(CLI) tool written in Bash :)
+
+	$ present your_dir_name
+
+The 'your_dir_name' is a directory were you'll want to keep all the files
+related to this individual presentation. It needs a file called *present-lib.bash*.
+At the top of present-lib.bash, there needs to be an array called Slides.
+Each index in the Slides array, is the name of a bash function that you write.
+This is where your magic happens.
+
 
 
 ## Vim Files

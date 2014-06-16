@@ -8,6 +8,9 @@
 #
 
 export PAD="    ";
+
+# 14 rows x 60 columns is the visible area for a Macbook Pro 15"
+# using the Monaco 36pt font
 export LINE_LENGTH=60;
 
 ################################################################################
