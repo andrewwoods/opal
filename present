@@ -1,0 +1,191 @@
+#!/bin/bash
+
+#
+# Present - an interactive command line presentation tool
+#
+# Author: Andrew Woods
+#
+#
+
+export PAD="    ";
+export LINE_LENGTH=60;
+
+################################################################################
+#
+#     Utility Functions
+#
+################################################################################
+
+#
+# echo text with padding
+#
+function e_
+{
+	echo "${PAD}$1"	
+}
+
+#
+# echo a blank line 
+#
+function n_
+{
+	echo ""	
+}
+
+#
+# echo text with padding
+#
+function p_
+{
+	prompt "${PAD}$1"	
+}
+
+
+#
+# Display info about the slide, usually the slide number.
+#
+function meta_info
+{
+    p_ "$1"
+	spacer 1
+}
+
+#
+# Display Help
+#
+function present_help
+{
+	n_
+    p_ " h | help - Display this help message"
+    p_ " n | next - Display the next slide"
+    p_ " p | previous - Display the previous slide"
+    p_ " m | menu - Display menu of slides. Uses function names"
+    p_ " q | quit - Exit present"
+	n_
+}
+
+
+
+#
+# Create a number of blank lines. Default = 1.
+#
+function spacer
+{
+	max=1 
+	if [[ $1 != "" ]]
+	then
+		max=$1
+	fi
+
+	for (( i=1; i <= $max; i++ ))
+	do
+		echo ""
+	done
+}
+
+#
+# Create a number of blank lines. Default = 1.
+#
+function l_ 
+{
+	max_length=60 
+	char="-"
+	line=""
+
+	if [[ $1 != "" ]]
+	then
+		char=$1
+	fi
+
+	if [[ $2 != "" ]]
+	then
+		max_length=$2
+	fi
+
+	for (( i=${#PAD}; i <= $max_length; i++ ))
+	do
+		line+=$char
+	done
+	e_ $line	
+}
+
+
+################################################################################
+#
+#    Main Program 
+#
+################################################################################
+
+if [ -d $1 ]; then
+	PROJ_DIR=$1
+else
+	PROJ_DIR="."
+fi
+
+source $PROJ_DIR/present-lib.bash
+source $HOME/opal/bashrc
+
+
+
+clear
+
+op=''
+slide=0
+slides_length=${#Slides[@]}
+slides_last=$((slides_length-1))
+slides_max=$((slides_last-1))
+
+# Display the opening slide
+${Slides[0]}	
+
+while true 
+do
+	read -p "> " op
+
+	if [[ $op == 'q' ||  $op == 'quit' ]]
+	then
+		break
+	else
+
+		if [[ $op == 'n'  ||  $op == 'next'  ]]
+		then
+			slide=$((slide+1))
+		elif [[ $op == 'p' ||  $op == 'previous'  ]]
+		then
+			slide=$((slide-1))
+		elif [[ $op == 'h' ||  $op == 'help'  ]]
+		then
+			present_help	
+			continue
+		elif [[ $op == 'm' ||  $op == 'menu'  ]]
+		then
+			p_ "    Menu"
+			p_ "--------------------------"
+			for i in $(seq 1 $slides_last)
+			do
+				e_ "$i - ${Slides[$i]}"
+			done
+			n_
+			continue
+		else
+			slide=$op
+		fi
+
+		clear	
+		
+		if [ $slide -le $slides_max ]
+		then
+			meta_info "[$slide/$slides_max] "
+			${Slides[$slide]}
+		else	
+			break
+		fi
+	fi
+
+done
+
+meta_info "Final Slide"
+${Slides[$slides_last]}
+echo ""
+
+
