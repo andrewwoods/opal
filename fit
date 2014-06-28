@@ -68,13 +68,13 @@ function show_todo
 function show_help
 {
 	n_
-    e_ " h | help - Display this help message"
-    e_ " a | add  - Add an entry into the journal"
-    # p_ " u | up -  Update  an entry from the journal"
-    # p_ " d | delete -  Remove an entry from the journal"
-    e_ " l | list -  list all entries from the journal"
+	e_ " h | help - Display this help message"
+	e_ " a | add  - Add an entry into the journal"
+	# p_ " u | up -  Update  an entry from the journal"
+	# p_ " d | delete -  Remove an entry from the journal"
+	e_ " l | list -  list all entries from the journal"
 	# p_ " p | progress - Demonstrate your progress"
-    e_ " q | quit - Exit present"
+	e_ " q | quit - Exit present"
 	n_
 }
 
@@ -83,13 +83,14 @@ function add_item
 	p_ 'Types: '
 	p_ 'W = Weight'
 	p_ 'S = Sleep'
-	p_ 'M = Meal'
+	p_ 'E = Eat'
+	p_ 'D = Drink'
 
-	read -p "Enter a type of item> " item_type 
+	read -p "Enter a type of item> " item_type
 
 	if [[ $item_type = "W" || $item_type = "w" ]]
 	then
-		read -p "How Much you do weight (lbs)> " how_much 
+		read -p "How Much you do weight (lbs)> " how_much
 		ts=$(date)
 		filename=$(get_filename)
 		echo "${ts} WEIGHT ${how_much} lbs" | tee -a $filename
@@ -99,18 +100,18 @@ function add_item
 		ts=$(date)
 		filename=$(get_filename)
 		echo "${ts} SLEEP ${how_much} " | tee -a $filename
-	elif [[ $item_type = "M" || $item_type = "m" ]]
+	elif [[ $item_type = "E" || $item_type = "e" ]]
 	then
-		read -p "What did you eat? > " how_much 
+		read -p "What did you eat? > " ate_what
 		ts=$(date)
 		filename=$(get_filename)
-		echo "${ts} MEAL ${how_much} " | tee -a $filename
+		echo "${ts} EAT ${ate_what} " | tee -a $filename
 	elif [[ $item_type = "D" || $item_type = "d" ]]
 	then
-		read -p "What did you drink? > " how_much 
+		read -p "What did you drink? > " drank_what
 		ts=$(date)
 		filename=$(get_filename)
-		echo "${ts} DRINK ${how_much} " | tee -a $filename
+		echo "${ts} DRINK ${drank_what} " | tee -a $filename
 	fi
 }
 
@@ -123,7 +124,17 @@ function get_filename
 function list_items
 {
 	filename=$(get_filename)
-	cat $filename
+
+	read -p "Search for? > " search
+	echo "search=${search}"
+	if [[ $search != '' ]]
+	then
+		echo 'list_items: in the IF'
+		grep -i -n $search $filename
+	else
+		echo 'list_items: in the ELSE'
+		nl $filename
+	fi
 }
 
 #
@@ -131,7 +142,7 @@ function list_items
 #
 function spacer
 {
-	max=1 
+	max=1
 	if [[ $1 != "" ]]
 	then
 		max=$1
@@ -146,9 +157,9 @@ function spacer
 #
 # Create a number of blank lines. Default = 1.
 #
-function l_ 
+function l_
 {
-	max_length=60 
+	max_length=60
 	char="-"
 	line=""
 
