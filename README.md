@@ -30,6 +30,7 @@ included
 ## Bash Functions
 
 
+
 CAL3: a 3 month calendar display - previous month, current month, and next month
 
 	$ cal3
@@ -69,6 +70,11 @@ display lines 32 through 48 with line numbers
 	$ numseg /etc/apache2/httpd.conf 32 48
 
 
+PARSE_GIT_BRANCH: detects when you're in a git project and extracts the name of the active branch. Used by the set_prompt() function 
+
+	$ parse_git_branch
+
+
 PREAMBLE: Display a login message about who and where you are.
 
 	$ preamble
@@ -77,10 +83,11 @@ PREAMBLE: Display a login message about who and where you are.
 PROMPT: A great way to display a line to text. Like echo, but types out the 
 characters one at a time, as if you typed it 
 
-PUNCH: keep track of when you start and stop working on things.
 
-updates a file called timesheet.txt in your home directory. It takes one 
-argument whos value can be 'in' or 'out'
+PUNCH: keep track of when you start and stop working on things by writing to the timesheet.txt file. the included timecalc.php scripts parses the timesheet.txt file. Great for freelancers who track their time, and use tools like GetHarvest or Free Agent.
+
+It's first argument can be 'in', 'out', 'note', or 'switch'
+The second argument is only required for 'note'
 
 	$ punch in  
 	$ punch in "type a brief message here" 
@@ -88,6 +95,10 @@ argument whos value can be 'in' or 'out'
 	$ punch out "type a brief message here" 
 	$ punch note "type a brief message here" 
 	$ punch switch "type a brief message here"
+
+
+SET_PROMPT: Allows you to easily change the values displayed in your prompt. Uses the parse_git_branch() function.   
+
 
 
 SHOW: display information about different types of info in the shell. the 
@@ -138,6 +149,7 @@ TOUCHX: Create an empty file and make it executable
 
 	$ touchx filename.txt
 	$ touchx info.php phpinfo 
+	$ touchx robots.txt 
 
 TRUNCATE: Remove the *contents* of a file without deleting it. 
 'Empty' is an alias
@@ -167,31 +179,39 @@ There are multiple vimrc files, one per type of programming style - Wordpress,
 Drupal, CodeIgniter, Zend, and Ruby. If there are others that interest you, feel free to 
 create it and I'll add it. 
 
-Due to the popularity of HTML, there is an HTML vim file that is load by all 
-the others vim files. 
+To use the WordPress vim file, use the wpvi alias when opening a file
+
+$ wpvi functions.php
+
+**The HTML vim file that is load by all the others vim files.** 
 
 It helps you write your markup consistently. Vim uses abbreviations to make 
 reduce your typing. Each HTML tag has an associated abbreviation. It's not just 
 HTML though. PHP code and phpdoc blocks. 
 
-To create a piece of code or markeup like <title></title>, just type 't_title'. 
+To create a piece of code or markeup like '<title></title>', just type 't_title'. 
 
 In short, the formula is html tags is 't_' + tagname. 
 html entities have the formula 'e_' + name. 
 
-Take a look at the vimrc files to see everything it can do.  
+Here are a few examples
+	e_copy 
+	e_pound 
+	e_currency 
+	e_ellipsis
 
 php control structures have the formula 'c_' + name. 
-c_if will create an if block
-c_ifelse will create if/else blocks
-c_while will create a while loop
-c_function will create a function
+	c_if will create an if block
+	c_ifelse will create if/else blocks
+	c_while will create a while loop
+	c_function will create a function
 
 phpdoc codes have the formula 'x_' + name. 
-x_package will create a package phpdoc block comment
-x_function will create a function phpdoc block comment
-x_method will create a class method phpdoc block comment
+	x_package will create a package phpdoc block comment
+	x_function will create a function phpdoc block comment
+	x_method will create a class method phpdoc block comment
 
+Take a look at the vimrc files to see everything it can do.  
 
 
 

@@ -201,6 +201,13 @@ function touchx(){
 	if [[ $2 == "phpinfo" ]]; then
 		echo "<?php phpinfo(); ?>" >> $1
 	fi
+
+	if [[ $1 == 'robots.txt' ]]; then
+		echo "User-agent: *" >> $1
+		echo "Disallow: /" >> $1
+		echo "" >> $1
+	fi
+
 }
 
 #
