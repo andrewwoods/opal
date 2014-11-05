@@ -62,8 +62,8 @@
  
 :ab t_body <body></body>
 :ab t_a <a href=""></a>hhhhha
-:ab t_abbr <abbr></abbr>hhhhhhha
-:ab t_acronym <acronym></acronym>hhhhhhhhhha
+:ab t_abbr <abbr></abbr>hhhha
+:ab t_acronym <abbr title=""></abbr>hhhhhhha
 :ab t_address <address></address>hhhhhhhhhha
 :ab t_aside <aside></aside>ka
 :ab t_basefont <basefont></basefont>hhhhhhhhhhha
@@ -137,7 +137,13 @@
 :ab t_checkbox <input type="checkbox" name="" value="" id="">
 :ab t_form <form action="/your/path" method="post" accept-charset="utf-8"></form>
 :ab t_label <label for=""></label>
-:ab t_input <input type="text/number/email/submit/hidden/button" id="" name="" value="">
+:ab t_input <input type="button/checkbox/color/date/datetime/datetime-local/email/file/hidden/image/month/number/password/radio/range/reset/search/submit/tel/text/time/url/week" id="" name="" value="">
+
+
+
+
+
+
 :ab t_option <option value="option">option</option>
 :ab t_radio <input type="radio" name="" value="" id="">
 :ab t_select <select name=""></select>ka

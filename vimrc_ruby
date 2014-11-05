@@ -36,6 +36,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 " --------[ Formatting Settings ]--------
 "
 
+syntax on
+
 " Handles the settings for indentation
 set tabstop=2
 set softtabstop=2
