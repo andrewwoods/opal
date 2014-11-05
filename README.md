@@ -189,7 +189,7 @@ It helps you write your markup consistently. Vim uses abbreviations to make
 reduce your typing. Each HTML tag has an associated abbreviation. It's not just 
 HTML though. PHP code and phpdoc blocks. 
 
-To create a piece of code or markeup like '<title></title>', just type 't_title'. 
+To create a piece of code or markeup like '&lt;title&gt;&lt;/title&gt;', just type 't_title'. 
 
 In short, the formula is html tags is 't_' + tagname. 
 html entities have the formula 'e_' + name. 
