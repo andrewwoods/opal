@@ -1,0 +1,19 @@
+[color]
+	ui = true
+	status = true
+	grep = true
+	diff = true
+
+[alias]
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	pretty-log = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	co = checkout
+	ci = commit
+	export = help archive
+	info = remote --verbose
+	last = log -1 HEAD
+	stat = status -sb
+	undo = checkout 
+	unstage = reset HEAD
+[push]
+	default = simple
