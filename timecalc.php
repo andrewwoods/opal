@@ -108,10 +108,27 @@ while ( ! feof($fh) )
 		$timeDecimal = round($hours + $decimal, 2);
 
 		$total_time += $timeDecimal;
-		printf("  %s %s  %s hours ( %s ) for %s\n", $date, $day, $timeDecimal, $interval->format("%H hours %I minutes"),  $message);
-		// echo $interval->format("%H hours %I minutes") . " on " . $date . " for " . $task . "\n";
+		printf("  %s %s  %s hours ( %s ): %s\n", $date, $day, $timeDecimal, $interval->format("%H hours %I minutes"),  $message);
 	}
 
+	if ($op == 'NOTE')
+	{
+		if ( stristr( $message, 'HOLIDAY' ) !== FALSE ) {
+			printf("  %s %s:  %s\n", $date, $day, strtoupper( $message ));
+		}
+
+		if ( stristr( $message, 'SICK DAY' ) !== FALSE ) {
+			printf("  %s %s: %s\n", $date, $day, strtoupper( $message ));
+		}
+
+		if ( stristr( $message, 'OOF' ) !== FALSE ) {
+			printf("  %s %s: %s\n", $date, $day, strtoupper( $message ));
+		}
+
+		if ( stristr( $message, 'VACATION' ) !== FALSE ) {
+			printf("  %s %s: %s\n", $date, $day, strtoupper( $message ));
+		}
+	}
 }
 echo "\n  ---------------------------------------\n";
 echo "  total time = $total_time\n\n";	
@@ -119,7 +136,7 @@ fclose($fh);
 
 /*
  ===============================================================================
-								   FUNCTIONS
+                                   FUNCTIONS
  ===============================================================================
 */
 

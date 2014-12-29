@@ -85,6 +85,15 @@ echo '' >> ~/.bash_profile
 
 heading_box 'BASH PROFILE' ~/.bash_profile
 
+intro ~/.gitconfig 
+
+echo '' >> ~/.gitconfig
+echo '[include]' >> ~/.gitconfig
+echo '	path = ~/opal/gitconfig' >> ~/.gitconfig
+echo '' >> ~/.gitconfig
+
+
+
 
 echo '' >> ~/.vimrc
 echo '"' >> ~/.vimrc 
