@@ -1,5 +1,5 @@
 
-# display the lines 159 thru 170 of filename.txt 
+# display the lines 159 thru 170 of filename.txt
 $ awk 'NR >= 159 && NR <= 170 ' filename.txt
 
 # Same thing in SED
@@ -13,7 +13,7 @@ $ echo {one,two,red,blue}" fish"
 
 # double space a file which already has blank lines in it. Output file
 # should contain no more than one blank line between lines of text.
-$  sed '/^$/d;G'
+$ sed '/^$/d;G'
 
 # In UNIX environment, Remove every ^M from text files
 sed 's/^M$//g'
@@ -22,10 +22,35 @@ sed 's/^M$//g'
 sed 's/[ \t]*$//'
 
 # print only lines of 81 characters or longer
- awk 'length > 80'
+awk 'length > 80'
 
 # search thru files and skip the .svn directories
 find . -not \( -name .svn -prune \)
 
+# Get a blueprint of PHP code - your function and classes with methods
+#    if 'ack' is not installed, use 'brew install ack'
+#    replace DIRECTORY with a real directory name
+ack --recurse --type=php --with-filename '^\s*(class|(public )?(static )?function)'  DIRECTORY
 
+# Like the previous, but also finds required or included files. You'll want to write the results to a file 
+# due to high number of results
+ack --recurse --type=php --with-filename '^\s*((require|include)(_once)?|class|(public )?(static )?function)'  DIRECTORY
+
+
+
+#
+# Checking source code for quality
+#
+
+# Do lines begin with spaces?
+ack --recurse --type=php --with-filename '^[ ]+(?!\*)' DIRNAME
+
+# Do lines begin with tabs?
+ack --recurse --type=php --with-filename '^\t+' DIRNAME
+
+# check that developers included the phpdoc before their classes and functions
+ack --recurse --type=php --with-filename -B 10 '^\s*(class|(public )?(static )?function)'  DIRECTORY
+
+# alt check that developers included the phpdoc before their classes and functions
+ack --recurse --type=php --with-filename '(^\s*class|function [\w\d_]+\()'  DIRECTORY
 
