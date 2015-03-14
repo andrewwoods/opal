@@ -412,7 +412,7 @@ function set_prompt()
 	full)
 		# andrewwoods@tardis.local ~/opal
 		# Sat Jan 18 22:37:10 [626]$ 
-		PS1="\n\u@\H \W\n\d \A[\!]\$(parse_git_branch)\$ "
+		PS1="\n\u@\H \W\n\d \t [\!]\$(parse_git_branch)\$ "
 		;;
 
 	compact)
