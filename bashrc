@@ -61,6 +61,7 @@ alias bvi='vim -u ~/opal/vimrc_bash'
 alias civi='vim -u ~/opal/vimrc_codeigniter'
 alias druvi='vim -u ~/opal/vimrc_drupal'
 alias rbvi='vim -u ~/opal/vimrc_ruby'
+alias svi='vim -u ~/opal/vimrc_symfony'
 alias wpvi='vim -u ~/opal/vimrc_wordpress'
 alias zendvi='vim -u ~/opal/vimrc_zend'
 
