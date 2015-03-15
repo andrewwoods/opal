@@ -161,8 +161,8 @@ CTRL+F, CTRL+B   Scroll forward, backward one screen
 CTRL+D, CTRL+U   Scroll down, up one-half screen
 CTRL+E, CTRL+Y   Show one more line at bottom, top of window
 zENTER           Reposition line with cursor: to top of window
-z.               Reposition line with cursor: to middle of window 
-z-               Reposition line with cursor: to bottom of window 
+z.               Reposition line with cursor: to middle of window
+z-               Reposition line with cursor: to bottom of window
 CTRL+L           Redraw screen (without scrolling)
 
 --------------------------------------------------------------------------------
@@ -205,7 +205,7 @@ EDITING COMMANDS
 Insert
 --------------------------------------------------------------------------------
 
-i, a    Insert text before beginning, after cursor 
+i, a    Insert text before beginning, after cursor
 I, A    Insert text before beginning, after end of line
 o, O    Open new line for text below, above cursor
 
@@ -274,7 +274,7 @@ BUFFERS
 :bp[revious]   Go to the previous buffer. (Mnemonic: buffer previous).
 :bf[irst]	   Go to the first buffer.
 :bl[ast]	   Go to the last buffer.
-:ba[ll]		   Open all the buffers in the buffer list. 
+:ba[ll]		   Open all the buffers in the buffer list.
 
 
 EXIT COMMANDS
@@ -284,15 +284,18 @@ EXIT COMMANDS
 :wq                Write (save) and quit file
 :x                 Write (save) and quit file
 ZZ                 Write (save) and quit file
-:30,60w newfile    Write from lines 30 through 60 as newfile 
-:30,60w>> newfile  Write from lines 30 through 60 and append to newfile 
+:30,60w newfile    Write from lines 30 through 60 as newfile
+:30,60w>> newfile  Write from lines 30 through 60 and append to newfile
 :w %.new           Write current named file as file.new
 :q                 Quit file
 :q!                Quit file, overriding protection
 Q                  Quit vi and envoke ex
+
+NAME THIS
+================================================================================
 :e file2           Edit file2 without leaving vi
 :e!                Return to version of current file as of time of last write file
-:vi                Invoke vi editor from ex 
+:vi                Invoke vi editor from ex
 :                  Invoke one ex command from vi editor
 %                  Current filename (substitutes into ex command line)
 #                  Alternate filename (substitutes into ex command line)
@@ -300,3 +303,21 @@ Q                  Quit vi and envoke ex
 :bdn               Delete buffer n (n is the buffer number from :ls)
 
 
+NOTES FROM designbytyping.com (Vim Project)
+================================================================================
+^0 - goes to previous location in jumplist
+
+:e . open a directory selection window for current directory
+:sp file           open a horizontal split
+:vsp file          open a file in a  vertical split
+
+can use tab to cycle through file names when trying to edit a file
+
+^W l  moves your cursor to the split on the right
+^W h  moves your cursor to the split on the left
+^W k  moves your cursor up a split
+^W j  moves your cursor down a split
+
+^W w  moves your cursor to the next window in a clockwise motion
+^W H  Change Horizontal split to a Vertical split
+^W J  Change Vertical split to a Horizontal split
