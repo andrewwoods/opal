@@ -2,20 +2,21 @@
 " Opal Project
 " VIM Editor Settings for Wordpress
 " by Andrew Woods
-" Updated 2012 Apr 22 Sun 
+" Updated 2015 Mar 15 Sun
 "
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 "
-" Don't edit this file. Instead create .vimrc_wordpress in your home directory 
+" Don't edit this file. Instead create .vimrc_wordpress in your home directory
 " and read this file with the following line
 "
 " :source ~/opal/vimrc_wordpress
 "
 " If you want to change the value, copy the line from this file and change the
-" value in your .vimrc_wordpress. This will allow you keep your changes after 
+" value in your .vimrc_wordpress. This will allow you keep your changes after
 " updates.
 "
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
 source ~/opal/vimrc
 
@@ -32,7 +33,7 @@ set number
 " helps you find matching { and ( when you type ) } - if on screen
 set showmatch
 
-" Flash when errors occur 
+" Flash when errors occur
 set visualbell
 
 " Show the line and column number of the cursor position
@@ -44,7 +45,16 @@ set showmode
 " Highlight the syntax of a language
 syntax on
 
+"
+" Highlight columns 82 with DarkGreen background
+"
+highlight ColorColumn ctermfg=White ctermbg=DarkGreen
+call matchadd('ColorColumn', '\%82v.')
 
+"
+" Highlight columns 120 and above like an error. It's bad form to have lines longer the 120 characters
+"
+match ErrorMsg '\%120v.\+'
 
 set autoindent
 set smartindent
@@ -57,11 +67,11 @@ set foldlevelstart=1
 
 
 set listchars=""
-set listchars+=tab:▸_
-set listchars+=eol:$
-set listchars+=trail:^
-set listchars+=extends:>
-set listchars+=precedes:<
+set listchars+=tab:§¬
+set listchars+=eol:¶
+set listchars+=trail:¤
+set listchars+=extends:»
+set listchars+=precedes:«
 
 
 
@@ -87,27 +97,55 @@ set noexpandtab
 "
 
 " 
-" Never write short tags. 
+" Never write short tags.
 " This will make you do the right thing, in case you forget :)
 :ab <?= <?php echo ;?>hhha
 :ab x_phpe <?php echo ; ?>hhhhha
 :ab x_phpoc <?php  ?>hhhha
 
 
-" Create Function level PHPDoc 
-:ab x_function /*** Short Description** Long Description** @since version** @param  type $name  it does something* @return type        it does something*/
+" Create Function level PHPDoc
+:iab x_function
+\<CR>/**
+\<CR><Left> * Short Description
+\<CR><Left> *
+\<CR><Left> * Long Description
+\<CR><Left> *
+\<CR><Left> * @since version
+\<CR><Left> *
+\<CR><Left> * @param  type $name  it does something
+\<CR><Left> * @return type        it does something
+\<CR><Left> */
 
-" Create Class level PHPDoc 
-:ab x_class /*** A brief one line description of your class** Describe what your class does at a high level, and how it can help the* user. The functions of your class should have their own phpdoc comments.*** @package  Example* @author   FIRST_NAME LAST_NAME <author@foobar.com>* @author   SECOND AUTHOR <second_author@foobar.com>* @access   public*/
+" Create Class level PHPDoc
+:iab x_class /**
+\<CR> * A brief one line description of your class
+\<CR><Left> *
+\<CR><Left> * Describe what your class does at a high level, and how it can help the
+\<CR><Left> * user. The functions of your class should have their own phpdoc comments.
+\<CR><Left> *
+\<CR><Left> *
+\<CR><Left> * @package  Example
+\<CR><Left> * @author   FIRST_NAME LAST_NAME <author@foobar.com>
+\<CR><Left> * @author   SECOND AUTHOR <second_author@foobar.com>
+\<CR><Left> * @access   public
+\<CR><Left> */
 
 
-" Create Plugin level PHPDoc 
-:ab x_plugin /*Plugin name: NAME OF PLUGINPlugin URI: http://example.com/wp-plugins/plugin-name Version: 1.0 Author: FIRSTNAME LASTNAME Author URI: http://authorwebsite.comLicense: GPL2*/
+" Create Plugin level PHPDoc
+:ab x_plugin /*
+\<CR>Plugin name: NAME OF PLUGIN
+\<CR>Plugin URI: http://example.com/wp-plugins/plugin-name
+\<CR>Version: 1.0
+\<CR>Author: FIRSTNAME LASTNAME
+\<CR>Author URI: http://authorwebsite.com
+\<CR>License: GPL2
+\<CR>*/
 
 
 :ab c_class class NAME extends PARENT{// do something;}
 :ab c_define define('VALUE', '');
-:ab c_dowhile do {// do stuff} while ( condtion ); 
+:ab c_dowhile do {// do stuff} while ( condtion );
 :ab c_for for ( $i = 0; $i <= $max; $i++ ) {// do stuff}
 :ab c_foreach foreach ( $array_name AS $key => $value ) {// do stuff}
 :ab c_function function foo($p1, $p2 = '') {// do something;}
@@ -122,15 +160,10 @@ set noexpandtab
 :ab c_while while ( condtion ) {// do stuff}
 :ab c_value $value = '';
 
+:ab grepfunc !grep -n function %
 
 
 :source ~/opal/vimrc_html
 
-function CheckPhpSyntax()
-   let current_file = shellescape(expand('%:p'))
-   let command = '!php --syntax-check ' . current_file
-   execute command
-endfunction
-autocmd BufWritePost,FileWritePost *.php call CheckPhpSyntax()
 
 
