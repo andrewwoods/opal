@@ -108,7 +108,7 @@ while ( ! feof($fh) )
 		$timeDecimal = round($hours + $decimal, 2);
 
 		$total_time += $timeDecimal;
-		printf("  %s %s  %s hours ( %s ): %s\n", $date, $day, $timeDecimal, $interval->format("%H hours %I minutes"),  $message);
+		printf("  %s %s  %s hours ( %s ): %s\n", $date, $day, $timeDecimal, $interval->format("%H hours %I minutes"), $task);
 	}
 
 	if ($op == 'NOTE')
