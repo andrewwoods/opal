@@ -98,7 +98,10 @@ set cursorline
 ":hi clear cursorline
 " Turn On cursor line formatting
 ":hi cursorline gui=underline guisp=yellow
-:highlight CursorLine  ctermbg=darkred ctermfg=white cterm=none
+:highlight CursorLine  ctermbg=darkyellow ctermfg=white cterm=none
+:highlight LineNr ctermbg=darkgrey ctermfg=white cterm=none
+:highlight Visual ctermbg=5 guibg=DarkMagenta
+
 "set cursorcolumn
 "syntax match Tab /\t/
 "Show each tab in blue
@@ -142,7 +145,7 @@ set hlsearch
 " Different ways to write todays date
 "
 :iab <expr> now_date strftime("%Y %b %d %a")  " 2012 Mar 15 Thu
-:iab <expr> now_datetime strftime("%Y %b %d %a %I:%M%p") " 2012 Mar 15 Thu 10:16PM 
+:iab <expr> now_datetime strftime("%Y %b %d %a %I:%M%p") " 2012 Mar 15 Thu 10:16PM
 :iab <expr> epochtime strftime("%s") " 1331874188
 :iab <expr> iso_date strftime("%Y-%m-%d") " 2012-03-15
 :iab <expr> iso_datetime strftime("%Y-%m-%d %H:%M:%S") " 2012-03-15 22:03:23
@@ -166,10 +169,34 @@ set hlsearch
 
 
 " Common Mis-spellings
+"
+" https://en.wiktionary.org/wiki/Appendix:English_words_with_diacritics
+"
 :ab Wordpress WordPress
+:ab acceptible acceptable
+:ab aquit acquit
+:ab awhile a while
+:ab cafe café
+:ab cliche cliché
+:ab communique communiqué
+:ab divorceef divorcée
+:ab divorceem divorcé
+:ab mispell misspell
+:ab naive naïve
+:ab naivete naïveté
+:ab fiance fiancé
+:ab fiancee fiancée
+:ab noone no one
+:ab resume résumé
+:ab threshhold threshold
+:ab tommorrow tomorrow
+:ab touche touché
+:ab vaccuum vacuum
 
 
 
+
+"
 :ab -80- --------------------------------------------------------------------------------
 :ab =80= ================================================================================
 :ab x80x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
