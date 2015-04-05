@@ -117,13 +117,13 @@ function punch(){
 	elif [[ $1 == "switch" ]]; then
 		MESG=$DATESTAMP
 		MESG="$MESG OUT"
-		if [[ -n $2 ]]; then
-			MESG="$MESG $2"
-		fi
 		echo $MESG >> $DATADIR/timesheet.txt
 
 		MESG=$DATESTAMP
 		MESG="$MESG IN"
+		if [[ -n $2 ]]; then
+			MESG="$MESG $2"
+		fi
 		echo $MESG >> $DATADIR/timesheet.txt
 
 	else
