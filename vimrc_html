@@ -94,9 +94,9 @@
 :ab t_figure <figure></figure>ka
 :ab t_footer <footer></footer>ka
 :ab t_form <form></form>ka
-:ab t_head <head></header>ka
+:ab t_head <head></head>ka
 :ab t_header <header></header>ka
-:ab t_hr <hr />a
+:ab t_hr <hr />a
 :ab t_img <img src="" alt="" />hhhhhhhhhhhha
 :ab t_ins <ins></ins>hhhhhha
 :ab t_kbd <kbd></kbd>hhhhhha
