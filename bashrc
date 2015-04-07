@@ -718,4 +718,17 @@ function note(){
 	fi
 }
 
+#
+# traceurl - decode a short url to it's final destination
+#
+#
+function traceurl(){
+
+	if [[ -n $1 ]]
+	then
+		curl --location --head $1
+	else
+		echo 'Whoops! You forgot to specify a short URL'
+	fi
+}
 
