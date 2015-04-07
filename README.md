@@ -87,7 +87,7 @@ characters one at a time, as if you typed it
 PUNCH: keep track of when you start and stop working on things by writing to the timesheet.txt file. the included timecalc.php scripts parses the timesheet.txt file. Great for freelancers who track their time, and use tools like GetHarvest or Free Agent.
 
 It's first argument can be 'in', 'out', 'note', or 'switch'
-The second argument is only required for 'note'
+The second argument is only *required* for 'note', but it's useful for keeping track of what you work on
 
 	$ punch in  
 	$ punch in "type a brief message here" 
@@ -96,10 +96,9 @@ The second argument is only required for 'note'
 	$ punch note "type a brief message here" 
 	$ punch switch "type a brief message here"
 
+For best results, add a note when you punch in. Include things like an issue number, client name, or project name and a few words about the task. I'd love to know what works for you.
 
 SET_PROMPT: Allows you to easily change the values displayed in your prompt. Uses the parse_git_branch() function.   
-
-
 
 SHOW: display information about different types of info in the shell. the 
 output for each of the arguments depends on your system. 
@@ -212,6 +211,5 @@ phpdoc codes have the formula 'x_' + name.
 	x_method will create a class method phpdoc block comment
 
 Take a look at the vimrc files to see everything it can do.  
-
 
 

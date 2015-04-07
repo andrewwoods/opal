@@ -61,6 +61,7 @@ alias bvi='vim -u ~/opal/vimrc_bash'
 alias civi='vim -u ~/opal/vimrc_codeigniter'
 alias druvi='vim -u ~/opal/vimrc_drupal'
 alias rbvi='vim -u ~/opal/vimrc_ruby'
+alias svi='vim -u ~/opal/vimrc_symfony'
 alias wpvi='vim -u ~/opal/vimrc_wordpress'
 alias zendvi='vim -u ~/opal/vimrc_zend'
 
@@ -116,13 +117,13 @@ function punch(){
 	elif [[ $1 == "switch" ]]; then
 		MESG=$DATESTAMP
 		MESG="$MESG OUT"
-		if [[ -n $2 ]]; then
-			MESG="$MESG $2"
-		fi
 		echo $MESG >> $DATADIR/timesheet.txt
 
 		MESG=$DATESTAMP
 		MESG="$MESG IN"
+		if [[ -n $2 ]]; then
+			MESG="$MESG $2"
+		fi
 		echo $MESG >> $DATADIR/timesheet.txt
 
 	else
@@ -411,7 +412,7 @@ function set_prompt()
 	full)
 		# andrewwoods@tardis.local ~/opal
 		# Sat Jan 18 22:37:10 [626]$ 
-		PS1="\n\u@\H \W\n\d \A[\!]\$(parse_git_branch)\$ "
+		PS1="\n\u@\H \W\n\d \t [\!]\$(parse_git_branch)\$ "
 		;;
 
 	compact)
@@ -717,4 +718,17 @@ function note(){
 	fi
 }
 
+#
+# traceurl - decode a short url to it's final destination
+#
+#
+function traceurl(){
+
+	if [[ -n $1 ]]
+	then
+		curl --location --head $1
+	else
+		echo 'Whoops! You forgot to specify a short URL'
+	fi
+}
 
