@@ -105,17 +105,17 @@ set noexpandtab
 
 
 " Create Function level PHPDoc
-:iab x_function
-\<CR>/**
-\<CR><Left> * Short Description
-\<CR><Left> *
-\<CR><Left> * Long Description
-\<CR><Left> *
-\<CR><Left> * @since version
-\<CR><Left> *
-\<CR><Left> * @param  type $name  it does something
-\<CR><Left> * @return type        it does something
-\<CR><Left> */
+":iab x_function
+"\<CR>/**
+"\<CR><Left> * Short Description
+"\<CR><Left> *
+"\<CR><Left> * Long Description
+"\<CR><Left> *
+"\<CR><Left> * @since version
+"\<CR><Left> *
+"\<CR><Left> * @param  type $name  it does something
+"\<CR><Left> * @return type        it does something
+"\<CR><Left> */
 
 " Create Class level PHPDoc
 :iab x_class /**
