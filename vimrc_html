@@ -51,9 +51,10 @@
 :ab t_html <html lang="en" xmlns="http://www.w3.org/1999/xhtml"></html>
 :ab t_head <head></head>
 :ab t_title <title></title>hhhhhhhha
-:ab t_meta <meta name="" content="" />
-:ab t_link <link href="uri" media="screen" rel="stylesheet" type="text/css"/>
-:ab t_script <script src="http://example.com" async="true"></script>
+:ab t_meta <meta name="" content="">
+:ab t_meta_charset <meta charset="UTF-8">
+:ab t_link <link rel="stylesheet" href="html-my.css">
+:ab t_script <script src="filename.js"></script>
 :ab t_style <style type="text/css"></style>
 
 " ------------------------------------------------------------------------------
