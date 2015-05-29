@@ -1,12 +1,12 @@
 #!/usr/bin/php
 <?php
 /**
-* Calculate the start and end times for every day in the timesheet.txt file 
+* Calculate the start and end times for every day in the timesheet.txt file
 *
 * @package Opal
 * @subpackage Punch
 * @author Andrew Woods <atwoods1@gmail.com>
-*/ 
+*/
 if (! ini_get('date.timezone')){
 	date_default_timezone_set('America/Los_Angeles');
 }
@@ -41,7 +41,7 @@ if ( sizeof($argv) == 0 )
 	echo "data_dir=$data_dir\n";
 	$file = $data_dir . "/timesheet.txt";
 	if ( isset($option['debug']) || isset($option['d']) )
-	{ 
+	{
 		echo "Using Default filename=$file";
 	}
 }
@@ -63,34 +63,33 @@ $total_time = 0;
 $task = null;
 while ( ! feof($fh) )
 {
-    $record = fgets($fh);
-    $record = rtrim($record);
-    if ( preg_match("/^(#|\s*$)/", $record) )
-    {
-        continue; // skip comments and empty lines
-    }
-    
-     
-    // separate the record into fields - space delimited
-    // day, date, time, type, mesage
-    $data = preg_split("/\s/", $record, 5); 
-    if (empty($data[4]))
-    {
-        $data[4] = "";
-    }
-    list($day, $date, $time, $op, $message) = $data;
+	$record = fgets($fh);
+	$record = rtrim($record);
+	if ( preg_match("/^(#|\s*$)/", $record) )
+	{
+		continue; // skip comments and empty lines
+	}
 
-    if (! $message)
-    {
-        $message = "";
-    }
+
+	// separate the record into fields - space delimited
+	// day, date, time, type, mesage
+	$data = preg_split("/\s/", $record, 5);
+	if (empty($data[4]))
+	{
+		$data[4] = "";
+	}
+	list($day, $date, $time, $op, $message) = $data;
+
+	if (! $message)
+	{
+		$message = "";
+	}
 
 	if ( isset($option['d']) || isset($option['debug']) )
 	{
 		printf("%s (%s) time=%s op=%s message=%s\n", $date, $day, $time, $op, $message);
 	}
-	 
-	
+
 	if ($op == 'IN')
 	{
 		$start_time = new DateTime($date . ' ' . $time);
@@ -100,7 +99,7 @@ while ( ! feof($fh) )
 	if ($op == 'OUT')
 	{
 		$end_time = new DateTime($date . ' ' . $time);
-		
+
 		$interval = $end_time->diff($start_time);
 		$min = $interval->format("%I");
 		$hours = $interval->format("%H");
@@ -108,7 +107,7 @@ while ( ! feof($fh) )
 		$timeDecimal = round($hours + $decimal, 2);
 
 		$total_time += $timeDecimal;
-		printf("  %s %s  %s hours ( %s ): %s\n", $date, $day, $timeDecimal, $interval->format("%H hours %I minutes"), $task);
+		printf("  %s %s	 %s hours ( %s ): %s\n", $date, $day, $timeDecimal, $interval->format("%H hours %I minutes"), $task);
 	}
 
 	if ($op == 'NOTE')
@@ -131,12 +130,12 @@ while ( ! feof($fh) )
 	}
 }
 echo "\n  ---------------------------------------\n";
-echo "  total time = $total_time\n\n";	
+echo "	total time = $total_time\n\n";
 fclose($fh);
 
 /*
  ===============================================================================
-                                   FUNCTIONS
+				FUNCTIONS
  ===============================================================================
 */
 
@@ -144,14 +143,14 @@ fclose($fh);
 * Display to the user how to use timecalc.
 *
 * @return void
-*/ 
+*/
 function help()
 {
 	echo "timecalc.php options\n";
 	echo "\n";
-	echo "-d | --debug         Display debug messages\n";
-	echo "-h | --help          Display this help\n";
-} 
+	echo "-d | --debug      Display debug messages\n";
+	echo "-h | --help       Display this help\n";
+}
 
 /**
 */
@@ -172,9 +171,9 @@ function datadir(){
 * Remove the option arguments from the argv array
 *
 * @param String $short_opts single character switches
-* @param Array  $long_opts long form switches
+* @param Array	$long_opts long form switches
 * @return void
-*/ 
+*/
 function clean_argv($short_opts = '', $long_opts = array())
 {
 	$opts = getopt( $short_opts, $long_opts );
@@ -185,7 +184,7 @@ function clean_argv($short_opts = '', $long_opts = array())
 		while( $k = array_search( "-" . $o, $argv ) )
 		{
 			if( $k )
-			{ 
+			{
 				unset( $argv[$k] );
 			}
 
