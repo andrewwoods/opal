@@ -1,6 +1,6 @@
 "
 " Opal Project
-" VIM Editor Settings for Wordpress
+" VIM Editor Settings for Javascript
 " by Andrew Woods
 " Updated 2015 Mar 15 Sun
 "
@@ -76,7 +76,7 @@ set listchars+=precedes:«
 
 
 "
-" --------[ Wordpress Settings ]--------
+" --------[ Javascript Settings ]--------
 "
 
 " Handles the settings for indentation
@@ -89,76 +89,34 @@ set fileformat=unix
 set fileformats=unix,dos
 
 " When inserting a tab, dont expand it to spaces
-set noexpandtab
+set expandtab
 
 
 "
 " --[ Abbreviations ]--
 "
 
-" 
-" Never write short tags.
-" This will make you do the right thing, in case you forget :)
-:ab <?= <?php echo ;?>hhha
-:ab x_phpe <?php echo ; ?>hhhhha
-:ab x_phpoc <?php  ?>hhhha
-
-
-" Create Function level PHPDoc
-":iab x_function
-"\<CR>/**
-"\<CR><Left> * Short Description
-"\<CR><Left> *
-"\<CR><Left> * Long Description
-"\<CR><Left> *
-"\<CR><Left> * @since version
-"\<CR><Left> *
-"\<CR><Left> * @param  type $name  it does something
-"\<CR><Left> * @return type        it does something
-"\<CR><Left> */
-
-" Create Class level PHPDoc
-:iab x_class /**
-\<CR> * A brief one line description of your class
-\<CR><Left> *
-\<CR><Left> * Describe what your class does at a high level, and how it can help the
-\<CR><Left> * user. The functions of your class should have their own phpdoc comments.
-\<CR><Left> *
-\<CR><Left> *
-\<CR><Left> * @package  Example
-\<CR><Left> * @author   FIRST_NAME LAST_NAME <author@foobar.com>
-\<CR><Left> * @author   SECOND AUTHOR <second_author@foobar.com>
-\<CR><Left> * @access   public
-\<CR><Left> */
-
-
-" Create Plugin level PHPDoc
-:ab x_plugin /*
-\<CR>Plugin name: NAME OF PLUGIN
-\<CR>Plugin URI: http://example.com/wp-plugins/plugin-name
-\<CR>Version: 1.0
-\<CR>Author: FIRSTNAME LASTNAME
-\<CR>Author URI: http://authorwebsite.com
-\<CR>License: GPL2
-\<CR>*/
-
-
-:ab c_class class NAME extends PARENT{// do something;}
-:ab c_define define('VALUE', '');
+:ab c_array var value = [];
 :ab c_dowhile do {// do stuff} while ( condtion );
-:ab c_for for ( $i = 0; $i <= $max; $i++ ) {// do stuff}
-:ab c_foreach foreach ( $array_name AS $key => $value ) {// do stuff}
-:ab c_function function foo($p1, $p2 = '') {// do something;}
+:ab c_for for ( var i = 0, max = data.length; i <= max; i++ ) {// do stuff}
+:ab c_forin for ( var i in obj ) {// do stuff}
+:ab c_function function foo( p1, p2 ) {// do something;}
+:ab c_function_alt foo = function ( p1, $p2 ) {// do something;}
 :ab c_if if ( condtion ) {// do stuff}
+:ab d_iife (function(){// do stuff}());
 :ab c_ifelse if ( condtion ) {// do stuff} else {//something else}
 :ab c_ifelsif if ( condtion ) {// do stuff} else if ( other_condtion ) {// do other stuff} else {//something else}
 :ab c_ifelseif if ( condtion ) {// do stuff} else if ( other_condtion ) {// do other stuff} else {//something else}
 :ab c_loop if ( have_posts() ) :while ( have_posts() ) :the_post();// Do stuffendwhile; // end of the loop.else://Sorry! No Resultsendif; // end of the if
-:ab c_member public $value = '';
-:ab c_method public,protected,private function foo($p1, $p2 = '') {// do something;}
+:ab c_method MYAPP.foo = function( p1, p2 ) {// do something;}
+" :ab c_namespace var MYAPP = MYAPP || {};
+:ab c_object value = {};
+:ab c_prototype Class.prototype.name = function() {// do stuff};
 :ab c_switch switch ( $i ) {case 0:	// do stuffbreak;	hicase 1:	// do other stuffbreak;	hidefault:	echo "i equals 2";break;}
+:ab c_throw throw new Error('This is the message' );
+:ab c_trycatch try {// do stuff} catch(e) {//something else}
 :ab c_while while ( condtion ) {// do stuff}
-:ab c_value $value = '';
+:ab c_value value = '';
 
 :ab grepfunc !grep -n function %
 
