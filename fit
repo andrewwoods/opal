@@ -120,6 +120,26 @@ function get_filename
 	echo "$(datadir)/fit.log"
 }
 
+if [[ -z "$(which datadir)" ]]
+then
+	#
+	# Detect if dropbox is available. if not, use the home directory
+	#
+	function datadir()
+	{
+		DROPBOX="$HOME/Dropbox"
+
+		if [[ -d "$1" && -w "$1" ]]
+		then
+			echo $1
+		elif [[ -d "$DROPBOX" && -w "$DROPBOX" ]]
+		then
+			echo $DROPBOX
+		else
+			echo $HOME
+		fi
+	}
+fi
 
 function list_items
 {
