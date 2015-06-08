@@ -109,7 +109,7 @@ set noexpandtab
 :ab c_ifelseif if ( condtion ) {// do stuff} else if ( other_condtion ) {// do other stuff} else {//something else}
 :ab c_loop if ( have_posts() ) :while ( have_posts() ) :the_post();// Do stuffendwhile; // end of the loop.else://Sorry! No Resultsendif; // end of the if
 :ab c_method MYAPP.foo = function( p1, p2 ) {// do something;}
-:ab c_namespace var MYAPP = MYAPP or {}; // the word "or" should be replaced by ||, but vm chokes on it
+":ab c_namespace var MYAPP = MYAPP or {}; " the word 'or' should be replaced by ||, but vim chokes on it
 :ab c_object value = {};
 :ab c_prototype Class.prototype.name = function() {// do stuff};
 :ab c_switch switch ( $i ) {case 0:	// do stuffbreak;	hicase 1:	// do other stuffbreak;	hidefault:	echo "i equals 2";break;}
