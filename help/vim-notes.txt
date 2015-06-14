@@ -4,6 +4,13 @@ Useful VIM snippets
 highlight anything from the 81st column and beyond in red
 :match ErrorMsg '\%>81v.\+' 
 
+Highlight the line where the cursor is positioned
+:highlight CursorLine  ctermbg=darkyellow ctermfg=white cterm=none
+
+
+Highlight all the line numbers
+:highlight LineNr ctermbg=darkgrey ctermfg=white cterm=none
+
 
 
 
