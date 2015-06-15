@@ -174,23 +174,42 @@ set hlsearch
 "
 :ab Wordpress WordPress
 :ab acceptible acceptable
+:ab anime animé
 :ab aquit acquit
+:ab attache attaché
 :ab awhile a while
 :ab cafe café
 :ab cliche cliché
 :ab communique communiqué
+:ab continuum continuüm
 :ab divorceef divorcée
 :ab divorceem divorcé
+:ab eclair éclair
+:ab entree entrée
+:ab expose exposé
+:ab etude étude
+:ab flambe flambé
+:ab jalapeno jalapeño
 :ab mispell misspell
 :ab naive naïve
 :ab naivete naïveté
+:ab facade façade
 :ab fiance fiancé
 :ab fiancee fiancée
 :ab noone no one
 :ab resume résumé
+:ab risque risqué
+:ab saute sauté
+:ab seance séance
+:ab senor señor
+:ab senora señora
+:ab senorita señorita
+:ab soiree soirée
+:ab souffle soufflé
 :ab threshhold threshold
 :ab tommorrow tomorrow
 :ab touche touché
+:ab uber über
 :ab vaccuum vacuum
 
 
