@@ -74,18 +74,23 @@ alias zendvi='vim -u ~/opal/vimrc_zend'
 #
 ################################################################################
 
-# Keep track of your time. It will update timesheet.txt in your $HOME 
-# directory. The options 'in' and 'out' are just for events like meetings or 
-# leaving for the day. Use the 'note' option when you wanna say what you worked 
+# 
+# punch - Keeps track of your time. Updates the timesheet.txt in your
+# datadir(). The options 'in' and 'out' are just for events like meetings or
+# leaving for the day. Use the 'note' option when you wanna say what you worked
 # on, or even just say how long you took for lunch.
 #
-# 
+# @param String $action Allowed Values: in, out, note, switch.
+#        'switch' will clock you OUT of one task AND IN on another
+# @param String Optional $message What did your work on? messages with multiple
+#        words must be enclosed in quotes.
 #
-# $ punch in 
-# $ punch in "type a brief message here" 
+#
+# $ punch in
+# $ punch in "type a brief message here"
 # $ punch out
-# $ punch out "type a brief message here" 
-# $ punch note "type a brief message here" 
+# $ punch out "type a brief message here"
+# $ punch note "type a brief message here"
 #
 function punch()
 {
@@ -135,9 +140,9 @@ function punch()
 }
 
 #
-# make a directory and go into it
+# mkcd - make a directory and go into it
 #
-# mkcd( String directory )
+# @param String $directory
 #
 function mkcd()
 {
@@ -145,9 +150,9 @@ function mkcd()
 }
 
 #
-# change to a directory and list its content
+# cdls - change to a directory and list its content
 #
-# cdls( String directory )
+# @param String $directory
 #
 function cdls()
 {
@@ -155,11 +160,10 @@ function cdls()
 }
 
 #
-# display a date using the specified format
+# today - display a date using the specified format
 # 
-# today( String style [, String type] )
-#	style = unix|iso|world|us|default
-#	type  = text|numeric
+# @param String $style Allowed values: unix, iso, world, us, default
+# @param String Optional $type Allowed values: text, numeric
 #
 function today()
 {
@@ -196,11 +200,11 @@ function today()
 }
 
 #
-# touch a file and make it executable. touch creates the file if it doesn't exist
+# touchx - touch a file and make it executable. touch creates the file if it doesn't exist
 #
-# touchx( String filename [, String content] )
-#	filename - the file you want to create and make executable
-#	content - The type of content to add to the file. Currently, phpinfo is the only value.
+# @param String $filename the file you want to create and make executable
+# @param String Optional $content The type of content to add to the file.
+#       'phpinfo' will inject PHP code into the file.
 #
 function touchx()
 {
@@ -219,7 +223,7 @@ function touchx()
 }
 
 #
-# displays the basic information about the system
+# mach displays the basic information about the machine/system you're using.
 #
 function mach()
 {
@@ -231,7 +235,10 @@ function mach()
 }
 
 #
-# display information about an aspect of the bash programming environment
+# show - display information about an aspect of the bash programming environment
+#
+# @param String $type the type for information you want to display.
+#        Allowed Values: arrays, defs, names, readonly, exports, integers
 #
 function show()
 {
@@ -275,7 +282,7 @@ function show()
 }
 
 #
-# Display a block message to the user about who and where they are
+# preamble - Display a block message to the user about who and where they are
 #
 function preamble()
 {
@@ -294,10 +301,9 @@ function preamble()
 }
 
 #
-# get a recursive list of all directories under 'directory'. defaults to cwd.
+# lsd - get a recursive list of all directories under 'directory'. defaults to cwd.
 #
-# lsd( [String directory] )
-#	directory - the directory you want to recursively list the contents of.
+# @param String $directory the directory for which you want to recursively list the contents.
 #
 function lsd()
 {
@@ -311,7 +317,7 @@ function lsd()
 }
 
 #
-# Tell the user when a command is done
+# say_done - Tell the user when a command is done
 #
 function say_done()
 {
@@ -323,11 +329,10 @@ function say_done()
 }
 
 #
-# Create a backup of a file or directory
+# bak - Create a backup of a file or directory
 #
-# extract( String path )
-#	path - if path is a file, copy of the file will be made with .bak appended to it's name.
-#          if path is a dir, a compressed tarball will be made of the directory 
+# @param String $path when path is a file, a copy is made with .bak appended to it's name.
+#        if path is a directory, a compressed tarball will be made of the directory
 #
 function bak()
 {
@@ -345,10 +350,9 @@ function bak()
 }
 
 #
-# "uncompress" a file from a variety of common formats
+# extract - "uncompress" a file from a variety of common formats
 #
-# extract( String filename )
-#	filename - must be a common compressed file type like ZIP or Tar
+# @param String $filename must be a common compressed file type like ZIP or Tar
 #
 function extract()
 {
@@ -390,7 +394,7 @@ function otd()
 
 
 #
-# get the current git branch your on
+# parse_git_branch - get the current git branch your on
 #
 function parse_git_branch()
 {
@@ -398,9 +402,9 @@ function parse_git_branch()
 }
 
 #
-# display a dynamic prompt. Gets it name from displaying message to users in shell scripts
+# prompt - display a dynamic prompt, in the interactive sense.
 #
-# prompt( String content )
+# @param String $content multiple-word prompts must be enclosed in quotes
 #
 function prompt()
 {
@@ -409,9 +413,9 @@ function prompt()
 
 
 #
-# set a bash prompt. 
+# set_prompt - set the style of bash prompt used.
 #
-# set_prompt( String type ) - type can be brief, full, color, or compact
+# @param String $type Allowed values: brief, full, compact, or debug
 #
 function set_prompt()
 {
@@ -444,10 +448,9 @@ function set_prompt()
 
 
 #
-# Display an entire file, in the style of prompt. 
+# type_file - Display an entire file, as if being typed quickly.
 #
-# type_file( String filename )
-#	filename - the first file 
+# @param String $filename
 #
 function type_file()
 {
@@ -455,11 +458,10 @@ function type_file()
 }
 
 #
-# Exchange the contents of two files
+# swap - Exchange the contents of two files
 #
-# truncate( String file_one, String file_two )
-#	file_one - the first file 
-#	file_two - the two file 
+# @param String $file_one
+# @param String $file_two
 #
 function swap()
 {
@@ -471,7 +473,7 @@ function swap()
 }
 
 #
-# Display a list of your ssh keys
+# lskeys - Display a list of your ssh keys.
 #
 function lskeys()
 {
@@ -480,10 +482,9 @@ function lskeys()
 }
 
 #
-# remove the contents of a file without destroying the file 
+# truncate - remove the contents of a file without destroying the file
 #
-# truncate( String filename )
-#	filename - the file from which you want to remove the contents 
+# @param String $filename - file from which you want to remove the contents
 #
 function truncate()
 {
@@ -491,10 +492,9 @@ function truncate()
 }
 
 #
-# lookup the dictionary definition of a word
+# define - lookup the dictionary definition of a word
 #	
-# define( String word )
-#	word - the word you want to define 
+# @param String $word the term you want to define
 #
 function define()
 {
@@ -502,9 +502,9 @@ function define()
 }
 
 #
-# Create a SHA1 digest of a file
+# sha1 - Create a SHA1 digest of a file
 #
-# sha1( String filename )
+# @param String $filename the filename for which you want to know/generate it's sha1
 #
 function sha1()
 {
@@ -516,10 +516,15 @@ function sha1()
 }
 
 #
-# lookup the http status code by number to refresh your memory
+# htstatus - lookup the http status code by number to refresh your memory
 #
-# htstatus( Integer code )
-#	code - the numeric status code. e.g. 200 
+# @param Integer $code the numeric status code. e.g. 200
+#
+# Examples:
+#
+# $ htstatus 200
+#
+# $ htstatus 416
 #
 function htstatus()
 {
@@ -529,19 +534,19 @@ function htstatus()
 }
 
 #
-# a floating point calculator
+# calc - a floating point calculator
 #
-# calc( String equation )
+# @param String $equation the equation you want to execute
 #
 function calc()
-{ 
+{
 	awk 'BEGIN { OFMT="%f"; print '"$*"'; exit}'; 
 }
 
 #
-# lookup country code
+# country - lookup country code to retrieve the country name
 #
-# country( String )
+# @param String $code the 2-letter or 3-letter country code
 #
 function country()
 {
@@ -549,9 +554,9 @@ function country()
 }
 
 #
-# name the current Terminal tab
+# tabname - assign a name to the active terminal tab
 #
-# tabname( String name )
+# @param String $name the desired tab name. if more than 1 word, enclose with quotes
 #
 function tabname()
 {
@@ -559,10 +564,9 @@ function tabname()
 }
 
 #
-# name the window your in
+# winname - assign a name to the window your active terminal window
 #
-# winname( String name )
-#	name = a space delmited string. it's best to keep it short but unique.
+# @param String $name the desired window name. if more than 1 word, enclose with quotes
 #
 function winname()
 {
@@ -570,9 +574,10 @@ function winname()
 }
 
 #
-# turn on/off OS X Finders ability to display hidden files
+# show_dotfiles - turn on/off OS X Finders ability to display hidden files
 #
-# toggle_dotfiles( Boolean display )
+# @param Boolean $view determines if hidden files should be displayed.
+#        Allowed values: yes, true, no, false
 #
 function show_dotfiles() 
 {
@@ -597,13 +602,24 @@ function show_dotfiles()
 }
 
 #
-# display a NUMbered SEGment of a file
+# numseg - Display a NUMbered SEGment of a file
 #
 # when only the start_line is specified, a range of 10 lines before and after
-# that line will be displayed. when start_line and end_line are specified, those
-# lines and all those between will be displayed
+# that line will be numbered and displayed. when start_line and end_line are
+# specified, those lines and all those between will be numbered and displayed
 #
-# numseg( string filename, int start_line [, int last_line] )
+# @param String $filename the text file with the content
+# @param Integer $start
+# @param Integer Optional $end
+#
+# Examples:
+#
+# Display lines 90 - 110. Line 100 is the middle line of content
+# $ seg error.log 100
+#
+# Display lines 100 through 140.
+# $ seg error.log 100 140
+#
 #
 function numseg()
 {
@@ -622,13 +638,23 @@ function numseg()
 }
 
 #
-# display a SEGment of a file
+# seg - Display a SEGment of a file
 #
 # when only the start_line is specified, a range of 10 lines before and after
 # that line will be displayed. when start_line and end_line are specified, those
 # lines and all those between will be displayed
 #
-# seg( string filename, int start_line [, int last_line] )
+# @param String $filename the text file with the content
+# @param Integer $start
+# @param Integer Optional $end
+#
+# Examples:
+#
+# Display lines 90 - 110. Line 100 is the middle line of content
+# $ seg error.log 100
+#
+# Display lines 100 through 140.
+# $ seg error.log 100 140
 #
 function seg()
 {
@@ -648,7 +674,7 @@ function seg()
 
 
 #
-# Display the previous month, current month, and next month
+# cal3 - Display the previous month, current month, and next month
 #
 function cal3()
 {
@@ -658,7 +684,7 @@ function cal3()
 }
 
 #
-# Display the previous month, current month, and next month vertically
+# ncal3 - Display the previous month, current month, and next month vertically
 #
 function ncal3()
 {
@@ -670,7 +696,7 @@ function ncal3()
 }
 
 #
-# Detect if dropbox is available
+# datadir - Detect if dropbox is available
 #
 function datadir()
 {
@@ -689,6 +715,12 @@ function datadir()
 
 
 #
+# note - record a note to a file from the command line
+#
+# @param String Optional $destinationCode
+# @param String $note_text
+#
+# Examples:
 # $ note work "type a brief message here. quotes are required (for now)"
 # $ note type a brief message here
 #
@@ -731,8 +763,9 @@ function note()
 }
 
 #
-# traceurl - decode a short url to it's final destination
+# traceurl - decode/unfurl a short url recursively to it's final destination
 #
+# @param String $url the address of the website you want to check
 #
 function traceurl()
 {
