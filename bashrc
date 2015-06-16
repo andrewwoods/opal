@@ -87,7 +87,8 @@ alias zendvi='vim -u ~/opal/vimrc_zend'
 # $ punch out "type a brief message here" 
 # $ punch note "type a brief message here" 
 #
-function punch(){
+function punch()
+{
 
 	DATADIR=$(datadir)
 	DATESTAMP=$(date +"%a %Y-%m-%d %H:%M:%S")
@@ -138,7 +139,8 @@ function punch(){
 #
 # mkcd( String directory )
 #
-function mkcd (){
+function mkcd()
+{
 	mkdir $1 && cd $1
 }
 
@@ -147,7 +149,8 @@ function mkcd (){
 #
 # cdls( String directory )
 #
-function cdls (){
+function cdls()
+{
 	cd $1 && ls 
 }
 
@@ -158,7 +161,8 @@ function cdls (){
 #	style = unix|iso|world|us|default
 #	type  = text|numeric
 #
-function today(){
+function today()
+{
 	if [[ $1 == "unix" ]]; then
 		echo $(date +"%s")
 
@@ -198,7 +202,8 @@ function today(){
 #	filename - the file you want to create and make executable
 #	content - The type of content to add to the file. Currently, phpinfo is the only value.
 #
-function touchx(){
+function touchx()
+{
 	touch $1 && chmod ugo+x $1
 	
 	if [[ $2 == "phpinfo" ]]; then
@@ -216,7 +221,8 @@ function touchx(){
 #
 # displays the basic information about the system
 #
-function mach(){
+function mach()
+{
 	echo -e "\nMachine information:" ; uname -a
 	echo -e "\nUsers logged on:" ; w -h
 	echo -e "\nCurrent date :" ; date
@@ -227,7 +233,8 @@ function mach(){
 #
 # display information about an aspect of the bash programming environment
 #
-function show(){
+function show()
+{
 	echo -e "Inform the user what can be used"
 	echo -e "--------------------------------"
 	
@@ -270,7 +277,8 @@ function show(){
 #
 # Display a block message to the user about who and where they are
 #
-function preamble {
+function preamble()
+{
 	name=$(whoami)
 	host=$(hostname -f)
 	thisday=$(today default)
@@ -384,7 +392,8 @@ function otd()
 #
 # get the current git branch your on
 #
-parse_git_branch() {
+function parse_git_branch()
+{
        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
@@ -683,7 +692,8 @@ function datadir()
 # $ note work "type a brief message here. quotes are required (for now)"
 # $ note type a brief message here
 #
-function note(){
+function note()
+{
 	NOW=$(today iso)
 	DATADIR=$(datadir)
 
@@ -724,7 +734,8 @@ function note(){
 # traceurl - decode a short url to it's final destination
 #
 #
-function traceurl(){
+function traceurl()
+{
 
 	if [[ -n $1 ]]
 	then
@@ -755,3 +766,5 @@ function check_site()
 	done;
 	say_done;
 }
+
+
