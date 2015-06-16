@@ -734,3 +734,24 @@ function traceurl(){
 	fi
 }
 
+#
+# check_site - determine if a website is available yet. keep checking until it is
+#
+# @param String $url the address of the website you want to check
+# @param Integer $interval the number of seconds to wait
+#
+function check_site()
+{
+	if [ -z "$2" ]
+	then
+		# set the default interval, in seconds
+		interval=10
+	else
+		interval=$2
+	fi
+	while ! curl -m 5 $1;
+	do echo still down;
+		sleep $interval;
+	done;
+	say_done;
+}
