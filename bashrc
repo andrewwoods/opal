@@ -314,19 +314,27 @@ function lsd()
 	else
 		dir="."
 	fi
-	
+
 	find $dir -type d
 }
 
 #
 # say_done - Tell the user when a command is done
 #
+# @param String Optional $message the message to be read out loud
+#
 function say_done()
 {
+	if [[ -n $1 ]]; then
+		message=$@
+	else
+		message="It is Done!"
+	fi
+
 	if [[ -n $(which say) ]]; then
-		say "it is done"
-	else 
-		echo "Done!"
+		say $message
+	else
+		echo $message
 	fi
 }
 
