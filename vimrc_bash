@@ -115,11 +115,5 @@ match LeadingSpacesAndTrailingWhitespace /^ \+\|\s\+$/
 
 :source ~/opal/vimrc_html
 
-function CheckPhpSyntax()
-   let current_file = shellescape(expand('%:p'))
-   let command = '!php --syntax-check ' . current_file
-   execute command
-endfunction
-autocmd BufWritePost,FileWritePost *.php call CheckPhpSyntax()
 
 
