@@ -73,6 +73,9 @@ set fileformats=unix,dos
 set noexpandtab
 
 
+highlight LeadingSpacesAndTrailingWhitespace ctermbg=yellow guibg=yellow
+match LeadingSpacesAndTrailingWhitespace /^ \+\|\s\+$/
+
 "
 " --[ Abbreviations ]--
 "

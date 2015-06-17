@@ -1,6 +1,7 @@
 #
 # .bashrc - this file runs when any news bash shell is created
 #
+
 export OPAL_DIR="$HOME/opal"
 export OPAL_VERSION="1.3"
 
@@ -32,7 +33,7 @@ GIT_EDITOR=$EDITOR
 SVN_EDITOR=$EDITOR
 VISUAL=$EDITOR
 
-export EDITOR GIT_EDITOR SVN_EDITOR VISUAL 
+export EDITOR GIT_EDITOR SVN_EDITOR VISUAL
 
 
 ################################################################################
@@ -45,7 +46,7 @@ alias please='sudo'
 alias diff='diff -bBs'
 alias empty='truncate'
 alias ls='ls -F'
-alias lsdir='ls -l | awk '\''/^d/ {print $9;}'\''' 
+alias lsdir='ls -l | awk '\''/^d/ {print $9;}'\'''
 alias luls='ls -1rt | tail -n 20'
 alias localip='ifconfig | grep "inet 192.168"'
 alias myip="curl http://ifconfig.me"
@@ -75,7 +76,7 @@ alias scribe='vim -u ~/opal/vimrc_scribe'
 #
 ################################################################################
 
-# 
+#
 # punch - Keeps track of your time. Updates the timesheet.txt in your
 # datadir(). The options 'in' and 'out' are just for events like meetings or
 # leaving for the day. Use the 'note' option when you wanna say what you worked
@@ -162,7 +163,7 @@ function cdls()
 
 #
 # today - display a date using the specified format
-# 
+#
 # @param String $style Allowed values: unix, iso, world, us, default
 # @param String Optional $type Allowed values: text, numeric
 #
@@ -184,7 +185,7 @@ function today()
 		if [[ $2 == "text" ]]; then
 			echo $(date +"%d %b %Y %H:%M:%S")
 		else
-			echo $(date +"%d/%m/%Y %H:%M:%S") 
+			echo $(date +"%d/%m/%Y %H:%M:%S")
 		fi
 
 	elif [[ $1 == "us" ]]; then
@@ -210,7 +211,7 @@ function today()
 function touchx()
 {
 	touch $1 && chmod ugo+x $1
-	
+
 	if [[ $2 == "phpinfo" ]]; then
 		echo "<?php phpinfo(); ?>" >> $1
 	fi
@@ -245,12 +246,12 @@ function show()
 {
 	echo -e "Inform the user what can be used"
 	echo -e "--------------------------------"
-	
+
 	case "$1" in
 	arrays)
 		declare -a
 		;;
-	
+
 	defs)
 		declare -f
 		;;
@@ -271,9 +272,9 @@ function show()
 		declare -i
 		;;
 
-	*) 
-		echo -e "  arrays -  display known arrays " 
-		echo -e "  names - display function names only" 
+	*)
+		echo -e "  arrays -  display known arrays "
+		echo -e "  names - display function names only"
 		echo -e "  defs - display functions names and their definitions"
 		echo -e "  readonly - display all the readonly variables"
 		echo -e "  exports - display all exported variables"
@@ -291,14 +292,14 @@ function preamble()
 	host=$(hostname -f)
 	thisday=$(today default)
 
-    echo '###########################################################'
-    echo '# '
-    prompt "# Hello ${name}"  
-    prompt "# You are logged into ${host}"  
-    echo '# '
-    prompt "# Today is ${thisday}" 
-    echo '# '
-    echo '###########################################################'
+	echo '###########################################################'
+	echo '# '
+	prompt "# Hello ${name}"
+	prompt "# You are logged into ${host}"
+	echo '# '
+	prompt "# Today is ${thisday}"
+	echo '# '
+	echo '###########################################################'
 }
 
 #
@@ -340,7 +341,7 @@ function bak()
 	if [ -d $1 ]; then
 		dir=$1
 		dir=${dir%/}
-		echo $dir	
+		echo $dir
 		tarfile="${dir}.tar.gz"
 		tar -zcvf $tarfile $dir
 	elif [ -f $1 ]; then
@@ -399,7 +400,7 @@ function otd()
 #
 function parse_git_branch()
 {
-       git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
 #
@@ -427,7 +428,7 @@ function set_prompt()
 
 	full)
 		# andrewwoods@tardis.local ~/opal
-		# Sat Jan 18 22:37:10 [626]$ 
+		# Sat Jan 18 22:37:10 [626]$
 		PS1="\n\u@\H \W\n\d \t [\!]\$(parse_git_branch)\$ "
 		;;
 
@@ -479,7 +480,7 @@ function swap()
 function lskeys()
 {
 	prompt "my ssh keys"
-	ls ~/.ssh/*.pub	
+	ls ~/.ssh/*.pub
 }
 
 #
@@ -494,7 +495,7 @@ function truncate()
 
 #
 # define - lookup the dictionary definition of a word
-#	
+#
 # @param String $word the term you want to define
 #
 function define()
@@ -511,7 +512,7 @@ function sha1()
 {
 	if [[ -n $(which openssl) ]]; then
 		openssl sha1 $@
-	else 
+	else
 		echo "openssl is required, but not installed"
 	fi
 }
@@ -541,7 +542,7 @@ function htstatus()
 #
 function calc()
 {
-	awk 'BEGIN { OFMT="%f"; print '"$*"'; exit}'; 
+	awk 'BEGIN { OFMT="%f"; print '"$*"'; exit}';
 }
 
 #
@@ -551,7 +552,7 @@ function calc()
 #
 function country()
 {
-	awk -F "\t" -f $OPAL_DIR/country_lookup.awk -v country=$1  $OPAL_DIR/data/iso-country-codes.txt 
+	awk -F "\t" -f $OPAL_DIR/country_lookup.awk -v country=$1  $OPAL_DIR/data/iso-country-codes.txt
 }
 
 #
@@ -580,14 +581,14 @@ function winname()
 # @param Boolean $view determines if hidden files should be displayed.
 #        Allowed values: yes, true, no, false
 #
-function show_dotfiles() 
+function show_dotfiles()
 {
 	case $# in
-		1) 
+		1)
 			if [[ $1 == 'true' || $1 == 'yes' ]]
 			then
 				defaults write com.apple.finder AppleShowAllFiles $1
-				killall Finder 
+				killall Finder
 			elif [[ $1 == 'false' || $1 == 'no' ]]
 			then
 				defaults write com.apple.finder AppleShowAllFiles $1
@@ -689,11 +690,11 @@ function cal3()
 #
 function ncal3()
 {
-    ncal -my $(date -v-1m "+%m %Y")
-    echo ' '
-    ncal
-    echo ' '
-    ncal -my $(date -v+1m "+%m %Y")
+	ncal -my $(date -v-1m "+%m %Y")
+	echo ' '
+	ncal
+	echo ' '
+	ncal -my $(date -v+1m "+%m %Y")
 }
 
 #
