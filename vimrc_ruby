@@ -1,9 +1,23 @@
 "
-"	Ruby Coding Standards Settings for VIM
-"	by Andrew Woods
-"	Created April 2012 
+" Opal Project
+" VIM Editor Settings for Ruby
+" by Andrew Woods
+" Updated 2015 Jun 17 Wed
 "
-"======================================================
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+"
+" Don't edit this file. Instead create .vimrc_ruby in your home directory
+" and read this file with the following line
+"
+" :source ~/opal/vimrc_ruby
+"
+" If you want to change the value, copy the line from this file and change the
+" value in your .vimrc_ruby This will allow you keep your changes after
+" updates.
+"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 
 source ~/opal/vimrc
 

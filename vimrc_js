@@ -2,17 +2,17 @@
 " Opal Project
 " VIM Editor Settings for Javascript
 " by Andrew Woods
-" Updated 2015 Mar 15 Sun
+" Updated 2015 Jun 17 Wed
 "
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 "
-" Don't edit this file. Instead create .vimrc_wordpress in your home directory
+" Don't edit this file. Instead create .vimrc_js in your home directory
 " and read this file with the following line
 "
-" :source ~/opal/vimrc_wordpress
+" :source ~/opal/vimrc_js
 "
 " If you want to change the value, copy the line from this file and change the
-" value in your .vimrc_wordpress. This will allow you keep your changes after
+" value in your .vimrc_js This will allow you keep your changes after
 " updates.
 "
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

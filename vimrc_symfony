@@ -1,21 +1,21 @@
 "
 " Opal Project
-" VIM Editor Settings for Drupal
+" VIM Editor Settings for Symfony
 " by Andrew Woods
-" Updated 2012 Apr 22 Sun  
+" Updated 2015 Jun 17 Wed
 "
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 "
-" Don't edit this file. Instead create .vimrc_drupal in your home directory and
+" Don't edit this file. Instead create .vimrc_symfony in your home directory and
 " read this file with the following line
 "
 " :source ~/opal/vimrc_symfony
 "
 " If you want to change the value, copy the line from this file and change the
-" value in your .vimrc_symfony. This will allow you keep your changes after 
+" value in your .vimrc_symfony. This will allow you keep your changes after
 " updates.
 "
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 source ~/opal/vimrc
 

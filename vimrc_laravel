@@ -6,13 +6,13 @@
 "
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 "
-" Don't edit this file. Instead create .vimrc_wordpress in your home directory
+" Don't edit this file. Instead create .vimrc_laravel in your home directory
 " and read this file with the following line
 "
 " :source ~/opal/vimrc_laravel
 "
 " If you want to change the value, copy the line from this file and change the
-" value in your .vimrc_wordpress. This will allow you keep your changes after
+" value in your .vimrc_laravel This will allow you keep your changes after
 " updates.
 "
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
