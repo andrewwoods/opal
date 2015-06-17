@@ -1,0 +1,79 @@
+"
+" Opal Project
+" VIM Editor Settings for Distraction Free Writing
+" by Andrew Woods
+" Updated 2015 Jun 16 Tue
+"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+"
+" Don't edit this file. Instead create .vimrc_scribe in your home directory
+" and read this file with the following line
+"
+" :source ~/opal/vimrc_scribe
+"
+" If you want to change the value, copy the line from this file and change
+" the value in your .vimrc_scribe This will allow you keep your changes after
+" updates.
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+source ~/opal/vimrc
+
+"
+" --------[ General VIM ]--------
+"
+
+" Pattern searches should ignore case
+set ignorecase
+
+" Turn on line numbering
+set number
+
+" helps you find matching { and ( when you type ) } - if on screen
+set showmatch
+
+" Flash when errors occur
+set visualbell
+
+" Show the line and column number of the cursor position
+set ruler
+
+" Put a message in the status line for insert, replace, and visual modes
+set showmode
+
+" Highlight the syntax of a language
+syntax on
+
+" Wrap lines without inserting characters in the content.  
+set linebreak
+
+"
+"hightlight leading tabs and trailing spaces.
+"
+highlight LeadingTabsAndTrailingWhitespace ctermbg=yellow guibg=yellow
+match LeadingTabsAndTrailingWhitespace /^\t\+\|\s\+$/
+
+set autoindent
+set smartindent
+set wrap
+
+
+set listchars=""
+set listchars+=tab:§¬
+set listchars+=eol:¶
+set listchars+=trail:¤
+set listchars+=extends:»
+set listchars+=precedes:«
+
+" Handles the settings for indentation
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+" Determine line endings
+set fileformat=unix
+set fileformats=unix
+
+" When inserting a tab, don't expand it to spaces
+set noexpandtab
+
