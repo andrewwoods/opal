@@ -2,7 +2,12 @@
 Useful VIM snippets
 
 highlight anything from the 81st column and beyond in red
-:match ErrorMsg '\%>81v.\+' 
+:match ErrorMsg '\%>81v.\+'
+
+" Good when you want to show the characters that extend
+" beyond your hard limit for line length
+highlight HardLimit ctermfg=yellow ctermbg=darkmagenta¶
+call matchadd('HardLimit', '\%120v.\+')¶
 
 Highlight the line where the cursor is positioned
 :highlight CursorLine  ctermbg=darkyellow ctermfg=white cterm=none
@@ -12,5 +17,10 @@ Highlight all the line numbers
 :highlight LineNr ctermbg=darkgrey ctermfg=white cterm=none
 
 
+"
+"hightlight leading tabs and trailing spaces.
+"
+highlight LeadingTabsAndTrailingWhitespace ctermbg=yellow guibg=yellow
+match LeadingTabsAndTrailingWhitespace /^\t\+\|\s\+$/
 
 
