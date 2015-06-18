@@ -93,6 +93,10 @@ set fileformats=unix
 " When inserting a tab, expand it to spaces
 set expandtab
 
+highlight LeadingTabsAndTrailingWhitespace ctermbg=yellow guibg=yellow
+match LeadingTabsAndTrailingWhitespace /^\t\+\|\s\+$/
+
+
 
 "
 " --[ Abbreviations ]--
