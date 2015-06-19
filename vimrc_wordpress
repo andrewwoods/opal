@@ -91,6 +91,11 @@ set fileformats=unix,dos
 " When inserting a tab, dont expand it to spaces
 set noexpandtab
 
+"
+"hightlight leading tabs and trailing spaces.
+"
+highlight LeadingTabsAndTrailingWhitespace ctermbg=yellow guibg=yellow
+match LeadingTabsAndTrailingWhitespace /^ \+\t\+\|^\t\+ \{2,\}\|\s\+$/
 
 "
 " --[ Abbreviations ]--
