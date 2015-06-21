@@ -591,22 +591,17 @@ function winname()
 #
 function show_dotfiles()
 {
-	case $# in
-		1)
-			if [[ $1 == 'true' || $1 == 'yes' ]]
-			then
-				defaults write com.apple.finder AppleShowAllFiles $1
-				killall Finder
-			elif [[ $1 == 'false' || $1 == 'no' ]]
-			then
-				defaults write com.apple.finder AppleShowAllFiles $1
-				killall Finder
-			else
-				echo "needs to be true or false"
-			fi
+	case "$1" in
+	true|yes)
+		defaults write com.apple.finder AppleShowAllFiles $1
+		killall Finder
+		;;
+	false|no)
+		defaults write com.apple.finder AppleShowAllFiles $1
+		killall Finder
 		;;
 
-		*) echo "usage: show_dotfiles true|false" 1>&2
+	*) echo "usage: show_dotfiles yes|no|true|false" 1>&2
 
 	esac
 }
