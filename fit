@@ -88,29 +88,23 @@ function add_item
 
 	read -p "Enter a type of item> " item_type
 
+	ts=$(date +"%Y-%m-%d %a %H:%M:%S")
+	filename=$(get_filename)
 	if [[ $item_type = "W" || $item_type = "w" ]]
 	then
 		read -p "How Much you do weight (lbs)> " how_much
-		ts=$(date)
-		filename=$(get_filename)
 		echo "${ts} WEIGHT ${how_much} lbs" | tee -a $filename
 	elif [[ $item_type = "S" || $item_type = "s" ]]
 	then
 		read -p "How much sleep did you get > " how_much 
-		ts=$(date)
-		filename=$(get_filename)
 		echo "${ts} SLEEP ${how_much} " | tee -a $filename
 	elif [[ $item_type = "E" || $item_type = "e" ]]
 	then
 		read -p "What did you eat? > " ate_what
-		ts=$(date)
-		filename=$(get_filename)
 		echo "${ts} EAT ${ate_what} " | tee -a $filename
 	elif [[ $item_type = "D" || $item_type = "d" ]]
 	then
 		read -p "What did you drink? > " drank_what
-		ts=$(date)
-		filename=$(get_filename)
 		echo "${ts} DRINK ${drank_what} " | tee -a $filename
 	fi
 }
