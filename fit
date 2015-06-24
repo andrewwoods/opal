@@ -19,30 +19,36 @@ export PAD="    ";
 #
 # echo text with padding
 #
+# @param String @param $content
+#
 function e_
 {
-	echo "${PAD}$1"	
+	echo "${PAD}$1"
 }
 
 #
-# echo a blank line 
+# echo a blank line
 #
 function n_
 {
-	echo ""	
+	echo ""
 }
 
 #
 # echo text with padding
 #
+# @param String $content
+#
 function p_
 {
-	prompt "${PAD}$1"	
+	prompt "${PAD}$1"
 }
 
 
 #
-# Display info about the slide, usually the slide number.
+# Displays content and adds a blank line
+#
+# @param String $content
 #
 function meta_info
 {
@@ -51,33 +57,33 @@ function meta_info
 }
 
 #
-# Display info about the slide, usually the slide number.
+# Display a todo message
 #
 function show_todo
 {
-    l_ 
+    l_
 	spacer 1
 	p_ "TODO: This still needs to be worked on "
 	spacer 1
-    l_ 
+    l_
 }
 
 #
-# Display Help
+# Display Help menu
 #
 function show_help
 {
 	n_
 	e_ " h | help - Display this help message"
 	e_ " a | add  - Add an entry into the journal"
-	# p_ " u | up -  Update  an entry from the journal"
-	# p_ " d | delete -  Remove an entry from the journal"
 	e_ " l | list -  list all entries from the journal"
-	# p_ " p | progress - Demonstrate your progress"
 	e_ " q | quit - Exit present"
 	n_
 }
 
+#
+# add_item - Interactively allow user to add content
+#
 function add_item
 {
 	p_ 'Types: '
@@ -96,7 +102,7 @@ function add_item
 		echo "${ts} WEIGHT ${how_much} lbs" | tee -a $filename
 	elif [[ $item_type = "S" || $item_type = "s" ]]
 	then
-		read -p "How much sleep did you get > " how_much 
+		read -p "How much sleep did you get > " how_much
 		echo "${ts} SLEEP ${how_much} " | tee -a $filename
 	elif [[ $item_type = "E" || $item_type = "e" ]]
 	then
@@ -109,11 +115,17 @@ function add_item
 	fi
 }
 
+#
+# get_filename - retrieve path to file. Uses datadir()
+#
 function get_filename
 {
 	echo "$(datadir)/fit.log"
 }
 
+#
+# Add the datair function if it doesn't exist.
+#
 if [[ -z "$(which datadir)" ]]
 then
 	#
@@ -135,6 +147,9 @@ then
 	}
 fi
 
+#
+# list_items - prompt the user for a serach term. display the results
+#
 function list_items
 {
 	filename=$(get_filename)
@@ -152,7 +167,9 @@ function list_items
 }
 
 #
-# Create a number of blank lines. Default = 1.
+# spacer - Create a number of blank lines.
+#
+# @param int Optional $max the number of blank lines. Default=1
 #
 function spacer
 {
@@ -169,7 +186,10 @@ function spacer
 }
 
 #
-# Create a number of blank lines. Default = 1.
+# Display a line of dashes.
+#
+# @param char $character Optional. Use a different character. default is hyphen.
+# @param int $length Optional. How long should the line be. default=60
 #
 function l_
 {
@@ -191,13 +211,13 @@ function l_
 	do
 		line+=$char
 	done
-	e_ $line	
+	e_ $line
 }
 
 
 ################################################################################
 #
-#    Main Program 
+#    Main Program
 #
 ################################################################################
 
@@ -208,7 +228,7 @@ op=''
 clear
 show_help
 
-while true 
+while true
 do
 	read -p "> " op
 
@@ -222,7 +242,7 @@ do
 			add_item
 		elif [[ $op == 'h' ||  $op == 'help'  ]]
 		then
-			show_help	
+			show_help
 		elif [[ $op == 'l' ||  $op == 'list'  ]]
 		then
 			list_items
@@ -235,7 +255,7 @@ do
 		fi
 
 		continue
-		
+
 	fi
 
 done
