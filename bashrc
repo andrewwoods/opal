@@ -4,7 +4,7 @@
 ################################################################################
 
 export OPAL_DIR="$HOME/opal"
-export OPAL_VERSION="1.3"
+export OPAL_VERSION="1.4"
 
 source $OPAL_DIR/util.bash
 
