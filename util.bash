@@ -3,6 +3,61 @@
 #
 ################################################################################
 
+export PAD="    ";
+export LINE_LENGTH=80;
+
+
+#
+# echo text with padding
+#
+function _e
+{
+	echo "${PAD}$1"
+}
+
+#
+# Create a number of blank lines. Default = 1.
+#
+function _l
+{
+	max_length=$LINE_LENGTH
+	char="-"
+	line=""
+
+	if [[ $1 != "" ]]
+	then
+		char=$1
+	fi
+
+	if [[ $2 != "" ]]
+	then
+		max_length=$2
+	fi
+
+	for (( i=${#PAD}; i <= $max_length; i++ ))
+	do
+		line+=$char
+	done
+	_e $line
+}
+
+#
+# echo a blank line
+#
+function _n
+{
+	echo ""
+}
+
+
+#
+# echo text with padding
+#
+function _s
+{
+	prompt "${PAD}$1"
+}
+
 
 #
 # datadir - Detect if dropbox is available
@@ -52,6 +107,24 @@ function scribe()
 
 
 #
+# Create a number of blank lines. Default = 1.
+#
+function spacer
+{
+	max=1
+	if [[ $1 != "" ]]
+	then
+		max=$1
+	fi
+
+	for (( i=1; i <= $max; i++ ))
+	do
+		echo ""
+	done
+}
+
+
+#
 # today - display a date using the specified format
 #
 # @param String $style Allowed values: unix, iso, world, us, default
@@ -90,6 +163,4 @@ function today()
 		echo $(date +"%a %Y %b %d %l:%M %p")
 	fi
 }
-
-
 

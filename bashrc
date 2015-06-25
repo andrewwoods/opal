@@ -1,9 +1,12 @@
 #
 # .bashrc - this file runs when any news bash shell is created
 #
+################################################################################
 
 export OPAL_DIR="$HOME/opal"
 export OPAL_VERSION="1.3"
+
+source $OPAL_DIR/util.bash
 
 export cals=(/usr/share/calendar/calendar.computer \
 	/usr/share/calendar/calendar.history \
