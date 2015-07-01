@@ -1,0 +1,23 @@
+
+			 RFC INDEX   http://www.ietf.org/download/rfc-index.txt
+================================================================================
+
+These are some of the popular techonologies and ideas of the internet.
+
+ 791   IPv4   https://tools.ietf.org/html/rfc791
+ 793   TRANSMISSION CONTROL PROTOCOL https://tools.ietf.org/html/rfc793
+ 959   File Transfer Protocol - FTP  https://tools.ietf.org/html/rfc959
+1034   DOMAIN NAMES - CONCEPTS AND FACILITIES  https://tools.ietf.org/html/rfc1034
+1035   DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION https://tools.ietf.org/html/rfc1035
+1087   Ethics and the Internet  https://tools.ietf.org/html/rfc1087
+1855   Netiquette Guidelines    https://tools.ietf.org/html/rfc1855
+1945   HyperText Transfer Protocol - HTTP 1.0   https://tools.ietf.org/html/rfc1945
+2606   Reserved Top Level DNS Names   https://tools.ietf.org/html/rfc2606
+2119   Key words in RFCs to Indicate Requirement Levels   https://tools.ietf.org/html/rfc2119
+2397   The "data" URL scheme  https://tools.ietf.org/html/rfc2397
+2460   IPv6    https://tools.ietf.org/html/rfc2460
+3339   Date and Time on the Internet: Timestamps  https://tools.ietf.org/html/rfc3339
+3629   UTF-8   https://tools.ietf.org/html/rfc3629
+4287   ATOM Syndication Format   https://tools.ietf.org/html/rfc4287
+
+
