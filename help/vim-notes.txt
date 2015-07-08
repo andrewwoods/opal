@@ -23,4 +23,9 @@ Highlight all the line numbers
 highlight LeadingTabsAndTrailingWhitespace ctermbg=yellow guibg=yellow
 match LeadingTabsAndTrailingWhitespace /^\t\+\|\s\+$/
 
+" The command shows how to type special characters like æ º or ü
+:digraphs
+
+" Sometime CTRL-K doesn't work. To fix it, try
+:iunmap <c-k>
 
