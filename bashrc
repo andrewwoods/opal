@@ -717,6 +717,8 @@ function traceurl()
 #
 function check_site()
 {
+	declare -i i=0
+
 	if [ -z "$2" ]
 	then
 		# set the default interval, in seconds
@@ -724,10 +726,19 @@ function check_site()
 	else
 		interval=$2
 	fi
-	while ! curl -m 5 $1;
-	do echo still down;
+
+	while ! curl -m 5 $1 2>/dev/null;
+	do
 		sleep $interval;
+		ans=$(( i % 30 ))
+		if [ $ans == 0 ]; then
+			ts=$( date )
+			echo "Still down at $ts "
+		fi
+		i=$(( i +  1  ))
+		echo -n ".";
 	done;
+
 	say_done 'OK! The site is up now!' ;
 }
 
