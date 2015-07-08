@@ -728,7 +728,7 @@ function check_site()
 	do echo still down;
 		sleep $interval;
 	done;
-	say_done;
+	say_done 'OK! The site is up now!' ;
 }
 
 
