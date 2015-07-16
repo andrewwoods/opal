@@ -309,6 +309,15 @@ function say_done()
 #
 function bak()
 {
+	bakfile="$1.bak"
+	filename="$bakfile"
+	i=1
+	while [ -e $filename ]
+	do
+		filename="${bakfile}.${i}"
+		(( i++ ))
+	done
+
 	if [ -d $1 ]; then
 		dir=$1
 		dir=${dir%/}
@@ -316,7 +325,7 @@ function bak()
 		tarfile="${dir}.tar.gz"
 		tar -zcvf $tarfile $dir
 	elif [ -f $1 ]; then
-		cp $1{,.bak}
+		cp $1 $filename
 	else
 		echo "BAK: unsupported item type - must be file or directory"
 	fi
