@@ -766,3 +766,23 @@ function wp_install
 	wp db create
 	wp core install --prompt
 }
+
+
+#
+# wp_plugins
+#
+# $ wp_plugins ~/wp-plugins.txt
+#
+# text file with a list of wordpress.org plugin slugs. one per line.
+#
+function wp_plugins
+{
+	for  plugin_id in `cat $1`
+	do
+		wp plugin install $plugin_id
+	done
+
+	wp plugin status
+}
+
+
