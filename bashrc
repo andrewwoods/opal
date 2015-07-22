@@ -752,3 +752,17 @@ function check_site()
 }
 
 
+#
+# wp_install - download wordpress, install, and configure it.
+#
+# $ wp_install <dirname>
+#
+function wp_install
+{
+	wp core download --path=$1
+	cd $1
+	read -p 'name the database:' dbname
+	wp core config --dbname=$dbname --dbuser=root --dbpass=awoods --dbhost=localhost
+	wp db create
+	wp core install --prompt
+}
