@@ -1,0 +1,32 @@
+
+The Pro Git book by Scott Chacon is available online at http://git-scm.com/book
+It's a fantastic resource that teaches you Git.
+
+Below are some reminders on how to do some tasks in Git 
+so you don't need to re-search how to do them.
+
+
+
+# Create a Git repo from an existing project
+$ cd <project-dir>
+$ git init
+$ git add .  # the . adds the current directory, and every one below it
+
+
+# Show your existing remote repos.
+$ git remote -v
+origin	https://github.com/username/project (fetch)
+origin	https://github.com/username/project (push)
+
+
+# Connect your local Git repo to a remote repo
+git remote add coworker  https://github.com/coworker/project
+
+# Listing the remotes again will show you new remote
+$ git remote -v
+origin	https://github.com/username/project (fetch)
+origin	https://github.com/username/project (push)
+coworker	https://github.com/coworker/project (fetch)
+coworker	https://github.com/coworker/project (push)
+
+
