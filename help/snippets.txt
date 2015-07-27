@@ -54,3 +54,6 @@ ack --recurse --type=php --with-filename -B 10 '^\s*(class|(public )?(static )?f
 # alt check that developers included the phpdoc before their classes and functions
 ack --recurse --type=php --with-filename '(^\s*class|function [\w\d_]+\()'  DIRECTORY
 
+# Find all the PHP files and globally replace a string in all the files.
+find . -name "*.php" -exec sed -i "s/oldWord/newWord/g" '{}' \;
+
