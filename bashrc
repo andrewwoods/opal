@@ -777,6 +777,11 @@ function wp_install
 #
 function wp_plugins
 {
+	if [ -z $1 ]; then
+		echo  "Whoops! you forgot to specify a file"
+		return 1
+	fi
+
 	for  plugin_id in `cat $1`
 	do
 		wp plugin install $plugin_id
