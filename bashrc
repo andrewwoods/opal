@@ -64,6 +64,7 @@ alias weather="telnet rainmaker.wunderground.com 3000"
 alias bvi='vim -u ~/opal/vimrc_bash'
 alias civi='vim -u ~/opal/vimrc_codeigniter'
 alias druvi='vim -u ~/opal/vimrc_drupal'
+alias ghvi='vim -u ~/opal/vimrc_ghmd'
 alias jsvi='vim -u ~/opal/vimrc_js'
 alias lvi='vim -u ~/opal/vimrc_laravel'
 alias pyvi='vim -u ~/opal/vimrc_python'
@@ -186,6 +187,16 @@ function touchx()
 		echo "" >> $1
 	fi
 
+	if [[ $1 == 'README.md' ]]; then
+		echo "# Project Name" >> $1
+		echo "" >> $1
+		echo "Write your project " >> $1
+		echo "" >> $1
+		echo "* First " >> $1
+		echo "* Second " >> $1
+		echo "* Third " >> $1
+		echo "" >> $1
+	fi
 }
 
 #
