@@ -47,11 +47,6 @@ syntax on
 " Wrap lines without inserting characters in the content.  
 set linebreak
 
-"
-"hightlight leading tabs and trailing spaces.
-"
-highlight LeadingTabsAndTrailingWhitespace ctermbg=yellow guibg=yellow
-match LeadingTabsAndTrailingWhitespace /^\t\+\|\s\+$/
 
 set autoindent
 set smartindent
