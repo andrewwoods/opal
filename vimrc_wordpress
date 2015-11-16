@@ -169,6 +169,7 @@ match LeadingTabsAndTrailingWhitespace /^ \+\|\s\+$/
 
 
 :source ~/opal/vimrc_html
+:source ~/opal/vimrc_css
 
 
 
