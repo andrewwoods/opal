@@ -1,0 +1,73 @@
+"
+" Opal Project
+" VIM Editor Settings for GitHub Markdown
+" by Andrew Woods
+" Updated 2015 Oct 07 Wed 
+"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+"
+" Don't edit this file. Instead create .vimrc_wordpress in your home directory
+" and read this file with the following line
+"
+" :source ~/opal/vimrc_ghmd
+"
+" If you want to change the value, copy the line from this file and change the
+" value in your .vimrc_ghmd. This will allow you keep your changes after
+" updates.
+"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+source ~/opal/vimrc
+
+"
+" --------[ General VIM ]--------
+"
+
+" Pattern searches should ignore case
+set ignorecase
+
+" Turn on line numbering
+set number
+
+" helps you find matching { and ( when you type ) } - if on screen
+set showmatch
+
+" Flash when errors occur
+set visualbell
+
+" Show the line and column number of the cursor position
+set ruler
+
+" Put a message in the status line for insert, replace, and visual modes
+set showmode
+
+" Highlight the syntax of a language
+syntax on
+
+"===============================================================================
+"									MARKDOWN
+"===============================================================================
+:ab t_h1 # Heading One
+:ab t_h2 ## Heading Two
+:ab t_h3 ### Heading Three
+:ab t_h4 #### Heading Four
+:ab t_h5 ##### Heading Five
+:ab t_h6 ###### Heading Six
+
+:ab t_ul * Item* Item* Item
+:ab t_ol 1. Item 12. Item 23. Item 3
+:ab t_a [name](http://example.com)
+:ab t_link [name](http://example.com)
+:ab t_code `your code here`
+:ab t_code_block ```your code here```
+:ab t_em _This will also be italic_
+:ab t_i _This will also be italic_
+:ab t_strong **This text will be bold**
+:ab t_bold **This text will be bold**
+
+:ab t_quote > We're living the future so> the present is our past.
+:ab t_list - [x] this is a complete item- [ ] this is an incomplete item
+:ab t_strike ~~this~~
+
+
