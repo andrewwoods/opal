@@ -90,6 +90,11 @@ set smartcase
 "
 "=====================================================
 
+" Turn paste mode on/off using <F2>
+:set pastetoggle=<F2>
+
+
+
 " Turns on syntax highlighting.
 "syntax on
 
@@ -98,7 +103,7 @@ set cursorline
 ":hi clear cursorline
 " Turn On cursor line formatting
 ":hi cursorline gui=underline guisp=yellow
-:highlight CursorLine  ctermbg=darkyellow ctermfg=white cterm=none
+:highlight CursorLine  ctermbg=darkcyan ctermfg=black cterm=none
 :highlight LineNr ctermbg=darkgrey ctermfg=white cterm=none
 :highlight Visual ctermbg=5 guibg=DarkMagenta
 
