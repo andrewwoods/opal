@@ -53,7 +53,7 @@
 :ab t_base <base></base>hhhhhhha
 :ab t_meta <meta name="" content="">
 :ab t_meta_charset <meta charset="UTF-8">
-:ab t_link <link rel="stylesheet" href="html-my.css">
+:ab t_link <link rel="stylesheet" href="file.css">
 :ab t_script <script src="filename.js"></script>
 :ab t_style <style type="text/css"></style>
 
