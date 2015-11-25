@@ -8,19 +8,6 @@ function CheckPhpSyntax()
 endfunction
 autocmd BufWritePost,FileWritePost *.php call CheckPhpSyntax()
 
-"
-" @todo Figure out how to add the tab level to the current status line
-"       without overwriting it entirely
-"
-" set statusline=\t%{ShowTab()}\ %P
-"
-function ShowTab()
-	let TabLevel = (indent('.') / &ts )
-	if TabLevel == 0
-		let TabLevel='*'
-	endif
-	return TabLevel
-endfunction
 
 "
 " Description:  Per buffer, togglable syntax highlighting of tabs and trailing
@@ -50,62 +37,43 @@ if exists("loaded_spacehi")
 endif
 let loaded_spacehi=1
 
-" Section: Default Global Vars
-if !exists("g:spacehi_tabcolor")
-    " highlight tabs with red underline
-"    let g:spacehi_tabcolor="ctermfg=1 cterm=underline"
-"    let g:spacehi_tabcolor=g:spacehi_tabcolor . " guifg=blue gui=underline"
-endif
-if !exists("g:spacehi_spacecolor")
-    " highlight trailing spaces in blue underline
-    let g:spacehi_spacecolor="ctermfg=white ctermbg=red "
-    let g:spacehi_spacecolor=g:spacehi_spacecolor . " guifg=white guibg=red"
-endif
+
+"-------------------------------------------------------------------------------
+"	Whitespace Highlighting Functions
+"-------------------------------------------------------------------------------
 
 "
-" Turn on highlighting of spaces and tabs
+" Turn on highlighting for: Leading Tabs
 "
-function! s:SpaceHi()
+function! LeadingTabHi()
     " highlight tabs
-"    syntax match spacehiTab /\t/ containedin=ALL
-"    execute("highlight spacehiTab " . g:spacehi_tabcolor)
+    syntax match spacehiLeadingTab /^\t\+/ containedin=ALL
+    execute("highlight spacehiLeadingTab ctermfg=white ctermbg=red ")
 
+    let b:leadingTabHi = 1
+endfunction
+
+"
+" Turn on highlighting for: Leading Spaces
+"
+function! LeadingSpacesHi()
+    " highlight tabs
+    syntax match spacehiLeadingSpace /^\ \+/ containedin=ALL
+    execute("highlight spacehiLeadingSpace ctermfg=white ctermbg=red ")
+
+    let b:leadingSpaceHi = 1
+endfunction
+
+
+"
+" Turn on highlighting for: Trailing Spaces
+"
+function! TrailingSpaceHi()
     " highlight trailing spaces
     syntax match spacehiTrailingSpace /\s\+$/ containedin=ALL
-    execute("highlight spacehiTrailingSpace " . g:spacehi_spacecolor)
+    execute("highlight spacehiTrailingSpace ctermfg=white ctermbg=red ")
 
-    let b:spacehi = 1
+    let b:trailingSpaceHi = 1
 endfunction
 
-"
-" Turn off highlighting of spaces and tabs
-"
-function! s:NoSpaceHi()
-"    syntax clear spacehiTab
-    syntax clear spacehiTrailingSpace
-    let b:spacehi = 0
-endfunction
 
-" Function: s:ToggleSpaceHi()
-" Toggle highlighting of spaces and tabs
-function! s:ToggleSpaceHi()
-    if exists("b:spacehi") && b:spacehi
-        call s:NoSpaceHi()
-        echo "spacehi off"
-    else
-        call s:SpaceHi()
-        echo "spacehi on"
-    endif
-endfunction
-
-" Section: Commands
-com! SpaceHi call s:SpaceHi()
-com! NoSpaceHi call s:NoSpaceHi()
-com! ToggleSpaceHi call s:ToggleSpaceHi()
-
-" Section: Default mappings
-" Only insert a map to ToggleSpaceHi if they don't already have a map to
-" the function and don't have something bound to F3
-if !hasmapto('ToggleSpaceHi') && maparg("<F3>") == ""
-  map <silent> <unique> <F3> :ToggleSpaceHi<CR>
-endif

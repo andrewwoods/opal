@@ -19,6 +19,9 @@
 
 
 source ~/opal/vimrc
+source ~/opal/vimrc_html
+source ~/opal/vimrc_css
+
 
 "
 " --------[ General VIM ]--------
@@ -94,8 +97,8 @@ set noexpandtab
 "
 "hightlight leading tabs and trailing spaces.
 "
-highlight LeadingTabsAndTrailingWhitespace ctermbg=yellow guibg=yellow
-match LeadingTabsAndTrailingWhitespace /^ \+\|\s\+$/
+" highlight LeadingTabsAndTrailingWhitespace ctermbg=yellow guibg=yellow
+" match LeadingTabsAndTrailingWhitespace /^ \+\|\s\+$/
 
 "
 " --[ Abbreviations ]--
@@ -168,8 +171,58 @@ match LeadingTabsAndTrailingWhitespace /^ \+\|\s\+$/
 :ab grepfunc !grep -n function %
 
 
-:source ~/opal/vimrc_html
-:source ~/opal/vimrc_css
+"
+" Turn on highlighting of leading and trailing spaces
+"
+function! SpaceHi()
+	:call LeadingSpacesHi()
+	:call TrailingSpaceHi()
 
+	let b:spacehi = 1
+endfunction
+
+"
+" Turn off highlighting of leading and trailing spaces
+"
+function! NoSpaceHi()
+	syntax clear  spacehiLeadingSpace
+	syntax clear  spacehiTrailingSpace
+
+	let b:spacehi = 0
+endfunction
+
+" Toggle highlighting of spaces and tabs
+"
+"   This should be defined in different vimrc files
+"   to custom which whitespace characters should be highlighted
+"
+function! ToggleSpaceHi()
+	if exists("b:spacehi") && b:spacehi
+		:call NoSpaceHi()
+		echo "space highlighting: off"
+	else
+		:call SpaceHi()
+		echo "space highlighting: on"
+	endif
+endfunction
+
+
+"-------------------------------------------------------------------------------
+" Section: Commands
+"
+"  These commands and mapping will be reused no matter which code styling you use
+"
+com! ToggleSpaceHi :call ToggleSpaceHi()
+
+"-------------------------------------------------------------------------------
+" Section: Key Mappings
+"
+"
+" Only insert a map to ToggleSpaceHi if they don't already have a map to
+" the function and don't have something bound to F3
+"
+if !hasmapto('ToggleSpaceHi') && maparg("<F3>") == ""
+	map <silent> <unique> <F3> :ToggleSpaceHi<CR>
+endif
 
 
