@@ -45,12 +45,12 @@ let loaded_spacehi=1
 "
 " Turn on highlighting for: Leading Tabs
 "
-function! LeadingTabHi()
+function! LeadingTabsHi()
     " highlight tabs
-    syntax match spacehiLeadingTab /^\t\+/ containedin=ALL
-    execute("highlight spacehiLeadingTab ctermfg=white ctermbg=red ")
+    syntax match spacehiLeadingTabs /^\t\+/ containedin=ALL
+    execute("highlight spacehiLeadingTabs ctermfg=white ctermbg=red ")
 
-    let b:leadingTabHi = 1
+    let b:leadingTabsHi = 1
 endfunction
 
 "
@@ -58,22 +58,22 @@ endfunction
 "
 function! LeadingSpacesHi()
     " highlight tabs
-    syntax match spacehiLeadingSpace /^\ \+/ containedin=ALL
-    execute("highlight spacehiLeadingSpace ctermfg=white ctermbg=red ")
+    syntax match spacehiLeadingSpaces /^\ \+/ containedin=ALL
+    execute("highlight spacehiLeadingSpaces ctermfg=white ctermbg=red ")
 
-    let b:leadingSpaceHi = 1
+    let b:leadingSpacesHi = 1
 endfunction
 
 
 "
 " Turn on highlighting for: Trailing Spaces
 "
-function! TrailingSpaceHi()
+function! TrailingSpacesHi()
     " highlight trailing spaces
-    syntax match spacehiTrailingSpace /\s\+$/ containedin=ALL
-    execute("highlight spacehiTrailingSpace ctermfg=white ctermbg=red ")
+    syntax match spacehiTrailingSpaces /\s\+$/ containedin=ALL
+    execute("highlight spacehiTrailingSpaces ctermfg=white ctermbg=red ")
 
-    let b:trailingSpaceHi = 1
+    let b:trailingSpacesHi = 1
 endfunction
 
 
