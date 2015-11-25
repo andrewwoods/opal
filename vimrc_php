@@ -178,6 +178,10 @@ endfunction
 "
 com! ToggleSpaceHi :call ToggleSpaceHi()
 
+autocmd FileType php autocmd BufWritePre <buffer> :call StripTrailingWhitespace()
+
+
+
 "-------------------------------------------------------------------------------
 " Section: Key Mappings
 "

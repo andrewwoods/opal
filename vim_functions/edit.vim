@@ -77,3 +77,15 @@ function! TrailingSpacesHi()
 endfunction
 
 
+
+"
+" Remove the whitespace at the end of every line
+" and put the user back where they were
+"
+function! StripTrailingWhitespace()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfunction
+
