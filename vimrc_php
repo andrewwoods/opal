@@ -50,19 +50,7 @@ set showmode
 " Highlight the syntax of a language
 syntax on
 
-"
-" Ideally, lines will be 80 characters or less
-"
-highlight IdealColumn ctermfg=Black ctermbg=Green
-call matchadd('IdealColumn', '\%80v.')
-
-"
-" 120 characters is the soft limit. It's up to you to keep your lines under 120
-"
-highlight SoftColumn ctermfg=Black ctermbg=Yellow
-call matchadd('SoftColumn', '\%120v.\+')
-
-
+" Indentation Behavior 
 set autoindent
 set smartindent
 
@@ -82,8 +70,27 @@ set listchars+=precedes:«
 
 
 
+
 "
-" --------[ Javascript Settings ]----------------------------------------------
+" --------[ Column Highlighting ]-----------------------------------------------
+"
+
+"
+" Ideally, lines will be 80 characters or less
+"
+highlight IdealColumn ctermfg=Black ctermbg=Green
+call matchadd('IdealColumn', '\%80v.')
+
+"
+" 120 characters is the soft limit. It's up to you to keep your lines under 120
+"
+highlight SoftColumn ctermfg=Black ctermbg=Yellow
+call matchadd('SoftColumn', '\%120v.\+')
+
+
+
+"
+" --------[ PHP Settings ]----------------------------------------------
 "
 
 " Handles the settings for indentation
@@ -133,6 +140,7 @@ set expandtab
 "
 " --------[ Functions ]---------------------------------------------------------
 "
+
 
 
 "
