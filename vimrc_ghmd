@@ -61,13 +61,13 @@ syntax on
 :ab t_link [name](http://example.com)
 :ab t_code `your code here`
 :ab t_code_block ```your code here```
-:ab t_em _This will also be italic_
-:ab t_i _This will also be italic_
+:ab t_em _This will be italic_
+:ab t_i _This will be italic_
 :ab t_strong **This text will be bold**
 :ab t_bold **This text will be bold**
 
 :ab t_quote > We're living the future so> the present is our past.
 :ab t_list - [x] this is a complete item- [ ] this is an incomplete item
 :ab t_strike ~~this~~
-
+:ab t_hr * * *
 
