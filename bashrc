@@ -154,7 +154,7 @@ function punch()
 #
 function mkcd()
 {
-	mkdir $1 && cd $1
+	mkdir -p "$@" && cd "$@"
 }
 
 #
@@ -164,7 +164,7 @@ function mkcd()
 #
 function cdls()
 {
-	cd $1 && ls
+	cd "$1" && ls -F -G
 }
 
 #
