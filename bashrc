@@ -48,9 +48,8 @@ export EDITOR GIT_EDITOR SVN_EDITOR VISUAL
 alias please='sudo'
 alias diff='diff -bBs'
 alias empty='truncate'
-alias ls='ls -F'
+alias ls='ls -F -G'
 alias lsdir='ls -l | awk '\''/^d/ {print $9;}'\'''
-alias luls='ls -1rt | tail -n 20'
 alias localip='ifconfig en0 | grep "inet " '
 alias myip="curl http://ifconfig.me"
 alias nl="nl -b a"
@@ -802,5 +801,51 @@ function wp_plugins
 
 	wp plugin status
 }
+
+
+
+#
+# matrix - Display the Matrix code in your terminal
+#
+matrix(){
+
+	echo -e "\e[1;40m" ;
+	clear ;
+	characters=$( jot -c 94 33 | tr -d '\n' ) ;
+	while :;
+	do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) $characters ;
+	sleep 0.05; done|awk '{ letters=$5; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}'
+
+}
+
+
+#
+# get_context - Are you in work hours, or personal time
+#
+get_context(){
+
+	current_hour=$(date "+%H")
+	if [ $current_hour -ge '08' ]
+	then
+		if [ $current_hour -le '17' ]
+		then
+			echo 'work'
+		else
+			echo 'home'
+		fi
+	fi
+}
+
+
+#
+# strlen - get the length of a string
+#
+# @param string
+#
+function strlen
+{
+	echo ${#1}
+}
+
 
 
