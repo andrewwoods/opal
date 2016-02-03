@@ -132,32 +132,43 @@ function spacer
 #
 function today()
 {
-	if [[ $1 == "unix" ]]; then
+
+	case $1 in
+	'unix')
 		echo $(date +"%s")
-
-	elif [[ $1 == "iso" ]]; then
-
-		if [[ $2 == "text" ]]; then
-			echo $(date +"%Y %b %d %H:%M:%S")
+		;;
+	'iso'):
+		if [[ $2 == "date" ]]; then
+			echo $(date +"%Y-%m-%d")
 		else
-			echo $(date +"%Y-%m-%d %H:%M:%S")
+			echo $(date +"%Y-%m-%dT%H:%M:%S%z")
 		fi
-
-	elif [[ $1 == "world" ]]; then
-
+		;;
+	'filedate'):
+		echo $(date +"%Y%b%d%a")
+		;;
+	'world'):
 		if [[ $2 == "text" ]]; then
 			echo $(date +"%d %b %Y %H:%M:%S")
 		else
 			echo $(date +"%d/%m/%Y %H:%M:%S")
 		fi
-
-	elif [[ $1 == "us" ]]; then
-
+		;;
+	'us'):
 		if [[ $2 == "text" ]]; then
 			echo $(date +"%b %d, %Y %l:%M %p")
 		else
 			echo $(date +"%m/%d/%Y %l:%M %p")
 		fi
+		;;
+	*)
+		echo $(date +"%a %Y %b %d %l:%M %p")
+		;;
+	esac
+
+
+}
+
 
 	else
 		echo $(date +"%a %Y %b %d %l:%M %p")

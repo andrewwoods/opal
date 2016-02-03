@@ -22,6 +22,9 @@ source ~/opal/vimrc
 source ~/opal/vimrc_html
 source ~/opal/vimrc_css
 
+syntax on
+
+colorscheme hotness
 
 "
 " --------[ General VIM ]--------
@@ -45,19 +48,8 @@ set ruler
 " Put a message in the status line for insert, replace, and visual modes
 set showmode
 
-" Highlight the syntax of a language
-syntax on
 
-"
-" Highlight columns 82 with DarkGreen background
-"
-highlight ColorColumn ctermfg=White ctermbg=DarkGreen
-call matchadd('ColorColumn', '\%82v.')
 
-"
-" Highlight columns 120 and above like an error. It's bad form to have lines longer the 120 characters
-"
-match ErrorMsg '\%120v.\+'
 
 set autoindent
 set smartindent
@@ -75,7 +67,6 @@ set listchars+=eol:¶
 set listchars+=trail:¤
 set listchars+=extends:»
 set listchars+=precedes:«
-
 
 
 "
@@ -224,5 +215,6 @@ com! ToggleSpaceHi :call ToggleSpaceHi()
 if !hasmapto('ToggleSpaceHi') && maparg("<F3>") == ""
 	map <silent> <unique> <F3> :ToggleSpaceHi<CR>
 endif
+
 
 

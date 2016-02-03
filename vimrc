@@ -56,67 +56,11 @@ set ignorecase
 " But be smart about it -- if I have any caps in my term, be case-sensitive.
 set smartcase
 
-
-
-"=====================================================
-"
-" ctermfg/ctermbg colors
-"
-" NR-16   NR-8    COLOR NAME
-" 0       0       Black
-" 1       4       DarkBlue
-" 2       2       DarkGreen
-" 3       6       DarkCyan
-" 4       1       DarkRed
-" 5       5       DarkMagenta
-" 6       3       Brown, DarkYellow
-" 7       7       LightGray, LightGrey, Gray, Grey
-" 8       0*      DarkGray, DarkGrey
-" 9       4*      Blue, LightBlue
-" 10      2*      Green, LightGreen
-" 11      6*      Cyan, LightCyan
-" 12      1*      Red, LightRed
-" 13      5*      Magenta, LightMagenta
-" 14      3*      Yellow, LightYellow
-" 15      7*      White
-"
-" cterm values
-"
-" bold
-" underline
-" reverse
-" italic
-" none
-"
-"=====================================================
-
 " Turn paste mode on/off using <F2>
-:set pastetoggle=<F2>
+set pastetoggle=<F2>
 
-
-
-" Turns on syntax highlighting.
-"syntax on
-
+" Highlight the current line
 set cursorline
-" Turn Off cursor line
-":hi clear cursorline
-" Turn On cursor line formatting
-":hi cursorline gui=underline guisp=yellow
-:highlight CursorLine  ctermbg=darkcyan ctermfg=black cterm=none
-:highlight LineNr ctermbg=darkgrey ctermfg=white cterm=none
-:highlight Visual ctermbg=5 guibg=DarkMagenta
-
-"set cursorcolumn
-"syntax match Tab /\t/
-"Show each tab in blue
-"hi Tab gui=underline guifg=blue ctermbg=blue
-
-"	this line is tabbed
-
-" Determine if background is light or dark.
-" it helps with syntax highlighting
-set background=dark
 
 " helps you find matching { and ( when you type ) }
 set showmatch
@@ -124,16 +68,10 @@ set showmatch
 " Flash when errors occur
 set visualbell
 set errorbells
-"match ErrorMsg '\%81v.\+'
 
 " status bar settings
 set ruler
 set showmode
-
-" Folding Settings
-"set foldmarker={,} " This makes it work like other programming editors
-"set foldmethod=marker
-"set foldlevelstart=1
 
 " miscellaneous settings
 set shell=bash
@@ -177,45 +115,69 @@ set hlsearch
 "
 " https://en.wiktionary.org/wiki/Appendix:English_words_with_diacritics
 "
+:ab Liason Liaison
 :ab Wordpress WordPress
 :ab acceptible acceptable
+:ab alot a lot
 :ab anime animé
 :ab aquit acquit
 :ab attache attaché
 :ab awhile a while
+:ab basicly basically
+:ab bcuz because
+:ab becuase because
 :ab cafe café
 :ab cliche cliché
 :ab communique communiqué
 :ab continuum continuüm
+:ab devt development
 :ab divorceef divorcée
 :ab divorceem divorcé
 :ab eclair éclair
 :ab entree entrée
-:ab expose exposé
 :ab etude étude
-:ab flambe flambé
-:ab jalapeno jalapeño
-:ab mispell misspell
-:ab naive naïve
-:ab naivete naïveté
+:ab expose exposé
 :ab facade façade
 :ab fiance fiancé
 :ab fiancee fiancée
+:ab flambe flambé
+:ab ios iOS
+:ab ipad iPad
+:ab iphone iPhone
+:ab ipod iPod
+:ab jalapeno jalapeño
+:ab licence license
+:ab lisence license
+:ab mispell misspell
+:ab naive naïve
+:ab naivete naïveté
 :ab noone no one
+:ab nucular nuclear
+:ab occurr occur
+:ab privelege privilege
+:ab priviledge privilege
+:ab que queue
+:ab repoire rapport
 :ab resume résumé
 :ab risque risqué
 :ab saute sauté
+:ab savy savvy
 :ab seance séance
 :ab senor señor
 :ab senora señora
 :ab senorita señorita
 :ab soiree soirée
 :ab souffle soufflé
+:ab supposebly supposedly
+:ab teh the
 :ab threshhold threshold
 :ab tommorrow tomorrow
 :ab touche touché
 :ab uber über
+:ab useing using
+:ab usualy usually
 :ab vaccuum vacuum
+:ab youre you're
 
 
 
