@@ -399,31 +399,60 @@ function parse_git_branch()
 #
 # set_prompt - set the style of bash prompt used.
 #
-# @param String $type Allowed values: brief, full, compact, or debug
+# @param String $type Allowed values: brief, full, root, compact, basic or files
 #
 function set_prompt()
 {
+	use_color=$2
+
 	case "$1" in
 	brief)
-		PS1="\u@\h \W\$(parse_git_branch)\$ "
+		PS1="\[\e[1;33m\]\u"    # username
+		PS1+="\[\e[1;37m\]@"    # @
+		PS1+="\[\e[1;32m\]\h "  # host
+		PS1+="\[\e[1;31m\]\W"   # base directory name
+		PS1+="\[\e[1;36m\]$(parse_git_branch)\$ \[\e[0m\]"
 		;;
 
 	full)
 		# andrewwoods@tardis.local ~/opal
 		# Sat Jan 18 22:37:10 [626]$
-		PS1="\n\u@\H \W\n\d \t [\!]\$(parse_git_branch)\$ "
+		PS1="\n"
+		PS1+="\[\033[1;35m\]\W\e[m\n" # /path/to/dir
+		PS1+="\[\033[1;37m\]\u@\h\e[m\n" # username@host.domain.com
+		PS1+="\[\033[1;36m\]\d \t \$(parse_git_branch)\$\e[m "
+		;;
+
+	root)
+		PS1="\n"
+		PS1+="\[\033[1;31m\]\u@\h\e[m\n"   # username@host
+		PS1+="\[\033[1;37m\]\d \t\e[m\n"   # Sat Dec 19 16:23:24
+		PS1+="\[\033[1;36m\]\w\e[m"        # /path/to/dir
+		PS1+=" \$\e[m "
 		;;
 
 	compact)
-		PS1="\n\u@\h\n\A \W\$(parse_git_branch)\$ "
+		PS1="\n"
+		PS1+="\[\033[1;32m\]\u\e[m"
+		PS1+="@"
+		PS1+="\[\033[1;35m\]\h\e[m\n"
+		PS1+="\[\033[1;36m\]\A \W\$(parse_git_branch)\e[m\$ "
 		;;
 
-	debug)
-		PS1="a=\a\nA=\A\nd=\d\nh=\h\nH=\H\nj=\j\nl=\l\ns=\s\nt=\t\nT=\T\n@=\@\nT=\T\nu=\u\nv=\v\nV=\V\nw=\w\nW=\W\n!=\!\n#=\#\n$=\$\n \$ "
+	basic)
+		PS1="\n\u@\h\n\A \W\$ "
+		;;
+
+	files)
+		PS1="\n"
+		PS1+="\[\033[1;31m\][\w]\e[m\n"
+		PS1+="\[\033[1;37m\]\u@\h\e[m "
+		PS1+="\[\033[1;36m\](\$(ls -1 | wc -l | sed 's: ::g') files)\e[m\n"
+		PS1+="\$ "
 		;;
 
 	*)
-		echo 'Whoops! brief, full, color, or compact'
+		echo 'Whoops! brief, full, root, compact, basic, or files'
 		;;
 	esac
 }

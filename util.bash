@@ -170,8 +170,32 @@ function today()
 }
 
 
+#
+# get_os - Determine the Operating System. hat tip @alrra
+#
+get_os() {
+
+	declare -r OS_NAME="$(uname -s)"
+	local os=''
+
+	if [ "$OS_NAME" == "Darwin" ]; then
+		os='osx'
+	elif [ "$OS_NAME" == "Linux" ]; then
+
+		if [ -e "/etc/lsb-release" ]; then
+			os='ubuntu'
+		else
+			os='linux'
+		fi
+
 	else
-		echo $(date +"%a %Y %b %d %l:%M %p")
+		os="$OS_NAME"
+	fi
+
+	printf "%s" "$os"
+}
+
+
 	fi
 }
 
