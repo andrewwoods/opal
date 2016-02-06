@@ -196,6 +196,59 @@ get_os() {
 }
 
 
+#
+# termbg - set the terminal background to 'dark' or 'light',
+#          and display LS_COLORS accordinly
+#
+termbg(){
+	if [[ -z $TERM_BG ]]; then
+		TERM_BG="dark"
+		echo "the terminal background is ${TERM_BG}"
+	else
+		TERM_BG=$1
+	fi
+	export TERM_BG
+
+	if [[ $TERM_BG == "dark" ]]; then
+
+		# for a dark terminal background
+		LS_DIR=Cx
+		LS_SYMLINK=fx
+		LS_SOCKET=cx
+		LS_PIPE=dx
+		LS_EXEC=Gx
+		LS_BLOCK=fx
+		LS_CHAR=ex
+		LS_SETUID=HB
+		LS_SETGID=HB
+		LS_WDIR_STICKY=HF
+		LS_WDIR=bx
+
+		LSCOLORS="${LS_DIR}${LS_SYMLINK}${LS_SOCKET}${LS_PIPE}${LS_EXEC}${LS_BLOCK}${LS_CHAR}${LS_SETUID}${LS_SETGID}${LS_WDIR_STICKY}${LS_WDIR}"
+
+		export LSCOLORS
+
+	elif [[ $TERM_BG == "light" ]]; then
+		TERM_BG="light"
+		# for a dark terminal background
+		LS_DIR=Fx
+		LS_SYMLINK=Cx
+		LS_SOCKET=cx
+		LS_PIPE=cx
+		LS_EXEC=ex
+		LS_BLOCK=fx
+		LS_CHAR=gx
+		LS_SETUID=HB
+		LS_SETGID=HB
+		LS_WDIR_STICKY=HF
+		LS_WDIR=bH
+
+		LSCOLORS="${LS_DIR}${LS_SYMLINK}${LS_SOCKET}${LS_PIPE}${LS_EXEC}${LS_BLOCK}${LS_CHAR}${LS_SETUID}${LS_SETGID}${LS_WDIR_STICKY}${LS_WDIR}"
+
+		export LSCOLORS
+
+	else
+		echo "the TERM_BG must be 'dark' or 'light'"
 	fi
 }
 
