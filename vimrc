@@ -40,6 +40,9 @@ set autoindent smartindent
 " Turn on line numbering
 set number
 
+" Update space for line numbers
+set numberwidth=5
+
 " Display the filename
 set ls=2
 
@@ -80,9 +83,14 @@ set showcmd
 
 set hlsearch
 
+" custom status line, see :help 'statusline' for details
+if has("statusline")
+  set statusline=\<%n\>\ %f\ %h%m%r%=\ %-10.(%l,%c%V%)\ %P
+endif
 
-" Abbreviations
-"================================================================================
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
 
 "
 " Different ways to write todays date
