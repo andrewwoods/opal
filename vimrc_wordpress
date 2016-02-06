@@ -167,7 +167,7 @@ set noexpandtab
 "
 function! SpaceHi()
 	:call LeadingSpacesHi()
-	:call TrailingSpaceHi()
+	:call TrailingSpacesHi()
 
 	let b:spacehi = 1
 endfunction
@@ -176,8 +176,8 @@ endfunction
 " Turn off highlighting of leading and trailing spaces
 "
 function! NoSpaceHi()
-	syntax clear  spacehiLeadingSpace
-	syntax clear  spacehiTrailingSpace
+	syntax clear  spacehiLeadingSpaces
+	syntax clear  spacehiTrailingSpaces
 
 	let b:spacehi = 0
 endfunction
