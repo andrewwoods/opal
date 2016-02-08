@@ -411,7 +411,7 @@ function set_prompt()
 		PS1+="\[\e[1;37m\]@"    # @
 		PS1+="\[\e[1;32m\]\h "  # host
 		PS1+="\[\e[1;31m\]\W"   # base directory name
-		PS1+="\[\e[1;36m\]$(parse_git_branch)\$ \[\e[0m\]"
+		PS1+="\[\e[1;36m\] \$(parse_git_branch)\$ \[\e[0m\]"
 		;;
 
 	full)
