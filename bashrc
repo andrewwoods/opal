@@ -418,9 +418,9 @@ function set_prompt()
 		# andrewwoods@tardis.local ~/opal
 		# Sat Jan 18 22:37:10 [626]$
 		PS1="\n"
-		PS1+="\[\033[1;35m\]\W\e[m\n" # /path/to/dir
-		PS1+="\[\033[1;37m\]\u@\h\e[m\n" # username@host.domain.com
-		PS1+="\[\033[1;36m\]\d \t \$(parse_git_branch)\$\e[m "
+		PS1+="\[\033[1;35m\]\W\[\e[0m\]\n" # /path/to/dir
+		PS1+="\[\033[1;37m\]\u@\h\[\e[0m\]\n" # username@host.domain.com
+		PS1+="\[\033[1;36m\]\d \t \$(parse_git_branch)\$\[\e[0m\] "
 		;;
 
 	root)
@@ -433,10 +433,10 @@ function set_prompt()
 
 	compact)
 		PS1="\n"
-		PS1+="\[\033[1;32m\]\u\e[m"
+		PS1+="\[\033[1;32m\]\u\[\e[0m\]"
 		PS1+="@"
-		PS1+="\[\033[1;35m\]\h\e[m\n"
-		PS1+="\[\033[1;36m\]\A \W\$(parse_git_branch)\e[m\$ "
+		PS1+="\[\033[1;35m\]\h\[\e[0m\]\n"
+		PS1+="\[\033[1;36m\]\A \W\$(parse_git_branch)\[\e[0m\] \$ "
 		;;
 
 	basic)
@@ -445,9 +445,9 @@ function set_prompt()
 
 	files)
 		PS1="\n"
-		PS1+="\[\033[1;31m\][\w]\e[m\n"
-		PS1+="\[\033[1;37m\]\u@\h\e[m "
-		PS1+="\[\033[1;36m\](\$(ls -1 | wc -l | sed 's: ::g') files)\e[m\n"
+		PS1+="\[\033[1;31m\][\w]\[\e[0m\]\n"
+		PS1+="\[\033[1;37m\]\u@\h\[\e[0m\] "
+		PS1+="\[\033[1;36m\](\$(ls -1 | wc -l | sed 's: ::g') files)\[\e[0m\] "
 		PS1+="\$ "
 		;;
 
