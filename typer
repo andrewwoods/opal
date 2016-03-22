@@ -29,7 +29,7 @@ function display( $mesg )
 	for ($i=0; $i<strlen($mesg); $i++)
 	{
 		print substr($mesg, $i, 1);
-		usleep(50000);
+		usleep(20000);
 	}
 }
 
