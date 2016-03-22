@@ -427,7 +427,7 @@ function set_prompt()
 		PS1="\n"
 		PS1+="\[\033[1;31m\]\u@\h\[\e[0m\]\n" # username@host
 		PS1+="\[\033[1;36m\]\w\[\e[0m\]\n"    # /path/to/dir
-		PS1+="\[\033[1;37m\]\d \t\[\e[0m\]"   # Sat Dec 19 16:23:24
+		PS1+="\[\033[1;37m\]\D{%b %d %H:%M:%S}\[\e[0m\]"  # Sat Dec 19 16:23:24
 		PS1+=" \$ "
 		;;
 
@@ -440,7 +440,7 @@ function set_prompt()
 		;;
 
 	basic)
-		PS1="\n\u@\h\n\A \W\$ "
+		PS1="\$ "
 		;;
 
 	files)
