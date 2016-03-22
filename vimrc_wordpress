@@ -95,7 +95,7 @@ set noexpandtab
 " --[ Abbreviations ]--
 "
 
-" 
+"
 " Never write short tags.
 " This will make you do the right thing, in case you forget :)
 :ab <?= <?php echo ;?>hhha
@@ -198,12 +198,14 @@ function! ToggleSpaceHi()
 endfunction
 
 
+
 "-------------------------------------------------------------------------------
 " Section: Commands
 "
 "  These commands and mapping will be reused no matter which code styling you use
 "
 com! ToggleSpaceHi :call ToggleSpaceHi()
+com! StripTrailingWhitespace :call StripTrailingWhitespace()
 
 "-------------------------------------------------------------------------------
 " Section: Key Mappings
@@ -215,6 +217,17 @@ com! ToggleSpaceHi :call ToggleSpaceHi()
 if !hasmapto('ToggleSpaceHi') && maparg("<F3>") == ""
 	map <silent> <unique> <F3> :ToggleSpaceHi<CR>
 endif
+
+if !hasmapto('StripTrailingWhitespace') && maparg("<F4>") == ""
+	map <silent> <unique> <F4> :StripTrailingWhitespace<CR>
+endif
+
+
+" Turn on space highlightin by default
+call SpaceHi()
+
+
+
 
 
 
