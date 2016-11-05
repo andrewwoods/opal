@@ -115,7 +115,11 @@ set expandtab
 "
 :ab c_class class Foo{// Your code here}
 :ab c_class_extends class Foo extends Parent implements InterfaceName{// Your code here}
+:ab c_closure $val = function ($p1, $p2) {// do something;}
+:ab c_closure_use $val = function ($arg1, $arg2) use ($var1, $var2) {// do something;}
+:ab c_interface interface Foo{// Your code here}
 :ab c_namespace  namespace Foo\Bar\subnamespace;
+:ab c_trait trait Foo{// Your code here}
 :ab c_function function foo($p1, $p2){// do something;}
 :ab c_method abstract final public/protected/private static function foo($p1, $p2){// do something;}
 
@@ -135,9 +139,10 @@ set expandtab
 :ab c_trycatch try {// do stuff} catch(e) {//something else}
 :ab c_while while (condtion) {// do stuff}
 
-:ab c_value abstract final public/protected/private static $value = '';
-:ab c_var abstract final public/protected/private static $value = '';
-:ab c_array var value = [];
+:ab c_property abstract/final protected static $value = '';
+:ab c_value abstract/final protected static $value = '';
+:ab c_var abstract/final protected static $value = '';
+:ab c_array $value = [];
 
 :ab grepfunc !grep -n function %
 
