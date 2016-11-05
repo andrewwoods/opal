@@ -15,6 +15,10 @@
 " value in your .vimrc_php This will allow you keep your changes after
 " updates.
 "
+" These settings help you write your code to comply to PSR-2 coding standard
+"
+" http://www.php-fig.org/psr/psr-2/
+"
 "===============================================================================
 
 
@@ -75,15 +79,13 @@ set listchars+=precedes:«
 " --------[ Column Highlighting ]-----------------------------------------------
 "
 
-"
-" Ideally, lines will be 80 characters or less
+" There MUST NOT be a hard limit on line length
+" the soft limit MUST be 120 characters
+" lines SHOULD be 80 characters or less.
 "
 highlight IdealColumn ctermfg=Black ctermbg=Green
 call matchadd('IdealColumn', '\%80v.')
 
-"
-" 120 characters is the soft limit. It's up to you to keep your lines under 120
-"
 highlight SoftColumn ctermfg=Black ctermbg=Yellow
 call matchadd('SoftColumn', '\%120v.\+')
 
@@ -111,27 +113,31 @@ set expandtab
 "
 " --------[ Abbreviations ]-----------------------------------------------------
 "
-:ab c_array var value = [];
 :ab c_class class Foo{// Your code here}
 :ab c_class_extends class Foo extends Parent implements InterfaceName{// Your code here}
-:ab c_dowhile do {// do stuff} while (condtion);
-:ab c_for for ($i = 0; $i <= $max; $i++) {// do stuff}
-:ab c_foreach foreach ($array_name as $key => $val) {// do stuff}
+:ab c_namespace  namespace Foo\Bar\subnamespace;
 :ab c_function function foo($p1, $p2){// do something;}
-:ab c_if if (condtion) {// do stuff}
+:ab c_method abstract final public/protected/private static function foo($p1, $p2){// do something;}
+
+:ab c_use use foo;
+:ab c_use_as use Foo as Name;
+
+:ab c_dowhile do {// do stuff} while (condtion);
+:ab c_for for ($i = 0; $i <= $max; $i++){// do stuff}
+:ab c_foreach foreach ($array_name as $key => $val){// do stuff}
+:ab c_if if (condtion){// do stuff}
 :ab c_ifelse if (condtion) {// do stuff} else {//something else}
 :ab c_ifelsif if (condtion) {// do stuff} elseif (other_condtion) {// do other stuff} else {//something else}
 :ab c_ifelseif if (condtion) {// do stuff} elseif (other_condtion) {// do other stuff} else {//something else}
-:ab c_method abstract final public/protected/private static function foo($p1, $p2){// do something;}
-:ab c_namespace  namespace Foo\Bar\subnamespace;
-:ab c_switch switch ($i) {case 0:	// do stuffbreak;	hicase 1:	// do other stuffbreak;	hidefault:	echo "i equals 2";break;}
+:ab c_ifelse_if if (condtion) {// do stuff} elseif (other_condtion) {// do other stuff} else {//something else}
+:ab c_switch switch ($i) {case 0:    // do zerobreak; hhhhicase 1:     // do onebreak;	hhhhhhhhidefault:    // do default;break;}
 :ab c_throw throw new Exception('This is the message');
 :ab c_trycatch try {// do stuff} catch(e) {//something else}
-:ab c_use use foo;
-:ab c_use_as use Foo as Name;
 :ab c_while while (condtion) {// do stuff}
+
 :ab c_value abstract final public/protected/private static $value = '';
 :ab c_var abstract final public/protected/private static $value = '';
+:ab c_array var value = [];
 
 :ab grepfunc !grep -n function %
 
@@ -186,6 +192,9 @@ endfunction
 "
 com! ToggleSpaceHi :call ToggleSpaceHi()
 
+
+" function that removes trailing whitespace upon saving of buffer
+
 autocmd FileType php autocmd BufWritePre <buffer> :call StripTrailingWhitespace()
 
 
@@ -202,8 +211,5 @@ if !hasmapto('ToggleSpaceHi') && maparg("<F3>") == ""
 endif
 
 
-
-
-" @TODO add a function that removes trailing whitespace upon saving of buffer
 
 
