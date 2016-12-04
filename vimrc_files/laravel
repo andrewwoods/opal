@@ -9,7 +9,7 @@
 " Don't edit this file. Instead create .vimrc_laravel in your home directory
 " and read this file with the following line
 "
-" :source ~/opal/vimrc_laravel
+" :source ~/opal/vimrc_files/laravel
 "
 " If you want to change the value, copy the line from this file and change the
 " value in your .vimrc_laravel This will allow you keep your changes after
@@ -18,7 +18,7 @@
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-source ~/opal/vimrc
+source ~/opal/vimrc_files/vimrc
 
 "
 " --------[ General VIM ]--------
@@ -127,7 +127,7 @@ match LeadingTabsAndTrailingWhitespace /^\t\+\|\s\+$/
 :ab grepfunc !grep -n function %
 
 
-:source ~/opal/vimrc_html
+:source ~/opal/vimrc_files/html
 
 "
 " --[ Functions ]--

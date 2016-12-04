@@ -4,7 +4,7 @@
 ################################################################################
 
 export OPAL_DIR="$HOME/opal"
-export OPAL_VERSION="1.4"
+export OPAL_VERSION="2.0.0"
 
 source $OPAL_DIR/util.bash
 
@@ -54,25 +54,25 @@ alias localip='ifconfig en0 | grep "inet " '
 alias myip="curl http://ifconfig.me"
 alias nl="nl -b a"
 alias number="nl -b a"
-alias nocomment='grep -Ev '\''^(#|$)'\'''
+alias nocomment="grep -Ev '^\s*#'"  
 alias vi="vim"
 alias weather="telnet rainmaker.wunderground.com 3000"
 
 #:::::::[ VIM ALIASES ]:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-alias bvi='vim -u ~/opal/vimrc_bash'
-alias civi='vim -u ~/opal/vimrc_codeigniter'
-alias druvi='vim -u ~/opal/vimrc_drupal'
-alias ghvi='vim -u ~/opal/vimrc_ghmd'
-alias jsvi='vim -u ~/opal/vimrc_js'
-alias lvi='vim -u ~/opal/vimrc_laravel'
-alias phpvi='vim -u ~/opal/vimrc_php'
-alias pyvi='vim -u ~/opal/vimrc_python'
-alias rbvi='vim -u ~/opal/vimrc_ruby'
-alias svi='vim -u ~/opal/vimrc_symfony'
-alias wpvi='vim -u ~/opal/vimrc_wordpress'
-alias zendvi='vim -u ~/opal/vimrc_zend'
-alias scribe='vim -u ~/opal/vimrc_scribe'
+alias bvi='vim -u ~/opal/vimrc_files/bash'
+alias civi='vim -u ~/opal/vimrc_files/codeigniter'
+alias druvi='vim -u ~/opal/vimrc_files/drupal'
+alias ghvi='vim -u ~/opal/vimrc_files/ghmd'
+alias jsvi='vim -u ~/opal/vimrc_files/js'
+alias lvi='vim -u ~/opal/vimrc_files/laravel'
+alias phpvi='vim -u ~/opal/vimrc_files/php'
+alias pyvi='vim -u ~/opal/vimrc_files/python'
+alias rbvi='vim -u ~/opal/vimrc_files/ruby'
+alias svi='vim -u ~/opal/vimrc_files/symfony'
+alias wpvi='vim -u ~/opal/vimrc_files/wordpress'
+alias zendvi='vim -u ~/opal/vimrc_files/zend'
+alias scribe='vim -u ~/opal/vimrc_files/scribe'
 
 
 ################################################################################

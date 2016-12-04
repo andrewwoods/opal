@@ -9,7 +9,7 @@
 " Don't edit this file. Instead create .vimrc_scribe in your home directory
 " and read this file with the following line
 "
-" :source ~/opal/vimrc_scribe
+" :source ~/opal/vimrc_files/scribe
 "
 " If you want to change the value, copy the line from this file and change
 " the value in your .vimrc_scribe This will allow you keep your changes after
@@ -17,7 +17,7 @@
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-source ~/opal/vimrc
+source ~/opal/vimrc_files/vimrc
 
 "
 " --------[ General VIM ]--------

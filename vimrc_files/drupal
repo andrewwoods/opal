@@ -9,7 +9,7 @@
 " Don't edit this file. Instead create .vimrc_drupal in your home directory and
 " read this file with the following line
 "
-" :source ~/opal/vimrc_drupal
+" :source ~/opal/vimrc_files/drupal
 "
 " If you want to change the value, copy the line from this file and change the
 " value in your .vimrc_drupal. This will allow you keep your changes after 
@@ -17,7 +17,7 @@
 "
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
-source ~/opal/vimrc
+source ~/opal/vimrc_files/vimrc
 
 "
 " --------[ General VIM ]--------
@@ -100,4 +100,4 @@ set expandtab
 :ab c_while while (condition) {  // do something;}
 
 
-:source ~/opal/vimrc_html
+:source ~/opal/vimrc_files/html

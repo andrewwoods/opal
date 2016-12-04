@@ -1,24 +1,23 @@
 "
 " Opal Project
-" VIM Editor Settings for Javascript
+" VIM Editor Settings for Bash
 " by Andrew Woods
 " Updated 2015 Jun 17 Wed
 "
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 "
-" Don't edit this file. Instead create .vimrc_js in your home directory
+" Don't edit this file. Instead create .vimrc_bash in your home directory
 " and read this file with the following line
 "
-" :source ~/opal/vimrc_js
+" :source ~/opal/vimrc_files/bash
 "
 " If you want to change the value, copy the line from this file and change the
-" value in your .vimrc_js This will allow you keep your changes after
+" value in your .vimrc_bash This will allow you keep your changes after
 " updates.
 "
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-source ~/opal/vimrc
+source ~/opal/vimrc_files/vimrc
 
 "
 " --------[ General VIM ]--------
@@ -33,7 +32,7 @@ set number
 " helps you find matching { and ( when you type ) } - if on screen
 set showmatch
 
-" Flash when errors occur
+" Flash when errors occur 
 set visualbell
 
 " Show the line and column number of the cursor position
@@ -45,16 +44,7 @@ set showmode
 " Highlight the syntax of a language
 syntax on
 
-"
-" Highlight columns 82 with DarkGreen background
-"
-highlight ColorColumn ctermfg=White ctermbg=DarkGreen
-call matchadd('ColorColumn', '\%82v.')
 
-"
-" Highlight columns 120 and above like an error. It's bad form to have lines longer the 120 characters
-"
-match ErrorMsg '\%120v.\+'
 
 set autoindent
 set smartindent
@@ -66,17 +56,8 @@ set foldmethod=marker
 set foldlevelstart=1
 
 
-set listchars=""
-set listchars+=tab:§¬
-set listchars+=eol:¶
-set listchars+=trail:¤
-set listchars+=extends:»
-set listchars+=precedes:«
-
-
-
 "
-" --------[ Javascript Settings ]--------
+" --------[ Wordpress Settings ]--------
 "
 
 " Handles the settings for indentation
@@ -92,37 +73,47 @@ set fileformats=unix,dos
 set noexpandtab
 
 
+highlight LeadingSpacesAndTrailingWhitespace ctermbg=yellow guibg=yellow
+match LeadingSpacesAndTrailingWhitespace /^ \+\|\s\+$/
+
 "
 " --[ Abbreviations ]--
 "
 
-:ab c_array var value = [];
-:ab c_dowhile do {// do stuff} while ( condtion );
-:ab c_for for ( var i = 0, max = data.length; i <= max; i++ ) {// do stuff}
-:ab c_forin for ( var i in obj ) {// do stuff}
-:ab c_function function foo( p1, p2 ) {// do something;}
-:ab c_function_alt foo = function ( p1, $p2 ) {// do something;}
-:ab c_if if ( condtion ) {// do stuff}
-:ab c_iife ( function(){// do stuff}() );
-:ab c_ifelse if ( condtion ) {// do stuff} else {//something else}
-:ab c_ifelsif if ( condtion ) {// do stuff} else if ( other_condtion ) {// do other stuff} else {//something else}
-:ab c_ifelseif if ( condtion ) {// do stuff} else if ( other_condtion ) {// do other stuff} else {//something else}
-:ab c_loop if ( have_posts() ) :while ( have_posts() ) :the_post();// Do stuffendwhile; // end of the loop.else://Sorry! No Resultsendif; // end of the if
-:ab c_method MYAPP.foo = function( p1, p2 ) {// do something;}
-":ab c_namespace var MYAPP = MYAPP or {}; " the word 'or' should be replaced by ||, but vim chokes on it
-:ab c_object value = {};
-:ab c_prototype Class.prototype.name = function() {// do stuff};
+" 
+" Never write short tags. 
+" This will make you do the right thing, in case you forget :)
+:ab <?= <?php echo ;?>hhha
+:ab x_phpe <?php echo ; ?>hhhhha
+:ab x_phpoc <?php  ?>hhhha
+
+
+" Create Function level PHPDoc 
+:ab x_function ## Short Description## Long Description## @since version## @param  type $name  it does something# @return type        it does something#
+
+" Create App level PHPDoc 
+:ab x_app ## A brief one line description of your class## Describe what your class does at a high level, and how it can help the# user. The functions of your class should have their own phpdoc comments.### @package  Example# @author   FIRST_NAME LAST_NAME <author@foobar.com># @author   SECOND AUTHOR <second_author@foobar.com># @access   public#
+
+
+
+
+:ab c_add1 (( name++ ))
+:ab c_export export VALUE='';
+:ab c_if if [ condtion ]; then# do stufffi
+:ab c_ifelse if [ condtion ]then# do stuffelse#something elsefi
+:ab c_ifelif if [ condtion ]; then# do stuffelse if [ other_condtion ]; then// do other stuffelse//somethingfi
+:ab c_ifelseif if [ condtion ]; then# do stuffelse if [ other_condtion ]; then// do other stuffelse//somethingfi
+:ab c_dowhile do {# do stuff} while ( condtion ); 
+:ab c_for for (( EXP1; EXP2; EXP3 ))do# do stuffdone
+:ab c_forin for i in {1..5}do# do stuffdone
+:ab c_forincmd for i in $(seq 1 2 20)do# do stuffdone
+:ab c_foreach for i in $(seq 1 2 20)do# do stuffdone
+:ab c_function function foo() {# do something;}
 :ab c_switch switch ( $i ) {case 0:	// do stuffbreak;	hicase 1:	// do other stuffbreak;	hidefault:	echo "i equals 2";break;}
-:ab c_throw throw new Error('This is the message' );
-:ab c_trycatch try {// do stuff} catch(e) {//something else}
-:ab c_while while ( condtion ) {// do stuff}
-:ab c_value value = '';
-
-:ab grepfunc !grep -n function %
+:ab c_while while [ condition ]do#do stuffdone
 
 
-:source ~/opal/vimrc_html
-
+:source ~/opal/vimrc_files/html
 
 
 "
@@ -130,7 +121,7 @@ set noexpandtab
 "
 function! SpaceHi()
 	:call LeadingSpacesHi()
-	:call TrailingSpaceHi()
+	:call TrailingSpacesHi()
 
 	let b:spacehi = 1
 endfunction
@@ -139,8 +130,8 @@ endfunction
 " Turn off highlighting of leading and trailing spaces
 "
 function! NoSpaceHi()
-	syntax clear  spacehiLeadingSpace
-	syntax clear  spacehiTrailingSpace
+	syntax clear  spacehiLeadingSpaces
+	syntax clear  spacehiTrailingSpaces
 
 	let b:spacehi = 0
 endfunction
@@ -178,6 +169,7 @@ com! ToggleSpaceHi :call ToggleSpaceHi()
 if !hasmapto('ToggleSpaceHi') && maparg("<F3>") == ""
 	map <silent> <unique> <F3> :ToggleSpaceHi<CR>
 endif
+
 
 
 

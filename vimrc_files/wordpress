@@ -9,7 +9,9 @@
 " Don't edit this file. Instead create .vimrc_wordpress in your home directory
 " and read this file with the following line
 "
-" :source ~/opal/vimrc_wordpress
+" :source ~/opal/vimrc_files/wordpress
+
+
 "
 " If you want to change the value, copy the line from this file and change the
 " value in your .vimrc_wordpress. This will allow you keep your changes after
@@ -18,9 +20,9 @@
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-source ~/opal/vimrc
-source ~/opal/vimrc_html
-source ~/opal/vimrc_css
+source ~/opal/vimrc_files/vimrc
+source ~/opal/vimrc_files/html
+source ~/opal/vimrc_files/css
 
 syntax on
 
@@ -226,6 +228,14 @@ endif
 " Turn on space highlightin by default
 call SpaceHi()
 
+
+"-------------------------------------------------------------------------------
+" Section: Commands
+"
+"  These commands and mapping will be reused no matter which code styling you use
+"
+com! ToggleSpaceHi :call ToggleSpaceHi()
+com! StripTrailingWhitespace :call StripTrailingWhitespace()
 
 
 

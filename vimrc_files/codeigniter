@@ -9,7 +9,7 @@
 " Don't edit this file. Instead create .vimrc_codeigniter in your home directory 
 " and read this file with the following line
 "
-" :source ~/opal/vimrc_codeigniter
+" :source ~/opal/vimrc_files/codeigniter
 "
 " If you want to change the value, copy the line from this file and change the
 " value in your .vimrc_codeigniter. This will allow you keep your changes after 
@@ -17,11 +17,12 @@
 "
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
-source ~/opal/vimrc
+source ~/opal/vimrc_files/vimrc
 
 "
 " --------[ General VIM ]--------
 "
+
 
 " Indentation rules
 set autoindent
@@ -46,6 +47,8 @@ set ruler
 set showmode
 
 syntax on
+
+colorscheme hotness
 
 "
 " --------[ CodeIgniter Settings ]--------
@@ -114,5 +117,49 @@ function CheckPhpSyntax()
 endfunction
 autocmd BufWritePost,FileWritePost *.php call CheckPhpSyntax()
 
+"
+" Turn on highlighting of leading and trailing spaces
+"
+function! SpaceHi()
+	:call LeadingSpacesHi()
+	:call TrailingSpacesHi()
 
-:source ~/opal/vimrc_html
+	let b:spacehi = 1
+endfunction
+
+"
+" Turn off highlighting of leading and trailing spaces
+"
+function! NoSpaceHi()
+	syntax clear  spacehiLeadingSpaces
+	syntax clear  spacehiTrailingSpaces
+
+	let b:spacehi = 0
+endfunction
+
+" Toggle highlighting of spaces and tabs
+"
+"   This should be defined in different vimrc files
+"   to custom which whitespace characters should be highlighted
+"
+function! ToggleSpaceHi()
+	if exists("b:spacehi") && b:spacehi
+		:call NoSpaceHi()
+		echo "space highlighting: off"
+	else
+		:call SpaceHi()
+		echo "space highlighting: on"
+	endif
+endfunction
+
+
+
+"-------------------------------------------------------------------------------
+" Section: Commands
+"
+"  These commands and mapping will be reused no matter which code styling you use
+"
+com! ToggleSpaceHi :call ToggleSpaceHi()
+com! StripTrailingWhitespace :call StripTrailingWhitespace()
+
+:source ~/opal/vimrc_files/html

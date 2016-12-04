@@ -9,7 +9,7 @@
 " Don't edit this file. Instead create .vimrc_python in your home directory
 " and read this file with the following line
 "
-" :source ~/opal/vimrc_python
+" :source ~/opal/vimrc_files/python
 "
 " If you want to change the value, copy the line from this file and change the
 " value in your .vimrc_python. This will allow you keep your changes after
@@ -18,7 +18,7 @@
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-source ~/opal/vimrc
+source ~/opal/vimrc_files/vimrc
 
 " enable syntax highlighting
 syntax enable

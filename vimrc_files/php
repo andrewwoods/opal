@@ -25,9 +25,9 @@
 "
 " --------[ Load Other Files ]--------------------------------------------------
 "
-source ~/opal/vimrc
-source ~/opal/vimrc_html
-source ~/opal/vimrc_css
+source ~/opal/vimrc_files/vimrc
+source ~/opal/vimrc_files/html
+source ~/opal/vimrc_files/css
 
 "
 " --------[ General Vim Settings ]----------------------------------------------
