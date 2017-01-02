@@ -404,6 +404,7 @@ function parse_git_branch()
 function set_prompt()
 {
 	use_color=$2
+	has_custom_function=$(which my_set_prompt)
 
 	case "$1" in
 	brief)
@@ -413,6 +414,7 @@ function set_prompt()
 		PS1+="\[\e[1;31m\]\W"   # base directory name
 		PS1+="\[\e[1;36m\] \$(parse_git_branch)\$ \[\e[0m\]"
 		;;
+
 
 	full)
 		# andrewwoods@tardis.local ~/opal
@@ -452,7 +454,12 @@ function set_prompt()
 		;;
 
 	*)
-		echo 'Whoops! brief, full, root, compact, basic, or files'
+		if [ -n has_custom_function ]; then
+			# do stuff
+			my_set_prompt $1 $2
+		else
+			echo 'Whoops! brief, full, root, compact, basic, or files'
+		fi
 		;;
 	esac
 }
