@@ -68,7 +68,6 @@ endif
 "
 " Turn on highlighting for: Leading Tabs
 "
-" b:spacehi_tabcolor
 function! HighlightLeadingTabs()
     " highlight tabs
     syntax match spaceHighlightLeadingTabs /^\t\+/ containedin=ALL
@@ -108,7 +107,6 @@ endfunction
 
 
 "
-" Function: DisableSpaceHighlighting()
 " Turn off highlighting of spaces and tabs
 "
 function! DisableSpaceHighlighting()
@@ -141,6 +139,11 @@ function! ToggleSpaceHighlights()
 endfunction
 
 
+"-------------------------------------------------------------------------------
+"	Miscellaneious Functions
+"-------------------------------------------------------------------------------
+
+
 
 "
 " Remove the whitespace at the end of every line
@@ -154,11 +157,25 @@ function! StripTrailingWhitespace()
 endfunction
 
 
+"-------------------------------------------------------------------------------
+"	Function Key Mappings
+"-------------------------------------------------------------------------------
 
-" Section: Default mappings
-" Only insert a map to ToggleSpaceHi if they don't already have a map to
-" the function and don't have something bound to F3
+
+"
+" Only insert a map to ToggleSpaceHighlights if they don't already have a map
+" to the function and don't have something bound to F3
+"
 if !hasmapto('ToggleSpaceHighlights') && maparg("<F3>") == ""
     map <silent> <unique> <F3> :call ToggleSpaceHighlights()<CR>
 endif
+
+"
+" Only insert a map to StripTrailingWhitespace if they don't already have a map
+" to the function and don't have something bound to F9
+"
+if !hasmapto('StripTrailingWhitespace') && maparg("<F9>") == ""
+    map <silent> <unique> <F9> :call StripTrailingWhitespace()<CR>
+endif
+
 
