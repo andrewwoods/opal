@@ -54,11 +54,13 @@ alias localip='ifconfig en0 | grep "inet " '
 alias myip="curl http://ifconfig.me"
 alias nl="nl -b a"
 alias number="nl -b a"
-alias nocomment="grep -Ev '^\s*#'"  
+alias nocomment="grep -Ev '^\s*#'"
 alias vi="vim"
 alias weather="telnet rainmaker.wunderground.com 3000"
 
-#:::::::[ VIM ALIASES ]:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#
+#    VIM ALIASES
+#
 
 alias bvi='vim -u ~/opal/vimrc_files/bash'
 alias civi='vim -u ~/opal/vimrc_files/codeigniter'
@@ -81,6 +83,7 @@ alias scribe='vim -u ~/opal/vimrc_files/scribe'
 #
 ################################################################################
 
+
 #
 # punch - Keeps track of your time. Updates the timesheet.txt in your
 # datadir(). The options 'in' and 'out' are just for events like meetings or
@@ -101,7 +104,6 @@ alias scribe='vim -u ~/opal/vimrc_files/scribe'
 #
 function punch()
 {
-
 	DATADIR=$(datadir)
 	DATESTAMP=$(date +"%a %Y-%m-%d %H:%M:%S")
 
@@ -146,6 +148,8 @@ function punch()
 	fi
 }
 
+
+
 #
 # mkcd - make a directory and go into it
 #
@@ -155,6 +159,8 @@ function mkcd()
 {
 	mkdir -p "$@" && cd "$@"
 }
+
+
 
 #
 # cdls - change to a directory and list its content
@@ -166,8 +172,11 @@ function cdls()
 	cd "$1" && ls -F -G
 }
 
+
+
 #
-# touchx - touch a file and make it executable. touch creates the file if it doesn't exist
+# touchx - touch a file and make it executable. touch creates the file if it
+#          doesn't exist
 #
 # @param String $filename the file you want to create and make executable
 # @param String Optional $content The type of content to add to the file.
@@ -199,6 +208,8 @@ function touchx()
 	fi
 }
 
+
+
 #
 # mach displays the basic information about the machine/system you're using.
 #
@@ -210,6 +221,8 @@ function mach()
 	echo -e "\nMachine status :" ; uptime
 	echo -e "\nFilesystem status :"; df -h
 }
+
+
 
 #
 # show - display information about an aspect of the bash programming environment
@@ -258,6 +271,8 @@ function show()
 	esac
 }
 
+
+
 #
 # preamble - Display a block message to the user about who and where they are
 #
@@ -277,10 +292,14 @@ function preamble()
 	echo '###########################################################'
 }
 
+
+
 #
-# lsd - get a recursive list of all directories under 'directory'. defaults to cwd.
+# lsd - get a recursive list of all directories under 'directory'.
+#   defaults to cwd.
 #
-# @param String $directory the directory for which you want to recursively list the contents.
+# @param String $directory the directory for which you want to recursively list
+#   the contents.
 #
 function lsd()
 {
@@ -292,6 +311,8 @@ function lsd()
 
 	find $dir -type d
 }
+
+
 
 #
 # say_done - Tell the user when a command is done
@@ -313,11 +334,14 @@ function say_done()
 	fi
 }
 
+
+
 #
 # bak - Create a backup of a file or directory
 #
-# @param String $path when path is a file, a copy is made with .bak appended to it's name.
-#        if path is a directory, a compressed tarball will be made of the directory
+# @param String $path when path is a file, a copy is made with .bak appended to
+# it's name. if path is a directory, a compressed tarball will be made of the
+# directory
 #
 function bak()
 {
@@ -342,6 +366,8 @@ function bak()
 		echo "BAK: unsupported item type - must be file or directory"
 	fi
 }
+
+
 
 #
 # extract - "uncompress" a file from a variety of common formats
@@ -369,6 +395,8 @@ function extract()
 	fi
 }
 
+
+
 #
 # otd - On This Day. Display what happened on this day in history
 #
@@ -387,6 +415,7 @@ function otd()
 }
 
 
+
 #
 # parse_git_branch - get the current git branch your on
 #
@@ -394,6 +423,7 @@ function parse_git_branch()
 {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
+
 
 
 #
@@ -466,7 +496,6 @@ function set_prompt()
 
 
 
-
 #
 # swap - Exchange the contents of two files
 #
@@ -482,6 +511,8 @@ function swap()
 	mv $temp $2
 }
 
+
+
 #
 # lskeys - Display a list of your ssh keys.
 #
@@ -490,6 +521,8 @@ function lskeys()
 	prompt "my ssh keys"
 	ls ~/.ssh/*.pub
 }
+
+
 
 #
 # truncate - remove the contents of a file without destroying the file
@@ -501,6 +534,8 @@ function truncate()
 	cat /dev/null > $1
 }
 
+
+
 #
 # define - lookup the dictionary definition of a word
 #
@@ -510,6 +545,8 @@ function define()
 {
 	curl dict://dict.org/d:"$@";
 }
+
+
 
 #
 # sha1 - Create a SHA1 digest of a file
@@ -524,6 +561,8 @@ function sha1()
 		echo "openssl is required, but not installed"
 	fi
 }
+
+
 
 #
 # htstatus - lookup the http status code by number to refresh your memory
@@ -543,6 +582,8 @@ function htstatus()
 	echo "see http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html for more information"
 }
 
+
+
 #
 # calc - a floating point calculator
 #
@@ -552,6 +593,8 @@ function calc()
 {
 	awk 'BEGIN { OFMT="%f"; print '"$*"'; exit}';
 }
+
+
 
 #
 # country - lookup country code to retrieve the country name
@@ -563,6 +606,8 @@ function country()
 	awk -F "\t" -f $OPAL_DIR/country_lookup.awk -v country=$1  $OPAL_DIR/data/iso-country-codes.txt
 }
 
+
+
 #
 # tabname - assign a name to the active terminal tab
 #
@@ -573,6 +618,8 @@ function tabname()
 	printf "\e]1;$1\a";
 }
 
+
+
 #
 # winname - assign a name to the window your active terminal window
 #
@@ -582,6 +629,8 @@ function winname()
 {
 	printf "\e]2;$1\a";
 }
+
+
 
 #
 # show_dotfiles - turn on/off OS X Finders ability to display hidden files
@@ -605,6 +654,8 @@ function show_dotfiles()
 
 	esac
 }
+
+
 
 #
 # numseg - Display a NUMbered SEGment of a file
@@ -642,6 +693,8 @@ function numseg()
 	nl $filename | awk "NR >= $start  && NR <=  $end  "
 }
 
+
+
 #
 # seg - Display a SEGment of a file
 #
@@ -678,6 +731,7 @@ function seg()
 }
 
 
+
 #
 # cal3 - Display the previous month, current month, and next month
 #
@@ -687,6 +741,8 @@ function cal3()
 	cal
 	cal -my $(date -v+1m "+%m %Y")
 }
+
+
 
 #
 # ncal3 - Display the previous month, current month, and next month vertically
@@ -750,6 +806,8 @@ function note()
 	fi
 }
 
+
+
 #
 # traceurl - decode/unfurl a short url recursively to it's final destination
 #
@@ -757,7 +815,6 @@ function note()
 #
 function traceurl()
 {
-
 	if [[ -n $1 ]]
 	then
 		curl --location --head $1
@@ -765,6 +822,8 @@ function traceurl()
 		echo 'Whoops! You forgot to specify a short URL'
 	fi
 }
+
+
 
 #
 # check_site - determine if a website is available yet. keep checking until it is
@@ -800,6 +859,7 @@ function check_site()
 }
 
 
+
 #
 # wp_install - download wordpress, install, and configure it.
 #
@@ -814,6 +874,7 @@ function wp_install
 	wp db create
 	wp core install --prompt
 }
+
 
 
 #
@@ -843,24 +904,24 @@ function wp_plugins
 #
 # matrix - Display the Matrix code in your terminal
 #
-matrix(){
-
+function matrix()
+{
 	echo -e "\e[1;40m" ;
 	clear ;
 	characters=$( jot -c 94 33 | tr -d '\n' ) ;
 	while :;
 	do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) $characters ;
 	sleep 0.05; done|awk '{ letters=$5; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}'
-
 }
+
 
 
 #
 # get_context - Are you in work hours, or personal time
 #
 get_context(){
-
 	current_hour=$(date "+%H")
+
 	if [ $current_hour -ge '08' ]
 	then
 		if [ $current_hour -le '17' ]
@@ -871,6 +932,7 @@ get_context(){
 		fi
 	fi
 }
+
 
 
 #
