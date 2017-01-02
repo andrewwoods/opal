@@ -1,15 +1,3 @@
-" vim600: set foldmethod=marker:
-" $Id: spacehi.vim,v 1.3 2002/10/11 20:37:13 laz Exp $
-"
-" Description:  Per buffer, togglable syntax highlighting of tabs and trailing
-"               spaces. 	 	 	 	 	 	 
-" Author:       Adam Lazur <adam@lazur.org>
-" Last Change:  $Date: 2002/10/11 20:37:13 $
-" URL:          http://adam.lazur.org/vim/spacehi.vim
-" License:      Redistribution and use of this file, with or without
-"               modification, are permitted without restriction.
-"
-" Section: Documentation {{{1
 "
 " This plugin will highlight tabs and trailing spaces on a line, with the
 " ability to toggle the highlighting on and off. Using highlighting to
@@ -20,8 +8,8 @@
 " NOTE: "set list" will override SpaceHi's highlighting.
 "
 " Highlighting can be turned on and off with the functions SpaceHi() and
-" NoSpaceHi() respectively. You can also toggle the highlighting state by
-" using ToggleSpaceHi(). By default, ToggleSpaceHi is bound to the key F3.
+" DisableSpaceHighlighting() respectively. You can also toggle the highlighting state by
+" using ToggleSpaceHighlights(). By default, ToggleSpaceHi is bound to the key F3.
 "
 " You can customize the colors by setting the following variables to a string
 " of key=val that would normally follow "highlight group" command:
@@ -31,7 +19,7 @@
 "
 " The defaults can be found in the "Default Global Vars" section below.
 "
-" You can give a list of filetypes to exclude 
+" You can give a list of filetypes to exclude
 "
 " If you want to highlight tabs and trailing spaces by default for every file
 " that is syntax highlighted, you can add the following to your vimrc:
@@ -43,68 +31,134 @@
 "   autocmd BufNewFile,BufReadPost,FilterReadPost,FileReadPost,Syntax * SpaceHi
 "   au FileType help NoSpaceHi
 
-" Section: Plugin header {{{1
+" Section: Plugin header
 " If we have already loaded this file, don't load it again.
 if exists("loaded_spacehi")
     finish
 endif
-let loaded_spacehi=1
 
-" Section: Default Global Vars {{{1
+
+let loaded_spacehi=1
+let b:spacehi=0
+let b:leadingSpacesHighlight=0
+let b:trailingSpacesHighlight=0
+let b:leadingTabsHighlight=0
+
+
+" Section: Default Global Vars
 if !exists("g:spacehi_tabcolor")
     " highlight tabs with red underline
-"    let g:spacehi_tabcolor="ctermfg=1 cterm=underline"
-"    let g:spacehi_tabcolor=g:spacehi_tabcolor . " guifg=blue gui=underline"
-endif
-if !exists("g:spacehi_spacecolor")
-    " highlight trailing spaces in blue underline
-    let g:spacehi_spacecolor="ctermfg=white ctermbg=red "
-    let g:spacehi_spacecolor=g:spacehi_spacecolor . " guifg=white guibg=red"
+    let b:spacehi_tabcolor="ctermfg=white ctermbg=green gui=underline"
+    let b:spacehi_tabcolor=b:spacehi_tabcolor . " guifg=white  guibg=green "
 endif
 
-" Section: Functions {{{1
-" Function: s:SpaceHi() {{{2
-" Turn on highlighting of spaces and tabs
-function! s:SpaceHi()
+
+if !exists("b:spacehi_spacecolor")
+    " highlight trailing spaces in blue or underline them
+    let b:spacehi_spacecolor="ctermfg=white ctermbg=red"
+    let b:spacehi_spacecolor=b:spacehi_spacecolor . " guifg=white guibg=red"
+endif
+
+
+
+"-------------------------------------------------------------------------------
+"	Whitespace Highlighting Functions
+"-------------------------------------------------------------------------------
+
+"
+" Turn on highlighting for: Leading Tabs
+"
+" b:spacehi_tabcolor
+function! HighlightLeadingTabs()
     " highlight tabs
-"    syntax match spacehiTab /\t/ containedin=ALL
-"    execute("highlight spacehiTab " . g:spacehi_tabcolor)
+    syntax match spaceHighlightLeadingTabs /^\t\+/ containedin=ALL
+    execute("highlight spaceHighlightLeadingTabs " . b:spacehi_tabcolor)
 
+    let b:spacehi=1
+    let b:leadingTabsHighlight=1
+endfunction
+
+
+
+"
+" Turn on highlighting for: Leading Spaces
+"
+function! HighlightLeadingSpaces()
+    syntax match spaceHighlightLeadingSpaces /^\ \+/ containedin=ALL
+    execute("highlight spaceHighlightLeadingSpaces " . b:spacehi_spacecolor)
+
+    let b:spacehi=1
+    let b:leadingSpacesHighlight=1
+endfunction
+
+
+
+"
+" Turn on highlighting for: Trailing Spaces
+"
+function! HighlightTrailingSpaces()
     " highlight trailing spaces
-    syntax match spacehiTrailingSpace /\s\+$/ containedin=ALL
-    execute("highlight spacehiTrailingSpace " . g:spacehi_spacecolor)
+    syntax match spaceHighlightTrailingSpaces /\s\+$/ containedin=ALL
+    execute("highlight spaceHighlightTrailingSpaces " . b:spacehi_spacecolor)
 
-    let b:spacehi = 1
+    let b:spacehi=1
+    let b:trailingSpacesHighlight=1
 endfunction
 
-" Function: s:NoSpaceHi() {{{2
+
+
+"
+" Function: DisableSpaceHighlighting()
 " Turn off highlighting of spaces and tabs
-function! s:NoSpaceHi()
-"    syntax clear spacehiTab
-    syntax clear spacehiTrailingSpace
-    let b:spacehi = 0
+"
+function! DisableSpaceHighlighting()
+    syntax clear spaceHighlightLeadingSpaces
+    syntax clear spaceHighlightTrailingSpaces
+    syntax clear spaceHighlightLeadingTabs
+
+    let b:spacehi=0
+    let b:leadingSpacesHighlight=0
+    let b:trailingSpacesHighlight=0
+    let b:leadingTabsHighlight=0
 endfunction
 
-" Function: s:ToggleSpaceHi() {{{2
+
+
+"
+" Function: ToggleSpaceHighlights()
 " Toggle highlighting of spaces and tabs
-function! s:ToggleSpaceHi()
+"
+function! ToggleSpaceHighlights()
     if exists("b:spacehi") && b:spacehi
-        call s:NoSpaceHi()
-        echo "spacehi off"
+        call DisableSpaceHighlighting()
+        echo "Disabled space highlighting"
     else
-        call s:SpaceHi()
-        echo "spacehi on"
+        call HighlightLeadingSpaces()
+        call HighlightTrailingSpaces()
+        call HighlightLeadingTabs()
+        echo "Enabled space highlighting"
     endif
 endfunction
 
-" Section: Commands {{{1
-com! SpaceHi call s:SpaceHi()
-com! NoSpaceHi call s:NoSpaceHi()
-com! ToggleSpaceHi call s:ToggleSpaceHi()
 
-" Section: Default mappings {{{1
+
+"
+" Remove the whitespace at the end of every line
+" and put the user back where they were
+"
+function! StripTrailingWhitespace()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfunction
+
+
+
+" Section: Default mappings
 " Only insert a map to ToggleSpaceHi if they don't already have a map to
 " the function and don't have something bound to F3
-if !hasmapto('ToggleSpaceHi') && maparg("<F3>") == ""
-  map <silent> <unique> <F3> :ToggleSpaceHi<CR>
+if !hasmapto('ToggleSpaceHighlights') && maparg("<F3>") == ""
+    map <silent> <unique> <F3> :call ToggleSpaceHighlights()<CR>
 endif
+
