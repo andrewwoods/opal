@@ -1,91 +1,87 @@
-"
-" Any files ending in .php will be syntax checked when saving
-"
-function CheckPhpSyntax()
-   let current_file = shellescape(expand('%:p'))
-   let command = '!php --syntax-check ' . current_file
-   execute command
-endfunction
-autocmd BufWritePost,FileWritePost *.php call CheckPhpSyntax()
 
 
-"
-" Description:  Per buffer, togglable syntax highlighting of tabs and trailing
-"               spaces.
-" Author:       Adam Lazur <adam@lazur.org>
-" Last Change:  $Date: 2002/10/11 20:37:13 $
-" URL:          http://adam.lazur.org/vim/spacehi.vim
-" License:      Redistribution and use of this file, with or without
-"               modification, are permitted without restriction.
-"
-"
-" This plugin will highlight tabs and trailing spaces on a line, with the
-" ability to toggle the highlighting on and off. Using highlighting to
-" illuminate these characters is preferrable to using listchars and set list
-" because it allows you to copy from the vim window without getting shrapnel
-" in your buffer.
-"
-" NOTE: "set list" will override SpaceHi's highlighting.
-"
-" Highlighting can be turned on and off with the functions SpaceHi() and
-" NoSpaceHi() respectively. You can also toggle the highlighting state by
-" using ToggleSpaceHi(). By default, ToggleSpaceHi is bound to the key F3.
-"
+"=====================================
+" My awesome PHP syntax checking stuff:
+autocmd BufNewFile,BufRead,BufWritePost *.php,*.phtml execute 'call PHPsynCHK()'
+set makeprg=php\ -l\ %
+set errorformat=%m\ in\ %f\ on\ line\ %l
 
-if exists("loaded_spacehi")
-    finish
-endif
-let loaded_spacehi=1
-
-
-"-------------------------------------------------------------------------------
-"	Whitespace Highlighting Functions
-"-------------------------------------------------------------------------------
-
-"
-" Turn on highlighting for: Leading Tabs
-"
-function! LeadingTabsHi()
-    " highlight tabs
-    syntax match spacehiLeadingTabs /^\t\+/ containedin=ALL
-    execute("highlight spacehiLeadingTabs ctermfg=white ctermbg=red ")
-
-    let b:leadingTabsHi = 1
+function HighlightBadPhp(...)
+    if(exists('a:1'))
+        let qflist=a:1
+    else
+        let qflist=getqflist()
+    endif 
+    let has_valid_error = 0
+    for error in qflist
+        if error['valid']
+            let has_valid_error = 1
+            break
+        endif
+    endfor
+    if has_valid_error
+        let linecontent=getline(error.lnum)
+        if error.text =~ 'unexpected \$end$'
+            let linenum=FindNextNonBlankLine(error.lnum, "up")
+        elseif error.text =~ 'unexpected T_FUNCTION' && linecontent =~ '^\s*function\s.*'
+            let linenum=FindNextNonBlankLine(error.lnum, "up")
+        elseif error.text =~ 'unexpected T_CLASS' && linecontent =~ '^\s*class\s.*'
+            let linenum=FindNextNonBlankLine(error.lnum, "up")
+        elseif error.text =~ 'unexpected T_VARIABLE' && linecontent =~ '^\s*\$[A-Za-z].*'
+            let linenum=FindNextNonBlankLine(error.lnum, "up")
+        elseif error.text =~ 'unexpected .}.' && linecontent =~ '^\s*}.*'
+            let linenum=FindNextNonBlankLine(error.lnum, "up")
+        else
+            let linenum=error.lnum
+        endif
+        silent execute 'match SpellBad /\%'.linenum.'l\V\^'.escape(getline(linenum), '\').'\$/'
+        call cursor(linenum, col('.'))
+    else
+        " No errors found, clear highlighting
+        execute 'match'
+    endif
 endfunction
 
-"
-" Turn on highlighting for: Leading Spaces
-"
-function! LeadingSpacesHi()
-    " highlight tabs
-    syntax match spacehiLeadingSpaces /^\ \+/ containedin=ALL
-    execute("highlight spacehiLeadingSpaces ctermfg=white ctermbg=red ")
-
-    let b:leadingSpacesHi = 1
+function FindNextNonBlankLine(startLine, direction)
+    let matchLine=a:startLine
+    if a:direction == 'up'
+        let lines=sort(range(1, a:startLine-1), "ReverseSort")
+    else
+        let lines=range(a:startLine+1, line("$"))
+    endif
+    for line in lines
+        let linecontent=getline(line)
+        if linecontent !~ '^\s*$'
+            let matchLine=line
+            break
+        endif
+    endfor
+    return matchLine
 endfunction
 
-
-"
-" Turn on highlighting for: Trailing Spaces
-"
-function! TrailingSpacesHi()
-    " highlight trailing spaces
-    syntax match spacehiTrailingSpaces /\s\+$/ containedin=ALL
-    execute("highlight spacehiTrailingSpaces ctermfg=white ctermbg=red ")
-
-    let b:trailingSpacesHi = 1
+function ReverseSort(i1, i2)
+    return a:i2 - a:i1
 endfunction
 
-
-
-"
-" Remove the whitespace at the end of every line
-" and put the user back where they were
-"
-function! StripTrailingWhitespace()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
+function! PHPsynCHK()
+    ccl " close quickfix window
+    let winnum = winnr() " get current window number
+    let tmpfile = tempname()
+    " good luck if you have Windows
+    silent execute "!php -l ".shellescape(bufname("%"))." 2>&1 | grep 'Parse error' > ".tmpfile
+    silent execute "cg ".tmpfile
+    let qflist=getqflist()
+    if 0 < len(qflist)
+        cope 2 " open the quickfix window
+        silent execute "wincmd J"
+        silent execute winnum . "wincmd w"
+        call HighlightBadPhp(qflist)
+    else
+        execute 'match'
+    endif
 endfunction
+
+noremap <leader>l :execute 'call PHPsynCHK()'<CR>
+
+
 

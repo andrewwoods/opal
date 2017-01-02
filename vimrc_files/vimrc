@@ -20,6 +20,7 @@
 :vmap <C-A-c> :s/\\<CR[>]//<CR>:nohlsearch<CR>
 
 source ~/opal/vim_functions/edit.vim
+source ~/opal/vim_functions/spacehi.vim
 
 
 "
