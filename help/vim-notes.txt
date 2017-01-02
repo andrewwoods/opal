@@ -29,3 +29,6 @@ match LeadingTabsAndTrailingWhitespace /^\t\+\|\s\+$/
 " Sometime CTRL-K doesn't work. To fix it, try
 :iunmap <c-k>
 
+" Remove trailing whitespace 
+:%s/\s\+$//e
+
