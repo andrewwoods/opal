@@ -34,6 +34,10 @@ making your life on the command line a little easier. This is done thru a
 variety of bash functions an eventually shell scripts. Here's a list of what's
 included
 
+### Project files
+
+* [Change Log](CHANGELOG.md)
+* [License](LICENSE.txt) 
 
 ## Bash Functions
 
