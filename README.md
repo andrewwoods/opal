@@ -15,10 +15,18 @@ custom configuration on top of it.
 ## Getting Started
 
 1. Download the opal and extract the tarball.
-2. cd into the new directory
+
+    `$ curl --location --output opal.zip https://github.com/andrewwoods/opal/archive/master.zip`
+
+    `$ unzip opal.zip`
+
+2. Change into the new directory
+
+    `$ cd opal-master`
+
 3. Run the install script
 
-    $ ./install.bash
+    `$ ./install.bash`
 
 This creates a symbolic link in your home directory, to the directory where you
 ran the install script. Also, opal created a some dot files in your home
