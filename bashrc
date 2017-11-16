@@ -3,10 +3,8 @@
 #
 ################################################################################
 
-export OPAL_DIR="$HOME/opal"
-export OPAL_VERSION="2.0.0"
 
-source $OPAL_DIR/util.bash
+
 
 export cals=(/usr/share/calendar/calendar.computer \
 	/usr/share/calendar/calendar.history \
