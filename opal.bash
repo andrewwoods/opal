@@ -6,6 +6,8 @@
 export OPAL_DIR="$HOME/opal"
 export OPAL_VERSION="2.0.0"
 
-source $OPAL_DIR/util.bash
-source $OPAL_DIR/bashrc
+source $OPAL_DIR/bash/util.bash
+source $OPAL_DIR/bash/bashrc
+
+
 
