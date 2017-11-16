@@ -5,7 +5,6 @@
 
 
 
-
 export cals=(/usr/share/calendar/calendar.computer \
 	/usr/share/calendar/calendar.history \
 	/usr/share/calendar/calendar.holiday \
@@ -27,7 +26,6 @@ fi
 #
 ################################################################################
 
-
 EDITOR="vim"
 PAGER="less"
 GIT_EDITOR=$EDITOR
@@ -35,7 +33,6 @@ SVN_EDITOR=$EDITOR
 VISUAL=$EDITOR
 
 export EDITOR GIT_EDITOR SVN_EDITOR VISUAL
-
 
 ################################################################################
 #
@@ -74,13 +71,11 @@ alias wpvi='vim -u ~/opal/vimrc_files/wordpress'
 alias zendvi='vim -u ~/opal/vimrc_files/zend'
 alias scribe='vim -u ~/opal/vimrc_files/scribe'
 
-
 ################################################################################
 #
 #		FUNCTIONS
 #
 ################################################################################
-
 
 #
 # punch - Keeps track of your time. Updates the timesheet.txt in your
@@ -170,125 +165,6 @@ function cdls()
 	cd "$1" && ls -F -G
 }
 
-
-
-#
-# touchx - touch a file and make it executable. touch creates the file if it
-#          doesn't exist
-#
-# @param String $filename the file you want to create and make executable
-# @param String Optional $content The type of content to add to the file.
-#       'phpinfo' will inject PHP code into the file.
-#
-function touchx()
-{
-	touch $1 && chmod ugo+x $1
-
-	if [[ $2 == "phpinfo" ]]; then
-		echo "<?php phpinfo(); ?>" >> $1
-	fi
-
-	if [[ $1 == 'robots.txt' ]]; then
-		echo "User-agent: *" >> $1
-		echo "Disallow: /" >> $1
-		echo "" >> $1
-	fi
-
-	if [[ $1 == 'README.md' ]]; then
-		echo "# Project Name" >> $1
-		echo "" >> $1
-		echo "Write your project " >> $1
-		echo "" >> $1
-		echo "* First " >> $1
-		echo "* Second " >> $1
-		echo "* Third " >> $1
-		echo "" >> $1
-	fi
-}
-
-
-
-#
-# mach displays the basic information about the machine/system you're using.
-#
-function mach()
-{
-	echo -e "\nMachine information:" ; uname -a
-	echo -e "\nUsers logged on:" ; w -h
-	echo -e "\nCurrent date :" ; date
-	echo -e "\nMachine status :" ; uptime
-	echo -e "\nFilesystem status :"; df -h
-}
-
-
-
-#
-# show - display information about an aspect of the bash programming environment
-#
-# @param String $type the type for information you want to display.
-#        Allowed Values: arrays, defs, names, readonly, exports, integers
-#
-function show()
-{
-	echo -e "Inform the user what can be used"
-	echo -e "--------------------------------"
-
-	case "$1" in
-	arrays)
-		declare -a
-		;;
-
-	defs)
-		declare -f
-		;;
-
-	names)
-		declare -F
-		;;
-
-	readonly)
-		declare -r
-		;;
-
-	exports)
-		declare -x
-		;;
-
-	integers)
-		declare -i
-		;;
-
-	*)
-		echo -e "  arrays -  display known arrays "
-		echo -e "  names - display function names only"
-		echo -e "  defs - display functions names and their definitions"
-		echo -e "  readonly - display all the readonly variables"
-		echo -e "  exports - display all exported variables"
-		echo -e "  integers - display all integers"
-		;;
-	esac
-}
-
-
-
-#
-# preamble - Display a block message to the user about who and where they are
-#
-function preamble()
-{
-	name=$(whoami)
-	host=$(hostname -f)
-	thisday=$(today default)
-
-	echo '###########################################################'
-	echo '# '
-	prompt "# Hello ${name}"
-	prompt "# You are logged into ${host}"
-	echo '# '
-	prompt "# Today is ${thisday}"
-	echo '# '
-	echo '###########################################################'
-}
 
 
 
@@ -393,24 +269,6 @@ function extract()
 	fi
 }
 
-
-
-#
-# otd - On This Day. Display what happened on this day in history
-#
-function otd()
-{
-	today_date=$(date +"%m/%d")
-	echo ""
-	echo "On this date"
-
-
-	for i in "${cals[@]}"; do
-		if [ -f $i ]; then
-			grep -h "^${today_date}" $i
-		fi
-	done
-}
 
 
 
@@ -729,34 +587,6 @@ function seg()
 }
 
 
-
-#
-# cal3 - Display the previous month, current month, and next month
-#
-function cal3()
-{
-	cal -my $(date -v-1m "+%m %Y")
-	cal
-	cal -my $(date -v+1m "+%m %Y")
-}
-
-
-
-#
-# ncal3 - Display the previous month, current month, and next month vertically
-#
-function ncal3()
-{
-	ncal -my $(date -v-1m "+%m %Y")
-	echo ' '
-	ncal
-	echo ' '
-	ncal -my $(date -v+1m "+%m %Y")
-}
-
-
-
-#
 # note - record a note to a file from the command line
 #
 # @param String Optional $destinationCode
@@ -910,25 +740,6 @@ function matrix()
 	while :;
 	do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) $characters ;
 	sleep 0.05; done|awk '{ letters=$5; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}'
-}
-
-
-
-#
-# get_context - Are you in work hours, or personal time
-#
-get_context(){
-	current_hour=$(date "+%H")
-
-	if [ $current_hour -ge '08' ]
-	then
-		if [ $current_hour -le '17' ]
-		then
-			echo 'work'
-		else
-			echo 'home'
-		fi
-	fi
 }
 
 

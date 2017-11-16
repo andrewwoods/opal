@@ -15,6 +15,8 @@ function _e
 	echo "${PAD}$1"
 }
 
+
+
 #
 # Create a number of blank lines. Default = 1.
 #
@@ -41,6 +43,8 @@ function _l
 	_e $line
 }
 
+
+
 #
 # echo a blank line
 #
@@ -50,6 +54,7 @@ function _n
 }
 
 
+
 #
 # echo text with padding
 #
@@ -57,6 +62,19 @@ function _s
 {
 	prompt "${PAD}$1"
 }
+
+
+
+#
+# cal3 - Display the previous month, current month, and next month
+#
+function cal3()
+{
+	cal -my $(date -v-1m "+%m %Y")
+	cal
+	cal -my $(date -v+1m "+%m %Y")
+}
+
 
 
 #
@@ -78,15 +96,88 @@ function datadir()
 }
 
 
+
 #
-# prompt - display a dynamic prompt, in the interactive sense.
+# get_context - Are you in work hours, or personal time
 #
+get_context(){
+	current_hour=$(date "+%H")
+
+	if [ $current_hour -ge '08' ]
+	then
+		if [ $current_hour -le '17' ]
+		then
+			echo 'work'
+		else
+			echo 'home'
+		fi
+	fi
+}
+
+
+
+#
+# mach displays the basic information about the machine/system you're using.
+#
+function mach()
+{
+	echo -e "\nMachine information:" ; uname -a
+	echo -e "\nUsers logged on:" ; w -h
+	echo -e "\nCurrent date :" ; date
+	echo -e "\nMachine status :" ; uptime
+	echo -e "\nFilesystem status :"; df -h
+}
+
+
+
+#
+# ncal3 - Display the previous month, current month, and next month vertically
+#
+function ncal3()
+{
+	ncal -my $(date -v-1m "+%m %Y")
+	echo ' '
+	ncal
+	echo ' '
+	ncal -my $(date -v+1m "+%m %Y")
+}
+
+
+
+#
+# preamble - Display a block message to the user about who and where they are
+#
+function preamble()
+{
+	name=$(whoami)
+	host=$(hostname -f)
+	thisday=$(today default)
+
+	echo '###########################################################'
+	echo '# '
+	prompt "# Hello ${name}"
+	prompt "# You are logged into ${host}"
+	echo '# '
+	prompt "# Today is ${thisday}"
+	echo '# '
+	echo '###########################################################'
+}
+
+
+
+#
+# prompt - an wrapper for type_line
+#
+# @deprecated 2.1.0
 # @param String $content multiple-word prompts must be enclosed in quotes
 #
 function prompt()
 {
-	$OPAL_DIR/typer "$1"
+    type_line "$1"
+    echo "The prompt function is deprecated, please use type_line instead" >&2
+    exit 1
 }
+
 
 
 #
@@ -100,10 +191,18 @@ function type_file()
 	$OPAL_DIR/typer -f $1
 }
 
-function scribe()
+
+
+#
+# type_line - display a dynamic prompt, in the interactive sense.
+#
+# @param String $content multiple-word prompts must be enclosed in quotes
+#
+function type_line()
 {
-	$OPAL_DIR/typer -f $1
+	$OPAL_DIR/typer "$1"
 }
+
 
 
 #
@@ -122,6 +221,7 @@ function spacer
 		echo ""
 	done
 }
+
 
 
 #
@@ -170,6 +270,7 @@ function today()
 }
 
 
+
 #
 # get_os - Determine the Operating System. hat tip @alrra
 #
@@ -194,6 +295,7 @@ get_os() {
 
 	printf "%s" "$os"
 }
+
 
 
 #
@@ -251,4 +353,6 @@ termbg(){
 		echo "the TERM_BG must be 'dark' or 'light'"
 	fi
 }
+
+
 
