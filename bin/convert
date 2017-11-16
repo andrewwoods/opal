@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Convert CSS Colors
+ *
+ * @license MIT
+ */
+
+require 'lib/AbstractApplication.php';
+require 'lib/ConvertApplication.php';
+
+
+use Cli\AbstractApplication;
+use Cli\ConvertApplication;
+
+$shortOptions = 'hv';
+$longOptions = [
+    'help',
+    'version',
+	'decimal',
+	'hex',
+];
+
+$optIndex = null;
+$options = getopt($shortOptions, $longOptions, $optIndex);
+
+$arguments = array_slice($argv, $optIndex);
+
+$application = new ConvertApplication($options, $arguments);
+$application->run();
+
+
