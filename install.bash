@@ -1,5 +1,5 @@
 
-source ./bashrc
+source ./bash/bashrc
 
 #
 # intro()  
@@ -64,7 +64,7 @@ else
 fi
 
 echo '' >> ~/.bashrc
-echo 'source ~/opal/bashrc' >> ~/.bashrc
+echo 'source ~/opal/opal.bash' >> ~/.bashrc
 echo '' >> ~/.bashrc
 
 heading_box 'VARIABLES' ~/.bashrc 
@@ -76,7 +76,7 @@ heading_box 'MAIN' ~/.bashrc
 intro ~/.bash_profile 
 
 echo '' >> ~/.bash_profile
-echo 'source ~/opal/bash_profile' >> ~/.bash_profile
+echo 'source ~/opal/bash/bash_profile' >> ~/.bash_profile
 echo '' >> ~/.bash_profile
 echo 'preamble' >> ~/.bash_profile
 echo 'otd' >> ~/.bash_profile
