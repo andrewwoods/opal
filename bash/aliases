@@ -12,7 +12,7 @@ alias localip='ifconfig en0 | grep "inet " '
 alias myip="curl http://ifconfig.me"
 alias nl="nl -b a"
 alias number="nl -b a"
-alias nocomment="grep -Ev '^\s*#'"
+alias nocomment="grep -v '^\s*[#;\"]'"
 alias vi="vim"
 alias weather="telnet rainmaker.wunderground.com 3000"
 
