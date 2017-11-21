@@ -8,8 +8,9 @@
 " NOTE: "set list" will override SpaceHi's highlighting.
 "
 " Highlighting can be turned on and off with the functions SpaceHi() and
-" DisableSpaceHighlighting() respectively. You can also toggle the highlighting state by
-" using ToggleSpaceHighlights(). By default, ToggleSpaceHi is bound to the key F3.
+" DisableSpaceHighlighting() respectively. You can also toggle the
+" highlighting state by using ToggleSpaceHighlights(). By default,
+" ToggleSpaceHi is bound to the key F3.
 "
 " You can customize the colors by setting the following variables to a string
 " of key=val that would normally follow "highlight group" command:
@@ -61,9 +62,11 @@ endif
 
 
 
-"-------------------------------------------------------------------------------
+"================================================================================
+"
 "	Whitespace Highlighting Functions
-"-------------------------------------------------------------------------------
+"
+"================================================================================
 
 "
 " Turn on highlighting for: Leading Tabs
@@ -73,8 +76,13 @@ function! HighlightLeadingTabs()
     syntax match spaceHighlightLeadingTabs /^\t\+/ containedin=ALL
     execute("highlight spaceHighlightLeadingTabs " . b:spacehi_tabcolor)
 
-    let b:spacehi=1
     let b:leadingTabsHighlight=1
+endfunction
+
+function! DisableHighlightLeadingTabs()
+    syntax clear spaceHighlightLeadingTabs
+
+    let b:leadingTabsHighlight=0
 endfunction
 
 
@@ -86,8 +94,13 @@ function! HighlightLeadingSpaces()
     syntax match spaceHighlightLeadingSpaces /^\ \+/ containedin=ALL
     execute("highlight spaceHighlightLeadingSpaces " . b:spacehi_spacecolor)
 
-    let b:spacehi=1
     let b:leadingSpacesHighlight=1
+endfunction
+
+function! DisableHighlightLeadingSpaces()
+    syntax clear spaceHighlightLeadingSpaces
+
+    let b:leadingSpacessHighlight=0
 endfunction
 
 
@@ -100,8 +113,13 @@ function! HighlightTrailingSpaces()
     syntax match spaceHighlightTrailingSpaces /\s\+$/ containedin=ALL
     execute("highlight spaceHighlightTrailingSpaces " . b:spacehi_spacecolor)
 
-    let b:spacehi=1
     let b:trailingSpacesHighlight=1
+endfunction
+
+function! DisableHighlightTrailingSpaces()
+    syntax clear spaceHighlightTrailingSpaces
+
+    let b:trailingSpacesHighlight=0
 endfunction
 
 
@@ -109,34 +127,63 @@ endfunction
 "
 " Turn off highlighting of spaces and tabs
 "
-function! DisableSpaceHighlighting()
-    syntax clear spaceHighlightLeadingSpaces
-    syntax clear spaceHighlightTrailingSpaces
-    syntax clear spaceHighlightLeadingTabs
+function! EnableSpaceHighlighting()
+    let b:spacehi=1
+endfunction
 
+"
+" Turn off highlighting of spaces and tabs
+"
+function! DisableSpaceHighlighting()
     let b:spacehi=0
-    let b:leadingSpacesHighlight=0
-    let b:trailingSpacesHighlight=0
-    let b:leadingTabsHighlight=0
 endfunction
 
 
-
+" Toggle highlighting of whitespace
 "
-" Function: ToggleSpaceHighlights()
-" Toggle highlighting of spaces and tabs
+"   This should be defined in different vimrc files
+"   to custom which whitespace characters should be highlighted
 "
 function! ToggleSpaceHighlights()
-    if exists("b:spacehi") && b:spacehi
-        call DisableSpaceHighlighting()
-        echo "Disabled space highlighting"
-    else
-        call HighlightLeadingSpaces()
-        call HighlightTrailingSpaces()
-        call HighlightLeadingTabs()
-        echo "Enabled space highlighting"
-    endif
+	if exists("b:spacehi") && b:spacehi
+		:call TurnOffHighlights()
+		echo "space highlighting: off"
+	else
+		:call TurnOnHighlights()
+		echo "space highlighting: on"
+	endif
 endfunction
+
+
+
+"
+" Turn On Highlights
+"
+" Copy this function to your vimrc file and uncomment it
+" Update the functions it calls, but not its function name
+"
+"
+"function! TurnOnHighlights()
+"	:call HighlightLeadingSpaces()
+"	:call HighlightTrailingSpaces()
+"
+"   :call EnableSpaceHighlighting() " Keep this line
+"endfunction
+
+"
+" Turn Off Highlights
+"
+" Copy this function to your vimrc file and uncomment it
+" Update the functions it calls, but not its function name
+"
+"
+"function! TurnOffHighlights()
+"	:call DisableHighlightLeadingSpaces()
+"	:call DisableHighlightTrailingSpaces()
+"
+"   :call DisableSpaceHighlighting() " Keep this line
+"endfunction
+
 
 
 "-------------------------------------------------------------------------------
@@ -157,6 +204,8 @@ function! StripTrailingWhitespace()
 endfunction
 
 
+
+
 "-------------------------------------------------------------------------------
 "	Function Key Mappings
 "-------------------------------------------------------------------------------
@@ -166,9 +215,6 @@ endfunction
 " Only insert a map to ToggleSpaceHighlights if they don't already have a map
 " to the function and don't have something bound to F3
 "
-if !hasmapto('ToggleSpaceHighlights') && maparg("<F3>") == ""
-    map <silent> <unique> <F3> :call ToggleSpaceHighlights()<CR>
-endif
 
 "
 " Only insert a map to StripTrailingWhitespace if they don't already have a map
