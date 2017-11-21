@@ -25,6 +25,7 @@
 "
 " --------[ Load Other Files ]--------------------------------------------------
 "
+source ~/opal/vim_functions/spacehi.vim
 source ~/opal/vimrc_files/vimrc
 source ~/opal/vimrc_files/html
 source ~/opal/vimrc_files/css
@@ -32,6 +33,11 @@ source ~/opal/vimrc_files/css
 "
 " --------[ General Vim Settings ]----------------------------------------------
 "
+
+" Highlight the syntax of a language
+syntax on
+
+colorscheme hotness
 
 " Pattern searches should ignore case
 set ignorecase
@@ -51,8 +57,6 @@ set ruler
 " Put a message in the status line for insert, replace, and visual modes
 set showmode
 
-" Highlight the syntax of a language
-syntax on
 
 " Indentation Behavior 
 set autoindent
@@ -152,42 +156,34 @@ set expandtab
 " --------[ Functions ]---------------------------------------------------------
 "
 
-
-
 "
-" Turn on highlighting of leading and trailing spaces
+" Turn On Highlights
 "
-function! SpaceHi()
-	:call LeadingTabsHi()
-	:call TrailingSpacesHi()
+" Copy this function to your vimrc file and uncomment it
+" Update the functions it calls, but not its function name
+"
+"
+function! TurnOnHighlights()
+	:call HighlightLeadingTabs()
+	:call HighlightTrailingSpaces()
 
-	let b:spacehi = 1
+    :call EnableSpaceHighlighting()
 endfunction
 
 "
-" Turn off highlighting of leading and trailing spaces
+" Turn Off Highlights
 "
-function! NoSpaceHi()
-	syntax clear  spacehiLeadingTabs
-	syntax clear  spacehiTrailingSpaces
+" Copy this function to your vimrc file and uncomment it
+" Update the functions it calls, but not its function name
+"
+"
+function! TurnOffHighlights()
+	:call DisableHighlightLeadingTabs()
+	:call DisableHighlightTrailingSpaces()
 
-	let b:spacehi = 0
+    :call DisableSpaceHighlighting()
 endfunction
 
-" Toggle highlighting of spaces and tabs
-"
-"   This should be defined in different vimrc files
-"   to custom which whitespace characters should be highlighted
-"
-function! ToggleSpaceHi()
-	if exists("b:spacehi") && b:spacehi
-		:call NoSpaceHi()
-		echo "space highlighting: off"
-	else
-		:call SpaceHi()
-		echo "space highlighting: on"
-	endif
-endfunction
 
 
 "-------------------------------------------------------------------------------
@@ -195,7 +191,8 @@ endfunction
 "
 "  These commands and mapping will be reused no matter which code styling you use
 "
-com! ToggleSpaceHi :call ToggleSpaceHi()
+
+com! ToggleSpaceHighlights :call ToggleSpaceHighlights()
 
 
 " function that removes trailing whitespace upon saving of buffer
@@ -211,10 +208,9 @@ autocmd FileType php autocmd BufWritePre <buffer> :call StripTrailingWhitespace(
 " Only insert a map to ToggleSpaceHi if they don't already have a map to
 " the function and don't have something bound to F3
 "
-if !hasmapto('ToggleSpaceHi') && maparg("<F3>") == ""
-	map <silent> <unique> <F3> :ToggleSpaceHi<CR>
+
+if !hasmapto('ToggleSpaceHighlights') && maparg("<F3>") == ""
+    map <silent> <unique> <F3> :ToggleSpaceHighlights<CR>
 endif
-
-
 
 
