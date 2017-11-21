@@ -46,7 +46,9 @@ let b:trailingSpacesHighlight=0
 let b:leadingTabsHighlight=0
 
 
+"
 " Section: Default Global Vars
+"
 if !exists("g:spacehi_tabcolor")
     " highlight tabs with red underline
     let b:spacehi_tabcolor="ctermfg=white ctermbg=green gui=underline"
@@ -62,23 +64,26 @@ endif
 
 
 
-"================================================================================
+"===============================================================================
 "
 "	Whitespace Highlighting Functions
 "
-"================================================================================
+"===============================================================================
+
 
 "
-" Turn on highlighting for: Leading Tabs
+" Turn ON highlighting for: Leading Tabs
 "
 function! HighlightLeadingTabs()
-    " highlight tabs
     syntax match spaceHighlightLeadingTabs /^\t\+/ containedin=ALL
     execute("highlight spaceHighlightLeadingTabs " . b:spacehi_tabcolor)
 
     let b:leadingTabsHighlight=1
 endfunction
 
+"
+" Turn OFF highlighting for: Leading Tabs
+"
 function! DisableHighlightLeadingTabs()
     syntax clear spaceHighlightLeadingTabs
 
@@ -86,9 +91,8 @@ function! DisableHighlightLeadingTabs()
 endfunction
 
 
-
 "
-" Turn on highlighting for: Leading Spaces
+" Turn ON highlighting for: Leading Spaces
 "
 function! HighlightLeadingSpaces()
     syntax match spaceHighlightLeadingSpaces /^\ \+/ containedin=ALL
@@ -97,6 +101,9 @@ function! HighlightLeadingSpaces()
     let b:leadingSpacesHighlight=1
 endfunction
 
+"
+" Turn OFF highlighting for: Leading Spaces
+"
 function! DisableHighlightLeadingSpaces()
     syntax clear spaceHighlightLeadingSpaces
 
@@ -104,18 +111,19 @@ function! DisableHighlightLeadingSpaces()
 endfunction
 
 
-
 "
-" Turn on highlighting for: Trailing Spaces
+" Turn ON highlighting for: Trailing Spaces
 "
 function! HighlightTrailingSpaces()
-    " highlight trailing spaces
     syntax match spaceHighlightTrailingSpaces /\s\+$/ containedin=ALL
     execute("highlight spaceHighlightTrailingSpaces " . b:spacehi_spacecolor)
 
     let b:trailingSpacesHighlight=1
 endfunction
 
+"
+" Turn OFF highlighting for: Trailing Spaces
+"
 function! DisableHighlightTrailingSpaces()
     syntax clear spaceHighlightTrailingSpaces
 
@@ -123,16 +131,15 @@ function! DisableHighlightTrailingSpaces()
 endfunction
 
 
-
 "
-" Turn off highlighting of spaces and tabs
+" Turn ON space highlighting flag
 "
 function! EnableSpaceHighlighting()
     let b:spacehi=1
 endfunction
 
 "
-" Turn off highlighting of spaces and tabs
+" Turn OFF space highlighting flag
 "
 function! DisableSpaceHighlighting()
     let b:spacehi=0
@@ -145,16 +152,21 @@ endfunction
 "   to custom which whitespace characters should be highlighted
 "
 function! ToggleSpaceHighlights()
-	if exists("b:spacehi") && b:spacehi
-		:call TurnOffHighlights()
-		echo "space highlighting: off"
-	else
-		:call TurnOnHighlights()
-		echo "space highlighting: on"
-	endif
+    if exists("b:spacehi") && b:spacehi
+        :call TurnOffHighlights()
+        echo "space highlighting: off"
+    else
+        :call TurnOnHighlights()
+        echo "space highlighting: on"
+    endif
 endfunction
 
 
+"===============================================================================
+"
+"	Example Functions - Copy these to your vimrc file
+"
+"===============================================================================
 
 "
 " Turn On Highlights
@@ -167,7 +179,7 @@ endfunction
 "	:call HighlightLeadingSpaces()
 "	:call HighlightTrailingSpaces()
 "
-"   :call EnableSpaceHighlighting() " Keep this line
+"    :call EnableSpaceHighlighting() " Keep this line
 "endfunction
 
 "
@@ -181,15 +193,16 @@ endfunction
 "	:call DisableHighlightLeadingSpaces()
 "	:call DisableHighlightTrailingSpaces()
 "
-"   :call DisableSpaceHighlighting() " Keep this line
+"    :call DisableSpaceHighlighting() " Keep this line
 "endfunction
 
 
 
-"-------------------------------------------------------------------------------
+"===============================================================================
+"
 "	Miscellaneious Functions
-"-------------------------------------------------------------------------------
-
+"
+"===============================================================================
 
 
 "
@@ -204,17 +217,12 @@ function! StripTrailingWhitespace()
 endfunction
 
 
-
-
-"-------------------------------------------------------------------------------
+"===============================================================================
+"
 "	Function Key Mappings
-"-------------------------------------------------------------------------------
-
-
 "
-" Only insert a map to ToggleSpaceHighlights if they don't already have a map
-" to the function and don't have something bound to F3
-"
+"===============================================================================
+
 
 "
 " Only insert a map to StripTrailingWhitespace if they don't already have a map
