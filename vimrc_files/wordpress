@@ -201,10 +201,13 @@ if !hasmapto('ToggleSpaceHighlights') && maparg("<F3>") == ""
     map <silent> <unique> <F3> :call ToggleSpaceHighlights()<CR>
 endif
 
-if !hasmapto('StripTrailingWhitespace') && maparg("<F4>") == ""
-	map <silent> <unique> <F4> :StripTrailingWhitespace<CR>
+
+"
+" Only insert a map to StripTrailingWhitespace if they don't already have a map
+" to the function and don't have something bound to F9
+"
+
+if !hasmapto('StripTrailingWhitespace') && maparg("<F9>") == ""
+    map <silent> <unique> <F9> :call StripTrailingWhitespace()<CR>
 endif
-
-
-
 

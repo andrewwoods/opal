@@ -223,13 +223,6 @@ endfunction
 "
 "===============================================================================
 
-
-"
-" Only insert a map to StripTrailingWhitespace if they don't already have a map
-" to the function and don't have something bound to F9
-"
-if !hasmapto('StripTrailingWhitespace') && maparg("<F9>") == ""
-    map <silent> <unique> <F9> :call StripTrailingWhitespace()<CR>
-endif
-
+" SEE THE INDIVIDUAL VIMRC FILES TO THE KEY MAPPINGS.
+" THEY DON'T WORK WHEN THEY ARE KEPT HERE
 
