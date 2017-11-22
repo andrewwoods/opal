@@ -18,6 +18,7 @@
 "-------------------------------------------------------------------------------
 
 
+source ~/opal/vim_functions/spacehi.vim
 source ~/opal/vimrc_files/_ui-settings.vim
 source ~/opal/vimrc_files/_formatting.vim
 source ~/opal/vimrc_files/vimrc
@@ -45,8 +46,6 @@ set shiftwidth=4
 set noexpandtab
 
 
-highlight LeadingSpacesAndTrailingWhitespace ctermbg=yellow guibg=yellow
-match LeadingSpacesAndTrailingWhitespace /^ \+\|\s\+$/
 
 "
 " --[ Abbreviations ]--
@@ -86,41 +85,39 @@ match LeadingSpacesAndTrailingWhitespace /^ \+\|\s\+$/
 
 
 
-
 "
-" Turn on highlighting of leading and trailing spaces
+" Turn On Highlights
 "
-function! SpaceHi()
-	:call LeadingSpacesHi()
-	:call TrailingSpacesHi()
+" Copy this function to your vimrc file and uncomment it
+" Update the functions it calls, but not its function name
+"
+"
+function! TurnOnHighlights()
+	:call HighlightLeadingSpaces()
+	:call HighlightTrailingSpaces()
 
-	let b:spacehi = 1
+    :call EnableSpaceHighlighting() " Keep this line
 endfunction
 
 "
-" Turn off highlighting of leading and trailing spaces
+" Turn Off Highlights
 "
-function! NoSpaceHi()
-	syntax clear  spacehiLeadingSpaces
-	syntax clear  spacehiTrailingSpaces
+" Copy this function to your vimrc file and uncomment it
+" Update the functions it calls, but not its function name
+"
+"
+function! TurnOffHighlights()
+	:call DisableHighlightLeadingSpaces()
+	:call DisableHighlightTrailingSpaces()
 
-	let b:spacehi = 0
+    :call DisableSpaceHighlighting() " Keep this line
 endfunction
 
-" Toggle highlighting of spaces and tabs
-"
-"   This should be defined in different vimrc files
-"   to custom which whitespace characters should be highlighted
-"
-function! ToggleSpaceHi()
-	if exists("b:spacehi") && b:spacehi
-		:call NoSpaceHi()
-		echo "space highlighting: off"
-	else
-		:call SpaceHi()
-		echo "space highlighting: on"
-	endif
-endfunction
+
+" ======
+
+
+
 
 
 "-------------------------------------------------------------------------------
@@ -137,9 +134,6 @@ com! ToggleSpaceHi :call ToggleSpaceHi()
 " Only insert a map to ToggleSpaceHi if they don't already have a map to
 " the function and don't have something bound to F3
 "
-if !hasmapto('ToggleSpaceHi') && maparg("<F3>") == ""
-	map <silent> <unique> <F3> :ToggleSpaceHi<CR>
-endif
 
 
 

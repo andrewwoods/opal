@@ -17,6 +17,7 @@
 "
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
+source ~/opal/vim_functions/spacehi.vim
 source ~/opal/vimrc_files/_formatting.vim
 source ~/opal/vimrc_files/_ui-settings.vim
 source ~/opal/vimrc_files/vimrc
@@ -81,5 +82,38 @@ set expandtab
 :ab c_method public,protected,private function foo($p1, $p2 = '') {// do something;}
 :ab c_switch switch (condition) {case 1:  action1;break;default:  stuff;}kk<kkk
 :ab c_while while (condition) {  // do something;}
+
+
+"
+" --[ Functions ]--
+"
+
+"
+" Turn On Highlights
+"
+" Copy this function to your vimrc file and uncomment it
+" Update the functions it calls, but not its function name
+"
+"
+function! TurnOnHighlights()
+	:call HighlightLeadingTabs()
+	:call HighlightTrailingSpaces()
+
+    :call EnableSpaceHighlighting() " Keep this line
+endfunction
+
+"
+" Turn Off Highlights
+"
+" Copy this function to your vimrc file and uncomment it
+" Update the functions it calls, but not its function name
+"
+"
+function! TurnOffHighlights()
+	:call DisableHighlightLeadingTabs()
+	:call DisableHighlightTrailingSpaces()
+
+    :call DisableSpaceHighlighting() " Keep this line
+endfunction
 
 
