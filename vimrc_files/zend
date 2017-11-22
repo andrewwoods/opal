@@ -17,33 +17,14 @@
 "
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
+source ~/opal/vimrc_files/_formatting.vim
+source ~/opal/vimrc_files/_ui-settings.vim
 source ~/opal/vimrc_files/vimrc
+source ~/opal/vimrc_files/html
 
 "
 " --------[ General VIM ]--------
 "
-
-" Indentation rules
-set autoindent
-set smartindent
-
-" Pattern searches should ignore case
-set ignorecase
-
-" Turn on line numbering
-set number
-
-" helps you find matching { and ( when you type or cursor over ) } 
-set showmatch
-
-" Flash when errors occur 
-set visualbell
-
-" Show the line and column number of the cursor position
-set ruler
-
-" Put a message in the status line for insert, replace, and visual modes
-set showmode
 
 syntax on
 
@@ -56,9 +37,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-" Determine line endings
-set fileformat=unix
-set fileformats=unix
 
 " When inserting a tab, expand it to spaces
 set expandtab
@@ -99,4 +77,3 @@ set expandtab
 
 
 
-:source ~/opal/vimrc_files/html

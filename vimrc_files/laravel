@@ -2,7 +2,7 @@
 " Opal Project
 " VIM Editor Settings for Laravel
 " by Andrew Woods
-" Updated 2015 Jun 14 Sun
+" Updated 2017 Nov 21 Tue
 "
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 "
@@ -18,63 +18,17 @@
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
+source ~/opal/vimrc_files/_formatting.vim
+source ~/opal/vimrc_files/_ui-settings.vim
 source ~/opal/vimrc_files/vimrc
+source ~/opal/vimrc_files/html
 
 "
 " --------[ General VIM ]--------
 "
 
-" Pattern searches should ignore case
-set ignorecase
-
-" Turn on line numbering
-set number
-
-" helps you find matching { and ( when you type ) } - if on screen
-set showmatch
-
-" Flash when errors occur
-set visualbell
-
-" Show the line and column number of the cursor position
-set ruler
-
-" Put a message in the status line for insert, replace, and visual modes
-set showmode
-
 " Highlight the syntax of a language
 syntax on
-
-"
-" Ideally, lines will be 80 characters or less
-"
-highlight IdealColumn ctermfg=Black ctermbg=Green
-call matchadd('IdealColumn', '\%80v.')
-
-"
-" 120 characters is the soft limit. It's up to you to keep your lines under 120
-"
-highlight SoftColumn ctermfg=Black ctermbg=Yellow
-call matchadd('SoftColumn', '\%120v.\+')
-
-
-set autoindent
-set smartindent
-
-
-" Folding Settings
-set foldmarker={,} " This makes it work like other programming editors
-set foldmethod=marker
-set foldlevelstart=1
-
-
-set listchars=""
-set listchars+=tab:§¬
-set listchars+=eol:¶
-set listchars+=trail:¤
-set listchars+=extends:»
-set listchars+=precedes:«
-
 
 
 "
@@ -86,17 +40,9 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-" Determine line endings
-set fileformat=unix
-set fileformats=unix
 
 " When inserting a tab, expand it to spaces
 set expandtab
-
-highlight LeadingTabsAndTrailingWhitespace ctermbg=yellow guibg=yellow
-match LeadingTabsAndTrailingWhitespace /^\t\+\|\s\+$/
-
-
 
 "
 " --[ Abbreviations ]--
@@ -126,13 +72,8 @@ match LeadingTabsAndTrailingWhitespace /^\t\+\|\s\+$/
 
 :ab grepfunc !grep -n function %
 
-
-:source ~/opal/vimrc_files/html
-
 "
 " --[ Functions ]--
 "
-
-" @TODO add a function that removes trailing whitespace upon saving of buffer
 
 

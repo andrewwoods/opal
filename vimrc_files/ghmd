@@ -18,29 +18,13 @@
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
+source ~/opal/vimrc_files/_formatting.vim
+source ~/opal/vimrc_files/_ui-settings.vim
 source ~/opal/vimrc_files/vimrc
 
 "
 " --------[ General VIM ]--------
 "
-
-" Pattern searches should ignore case
-set ignorecase
-
-" Turn on line numbering
-set number
-
-" helps you find matching { and ( when you type ) } - if on screen
-set showmatch
-
-" Flash when errors occur
-set visualbell
-
-" Show the line and column number of the cursor position
-set ruler
-
-" Put a message in the status line for insert, replace, and visual modes
-set showmode
 
 " Highlight the syntax of a language
 syntax on

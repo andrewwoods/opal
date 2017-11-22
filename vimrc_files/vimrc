@@ -2,9 +2,9 @@
 " Opal project
 " VIM Editor Settings
 " by Andrew Woods
-" 2012 Mar 15 Thu
+" Updated 2017 Nov 21 Tue
 "
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+"-------------------------------------------------------------------------------
 "
 " Don't edit this file. Instead create .vimrc in your home directory and read
 " this file with the following line
@@ -14,83 +14,36 @@
 " If you want to change the value, copy the line from this file and change the
 " value in your .vimrc. This will allow you keep your changes after updates.
 "
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-:vmap <C-c> :s/^/\\\<\C\R\>/<CR>:nohlsearch<CR>
-:vmap <C-A-c> :s/\\<CR[>]//<CR>:nohlsearch<CR>
-
-source ~/opal/vim_functions/edit.vim
-
-
-"
-" GENERAL SETTINGS
-"================================================================================
-"
+"-------------------------------------------------------------------------------
 
 " Use VIM settings, rather than Vi
 " This is set first because it changes other options as a side effect
 set nocompatible
 
+
+source ~/opal/vim_functions/edit.vim
+source ~/opal/vimrc_files/_formatting.vim
+source ~/opal/vimrc_files/_ui-settings.vim
+source ~/opal/vimrc_files/html
+
+
+"
+" GENERAL SETTINGS
+"===============================================================================
+"
+
+
 " Handles the settings for indentation
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set autoindent smartindent
-
-" Turn on line numbering
-set number
-
-" Update space for line numbers
-set numberwidth=5
-
-" Display the filename
-set ls=2
-
-" Determine line endings
-set fileformat=unix
-set fileformats=unix,dos
 
 " When inserting a tab, expand it to the appropriate number of spaces
 set noexpandtab
 
-" Search case-insensitively
-set ignorecase
-
-" But be smart about it -- if I have any caps in my term, be case-sensitive.
-set smartcase
-
 " Turn paste mode on/off using <F2>
 set pastetoggle=<F2>
 
-" Highlight the current line
-set cursorline
-
-" helps you find matching { and ( when you type ) }
-set showmatch
-
-" Flash when errors occur
-set visualbell
-set errorbells
-
-" status bar settings
-set ruler
-set showmode
-
-" miscellaneous settings
-set shell=bash
-set nobackup
-set showcmd
-
-set hlsearch
-
-" custom status line, see :help 'statusline' for details
-if has("statusline")
-  set statusline=\<%n\>\ %f\ %h%m%r%=\ %-10.(%l,%c%V%)\ %P
-endif
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
 
 "
 " Different ways to write todays date
@@ -107,8 +60,6 @@ set splitright
 :iab <expr> time12 strftime("%I:%M:%S %p") " 10:20:00 PM
 :iab <expr> time24 strftime("%H:%M:%S") " 22:20:06
 
-:ab fold1 .!fold -s -w80
-:ab foldall %!fold -s -w80
 
 " Write a full php tag to prevent short tags
 :ab <?= <?php echo ; ?>
@@ -189,18 +140,6 @@ set splitright
 :ab youre you're
 
 
-
-
-"
-:ab -80- --------------------------------------------------------------------------------
-:ab =80= ================================================================================
-:ab x80x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-:ab *80* ********************************************************************************
-:ab ~80~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-:ab :80: ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:ab !80! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
 "
 " Lorem Ipsum text
 "
@@ -240,16 +179,12 @@ function! TurnOffHighlights()
 endfunction
 
 
-
-
 if !hasmapto('ToggleSpaceHighlights') && maparg("<F3>") == ""
     map <silent> <unique> <F3> :call ToggleSpaceHighlights()<CR>
 endif
 
+:vmap <C-c> :s/^/\\\<\C\R\>/<CR>:nohlsearch<CR>
+:vmap <C-A-c> :s/\\<CR[>]//<CR>:nohlsearch<CR>
 
 
-"
-" INSERT the HTML vim file
-"
-:source ~/opal/vimrc_files/html
 

@@ -2,7 +2,7 @@
 " Opal Project
 " VIM Editor Settings for PHP
 " by Andrew Woods
-" Updated 2015 Nov 24 Tue
+" Updated 2017 Nov 21 Tue
 "
 "-------------------------------------------------------------------------------
 "
@@ -19,13 +19,12 @@
 "
 " http://www.php-fig.org/psr/psr-2/
 "
-"===============================================================================
+"-------------------------------------------------------------------------------
 
 
-"
-" --------[ Load Other Files ]--------------------------------------------------
-"
 source ~/opal/vim_functions/spacehi.vim
+source ~/opal/vimrc_files/_formatting.vim
+source ~/opal/vimrc_files/_ui-settings.vim
 source ~/opal/vimrc_files/vimrc
 source ~/opal/vimrc_files/html
 source ~/opal/vimrc_files/css
@@ -34,65 +33,9 @@ source ~/opal/vimrc_files/css
 " --------[ General Vim Settings ]----------------------------------------------
 "
 
-" Highlight the syntax of a language
 syntax on
 
 colorscheme hotness
-
-" Pattern searches should ignore case
-set ignorecase
-
-" Turn on line numbering
-set number
-
-" helps you find matching { and ( when you type ) } - if on screen
-set showmatch
-
-" Flash when errors occur
-set visualbell
-
-" Show the line and column number of the cursor position
-set ruler
-
-" Put a message in the status line for insert, replace, and visual modes
-set showmode
-
-
-" Indentation Behavior 
-set autoindent
-set smartindent
-
-
-" Folding Settings
-set foldmarker={,} " This makes it work like other programming editors
-set foldmethod=marker
-set foldlevelstart=1
-
-
-set listchars=""
-set listchars+=tab:§¬
-set listchars+=eol:¶
-set listchars+=trail:¤
-set listchars+=extends:»
-set listchars+=precedes:«
-
-
-
-
-"
-" --------[ Column Highlighting ]-----------------------------------------------
-"
-
-" There MUST NOT be a hard limit on line length
-" the soft limit MUST be 120 characters
-" lines SHOULD be 80 characters or less.
-"
-highlight IdealColumn ctermfg=Black ctermbg=Green
-call matchadd('IdealColumn', '\%80v.')
-
-highlight SoftColumn ctermfg=Black ctermbg=Yellow
-call matchadd('SoftColumn', '\%120v.\+')
-
 
 
 "
@@ -104,14 +47,9 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-" Determine line endings
-set fileformat=unix
-set fileformats=unix
 
 " When inserting a tab, expand it to spaces
 set expandtab
-
-
 
 
 "
