@@ -6,7 +6,7 @@ autocmd BufNewFile,BufRead,BufWritePost *.php,*.phtml execute 'call PHPsynCHK()'
 set makeprg=php\ -l\ %
 set errorformat=%m\ in\ %f\ on\ line\ %l
 
-function HighlightBadPhp(...)
+function! HighlightBadPhp(...)
     if(exists('a:1'))
         let qflist=a:1
     else
@@ -42,7 +42,7 @@ function HighlightBadPhp(...)
     endif
 endfunction
 
-function FindNextNonBlankLine(startLine, direction)
+function! FindNextNonBlankLine(startLine, direction)
     let matchLine=a:startLine
     if a:direction == 'up'
         let lines=sort(range(1, a:startLine-1), "ReverseSort")
@@ -59,7 +59,7 @@ function FindNextNonBlankLine(startLine, direction)
     return matchLine
 endfunction
 
-function ReverseSort(i1, i2)
+function! ReverseSort(i1, i2)
     return a:i2 - a:i1
 endfunction
 
