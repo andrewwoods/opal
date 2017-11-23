@@ -141,32 +141,4 @@ endfunction
 
 
 
-"-------------------------------------------------------------------------------
-" Section: Commands
-"
-"  These commands and mapping will be reused no matter which code styling you use
-"
-com! ToggleSpaceHighlights :call ToggleSpaceHighlights()
-
-"-------------------------------------------------------------------------------
-" Section: Key Mappings
-"
-"
-" Only insert a map to ToggleSpaceHi if they don't already have a map to
-" the function and don't have something bound to F3
-"
-
-if !hasmapto('ToggleSpaceHighlights') && maparg("<F3>") == ""
-    map <silent> <unique> <F3> :call ToggleSpaceHighlights()<CR>
-endif
-
-
-"
-" Only insert a map to StripTrailingWhitespace if they don't already have a map
-" to the function and don't have something bound to F9
-"
-
-if !hasmapto('StripTrailingWhitespace') && maparg("<F9>") == ""
-    map <silent> <unique> <F9> :call StripTrailingWhitespace()<CR>
-endif
 

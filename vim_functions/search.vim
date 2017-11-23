@@ -19,7 +19,4 @@ function! ListFunctions()
 	exec 'grep function %'
 endfunction
 
-" com! ToggleSpaceHi call s:ToggleSpaceHi()
-
-" map <silent> <unique> <F4> :ListFunctions<CR>
 

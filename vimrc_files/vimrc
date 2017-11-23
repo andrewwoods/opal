@@ -41,9 +41,6 @@ set shiftwidth=4
 " When inserting a tab, expand it to the appropriate number of spaces
 set noexpandtab
 
-" Turn paste mode on/off using <F2>
-set pastetoggle=<F2>
-
 
 "
 " Different ways to write todays date
@@ -178,13 +175,51 @@ function! TurnOffHighlights()
     :call DisableSpaceHighlighting()
 endfunction
 
-
-if !hasmapto('ToggleSpaceHighlights') && maparg("<F3>") == ""
-    map <silent> <unique> <F3> :call ToggleSpaceHighlights()<CR>
-endif
-
 :vmap <C-c> :s/^/\\\<\C\R\>/<CR>:nohlsearch<CR>
 :vmap <C-A-c> :s/\\<CR[>]//<CR>:nohlsearch<CR>
 
+
+"
+" FUNCTION KEYS
+"===============================================================================
+"
+" The higher nubmer Fn keys are used because they're easier to hold down.
+"
+" Can't use <F12> because it's used by Dashboard
+"
+" Can't use <F11> because it's used to show the desktop
+"
+
+" Turn paste mode on/off using <F10>
+set pastetoggle=<F10>
+
+if !hasmapto('ToggleSpaceHighlights') && maparg("<F9>") == ""
+	" Turn the whitespace highlighting on/off
+	map <silent> <unique> <F9> :call ToggleSpaceHighlights()<CR>
+endif
+
+if !hasmapto('StripTrailingWhitespace') && maparg("<F8>") == ""
+	map <silent> <unique> <F8> :call StripTrailingWhitespace()<CR>
+endif
+
+if maparg("<F7>") == ""
+	" List the available functions
+	map <silent> <unique> <F7> :vimgrep function % \| copen<CR>
+endif
+
+if maparg("<F6>") == ""
+	" List the open buffers
+	map <silent> <unique> <F6> :ls<CR>
+endif
+
+if maparg("<F5>") == ""
+	" Go to the next buffer
+	map <silent> <unique> <F5> :bN<CR>
+endif
+
+if maparg("<F4>") == ""
+	" Go to the previous buffer
+	map <silent> <unique> <F4> :bp<CR>
+endif
 
 
