@@ -17,21 +17,28 @@
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-source ~/opal/vimrc_files/_formatting.vim
-source ~/opal/vimrc_files/_ui-settings.vim
-source ~/opal/vimrc_files/vimrc
+source ~/opal/vimrc_files/_formatting.vim 
+source ~/opal/vimrc_files/_ui-settings.vim 
+source ~/opal/vimrc_files/vimrc 
 
 "
 " --------[ General VIM ]--------
 "
 
+set textwidth=60
 
-" Highlight the syntax of a language
-syntax on
+" Don't try to highlight english prose 
+syntax off
 
 " Wrap lines without inserting characters in the content.  
 set linebreak
 
+
+" Do NOT indent when moving to the next line while writing code
+set noautoindent
+set nosmartindent
+
+" visually wrap text to fit within the window 
 set wrap
 
 
@@ -41,6 +48,13 @@ set softtabstop=4
 set shiftwidth=4
 
 
-" When inserting a tab, don't expand it to spaces
-set noexpandtab
+" When inserting a tab, expand it to spaces
+set expandtab
+
+" When searching for a term, the search will continue at the top of the file  
+set wrapscan
+
+" Auto-save
+set autowriteall
+
 
