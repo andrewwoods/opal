@@ -140,19 +140,20 @@ if maparg("<F7>") == ""
 	map <silent> <unique> <F7> :vimgrep function % \| copen<CR>
 endif
 
+
 if maparg("<F6>") == ""
 	" List the open buffers
-	map <silent> <unique> <F6> :ls<CR>
+	map <unique> <F6> :ls<CR>
 endif
 
 if maparg("<F5>") == ""
 	" Go to the next buffer
-	map <silent> <unique> <F5> :bN<CR>
+	map <silent> <unique> <F5> :bnext<CR>
 endif
 
 if maparg("<F4>") == ""
 	" Go to the previous buffer
-	map <silent> <unique> <F4> :bp<CR>
+	map <silent> <unique> <F4> :bprevious<CR>
 endif
 
 
