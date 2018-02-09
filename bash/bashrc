@@ -137,7 +137,7 @@ function say_done()
 function set_prompt()
 {
 	use_color=$2
-	has_custom_function=$(which my_set_prompt)
+	has_my_set_prompt=$(which my_set_prompt)
 
 	case "$1" in
 	brief)
@@ -187,7 +187,7 @@ function set_prompt()
 		;;
 
 	*)
-		if [ -n has_custom_function ]; then
+		if [[ -n has_my_set_prompt ]]; then
 			# do stuff
 			my_set_prompt $1 $2
 		else
