@@ -58,13 +58,21 @@ function _n
 }
 
 
+#
+# _p - write out the text with padding
+#
+function _p
+{
+	type_line "${PAD}$1"
+}
+
 
 #
 # _s - Speak the text aloud and highlight as it progresses
 #
 function _s
 {
-	prompt "${PAD}$1"
+	say -v Fred --interactive="cyan/black" "$@"
 }
 
 
@@ -140,9 +148,9 @@ function mach()
 function ncal3()
 {
 	ncal -my $(date -v-1m "+%m %Y")
-	echo ' '
+	_n
 	ncal
-	echo ' '
+	_n
 	ncal -my $(date -v+1m "+%m %Y")
 }
 
@@ -204,7 +212,7 @@ function type_file()
 #
 function type_line()
 {
-	$OPAL_DIR/typer "$1"
+	$OPAL_DIR/bin/typer "$1"
 }
 
 
