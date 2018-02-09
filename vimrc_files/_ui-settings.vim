@@ -15,8 +15,9 @@ set hlsearch
 " Pattern searches should ignore case
 set ignorecase
 
-" 
+" Stop vim from writing backup files
 set nobackup
+set nowritebackup
 
 " Turn on line numbering
 set number
@@ -45,7 +46,7 @@ set showmode
 " But be smart about it -- if I have any caps in my term, be case-sensitive.
 set smartcase
 
-" Flash when errors occur 
+" Flash when errors occur
 set visualbell
 
 "
@@ -54,8 +55,6 @@ set visualbell
 "
 
 " indent when moving to the next line while writing code
-set autoindent
-
 set smartindent
 
 "
@@ -85,33 +84,24 @@ set splitright
 "---------------------------------------
 "
 
-"
-" Highlight columns 82 with DarkGreen background
-"
-highlight ColorColumn ctermfg=White ctermbg=Green
-call matchadd('ColorColumn', '\%82v.')
 
 "
 " Ideally, lines will be 80 characters or less
 "
-highlight IdealColumn ctermfg=Black ctermbg=Green
-call matchadd('IdealColumn', '\%80v.')
+highlight IdealColumn ctermfg=White ctermbg=Yellow
+call matchadd('IdealColumn', '\%81v.')
 
 "
 " 120 characters is the soft limit. It's up to you to keep your lines under 120
 "
-highlight SoftColumn ctermfg=Black ctermbg=Yellow
-call matchadd('SoftColumn', '\%120v.\+')
+highlight SoftColumn ctermfg=White ctermbg=Red
+call matchadd('SoftColumn', '\%121v.')
 
 
-"
-" Highlight columns 120 and above like an error. It's bad form to have lines longer the 120 characters
-"
-match ErrorMsg '\%120v.\+'
 
 " custom status line, see :help 'statusline' for details
 if has("statusline")
-  set statusline=\<%n\>\ %f\ %h%m%r%=\ %-10.(%l,%c%V%)\ %P
+	set statusline=\<%n\>\ %f\ %m%r%h%w%=(%{&ff})\ line:%l\/%L\ (%p%%),\ col:%c\ \
 endif
 
 
