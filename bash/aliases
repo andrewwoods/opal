@@ -32,4 +32,5 @@ alias rbvi='vim -u ~/opal/vimrc_files/ruby'
 alias svi='vim -u ~/opal/vimrc_files/symfony'
 alias wpvi='vim -u ~/opal/vimrc_files/wordpress'
 alias zendvi='vim -u ~/opal/vimrc_files/zend'
-alias scribe='vim -u ~/opal/vimrc_files/scribe'
+alias writer='vim -u ~/opal/vimrc_files/writer'
+
