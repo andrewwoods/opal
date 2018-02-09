@@ -2,7 +2,7 @@
 " Opal Project
 " VIM Editor Settings for Wordpress
 " by Andrew Woods
-" Updated 2017 Nov 21 Tue
+" Updated 2018 Feb 08 Thu
 "
 "-------------------------------------------------------------------------------
 "
@@ -31,7 +31,6 @@ source ~/opal/vimrc_files/css
 
 syntax on
 
-colorscheme hotness
 
 
 "
