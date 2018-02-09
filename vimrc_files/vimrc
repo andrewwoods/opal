@@ -40,7 +40,7 @@ set softtabstop=4
 set shiftwidth=4
 
 " When inserting a tab, expand it to the appropriate number of spaces
-set noexpandtab
+set expandtab
 
 
 "
