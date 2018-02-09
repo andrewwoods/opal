@@ -8,8 +8,9 @@ export LINE_LENGTH=80;
 
 
 #
-# echo text with padding
+# _e - echo text with padding
 #
+# @param string
 function _e
 {
 	echo "${PAD}$1"
@@ -18,7 +19,10 @@ function _e
 
 
 #
-# Create a number of blank lines. Default = 1.
+# _l - Create a line prepended with padding.
+#
+# @param char  Optional. the character used to construc the line
+# @param int Optional. The length of the line
 #
 function _l
 {
@@ -46,7 +50,7 @@ function _l
 
 
 #
-# echo a blank line
+# _n - echo a blank line
 #
 function _n
 {
@@ -56,7 +60,7 @@ function _n
 
 
 #
-# echo text with padding
+# _s - Speak the text aloud and highlight as it progresses
 #
 function _s
 {
@@ -117,7 +121,7 @@ get_context(){
 
 
 #
-# mach displays the basic information about the machine/system you're using.
+# mach - displays the basic information about the machine/system you're using.
 #
 function mach()
 {
