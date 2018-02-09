@@ -241,6 +241,13 @@ function today()
 	'unix')
 		echo $(date +"%s")
 		;;
+	'custom'):
+		if [[ $2 == "date" ]]; then
+			echo $(date +"%Y %b %d %a")
+		else
+			echo $(date +"%Y %b %d %H:%M %z")
+		fi
+		;;
 	'iso'):
 		if [[ $2 == "date" ]]; then
 			echo $(date +"%Y-%m-%d")
