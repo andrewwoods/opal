@@ -19,6 +19,10 @@ set ignorecase
 set nobackup
 set nowritebackup
 
+" Write your swap files in this directory.
+" But make sure it exists
+set directory=$HOME/.vim/swp//
+
 " Turn on line numbering
 set number
 
