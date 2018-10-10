@@ -284,8 +284,17 @@ function today()
 		echo $(date +"%a %Y %b %d %l:%M %p")
 		;;
 	esac
+}
 
 
+function filedate()
+{
+
+    if [[ $1 == "time" ]]; then
+        echo $(date +"%Y-%m-%d-%H-%M-%S")
+    else
+        echo $(date +"%Y-%m-%d-%a")
+    fi
 }
 
 
