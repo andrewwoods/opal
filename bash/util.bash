@@ -263,9 +263,6 @@ function today()
 			echo $(date +"%Y-%m-%dT%H:%M:%S%z")
 		fi
 		;;
-	'filedate'):
-		echo $(date +"%Y%b%d%a")
-		;;
 	'world'):
 		if [[ $2 == "text" ]]; then
 			echo $(date +"%d %b %Y %H:%M:%S")
