@@ -296,6 +296,20 @@ function filedate()
 }
 
 
+#
+# filedate_to_day - Convert file stamp to determine the day of the week
+#
+function filedate_to_day
+{
+    if [[ $1 == "time" ]]; then
+		date -j -f '%Y-%m-%d-%H-%M-%S' $2 '+%a'
+    else
+		date -j -f '%Y-%m-%d-%a' $1 '+%a'
+    fi
+}
+
+
+
 
 #
 # get_os - Determine the Operating System. hat tip @alrra
