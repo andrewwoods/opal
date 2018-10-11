@@ -6,6 +6,7 @@
 
 [alias]
 	abort = merge —abort
+	changed = status -b -uno
 	co = checkout
 	ci = commit
 	export = help archive
