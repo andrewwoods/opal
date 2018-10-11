@@ -291,7 +291,7 @@ function filedate()
     if [[ $1 == "time" ]]; then
         echo $(date +"%Y-%m-%d-%H-%M-%S")
     else
-        echo $(date +"%Y-%m-%d-%a")
+        echo $(date +"%Y-%m-%d")
     fi
 }
 
@@ -304,7 +304,7 @@ function filedate_to_day
     if [[ $1 == "time" ]]; then
 		date -j -f '%Y-%m-%d-%H-%M-%S' $2 '+%a'
     else
-		date -j -f '%Y-%m-%d-%a' $1 '+%a'
+		date -j -f '%Y-%m-%d' $1 '+%a'
     fi
 }
 
