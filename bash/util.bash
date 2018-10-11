@@ -79,12 +79,13 @@ function _s
 
 #
 # cal3 - Display the previous month, current month, and next month
+#        in vertical format. running 'cal -3' displays the months horizontally
 #
 function cal3()
 {
-	cal -my $(date -v-1m "+%m %Y")
+	cal $(date -v-1m "+%m %Y")
 	cal
-	cal -my $(date -v+1m "+%m %Y")
+	cal $(date -v+1m "+%m %Y")
 }
 
 
