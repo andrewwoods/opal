@@ -1,7 +1,6 @@
 # Opal
 
-unix/linux dotfiles and utilities, reusable across machines and users, for
-people who love the command line
+A command line framework for Bash users
 
 
 Each developer creates their own dotfiles. There's often a lot of copying
@@ -9,7 +8,9 @@ between developers, and even between multiple configs for a specific developer.
 Opal is a framework that fixes this, by providing a cohesive set of files to
 create a solid foundation. This foundation can be easily re-used across users
 and machines. Opal is designed to be easily extended, allowing you to add your
-custom configuration on top of it.
+custom configuration on top of it. Put simply, Opal is a collection of
+unix/linux dotfiles and utilities, reusable across machines and users, for
+people who love the command line
 
 
 ## Getting Started
