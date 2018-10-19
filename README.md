@@ -127,7 +127,8 @@ prompt. Uses the parse_git_branch() function.
 output for each of the arguments depends on your system.
 
 
-	$ sho
+	$ show
+
 	arrays -  display known arrays
 	names - display function names only
 	defs - display functions names and their definitions
@@ -182,7 +183,7 @@ Present is a command line(CLI) tool written in Bash :)
 
 	$ present your_dir_name
 
-The 'your_dir_name' is a directory were you'll want to keep all the files
+The 'your\_dir\_name' is a directory were you'll want to keep all the files
 related to this individual presentation. It needs a file called
 *present-lib.bash*.  At the top of present-lib.bash, there needs to be an array
 called Slides.  Each index in the Slides array, is the name of a bash function
