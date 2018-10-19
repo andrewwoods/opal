@@ -4,7 +4,7 @@
 ################################################################################
 
 export OPAL_DIR="$HOME/opal"
-export OPAL_VERSION="2.0.0"
+export OPAL_VERSION="2.1.0"
 
 source $OPAL_DIR/bash/util.bash
 source $OPAL_DIR/bash/functions.developer.bash
