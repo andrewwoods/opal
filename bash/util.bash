@@ -188,7 +188,6 @@ function prompt()
 {
     type_line "$1"
     echo "The prompt function is deprecated, please use type_line instead" >&2
-    exit 1
 }
 
 
