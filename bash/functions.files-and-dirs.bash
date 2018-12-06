@@ -101,14 +101,17 @@ function lsd()
 
 
 #
-# mkcd - make a directory and go into it
+# mkcd - make a directory and go into it. For more than one directory
+#        go into the last one
 #
 # @param String $directory
 #
 function mkcd()
 {
-	mkdir -p "$@" && cd "$@"
+    last="${@: -1}";
+    mkdir -p "$@" && cd "${last}"
 }
+
 
 
 #
