@@ -8,9 +8,10 @@ set fileformats=unix,dos
 set listchars=""
 set listchars+=tab:§¬
 set listchars+=eol:¶
-set listchars+=trail:¤
+set listchars+=trail:∙
 set listchars+=extends:»
 set listchars+=precedes:«
+set listchars+=nbsp:¤
 
 
 " Fold one line so it fits within 80 characters
