@@ -395,3 +395,57 @@ termbg(){
 
 
 
+#
+# monday_date - Determine the date for Mon of the current week
+#
+function monday_date
+{
+	day_of_week=$(date '+%a')
+	format='+%Y %b %d %a'
+
+	if [[ $day_of_week == "Tue" ]]; then
+		date -v-1d "$format"
+	elif [[ $day_of_week == "Wed" ]]; then
+		date -v-2d "$format"
+	elif [[ $day_of_week == "Thu" ]]; then
+		date -v-3d "$format"
+	elif [[ $day_of_week == "Fri" ]]; then
+		date -v-4d "$format"
+	elif [[ $day_of_week == "Sat" ]]; then
+		date -v-5d "$format"
+	elif [[ $day_of_week == "Sun" ]]; then
+		date -v-6d "$format"
+	else
+		# Today is Monday
+		date  "$format"
+	fi
+}
+
+
+#
+# sunday_date - Determine the date for Sunday of the current week
+#
+function sunday_date
+{
+	day_of_week=$(date '+%a')
+	format='+%Y %b %d %a'
+
+	if [[ $day_of_week == "Mon" ]]; then
+		date -v+6d "$format"
+	elif [[ $day_of_week == "Tue" ]]; then
+		date -v+5d "$format"
+	elif [[ $day_of_week == "Wed" ]]; then
+		date -v+4d "$format"
+	elif [[ $day_of_week == "Thu" ]]; then
+		date -v+3d "$format"
+	elif [[ $day_of_week == "Fri" ]]; then
+		date -v+2d "$format"
+	elif [[ $day_of_week == "Sat" ]]; then
+		date -v+1d "$format"
+	else
+		# Today is Sunday
+		date "$format"
+	fi
+}
+
+
