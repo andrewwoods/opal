@@ -28,7 +28,8 @@ alias winnipeg="TZ=America/Winnipeg date '+%+ -- Canada, Winnipeg'"
 alias mexico_city="TZ=America/Mexico_City date '+%+ -- Mexico, Mexico City'"
 
 alias us_clocks="eastern; central; mountain; arizona; pacific"
-alias na_clocks="eastern; central; mountain; arizona; pacific; toronto; winnipeg; vancouver; mexico_city"
+alias na_clocks="eastern; central; mountain; arizona; pacific; _n; toronto; mexico_city; winnipeg; vancouver
+"
 
 #
 # South America
