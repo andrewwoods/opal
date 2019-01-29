@@ -10,7 +10,7 @@
 	co = checkout
 	ci = commit
 	export = help archive
-	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+	graph = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %C(bold cyan)(%cr)%Creset %C(cyan)<%an>%Creset' --abbrev-commit --all
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 	info = remote --verbose
 	last = log -1 HEAD
