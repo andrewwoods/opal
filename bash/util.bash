@@ -278,7 +278,7 @@ function today()
 		fi
 		;;
 	*)
-		echo $(date +"%a %Y %b %d %l:%M %p")
+		echo $(date +"%Y %b %d %a %k:%M")
 		;;
 	esac
 }
