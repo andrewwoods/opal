@@ -9,6 +9,7 @@
 	changed = status -b -uno
 	co = checkout
 	ci = commit
+	datelog = log --pretty=format:'%C(yellow)%h%Creset: %C(bold cyan)(%cd)%Creset%C(yellow)%d%Creset %s %C(cyan)<%an>%Creset' --date=format:'%Y-%m-%d %a %H:%M' --date-order  --all
 	export = help archive
 	graph = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %C(bold cyan)(%cr)%Creset %C(cyan)<%an>%Creset' --abbrev-commit --all
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
