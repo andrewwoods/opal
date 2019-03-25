@@ -47,7 +47,8 @@ included
 
 * [Change Log](CHANGELOG.md)
 * [License](LICENSE.txt) 
-
+* [Bash](docs/bash.md)
+* [Vim](docs/vim.md)
 
 ## Present
 
