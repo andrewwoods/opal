@@ -7,8 +7,12 @@
 * Functions
 	- [Utility Functions](bash-util.md)
 	- [Developer Functions](bash-developer-functions.md)
+* [Noob](bash-noob.md)
 
 ## Aliases
+
+An alias is a keyword that is substituted for a command. Usually, an alias is
+used for a longer, complicated, or hard to remember command.
 
 ### Clocks
 
