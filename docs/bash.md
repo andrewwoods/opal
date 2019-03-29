@@ -3,7 +3,42 @@
 
 ## Contents
 
+* Aliases
 * Functions
+	- [Utility Functions](bash-util.md)
+	- [Developer Functions](bash-developer-functions.md)
+
+## Aliases
+
+### Clocks
+
+There are many aliases that display the current time from around the world.  In
+most cases, it's name of a main city - paris, london, vancouver, tokyo. There
+are some that have names for the time zone they represent - utc, gmt, eastern,
+central, mountain, and pacific.
+
+```
+$ utc
+Mon Mar 25 21:17:13 UTC 2019 -- Universal Time
+```
+
+In addition to these, I've added some aliases that group some clocks by the continents.
+
+```
+$ na_clocks
+Mon Mar 25 17:17:08 EDT 2019 -- US Eastern
+Mon Mar 25 16:17:08 CDT 2019 -- US Central
+Mon Mar 25 15:17:08 MDT 2019 -- US Mountain
+Mon Mar 25 14:17:08 MST 2019 -- US Arizona
+Mon Mar 25 14:17:08 PDT 2019 -- US Pacific
+
+Mon Mar 25 17:17:08 EDT 2019 -- Canada, Toronto
+Mon Mar 25 15:17:08 CST 2019 -- Mexico, Mexico City
+Mon Mar 25 16:17:08 CDT 2019 -- Canada, Winnipeg
+Mon Mar 25 14:17:08 PDT 2019 -- Canada, Vancouver
+```
+
+
 
 
 ## Bash Functions
@@ -106,19 +141,22 @@ output for each of the arguments depends on your system.
 **TODAY**: display today's date in a number of formats. There are a few formats
 to start of with. specify the type and optionally the format.
 
-	# Default   Sat 2012 Mar 31 1:07 PM
-	# iso       2012 03 31 13:07:59
-	# iso text  2012-Mar-31 13:07:59
-	# uk        31/03/2012 13:07:59
-	# uk text   31 Mar 2012 13:07:59
-	# us        03/31/2012 1:07 PM
-	# uk text   Mar 31, 2012 1:07 PM
-	# unix      1333224479
+	# Default       2012 Mar 31 Sat 13:07
+	# custom        2012 Mar 31 13:07 -0700
+	# custom date   2012 Mar 31 Sat
+	# iso           2012-03-31T13:07:59-0700
+	# iso date      2012-03-31
+	# us            03/31/2012 13:07 PM
+	# us text       Mar 31, 2012 13:07 PM
+	# unix          1333224479
+	# world         31/03/2012 13:07:59
+	# world text    31 Mar 2012 13:07:59
+
 
 	$ today iso
 	2012 03 31 13:07:59
 
-	$ today uk text
+	$ today world text
 	31 Mar 2012 13:07:59
 
 **TOUCHX**: Create an empty file and make it executable
@@ -128,7 +166,7 @@ to start of with. specify the type and optionally the format.
 	$ touchx robots.txt
 
 **TRUNCATE**: Remove the *contents* of a file without deleting it.
-'Empty' is an alias
+'empty' is an alias
 
 	$ truncate myfile.txt
 
