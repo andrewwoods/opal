@@ -63,6 +63,7 @@ function punch()
 {
 	DATADIR=$(datadir)
 	DATESTAMP=$(date +"%a %Y-%m-%d %H:%M:%S")
+	MESG_OUT="Recorded at $DATESTAMP"
 
 	if [[ $1 == "in" ]]; then
 		MESG=$DATESTAMP
@@ -71,6 +72,7 @@ function punch()
 			MESG="$MESG $2"
 		fi
 		echo $MESG >> $DATADIR/timesheet.txt
+		echo $MESG_OUT
 
 	elif [[ $1 == "out" ]]; then
 		MESG=$DATESTAMP
@@ -79,6 +81,7 @@ function punch()
 			MESG="$MESG $2"
 		fi
 		echo $MESG >> $DATADIR/timesheet.txt
+		echo $MESG_OUT
 
 	elif [[ $1 == "note" ]]; then
 		MESG=$DATESTAMP
@@ -87,6 +90,7 @@ function punch()
 			MESG="$MESG $2"
 		fi
 		echo $MESG >> $DATADIR/timesheet.txt
+		echo $MESG_OUT
 
 	elif [[ $1 == "switch" ]]; then
 		MESG=$DATESTAMP
@@ -99,6 +103,7 @@ function punch()
 			MESG="$MESG $2"
 		fi
 		echo $MESG >> $DATADIR/timesheet.txt
+		echo $MESG_OUT
 
 	else
 		echo 'punch in OR punch out OR punch note OR punch switch'
