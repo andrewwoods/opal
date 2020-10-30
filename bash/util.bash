@@ -168,10 +168,10 @@ function preamble()
 
 	echo '###########################################################'
 	echo '# '
-	prompt "# Hello ${name}"
-	prompt "# You are logged into ${host}"
+	type_line "# Hello ${name}"
+	type_line "# You are logged into ${host}"
 	echo '# '
-	prompt "# Today is ${thisday}"
+	type_line "# Today is ${thisday}"
 	echo '# '
 	echo '###########################################################'
 }
