@@ -153,6 +153,14 @@ function set_prompt()
 		PS1+="\[\e[1;36m\] \$(parse_git_branch)\$ \[\e[0m\]"
 		;;
 
+	brief-no-color)
+		PS1="\[\e[1m\]\u"    # username
+		PS1+="\[\e[0m\]@"    # @
+		PS1+="\h "  # host
+		PS1+="\[\e[4m\]\W\[\e[0m\]"   # base directory name
+		PS1+="\[\e[1m\] \$(parse_git_branch) \$ \[\e[0m\]"
+		;;
+
 
 	full)
 		# andrewwoods@tardis.local ~/opal
