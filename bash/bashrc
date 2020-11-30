@@ -146,11 +146,20 @@ function set_prompt()
 
 	case "$1" in
 	brief)
-		PS1="\[\e[1;33m\]\u"    # username
-		PS1+="\[\e[1;37m\]@"    # @
-		PS1+="\[\e[1;32m\]\h "  # host
-		PS1+="\[\e[1;31m\]\W"   # base directory name
-		PS1+="\[\e[1;36m\] \$(parse_git_branch)\$ \[\e[0m\]"
+
+		if [[ -z "$use_color" || "$use_color" == "no" ]]; then
+			PS1="\[\e[1m\]\u"    # username
+			PS1+="\[\e[0m\]@"    # @
+			PS1+="\h "  # host
+			PS1+="\[\e[4m\]\W\[\e[0m\]"   # base directory name
+			PS1+="\[\e[1m\] \$(parse_git_branch) \$ \[\e[0m\]"
+		else
+			PS1="\[\e[1;33m\]\u"    # username
+			PS1+="\[\e[1;37m\]@"    # @
+			PS1+="\[\e[1;32m\]\h "  # host
+			PS1+="\[\e[1;31m\]\W"   # base directory name
+			PS1+="\[\e[1;36m\] \$(parse_git_branch) \$ \[\e[0m\]"
+		fi
 		;;
 
 	brief-no-color)
@@ -163,28 +172,53 @@ function set_prompt()
 
 
 	full)
-		# andrewwoods@tardis.local ~/opal
-		# Sat Jan 18 22:37:10 [626]$
-		PS1="\n"
-		PS1+="\[\033[1;35m\]\W\[\e[0m\]\n" # /path/to/dir
-		PS1+="\[\033[1;37m\]\u@\h\[\e[0m\]\n" # username@host.domain.com
-		PS1+="\[\033[1;36m\]\d \t \$(parse_git_branch)\$\[\e[0m\] "
+		if [[ -z "$use_color" || "$use_color" == "no" ]]; then
+            # andrewwoods@tardis.local ~/opal
+            # Sat Jan 18 22:37:10 [626]$
+            PS1="\n"
+            PS1+="\[\033[1m\]\W\[\e[0m\]\n" # /path/to/dir
+            PS1+="\u@\h\\n" # username@host.domain.com
+            PS1+="\[\033[1m\]\d \$(parse_git_branch)\$\[\e[0m\] "
+		else
+            # andrewwoods@tardis.local ~/opal
+            # Sat Jan 18 22:37:10 [626]$
+            PS1="\n"
+            PS1+="\[\033[1;35m\]\W\[\e[0m\]\n" # /path/to/dir
+            PS1+="\[\033[1;37m\]\u@\h\[\e[0m\]\n" # username@host.domain.com
+            PS1+="\[\033[1;36m\]\d\$(parse_git_branch) \$\[\e[0m\] "
+		fi
 		;;
 
 	root)
-		PS1="\n"
-		PS1+="\[\033[1;31m\]\u@\h\[\e[0m\]\n" # username@host
-		PS1+="\[\033[1;36m\]\w\[\e[0m\]\n"    # /path/to/dir
-		PS1+="\[\033[1;37m\]\D{%b %d %H:%M:%S}\[\e[0m\]"  # Sat Dec 19 16:23:24
-		PS1+=" \$ "
+		if [[ -z "$use_color" || "$use_color" == "no" ]]; then
+            PS1="\n"
+            PS1+="\[\033[1m\]\u@\h\[\e[0m\]\n" # username@host
+            PS1+="\w\n"    # /path/to/dir
+            PS1+="\[\033[1m\]\D{%b %d %H:%M:%S}\[\e[0m\]"  # Sat Dec 19 16:23:24
+            PS1+=" \$ "
+		else
+            PS1="\n"
+            PS1+="\[\033[1;31m\]\u@\h\[\e[0m\]\n" # username@host
+            PS1+="\[\033[1;36m\]\w\[\e[0m\]\n"    # /path/to/dir
+            PS1+="\[\033[1;37m\]\D{%b %d %H:%M:%S}\[\e[0m\]"  # Sat Dec 19 16:23:24
+            PS1+=" \$ "
+		fi
 		;;
 
 	compact)
-		PS1="\n"
-		PS1+="\[\033[1;32m\]\u\[\e[0m\]"
-		PS1+="@"
-		PS1+="\[\033[1;35m\]\h\[\e[0m\]\n"
-		PS1+="\[\033[1;36m\]\A \W\$(parse_git_branch)\[\e[0m\] \$ "
+		if [[ -z "$use_color" || "$use_color" == "no" ]]; then
+            PS1="\n"
+            PS1+="\[\033[1m\]\u\[\e[0m\]"
+            PS1+="@"
+            PS1+="\[\033[1m\]\h\[\e[0m\]\n"
+            PS1+="\[\033[1m\]\A\e[0m\] \[\033[4m\]\W\e[0m\]\[\033[1m\]\$(parse_git_branch)\[\e[0m\] \$ "
+		else
+            PS1="\n"
+            PS1+="\[\033[1;32m\]\u\[\e[0m\]"
+            PS1+="@"
+            PS1+="\[\033[1;35m\]\h\[\e[0m\]\n"
+            PS1+="\[\033[1;36m\]\A \W\$(parse_git_branch)\[\e[0m\] \$ "
+		fi
 		;;
 
 	basic)
@@ -192,11 +226,19 @@ function set_prompt()
 		;;
 
 	files)
-		PS1="\n"
-		PS1+="\[\033[1;31m\][\w]\[\e[0m\]\n"
-		PS1+="\[\033[1;37m\]\u@\h\[\e[0m\] "
-		PS1+="\[\033[1;36m\](\$(ls -1 | wc -l | sed 's: ::g') files)\[\e[0m\] "
-		PS1+="\$ "
+		if [[ -z "$use_color" || "$use_color" == "no" ]]; then
+            PS1="\n"
+            PS1+="\[\033[1m\][\w]\[\e[0m\]\n"
+            PS1+="\[\033[4m\]\u@\h\[\e[0m\] "
+            PS1+="\[\033[1m\](\$(ls -1 | wc -l | sed 's: ::g') files)\[\e[0m\] "
+            PS1+="\$ "
+		else
+            PS1="\n"
+            PS1+="\[\033[1;31m\][\w]\[\e[0m\]\n"
+            PS1+="\[\033[1;37m\]\u@\h\[\e[0m\] "
+            PS1+="\[\033[1;36m\](\$(ls -1 | wc -l | sed 's: ::g') files)\[\e[0m\] "
+            PS1+="\$ "
+		fi
 		;;
 
 	*)
