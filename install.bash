@@ -89,7 +89,7 @@ intro ~/.gitconfig
 
 echo '' >> ~/.gitconfig
 echo '[include]' >> ~/.gitconfig
-echo '	path = ~/opal/gitconfig' >> ~/.gitconfig
+echo '	path = ~/opal/git/config' >> ~/.gitconfig
 echo '' >> ~/.gitconfig
 
 
