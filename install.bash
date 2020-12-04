@@ -83,8 +83,18 @@ echo '' >> ~/.bashrc
 heading_box 'VARIABLES' ~/.bashrc 
 heading_box 'FUNCTIONS' ~/.bashrc
 heading_box 'ALIASES'  ~/.bashrc
+echo '# Look in ~/opal/bash/aliases-clocks.bash for a list of available clocks' >> ~/.bashrc
+echo 'alias clocks="utc; eastern; paris; tokyo"' >> ~/.bashrc
+
 heading_box 'MAIN' ~/.bashrc
 
+
+echo 'clocks' >> ~/.bashrc
+echo '' >> ~/.bashrc
+echo '# Assumes your terminal has a dark background. Change to light if needed  ' >> ~/.bashrc
+echo 'termbg dark' >> ~/.bashrc
+echo 'set_prompt brief' >> ~/.bashrc
+echo '' >> ~/.bashrc
 
 intro ~/.bash_profile 
 
@@ -92,7 +102,6 @@ echo '' >> ~/.bash_profile
 echo 'source ~/opal/bash/bash_profile' >> ~/.bash_profile
 echo '' >> ~/.bash_profile
 echo 'preamble' >> ~/.bash_profile
-echo 'otd' >> ~/.bash_profile
 echo '' >> ~/.bash_profile
 echo '' >> ~/.bash_profile
 
