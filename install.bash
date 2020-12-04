@@ -81,8 +81,8 @@ echo 'source ~/opal/opal.bash' >> ~/.bashrc
 echo '' >> ~/.bashrc
 
 heading_box 'VARIABLES' ~/.bashrc 
-heading_box 'ALIASES'  ~/.bashrc
 heading_box 'FUNCTIONS' ~/.bashrc
+heading_box 'ALIASES'  ~/.bashrc
 heading_box 'MAIN' ~/.bashrc
 
 
