@@ -1,0 +1,18 @@
+Subject line to say what you did
+
+Describe why you made this change. What was the motivation?
+
+Issue: <ID>
+
+#------------------------------------------------@----------------------
+# 
+#  * Write the subject line to sound like an authoritative command
+#  * Capitalize the subject line
+#  * Limit the subject line to 50 characters
+#  * Do not end the subject line with a period
+#  * Separate the subject from the body with a blank line
+#  * Use the body to explain what and why vs. how
+#  * Wrap the body at 72 characters
+#  * Include the issue number you're working on
+# 
+#

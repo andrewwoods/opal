@@ -89,7 +89,10 @@ intro ~/.gitconfig
 
 echo '' >> ~/.gitconfig
 echo '[include]' >> ~/.gitconfig
-echo '	path = ~/opal/git/config' >> ~/.gitconfig
+echo '    path = ~/opal/git/config' >> ~/.gitconfig
+echo '' >> ~/.gitconfig
+echo '[commit]' >> ~/.gitconfig
+echo '    template = ~/opal/git/commit-message' >> ~/.gitconfig
 echo '' >> ~/.gitconfig
 
 
