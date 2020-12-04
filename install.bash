@@ -14,6 +14,19 @@ function intro()
 }
 
 #
+# vim_intro ( filename )
+#
+function vim_intro()
+{
+    echo '' >> $1
+    echo '"' >> $1
+    echo '" Created by Opal on' `date`  >> $1
+    echo '"' >> $1
+    echo '' >> $1
+}
+
+
+#
 # heading_box ( title, filename )  
 #
 function heading_box()
@@ -98,11 +111,10 @@ echo '' >> ~/.gitconfig
 
 
 
-echo '' >> ~/.vimrc
-echo '"' >> ~/.vimrc 
-echo '" Created by Opal on' `date`  >> ~/.vimrc 
-echo '"' >> ~/.vimrc 
-echo '' >> ~/.vimrc 
+
+
+vim_intro ~/.vimrc
+
 echo ':source ~/opal/vimrc_files/vimrc' >> ~/.vimrc
 echo ':source ~/opal/vimrc_files/vimrc_html' >> ~/.vimrc
 echo '' >> ~/.vimrc
