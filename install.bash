@@ -100,8 +100,8 @@ echo '"' >> ~/.vimrc
 echo '" Created by Opal on' `date`  >> ~/.vimrc 
 echo '"' >> ~/.vimrc 
 echo '' >> ~/.vimrc 
-echo ':source ~/opal/vimrc' >> ~/.vimrc
-echo ':source ~/opal/vimrc_html' >> ~/.vimrc
+echo ':source ~/opal/vimrc_files/vimrc' >> ~/.vimrc
+echo ':source ~/opal/vimrc_files/vimrc_html' >> ~/.vimrc
 echo '' >> ~/.vimrc
 echo '"' >> ~/.vimrc
 echo '" Put your vim settings below here' >> ~/.vimrc
