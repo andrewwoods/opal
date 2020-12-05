@@ -1,8 +1,3 @@
-[color]
-	ui = true
-	status = true
-	grep = true
-	diff = true
 
 [alias]
 	abort = merge —abort
@@ -18,6 +13,13 @@
 	stat = status -sb
 	undo = checkout 
 	unstage = reset HEAD
+
+
+[color]
+	ui = true
+	status = true
+	grep = true
+	diff = true
 
 [core]
 	pager = less -x4
