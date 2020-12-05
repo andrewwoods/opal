@@ -125,7 +125,6 @@ echo '' >> ~/.gitconfig
 vim_intro ~/.vimrc
 
 echo ':source ~/opal/vimrc_files/vimrc' >> ~/.vimrc
-echo ':source ~/opal/vimrc_files/vimrc_html' >> ~/.vimrc
 echo '' >> ~/.vimrc
 echo '"' >> ~/.vimrc
 echo '" Put your vim settings below here' >> ~/.vimrc
