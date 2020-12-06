@@ -21,6 +21,19 @@
 	grep = true
 	diff = true
 
+; available colors: normal, black, red, green, yellow, blue, magenta, cyan, or white
+; available styles: bold, dim, ul (underline), blink, and reverse
+
+[color "diff"]
+    old = white bold
+    new = green bold
+
+[color "status"]
+    added = green bold
+    changed = cyan bold
+    untracked = yellow bold
+
+
 [core]
 	pager = less -x4
 
