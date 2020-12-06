@@ -12,10 +12,16 @@ custom configuration on top of it. Put simply, Opal is a collection of
 unix/linux dotfiles and utilities, reusable across machines and users, for
 people who love the command line
 
+## Current Version
+
+Version **2.2.0** is the latest version.
 
 ## Getting Started
 
 1. Download the opal and extract the tarball.
+
+    You can download the [Opal](https://github.com/andrewwoods/opal) Zip file
+    from Github with your browser, or run the following commands in your terminal
 
     `$ curl --location --output opal.zip https://github.com/andrewwoods/opal/archive/master.zip`
 

@@ -6,6 +6,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.2.0 - 2020-12-06
+
+## Added
+
+* Add Git commit message template
+
+## Updated
+
+* Fix some pathing issues related to file organiztion to prevent errors
+* Improve Git colors for dark theme
+* Improve the default .bashrc file created by install script
+* updated time related aliases
+
 
 ## 2.0.0 - 2017-01-02 
 
