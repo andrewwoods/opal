@@ -21,16 +21,14 @@ alias weather="telnet rainmaker.wunderground.com 3000"
 #
 
 alias bvi='vim -u ~/opal/vimrc_files/bash'
-alias civi='vim -u ~/opal/vimrc_files/codeigniter'
 alias druvi='vim -u ~/opal/vimrc_files/drupal'
 alias ghvi='vim -u ~/opal/vimrc_files/ghmd'
 alias jsvi='vim -u ~/opal/vimrc_files/js'
 alias lvi='vim -u ~/opal/vimrc_files/laravel'
+alias mdvi='vim -u ~/opal/vimrc_files/ghmd'
 alias phpvi='vim -u ~/opal/vimrc_files/php'
 alias pyvi='vim -u ~/opal/vimrc_files/python'
-alias rbvi='vim -u ~/opal/vimrc_files/ruby'
 alias svi='vim -u ~/opal/vimrc_files/symfony'
 alias wpvi='vim -u ~/opal/vimrc_files/wordpress'
-alias zendvi='vim -u ~/opal/vimrc_files/zend'
 alias writer='vim -u ~/opal/vimrc_files/writer'
 

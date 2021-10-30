@@ -25,7 +25,6 @@ source ~/opal/vim_functions/edit.vim
 source ~/opal/vimrc_files/_abbreviations.vim
 source ~/opal/vimrc_files/_formatting.vim
 source ~/opal/vimrc_files/_ui-settings.vim
-source ~/opal/vimrc_files/html
 
 
 "
@@ -57,16 +56,6 @@ set expandtab
 :iab <expr> usdate_text strftime("%B %d, %Y") " March 15, 2012
 :iab <expr> time12 strftime("%I:%M:%S %p") " 10:20:00 PM
 :iab <expr> time24 strftime("%H:%M:%S") " 22:20:06
-
-
-" Write a full php tag to prevent short tags
-:ab <?= <?php echo ; ?>
-:ab x_phpe <?php echo ; ?>hhhhha
-:ab x_phpoc <?php  ?>hhhha
-:ab x_php <?php
-:ab x_package /**<cr>* description of package<cr>*<cr>* @package YourPackage<cr>* @subpackage Subpackage name<cr>* @author firstname lastname <user@host.com><cr>*/
-:ab x_function /**<cr>* Describe your function<cr>*<cr>* @param String $one a necessary parameter<cr>* @param String optional $two an optional value<cr>* @return void<cr>*/
-
 
 
 

@@ -1,209 +1,0 @@
-" 
-" HTML for VIM 
-" 
-
-" ------------------------------------------------------------------------------
-" ----[ ENTITIES ]--------------------------------------------------------------
-" ------------------------------------------------------------------------------
- 
-:ab e_space &nbsp;
-:ab e_ibang &iexcl;  
-:ab e_cent &cent;
-:ab e_pound &pound;
-:ab e_currency &curren;
-:ab e_yen &yen;
-:ab e_pipe &brvbar;
-:ab e_section &sect;
-:ab e_copy &copy;
-:ab e_copyright &copy;
-:ab e_reg &reg;
-:ab e_registered &reg;
-:ab e_female &#x2640; " female symbol 
-:ab e_male &#x2642; " male symbol 
-
-" ---[ TYPOGRAPHY ]---
-:ab e_left_quote &ldquo;
-:ab e_right_quote &rdquo;
-:ab e_apos &rsquo;
-:ab e_ndash &ndash;
-:ab e_mdash &mdash;
-:ab e_ellipsis &hellip;
-:ab e_elipsis &hellip; " This is to help with mis-spellings
-
-
-
-" ------------------------------------------------------------------------------
-" ----[ DOCTYPES ]--------------------------------------------------------------
-" ------------------------------------------------------------------------------
- 
-:ab d_html5 <!DOCTYPE html>
-:ab d_xhtml_strict <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-:ab d_html4 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-:ab d_xhtml_strict <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-:ab d_xhtml_trans <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-:ab d_xhtml11 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-
-
-" ------------------------------------------------------------------------------
-" ----[ TAGS - HEAD ]-----------------------------------------------------------
-" ------------------------------------------------------------------------------
-:ab t_html <html lang="en"></html>
-:ab t_head <head></head>
-:ab t_title <title></title>hhhhhhhha
-:ab t_base <base></base>hhhhhhha
-:ab t_meta <meta name="" content="">
-:ab t_meta_charset <meta charset="UTF-8">
-:ab t_link <link rel="stylesheet" href="file.css">
-:ab t_script <script src="filename.js"></script>
-:ab t_style <style type="text/css"></style>
-
-
-" ------------------------------------------------------------------------------
-" ---[ TAGS - SECTIONS ]--------------------------------------------------------
-" ------------------------------------------------------------------------------
-:ab t_body <body></body>
-:ab t_article <article></article>hhhhhhhhhha
-:ab t_nav <nav></nav>ka
-:ab t_aside <aside></aside>ka
-:ab t_section <section></section>ka
-:ab t_header <header></header>ka
-:ab t_footer <footer></footer>ka
-:ab t_h1 <h1></h1>
-:ab t_h2 <h2></h2>
-:ab t_h3 <h3></h3>
-:ab t_h4 <h4></h4>
-:ab t_h5 <h5></h5>
-:ab t_h6 <h6></h6>
-:ab t_main <main></main>ka
-:ab t_address <address></address>hhhhhhhhhha
-
-
-" ------------------------------------------------------------------------------
-" ---[ TAGS - GROUPING ]--------------------------------------------------------
-" ------------------------------------------------------------------------------
-:ab t_p <p></p>hhhha
-:ab t_hr <hr />a
-:ab t_pre <pre></pre>hhhhhha
-:ab t_blockquote <blockquote></blockquote>ka
-:ab t_ul <ul></ul>
-:ab t_ol <ol></ol>
-:ab t_li <li></li>hhhhha
-:ab t_dd <dd></dd>
-:ab t_dl <dl></dl>
-:ab t_dt <dt></dt>hhhhha
-:ab t_figcaption <figcaption></figcaption>ka
-:ab t_figure <figure></figure>ka
-:ab t_div <div></div>ka
-
-
-" ------------------------------------------------------------------------------
-" --[ TAGS - TABLES ]-----------------------------------------------------------
-" ------------------------------------------------------------------------------
-:ab t_table <table summary=""></table>
-:ab t_caption <caption></caption>hhhhhhhhhha
-:ab t_thead <thead></thead>
-:ab t_tbody <tbody></tbody>
-:ab t_tfoot <tfoot></tfoot>
-:ab t_tr <tr></tr>ka
-:ab t_th <th></th>ka
-:ab t_td <td></td>hhhhha
-:ab t_col <col></col>hhhhhha
-:ab t_colgroup <colgroup></colgroup>hhhhhhhhhhhha
-
-
-" ------------------------------------------------------------------------------
-" ---[ TAGS - FORMS ]-----------------------------------------------------------
-" ------------------------------------------------------------------------------
-:ab t_form <form action="/your/path" method="post" accept-charset="utf-8"></form>
-:ab t_fieldset <fieldset></fieldset>ka
-:ab t_legend <legend></legend>hhhhhhhhha
-:ab t_label <label for=""></label>
-:ab t_input <input type="button/checkbox/color/date/datetime/datetime-local/email/file/hidden/image/month/number/password/radio/range/reset/search/submit/tel/text/time/url/week" id="" name="" value="">
-:ab t_button <button></button>hhhhhhhhha
-:ab t_select <select name=""></select>ka
-:ab t_datalist <datalist id=""></datalist>ka
-:ab t_optgroup <optgroup label="Group Name"></optgroup>ka
-:ab t_option <option value="option">option</option>hhhhhhhha
-:ab t_textarea <textarea></textarea>hhhhhhhhhhha
-
-:ab t_keygen <keygen name="" keytype=""></keygen>ka
-:ab t_output <output for="id-goes-here"></output>hhhhhhhha
-:ab t_progress <progress></progress>hhhhhhhhhhha
-:ab t_meter <meter></meter>hhhhhhhha
-
-
-" ------------------------------------------------------------------------------
-" ---[ TAGS - INTERACTIVE ]-----------------------------------------------------
-" ------------------------------------------------------------------------------
-:ab t_details <details></details>ka
-:ab t_summary <summary></summary>hhhhhhhhhha
-:ab t_command <command></command>ka
-:ab t_menu <menu></menu>ka
-
-
-" ------------------------------------------------------------------------------
-" ---[ TAGS - EDITS ]-----------------------------------------------------------
-" ------------------------------------------------------------------------------
-:ab t_del <del></del>hhhhhha
-:ab t_ins <ins></ins>hhhhhha
-
-
-" ------------------------------------------------------------------------------
-" ---[ TAGS - EMBEDDED ]--------------------------------------------------------
-" ------------------------------------------------------------------------------
-:ab t_img <img src="" alt="" />hhhhhhhhhhhha
-:ab t_iframe <iframe height="500" width="500" src="http://google.com"></iframe>
-:ab t_embed <embed src=""></embed>hhhhhhhha
-:ab t_object <object></object>hhhhhhhhha
-:ab t_param <param></param>ka
-:ab t_audio <audio></audio>ka
-:ab t_video <video></video>hhhhhhhha
-:ab t_source <source></source>hhhhhhhhha
-:ab t_canvas <canvas></canvas>hhhhhhhhha
-:ab t_track <track></track>hhhhhhhha
-:ab t_map <map></map>ka
-:ab t_area <area></area>ka
-
-
-" ------------------------------------------------------------------------------
-" ---[ TAGS - TEXT ]------------------------------------------------------------
-" ------------------------------------------------------------------------------
-:ab t_a <a href=""></a>hhhhha
-:ab t_em <em></em>hhhhha
-:ab t_strong <strong></strong>hhhhhhhhha
-:ab t_i <i></i>ka
-:ab t_b <b></b>ka
-:ab t_s <s></s>ka
-:ab t_u <u></u>ka
-:ab t_small <small></small>hhhhhhhha
-:ab t_abbr <abbr></abbr>hhhha
-:ab t_q <q></q>hhhha
-:ab t_cite <cite></cite>hhhhhhha
-:ab t_dfn <dfn></dfn>hhhhhha
-:ab t_sub <sub></sub>hhhhhha
-:ab t_sup <sup></sup>hhhhhha
-
-:ab t_time <time datetime="2015-06-01T23:30Z">June 1, 2015 at 23:30</time>ka
-:ab t_code <code></code>hhhhhhha
-:ab t_kbd <kbd></kbd>hhhhhha
-:ab t_samp <samp></samp>hhhhhhha
-:ab t_var <var></var>hhhhhha
-:ab t_mark <mark></mark>hhhhhhha
-:ab t_bdi <bdi></bdi>ka
-:ab t_bdo <bdo></bdo>ka
-:ab t_ruby <ruby></bdo>ka
-:ab t_span <span></span>hhhhhhha
-:ab t_br <br></br>ka
-:ab t_wbr <wbr></wbr>ka
-
-
-" ------------------------------------------------------------------------------
-" ---[ TAGS - CUSTOM ]----------------------------------------------------------
-" ------------------------------------------------------------------------------
-:ab t_acronym <abbr title=""></abbr>hhhhhhha
-:ab t_b <strong></strong>hhhhhhhha
-:ab t_comment <!-- -->
-:ab t_checkbox <input type="checkbox" name="" value="" id="">
-:ab t_radio <input type="radio" name="" value="" id="">
-
-

@@ -21,7 +21,6 @@ source ~/opal/vim_functions/spacehi.vim
 source ~/opal/vimrc_files/_formatting.vim
 source ~/opal/vimrc_files/_ui-settings.vim
 source ~/opal/vimrc_files/vimrc
-source ~/opal/vimrc_files/html
 
 "
 " --------[ General VIM ]--------
@@ -43,45 +42,10 @@ set shiftwidth=2
 set expandtab
 
 
-"
-" --[ Abbreviations ]--
-"
-
-" 
-" Never write short tags. 
-" This will make you do the right thing, in case you forget :)
-:ab <?= <?php echo ;?>hhha
-:ab x_phpe <?php echo ; ?>hhhhha
-:ab x_phpoc <?php  ?>hhhha
-
-" Create Function level PHPDoc 
-:ab x_package /*** description of package** @package YourPackage* @subpackage Subpackage name* @author firstname lastname <user@host.com>*/
-:ab x_function /*** Short Description** Long Description** @since version** @param  type $name  it does something* @return type it does something*/
-
-" Create Class level PHPDoc 
-:ab x_class /*** A brief one line description of your class** Describe what your class does at a high level, and how it can help the* user. The functions of your class should have their own phpdoc comments.*** @package  Example* @author   FIRST_NAME LAST_NAME <author@foobar.com>* @author   SECOND AUTHOR <second_author@foobar.com>* @access   public*/
 
 
-" Create Plugin level PHPDoc 
-:ab x_plugin /*Plugin name: NAME OF PLUGINPlugin URI: http://example.com/wp-plugins/plugin-name Version: 1.0 Author: FIRSTNAME LASTNAME Author URI: http://authorwebsite.comLicense: GPL2*/
 
-" Create a hook comment 
-:ab x_hook /** * Implements hook_HOOKNAME  */
 
-:ab c_class class NAME extends PARENT {// do something;}
-:ab c_define define('VALUE', '');
-:ab c_dowhile do {// do stuff} while ( condtion ); 
-:ab c_for for ( $i = 0; $i <= $max; $i++ ) {// do stuff}
-:ab c_foreach foreach ( $array_name AS $key => $value ) {// do stuff}
-:ab c_function function foo($p1, $p2 = '') {// do something;}
-:ab c_if if (condition) {  // do something;}
-:ab c_ifelse if (condition) {  // do something;}else {  // do something else;}
-:ab c_ifelsif if (condition) {// do something}elseif (condition){// do something}else{// do something else}
-:ab c_ifelseif if (condition) {  // do something;}elseif (condition) {  // do something;}else {  // do something else;}
-:ab c_member public $value = '';
-:ab c_method public,protected,private function foo($p1, $p2 = '') {// do something;}
-:ab c_switch switch (condition) {case 1:  action1;break;default:  stuff;}kk<kkk
-:ab c_while while (condition) {  // do something;}
 
 
 "
@@ -115,5 +79,4 @@ function! TurnOffHighlights()
 
     :call DisableSpaceHighlighting() " Keep this line
 endfunction
-
 
