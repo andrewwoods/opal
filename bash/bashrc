@@ -173,51 +173,72 @@ function set_prompt()
 
 	full)
 		if [[ -z "$use_color" || "$use_color" == "no" ]]; then
-            # andrewwoods@tardis.local ~/opal
-            # Sat Jan 18 22:37:10 [626]$
-            PS1="\n"
-            PS1+="\[\033[1m\]\W\[\e[0m\]\n" # /path/to/dir
-            PS1+="\u@\h\\n" # username@host.domain.com
-            PS1+="\[\033[1m\]\d \$(parse_git_branch)\$\[\e[0m\] "
+			# andrewwoods@tardis.local ~/opal
+			# Sat Jan 18 22:37:10 [626]$
+			PS1="\n"
+			PS1+="\[\033[1m\]\W\[\e[0m\]\n" # /path/to/dir
+			PS1+="\u@\h\\n" # username@host.domain.com
+			PS1+="\[\033[1m\]\d \$(parse_git_branch)\$\[\e[0m\] "
 		else
-            # andrewwoods@tardis.local ~/opal
-            # Sat Jan 18 22:37:10 [626]$
-            PS1="\n"
-            PS1+="\[\033[1;35m\]\W\[\e[0m\]\n" # /path/to/dir
-            PS1+="\[\033[1;37m\]\u@\h\[\e[0m\]\n" # username@host.domain.com
-            PS1+="\[\033[1;36m\]\d\$(parse_git_branch) \$\[\e[0m\] "
+			# andrewwoods@tardis.local ~/opal
+			# Sat Jan 18 22:37:10 [626]$
+			PS1="\n"
+			PS1+="\[\033[1;35m\]\W\[\e[0m\]\n" # /path/to/dir
+			PS1+="\[\033[1;37m\]\u@\h\[\e[0m\]\n" # username@host.domain.com
+			PS1+="\[\033[1;36m\]\d\$(parse_git_branch) \$\[\e[0m\] "
+		fi
+		;;
+
+	vertical)
+		if [[ -z "$use_color" || "$use_color" == "no" ]]; then
+			PS1="\n"
+			PS1+="\[\033[1m\]\u\[\e[0m\]"
+			PS1+="@"
+			PS1+="\[\033[1m\]\h\[\e[0m\]\n"
+			PS1+="\[\033[1m\]\$(parse_git_branch)\[\e[0m\]\n"
+			PS1+="\[\033[1m\]\D{%b %d %H:%M:%S}\e[0m\] \[\033[4m\]\W\e[0m\]\n"
+			PS1+="\$ "
+		else
+			PS1="\n"
+			PS1+="\[\033[1;32m\]\u\[\e[0m\]"
+			PS1+="@"
+			PS1+="\[\033[1;35m\]\h\[\e[0m\]\n"
+			PS1+="\[\033[1;37m\]\$(parse_git_branch)\[\e[0m\]\n"
+			PS1+="\[\033[1;37m\]\w\[\e[0m\]\n"    # /path/to/dir
+			PS1+="\[\033[1;36m\]\D{%b %d %H:%M:%S}\[\e[0m\]\n"
+			PS1+="\$ "
 		fi
 		;;
 
 	root)
 		if [[ -z "$use_color" || "$use_color" == "no" ]]; then
-            PS1="\n"
-            PS1+="\[\033[1m\]\u@\h\[\e[0m\]\n" # username@host
-            PS1+="\w\n"    # /path/to/dir
-            PS1+="\[\033[1m\]\D{%b %d %H:%M:%S}\[\e[0m\]"  # Sat Dec 19 16:23:24
-            PS1+=" \$ "
+			PS1="\n"
+			PS1+="\[\033[1m\]\u@\h\[\e[0m\]\n" # username@host
+			PS1+="\w\n"    # /path/to/dir
+			PS1+="\[\033[1m\]\D{%b %d %H:%M:%S}\[\e[0m\]"  # Sat Dec 19 16:23:24
+			PS1+=" \$ "
 		else
-            PS1="\n"
-            PS1+="\[\033[1;31m\]\u@\h\[\e[0m\]\n" # username@host
-            PS1+="\[\033[1;36m\]\w\[\e[0m\]\n"    # /path/to/dir
-            PS1+="\[\033[1;37m\]\D{%b %d %H:%M:%S}\[\e[0m\]"  # Sat Dec 19 16:23:24
-            PS1+=" \$ "
+			PS1="\n"
+			PS1+="\[\033[1;31m\]\u@\h\[\e[0m\]\n" # username@host
+			PS1+="\[\033[1;36m\]\w\[\e[0m\]\n"    # /path/to/dir
+			PS1+="\[\033[1;37m\]\D{%b %d %H:%M:%S}\[\e[0m\]"  # Sat Dec 19 16:23:24
+			PS1+=" \$ "
 		fi
 		;;
 
 	compact)
 		if [[ -z "$use_color" || "$use_color" == "no" ]]; then
-            PS1="\n"
-            PS1+="\[\033[1m\]\u\[\e[0m\]"
-            PS1+="@"
-            PS1+="\[\033[1m\]\h\[\e[0m\]\n"
-            PS1+="\[\033[1m\]\A\e[0m\] \[\033[4m\]\W\e[0m\]\[\033[1m\]\$(parse_git_branch)\[\e[0m\] \$ "
+			PS1="\n"
+			PS1+="\[\033[1m\]\u\[\e[0m\]"
+			PS1+="@"
+			PS1+="\[\033[1m\]\h\[\e[0m\]\n"
+			PS1+="\[\033[1m\]\A\e[0m\] \[\033[4m\]\W\e[0m\]\[\033[1m\]\$(parse_git_branch)\[\e[0m\] \$ "
 		else
-            PS1="\n"
-            PS1+="\[\033[1;32m\]\u\[\e[0m\]"
-            PS1+="@"
-            PS1+="\[\033[1;35m\]\h\[\e[0m\]\n"
-            PS1+="\[\033[1;36m\]\A \W\$(parse_git_branch)\[\e[0m\] \$ "
+			PS1="\n"
+			PS1+="\[\033[1;32m\]\u\[\e[0m\]"
+			PS1+="@"
+			PS1+="\[\033[1;35m\]\h\[\e[0m\]\n"
+			PS1+="\[\033[1;36m\]\A \W\$(parse_git_branch)\[\e[0m\] \$ "
 		fi
 		;;
 
@@ -227,27 +248,22 @@ function set_prompt()
 
 	files)
 		if [[ -z "$use_color" || "$use_color" == "no" ]]; then
-            PS1="\n"
-            PS1+="\[\033[1m\][\w]\[\e[0m\]\n"
-            PS1+="\[\033[4m\]\u@\h\[\e[0m\] "
-            PS1+="\[\033[1m\](\$(ls -1 | wc -l | sed 's: ::g') files)\[\e[0m\] "
-            PS1+="\$ "
+			PS1="\n"
+			PS1+="\[\033[1m\][\w]\[\e[0m\]\n"
+			PS1+="\[\033[4m\]\u@\h\[\e[0m\] "
+			PS1+="\[\033[1m\](\$(ls -1 | wc -l | sed 's: ::g') files)\[\e[0m\] "
+			PS1+="\$ "
 		else
-            PS1="\n"
-            PS1+="\[\033[1;31m\][\w]\[\e[0m\]\n"
-            PS1+="\[\033[1;37m\]\u@\h\[\e[0m\] "
-            PS1+="\[\033[1;36m\](\$(ls -1 | wc -l | sed 's: ::g') files)\[\e[0m\] "
-            PS1+="\$ "
+			PS1="\n"
+			PS1+="\[\033[1;31m\][\w]\[\e[0m\]\n"
+			PS1+="\[\033[1;37m\]\u@\h\[\e[0m\] "
+			PS1+="\[\033[1;36m\](\$(ls -1 | wc -l | sed 's: ::g') files)\[\e[0m\] "
+			PS1+="\$ "
 		fi
 		;;
 
 	*)
-		if [[ -n has_my_set_prompt ]]; then
-			# do stuff
-			my_set_prompt $1 $2
-		else
-			echo 'Whoops! brief, full, root, compact, basic, or files'
-		fi
+		echo 'Whoops! brief, full, root, compact, basic, or files'
 		;;
 	esac
 }
