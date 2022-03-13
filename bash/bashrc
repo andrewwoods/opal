@@ -32,7 +32,20 @@ GIT_EDITOR=$EDITOR
 SVN_EDITOR=$EDITOR
 VISUAL=$EDITOR
 
-export EDITOR GIT_EDITOR SVN_EDITOR VISUAL
+# NOTE: any options specified on the command line override these values
+LESS="-"
+LESS+="N"   # Causes a line number to be displayed at the beginning of each line
+LESS+="g"   # highlight only the particular string which was found 
+            #   by the last search command.
+LESS+="j4"
+LESS+="m"   # Causes less to prompt verbosely (like more), with the percent
+            #   into the file.
+LESS+="w"   # Temporarily highlights the first "new" line after a forward 
+            #   movement of a full page.
+LESS+="x4"  # Set tab stops to 4 spaces
+
+
+export EDITOR GIT_EDITOR SVN_EDITOR VISUAL LESS
 
 
 ################################################################################
