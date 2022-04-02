@@ -72,6 +72,7 @@ alias asia_clocks="hong_kong; shanghai; jerusalem; baghdad"
 alias auckland="TZ=Pacific/Auckland date '+%c -- Auckland'"
 alias tahiti="TZ=Pacific/Tahiti date '+%c -- Tahiti'"
 alias guam="TZ=Pacific/Guam date '+%c -- Guam'"
+alias honolulu="TZ=Pacific/Honolulu date '+%c -- Honolulu'"
 
-alias pac_clocks="auckland; tahiti; guam"
+alias pac_clocks="auckland; tahiti; guam; honolulu"
 
