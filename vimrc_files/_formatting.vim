@@ -1,4 +1,13 @@
 
+" Handles the settings for indentation
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+" When inserting a tab, expand it to the appropriate number of spaces
+set expandtab
+
+
 
 " Determine line endings
 set fileformat=unix
@@ -13,6 +22,14 @@ set listchars+=extends:»
 set listchars+=precedes:«
 set listchars+=nbsp:¤
 
+" This affects the auto-formatting of text and code.
+" THis disables auto formatting
+
+set formatoptions=tcq
+
+"
+
+"autocmd FileType * setlocal formatoptions-=t formatoptions-=c
 
 " Fold one line so it fits within 80 characters
 :ab fold1 .!fold -s -w80

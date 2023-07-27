@@ -6,7 +6,7 @@
 "
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 "
-" Don't edit this file. Instead create .vimrc_wordpress in your home directory
+" Don't edit this file. Instead create .vimrc_ghmd in your home directory
 " and read this file with the following line
 "
 " :source ~/opal/vimrc_files/ghmd
@@ -18,16 +18,43 @@
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-source ~/opal/vimrc_files/_formatting.vim
-source ~/opal/vimrc_files/_ui-settings.vim
-source ~/opal/vimrc_files/vimrc
 
-"
-" --------[ General VIM ]--------
-"
 
-" Highlight the syntax of a language
+" General Formatting
+" ------------------
 syntax on
+" Enable line wrapping
+set wrap                     
+set filetype=text
+set formatoptions=qn1jcro
+
+
+" Indentation Settings
+" --------------------
+set expandtab                " Convert each tab to spaces
+set shiftwidth=4             " The number of spaces to indent 
+set smartindent              " Automatically format source code 
+set softtabstop=4            " Display tabs as 4 spaces 
+set tabstop=4                " Display tabs as 4 spaces 
+
+"
+function! TurnOnHighlights()
+   :call HighlightLeadingTabs()
+   :call HighlightTrailingSpaces()
+
+   :call EnableSpaceHighlighting() " Keep this line
+endfunction
+
+"
+" Turn Off Highlights
+"
+function! TurnOffHighlights()
+   :call DisableHighlightLeadingTabs()
+   :call DisableHighlightTrailingSpaces()
+
+   :call DisableSpaceHighlighting() " Keep this line
+endfunction
+
 
 "===============================================================================
 "									MARKDOWN

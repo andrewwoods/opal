@@ -37,9 +37,8 @@ LESS="-"
 LESS+="N"   # Causes a line number to be displayed at the beginning of each line
 LESS+="g"   # highlight only the particular string which was found 
             #   by the last search command.
-LESS+="j4"
-LESS+="m"   # Causes less to prompt verbosely (like more), with the percent
-            #   into the file.
+LESS+="j.5" # .5 is the middle line. integer start from the top of screen 
+            #
 LESS+="w"   # Temporarily highlights the first "new" line after a forward 
             #   movement of a full page.
 LESS+="x4"  # Set tab stops to 4 spaces
@@ -74,7 +73,7 @@ export EDITOR GIT_EDITOR SVN_EDITOR VISUAL LESS
 #
 function punch()
 {
-	DATADIR=$(datadir)
+	DATADIR=$(datadir /Users/awoods/src/work/notebook-cbsi)
 	DATESTAMP=$(date +"%a %Y-%m-%d %H:%M:%S")
 	MESG_OUT="Recorded at $DATESTAMP"
 
@@ -132,10 +131,9 @@ function punch()
 #
 function say_done()
 {
+	message="It is Done!"
 	if [[ -n $1 ]]; then
 		message=$@
-	else
-		message="It is Done!"
 	fi
 
 	if [[ -n $(which say) ]]; then
@@ -150,12 +148,14 @@ function say_done()
 #
 # set_prompt - set the style of bash prompt used.
 #
+# @see http://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html#Controlling-the-Prompt
+#
+#
 # @param String $type Allowed values: brief, full, root, compact, basic or files
 #
 function set_prompt()
 {
 	use_color=$2
-	has_my_set_prompt=$(which my_set_prompt)
 
 	case "$1" in
 	brief)
@@ -245,8 +245,8 @@ function set_prompt()
 #
 function lskeys()
 {
-	prompt "my ssh keys"
-	ls ~/.ssh/*.pub
+	type_line "My SSH Keys"
+	ls -1 ~/.ssh/*.pub
 }
 
 

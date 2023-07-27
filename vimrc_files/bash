@@ -18,13 +18,9 @@
 "-------------------------------------------------------------------------------
 
 
-source ~/opal/vim_functions/spacehi.vim
-source ~/opal/vimrc_files/_ui-settings.vim
-source ~/opal/vimrc_files/_formatting.vim
-source ~/opal/vimrc_files/vimrc
-source ~/opal/vimrc_files/html
+source ~/.vimrc
 
-"
+
 " --------[ General VIM ]--------
 "
 
@@ -32,9 +28,6 @@ source ~/opal/vimrc_files/html
 syntax on
 
 
-"
-" --------[ Wordpress Settings ]--------
-"
 
 " Handles the settings for indentation
 set tabstop=4
@@ -51,38 +44,10 @@ set noexpandtab
 " --[ Abbreviations ]--
 "
 
-" 
-" Never write short tags. 
-" This will make you do the right thing, in case you forget :)
-:ab <?= <?php echo ;?>hhha
-:ab x_phpe <?php echo ; ?>hhhhha
-:ab x_phpoc <?php  ?>hhhha
 
-
-" Create Function level PHPDoc 
-:ab x_function ## Short Description## Long Description## @since version## @param  type $name  it does something# @return type        it does something#
-
-" Create App level PHPDoc 
-:ab x_app ## A brief one line description of your class## Describe what your class does at a high level, and how it can help the# user. The functions of your class should have their own phpdoc comments.### @package  Example# @author   FIRST_NAME LAST_NAME <author@foobar.com># @author   SECOND AUTHOR <second_author@foobar.com># @access   public#
-
-
-
-
-:ab c_add1 (( name++ ))
-:ab c_export export VALUE='';
-:ab c_if if [ condtion ]; then# do stufffi
-:ab c_ifelse if [ condtion ]then# do stuffelse#something elsefi
-:ab c_ifelif if [ condtion ]; then# do stuffelse if [ other_condtion ]; then// do other stuffelse//somethingfi
-:ab c_ifelseif if [ condtion ]; then# do stuffelse if [ other_condtion ]; then// do other stuffelse//somethingfi
-:ab c_dowhile do {# do stuff} while ( condtion ); 
-:ab c_for for (( EXP1; EXP2; EXP3 ))do# do stuffdone
-:ab c_forin for i in {1..5}do# do stuffdone
-:ab c_forincmd for i in $(seq 1 2 20)do# do stuffdone
-:ab c_foreach for i in $(seq 1 2 20)do# do stuffdone
-:ab c_function function foo() {# do something;}
-:ab c_switch switch ( $i ) {case 0:	// do stuffbreak;	hicase 1:	// do other stuffbreak;	hidefault:	echo "i equals 2";break;}
-:ab c_while while [ condition ]do#do stuffdone
-
+"
+" --[ Functions ]--
+"
 
 
 "
@@ -96,7 +61,7 @@ function! TurnOnHighlights()
 	:call HighlightLeadingSpaces()
 	:call HighlightTrailingSpaces()
 
-    :call EnableSpaceHighlighting() " Keep this line
+	:call EnableSpaceHighlighting() " Keep this line
 endfunction
 
 "
@@ -110,31 +75,7 @@ function! TurnOffHighlights()
 	:call DisableHighlightLeadingSpaces()
 	:call DisableHighlightTrailingSpaces()
 
-    :call DisableSpaceHighlighting() " Keep this line
+	:call DisableSpaceHighlighting() " Keep this line
 endfunction
-
-
-" ======
-
-
-
-
-
-"-------------------------------------------------------------------------------
-" Section: Commands
-"
-"  These commands and mapping will be reused no matter which code styling you use
-"
-com! ToggleSpaceHi :call ToggleSpaceHi()
-
-"-------------------------------------------------------------------------------
-" Section: Key Mappings
-"
-"
-" Only insert a map to ToggleSpaceHi if they don't already have a map to
-" the function and don't have something bound to F3
-"
-
-
 
 

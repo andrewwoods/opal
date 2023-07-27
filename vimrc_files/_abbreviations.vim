@@ -3,8 +3,33 @@
 "
 "-------------------------------------------------------------------------------
 
-ab JSE JavaScript  " pnuemonic is JS Expand
-ab jse JavaScript
+":ab JSE JavaScript  " pnuemonic is JS Expand
+":ab jse javascript
+
+:inoreabbrev jse javascript
+:inoreabbrev JSE JavaScript
+
+":inoreabbrev #em Pound
+:inoreabbrev _em underscore
+
+"
+" The leading characters of the {lhs} straings are not valid
+"
+":inoreabbrev !em Bang
+":inoreabbrev @em At Symbol
+":inoreabbrev $em Dollar
+":inoreabbrev %em Percent
+":inoreabbrev ^em Carat
+":inoreabbrev &em ampsersnand
+":inoreabbrev -em hypen
+":inoreabbrev +em plus
+":inoreabbrev =em equals
+":inoreabbrev /em slash
+":inoreabbrev .em dot
+":inoreabbrev >em right angle
+":inoreabbrev ,em comma
+":inoreabbrev  \em backslash
+
 
 
 " Common Mis-spellings
