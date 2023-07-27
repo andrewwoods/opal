@@ -23,10 +23,11 @@ function check_site()
 		interval=$2
 	fi
 
+	# the -m option limits a connection attempt to  number of seconds on OS X
 	while ! curl -m 5 $1 2>/dev/null;
 	do
 		sleep $interval;
-		ans=$(( i % 30 ))
+		ans=$(( i % 5 ))
 		if [ $ans == 0 ]; then
 			ts=$( date )
 			echo "Still down at $ts "

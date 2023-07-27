@@ -91,18 +91,16 @@ function cal3()
 
 
 #
-# datadir - Detect if dropbox is available
+# datadir - Detect where to save your data.
 #
 function datadir()
 {
-	DROPBOX="$HOME/Dropbox"
-
-	if [[ -d "$1" && -w "$1" ]]
+	if [[ -d "$HOME/Dropbox" && -w "$HOME/Dropbox" ]]
 	then
-		echo $1
-	elif [[ -d "$DROPBOX" && -w "$DROPBOX" ]]
+		echo "$HOME/Dropbox"
+	elif [[ -d "$HOME/data" && -w "$HOME/data" ]]
 	then
-		echo $DROPBOX
+		echo "$HOME/data"
 	else
 		echo $HOME
 	fi

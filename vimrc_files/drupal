@@ -17,9 +17,6 @@
 "
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
-source ~/opal/vim_functions/spacehi.vim
-source ~/opal/vimrc_files/_formatting.vim
-source ~/opal/vimrc_files/_ui-settings.vim
 source ~/opal/vimrc_files/vimrc
 
 "
@@ -27,6 +24,14 @@ source ~/opal/vimrc_files/vimrc
 "
 
 syntax on
+
+
+" Always edit in utf-8:
+set encoding=utf-8
+
+" Enable filetype detection
+filetype plugin on
+
 
 "
 " --------[ Drupal Settings ]--------
@@ -41,11 +46,37 @@ set shiftwidth=2
 " When inserting a tab, expand it to spaces
 set expandtab
 
+" /--
+
+" General settings
+set incsearch               "Find as you type
+set number                  "Show line numbers
+set wildmode=longest,list   "Complete longest string, then list alternatives
+set pastetoggle=<F2>        "Toggle paste mode
+set fileformats=unix        "Use Unix line endings
+set history=300             "Number of commands to remember
+set backspace=2             "Use standard backspace behavior
+set formatoptions=1         "Don't wrap text after a one-letter word
+set linebreak               "Break lines when appropriate
 
 
+set autoindent              "Auto indent based on previous line
 
+" Set filetype for Drupal PHP files.
+if has("autocmd")
+  augroup module
+    autocmd BufRead,BufNewFile *.module set filetype=php.drupal
+    autocmd BufRead,BufNewFile *.php set filetype=php.drupal
+    autocmd BufRead,BufNewFile *.install set filetype=php.drupal
+    autocmd BufRead,BufNewFile *.inc set filetype=php.drupal
+    autocmd BufRead,BufNewFile *.profile set filetype=php.drupal
+    autocmd BufRead,BufNewFile *.theme set filetype=php.drupal
+    autocmd BufRead,BufNewFile *.engine set filetype=php.drupal
+    autocmd BufRead,BufNewFile *.test set filetype=php.drupal
+  augroup END
+endif
 
-
+" \--
 
 
 "

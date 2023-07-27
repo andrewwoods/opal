@@ -17,43 +17,43 @@
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-source ~/.vimrc
+source ~/opal/vimrc_files/vimrc 
+source ~/opal/vimrc_files/_formatting.vim 
+source ~/opal/vimrc_files/_ui-settings.vim 
 
 "
 " --------[ General VIM ]--------
 "
 
-set textwidth=60
-set background=light
-" set termguicolors
-" set t_Co=256
 
-" General Formatting
-" ------------------
+set textwidth=72
+
 " Don't try to highlight english prose 
-" syntax on
-set formatoptions=qn1jcro
-set filetype=text
-" Enable line wrapping
-set wrap
+syntax off
 
 " Wrap lines without inserting characters in the content.  
 set linebreak
 
 
+" Do NOT indent when moving to the next line while writing code
+set noautoindent
+set nosmartindent
 
 " Have only one space after a period.
 set nojoinspaces
+
+" visually wrap text to fit within the window 
+set wrap
+
 
 " Handles the settings for indentation
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+
+
 " When inserting a tab, expand it to spaces
 set expandtab
-" Do NOT indent when moving to the next line while writing code
-set noautoindent
-set nosmartindent
 
 " When searching for a term, the search will continue at the top of the file  
 set wrapscan
@@ -61,4 +61,6 @@ set wrapscan
 " Auto-save
 set autowriteall
 
+" change the current working directory whenever you open a file,
+set autochdir
 

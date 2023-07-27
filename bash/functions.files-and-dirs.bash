@@ -269,12 +269,17 @@ function touchx()
 	touch $1 && chmod ugo+x $1
 
 	if [[ $2 == "phpinfo" ]]; then
-		echo "<?php phpinfo(); ?>" >> $1
+		echo "<?php" >> $1
+		echo "phpinfo();" >> $1
 	fi
 
 	if [[ $1 == 'robots.txt' ]]; then
 		echo "User-agent: *" >> $1
 		echo "Disallow: /" >> $1
+		echo "" >> $1
+	fi
+
+	if [[ $1 == '.gitkeep' ]]; then
 		echo "" >> $1
 	fi
 

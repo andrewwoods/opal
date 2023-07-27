@@ -4,7 +4,7 @@
 ################################################################################
 
 alias please='sudo'
-alias diff='diff -bBs'
+alias diff='diff -bBs -U 3'
 alias empty='truncate'
 alias ls='ls -F'
 alias lsdir='ls -l | awk '\''/^d/ {print $9;}'\'''
@@ -21,6 +21,7 @@ alias weather="telnet rainmaker.wunderground.com 3000"
 #
 
 alias bvi='vim -u ~/opal/vimrc_files/bash'
+alias docs='vim -u ~/opal/vimrc_files/docs.vim'
 alias druvi='vim -u ~/opal/vimrc_files/drupal'
 alias ghvi='vim -u ~/opal/vimrc_files/ghmd'
 alias jsvi='vim -u ~/opal/vimrc_files/js'

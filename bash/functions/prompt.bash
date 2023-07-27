@@ -53,7 +53,9 @@ function compact_prompt()
     PS1+="\[\033[1m\]\u\[\e[0m\]"
     PS1+="@"
     PS1+="\[\033[1m\]\h\[\e[0m\]\n"
-    PS1+="\[\033[1m\]\A\e[0m\] \[\033[4m\]\W\e[0m\]\[\033[1m\]\$(parse_git_branch)\[\e[0m\] \$ "
+    PS1+="\[\033[1m\]\A\[\e[0m\] "
+    PS1+="\[\033[4m\]\W\[\e[0m\]"
+    PS1+="\[\033[1m\]\n\$(parse_git_branch)\n\[\e[0m\]\$ "
 
     if [[ -n "$1" || "$1" == "color" ]]; then
         PS1="\n"

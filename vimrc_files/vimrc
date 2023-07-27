@@ -22,6 +22,7 @@ set nocompatible
 
 
 source ~/opal/vim_functions/edit.vim
+source ~/opal/vim_functions/spacehi.vim
 source ~/opal/vimrc_files/_abbreviations.vim
 source ~/opal/vimrc_files/_formatting.vim
 source ~/opal/vimrc_files/_ui-settings.vim
@@ -33,27 +34,22 @@ source ~/opal/vimrc_files/_ui-settings.vim
 "
 
 
-" Handles the settings for indentation
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-
-" When inserting a tab, expand it to the appropriate number of spaces
-set expandtab
-
-
 "
 " Different ways to write todays date
 "
 :iab <expr> now_date strftime("%Y %b %d %a")  " 2012 Mar 15 Thu
-:iab <expr> now_datetime strftime("%Y %b %d %a %I:%M%p") " 2012 Mar 15 Thu 10:16PM
-:iab <expr> epochtime strftime("%s") " 1331874188
+:iab <expr> now_time strftime("%Y %b %d %a %I:%M%p") " 2012 Mar 15 Thu 10:16PM
+:iab <expr> now_time12 strftime("%Y %b %d %a %I:%M%p") " 2012 Mar 15 Thu 10:16PM
+:iab <expr> now_time24 strftime("%Y %b %d %a %H:%M%z") " 2022 Nov 25 Fri 23:47-0500  
+:iab <expr> epoch_time strftime("%s") " 1331874188
 :iab <expr> iso_date strftime("%Y-%m-%d") " 2012-03-15
-:iab <expr> iso_datetime strftime("%Y-%m-%d %H:%M:%S") " 2012-03-15 22:03:23
-:iab <expr> ukdate strftime("%d/%m/%Y") " 15/03/2012
-:iab <expr> ukdate_text strftime("%d %B %Y") " 15 March 2012
-:iab <expr> usdate strftime("%m/%d/%Y") " 03/15/2012
-:iab <expr> usdate_text strftime("%B %d, %Y") " March 15, 2012
+:iab <expr> iso_time12 strftime("%Y-%m-%d %I:%M:%S%p%z") " 2022-11-25 11:59:13PM-0500  
+:iab <expr> iso_time24 strftime("%Y-%m-%d %H:%M:%S%z") " 2022-11-25 23:58:22-0500  
+:iab <expr> iso_ts   strftime("%Y-%m-%d %I:%M:%S%z") " 2022-11-25 11:20:28-0500 
+:iab <expr> uk_date strftime("%d/%m/%Y") " 15/03/2012
+:iab <expr> uk_date_text strftime("%d %B %Y") " 15 March 2012
+:iab <expr> us_date strftime("%m/%d/%Y") " 03/15/2012
+:iab <expr> us_date_text strftime("%B %d, %Y") " March 15, 2012
 :iab <expr> time12 strftime("%I:%M:%S %p") " 10:20:00 PM
 :iab <expr> time24 strftime("%H:%M:%S") " 22:20:06
 
@@ -97,52 +93,5 @@ function! TurnOffHighlights()
     :call DisableSpaceHighlighting()
 endfunction
 
-:vmap <C-c> :s/^/\\\<\C\R\>/<CR>:nohlsearch<CR>
-:vmap <C-A-c> :s/\\<CR[>]//<CR>:nohlsearch<CR>
-
 
 "
-" FUNCTION KEYS
-"===============================================================================
-"
-" The higher nubmer Fn keys are used because they're easier to hold down.
-"
-" Can't use <F12> because it's used by Dashboard
-"
-" Can't use <F11> because it's used to show the desktop
-"
-
-" Turn paste mode on/off using <F10>
-set pastetoggle=<F10>
-
-if !hasmapto('ToggleSpaceHighlights') && maparg("<F9>") == ""
-	" Turn the whitespace highlighting on/off
-	map <silent> <unique> <F9> :call ToggleSpaceHighlights()<CR>
-endif
-
-if !hasmapto('StripTrailingWhitespace') && maparg("<F8>") == ""
-	map <silent> <unique> <F8> :call StripTrailingWhitespace()<CR>
-endif
-
-if maparg("<F7>") == ""
-	" List the available functions
-	map <silent> <unique> <F7> :vimgrep function % \| copen<CR>
-endif
-
-
-if maparg("<F6>") == ""
-	" List the open buffers
-	map <unique> <F6> :ls<CR>
-endif
-
-if maparg("<F5>") == ""
-	" Go to the next buffer
-	map <silent> <unique> <F5> :bnext<CR>
-endif
-
-if maparg("<F4>") == ""
-	" Go to the previous buffer
-	map <silent> <unique> <F4> :bprevious<CR>
-endif
-
-

@@ -6,13 +6,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.3.0 - 2022-04-24
+
+### Added
+
+TODO Review the git log to complete this section
+
+### Updated
+
+TODO Review the git log to complete this section
+
+
 ## 2.2.0 - 2020-12-06
 
-## Added
+### Added
 
 * Add Git commit message template
 
-## Updated
+### Updated
 
 * Fix some pathing issues related to file organiztion to prevent errors
 * Improve Git colors for dark theme
