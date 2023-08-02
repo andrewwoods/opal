@@ -55,7 +55,13 @@ function htstatus() {
 # parse_git_branch - get the current git branch your on
 #
 function parse_git_branch() {
-    git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+    branch_name=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+    # trim white space
+    branch_name=$(echo -n "${branch_name}")
+
+    if [[ -n "$branch_name" ]]; then
+        echo -n "$branch_name"
+    fi
 }
 
 #
