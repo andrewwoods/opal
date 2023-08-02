@@ -64,3 +64,27 @@ function opal:log {
 
     echo "${log_date} ${level} ${message}"
 }
+
+function opal:success() {
+    local GREEN='\033[0;32m'
+    local NOCOLOR='\033[0m'
+    local MESSAGE="$1"
+
+    echo -e "${GREEN}${MESSAGE}${NOCOLOR}"
+}
+
+function opal:failure() {
+    local RED='\033[0;31m'
+    local NOCOLOR='\033[0m'
+    local MESSAGE="$1"
+
+    echo -e "${RED}${MESSAGE}${NOCOLOR}"
+}
+
+function opal:message() {
+    local CYAN='\033[0;36m'
+    local NOCOLOR='\033[0m'
+    local MESSAGE="$1"
+
+    echo -e "${CYAN}${MESSAGE}${NOCOLOR}"
+}
