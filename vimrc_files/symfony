@@ -1,135 +1,0 @@
-"
-" Opal Project
-" VIM Editor Settings for Symfony
-" by Andrew Woods
-" Updated 2015 Jun 17 Wed
-"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-"
-" Don't edit this file. Instead create .vimrc_symfony in your home directory and
-" read this file with the following line
-"
-" :source ~/opal/vimrc_files/symfony
-"
-" If you want to change the value, copy the line from this file and change the
-" value in your .vimrc_symfony. This will allow you keep your changes after
-" updates.
-"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-source ~/opal/vim_functions/spacehi.vim
-source ~/opal/vimrc_files/_formatting.vim
-source ~/opal/vimrc_files/_ui-settings.vim
-source ~/opal/vimrc_files/vimrc
-source ~/opal/vimrc_files/html
-
-"
-" --------[ General VIM ]--------
-"
-
-syntax on
-
-"
-" --------[ Symfony Settings ]--------
-"
-
-" Handles the settings for indentation
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-
-
-" When inserting a tab, expand it to spaces
-set expandtab
-
-
-"
-" --[ Abbreviations ]--
-"
-
-" 
-" Never write short tags. 
-" This will make you do the right thing, in case you forget :)
-:ab <?= <?php echo ;?>hhha
-:ab x_phpe <?php echo ; ?>hhhhha
-:ab x_phpoc <?php  ?>hhhha
-
-" Create Function level PHPDoc 
-:ab x_package /*** description of package** @package YourPackage* @subpackage Subpackage name* @author firstname lastname <user@host.com>*/
-:ab x_function /*** Short Description** Long Description** @since version** @param  type $name  it does something* @return type it does something*/
-
-" Create Class level PHPDoc 
-:ab x_class /*** A brief one line description of your class** Describe what your class does at a high level, and how it can help the* user. The functions of your class should have their own phpdoc comments.*** @package  Example* @author   FIRST_NAME LAST_NAME <author@foobar.com>* @author   SECOND AUTHOR <second_author@foobar.com>* @access   public*/
-
-
-" Create Plugin level PHPDoc 
-:ab x_plugin /*Plugin name: NAME OF PLUGINPlugin URI: http://example.com/wp-plugins/plugin-name Version: 1.0 Author: FIRSTNAME LASTNAME Author URI: http://authorwebsite.comLicense: GPL2*/
-
-" Keywords
-:ab TRUE true
-:ab True true
-:ab FALSE false
-:ab False false
-:ab NULL null
-:ab Null null
-
-
-" Create a hook comment 
-:ab x_hook /** * Implements hook_HOOKNAME  */
-
-:ab c_class class MyName extends PARENT {// do something;}
-:ab c_const const VALUE = '';
-:ab c_define define('VALUE', '');
-:ab c_dowhile do {// do stuff} while (condtion); 
-:ab c_for for ($i = 0; $i <= $max; $i++) {// do stuff}
-:ab c_foreach foreach ($array_name AS $key => $value) {// do stuff}
-:ab c_function function fooBar($p1, $p2 = '') {// do something;}
-:ab c_if if (condition) {// do something;}
-:ab c_ifelse if (condition) {// do something;} else {// do something else;}
-:ab c_ifelsif if (condition) {// do something} elseif (condition) {// do something} else {// do something else}
-:ab c_ifelseif if (condition) {// do something;} elseif (condition) {// do something;} else {// do something else;}
-:ab c_member public $value = '';
-:ab c_method astract final public,protected,private static function foo($p1, $p2 = ''){// do something;}
-:ab c_namespace namespace Vendor\Package; 
-:ab c_switch switch (condition) {case 1:  action1;break;default:  stuff;}kk<kkk
-
-:ab c_throw throw new Exception ('Uh Oh') 
-:ab c_try try (condition) {// do something;} catch (Exception $e) {// Catch body}
-:ab c_use use OtherVendor\Package; 
-:ab c_while while (condition) {// do something;}
-
-
-"
-" --[ Functions ]--
-"
-
-
-"
-" Turn On Highlights
-"
-" Copy this function to your vimrc file and uncomment it
-" Update the functions it calls, but not its function name
-"
-"
-function! TurnOnHighlights()
-	:call HighlightLeadingTabs()
-	:call HighlightTrailingSpaces()
-
-    :call EnableSpaceHighlighting() " Keep this line
-endfunction
-
-"
-" Turn Off Highlights
-"
-" Copy this function to your vimrc file and uncomment it
-" Update the functions it calls, but not its function name
-"
-"
-function! TurnOffHighlights()
-	:call DisableHighlightLeadingTabs()
-	:call DisableHighlightTrailingSpaces()
-
-    :call DisableSpaceHighlighting() " Keep this line
-endfunction
-
-
