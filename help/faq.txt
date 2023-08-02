@@ -1,52 +1,43 @@
 
 http://en.wikipedia.org/wiki/Opal
 
-Q: Why Opal? 
+Q: Why Opal?
 
 It's a nice short name. Besides 'ruby' was taken :)
 
 ********************************************************************************
 
 
-Q: What does the OPAL_NOOB variable do?
-
-It determines if you want to load noob.bash, which has some conveniences for 
-DOS users to learn UNIX. Also, some prompting was added to help prevent some 
-accidents from occurring.
-
-********************************************************************************
-
-
 Q: How can Opal help me?
 
-It creates a nice unix setup quickly. It's great when you want a familiar 
-environment on a new machine. If you're a web developer, there are several 
-vimrc files to help you comply to various coding standard - including 
-Wordpress, Drupal, and CodeIgniter. There are also several utility command to 
-make things easier - extract, mkcd, bak, and punch are just a few of them.  
-There's even a couple of easter eggs :) vimrc_html makes it easy for to create 
+It creates a nice unix setup quickly. It's great when you want a familiar
+environment on a new machine. If you're a web developer, there are several
+vimrc files to help you comply to various coding standard - including
+Wordpress, Drupal, and CodeIgniter. There are also several utility command to
+make things easier - extract, mkcd, bak, and punch are just a few of them.
+There's even a couple of easter eggs :) vimrc_html makes it easy for to create
 tags correctly, with a poor mans's autocomplete
 
 ********************************************************************************
 
 
-Q: Why did I create Opal? 
+Q: Why did I create Opal?
 
-I wanted to create a reusable unix setup I could use across machines. Also, I 
-thought it'd be a good opportunity for an open source project. I see a lot of 
-people share their dotfiles, and there's a lot of repetition, but I didn't feel 
+I wanted to create a reusable unix setup I could use across machines. Also, I
+thought it'd be a good opportunity for an open source project. I see a lot of
+people share their dotfiles, and there's a lot of repetition, but I didn't feel
 they were useful enough.
 
 ********************************************************************************
 
 
-Q: What if I'm not a developer? 
+Q: What if I'm not a developer?
 
-The punch command is great. think punching a timecard. it clocks you in and 
-out.  You can even make notes about what you're working on. Use 'say_done' to 
-inform you when a long running command is complete. 'bak' will create a backup 
-of your file or directory. 'truncate' will remove the contents of a file for 
-you - like a huge log file.  Also, 'define' is used to get the defintion of a 
+The punch command is great. think punching a timecard. it clocks you in and
+out.  You can even make notes about what you're working on. Use 'say_done' to
+inform you when a long running command is complete. 'bak' will create a backup
+of your file or directory. 'truncate' will remove the contents of a file for
+you - like a huge log file.  Also, 'define' is used to get the defintion of a
 word.
 
 ********************************************************************************
@@ -60,19 +51,14 @@ http://www.gnu.org/licenses/gpl-3.0.html
 ********************************************************************************
 
 
-Q: I'm getting an error "/usr/bin/php: bad interpreter: No such file or directory". 
+Q: I'm getting an error "/usr/bin/php: bad interpreter: No such file or directory".
 How do I get rid of it?
 
 
-The error is occuring because /usr/bin/php is not found on your system. 
-Although /usr/bin/php is the most popular location for the PHP interpreter, it 
-can be installed in another location.  To discover where it is installed, use 
-the which command. Then edit the file that caused the error which the new PHP 
+The error is occuring because /usr/bin/php is not found on your system.
+Although /usr/bin/php is the most popular location for the PHP interpreter, it
+can be installed in another location.  To discover where it is installed, use
+the which command. Then edit the file that caused the error which the new PHP
 location.
 
 $ which php
-
-
-
-
-

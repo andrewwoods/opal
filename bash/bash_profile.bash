@@ -1,9 +1,7 @@
-
 #
 # ~/.bash_profile - this file runs with login shells
 #
 
 if [ -f ~/.bashrc ]; then
-	source ~/.bashrc
+    source ~/.bashrc
 fi
-

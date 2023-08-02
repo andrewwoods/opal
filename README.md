@@ -52,7 +52,7 @@ included
 ### Project files
 
 * [Change Log](CHANGELOG.md)
-* [License](LICENSE.txt) 
+* [License](LICENSE.txt)
 * [Bash](docs/bash.md)
 * [Vim](docs/vim.md)
 
@@ -67,5 +67,3 @@ related to this individual presentation. It needs a file called
 *present-lib.bash*.  At the top of present-lib.bash, there needs to be an array
 called Slides.  Each index in the Slides array, is the name of a bash function
 that you write.  This is where your magic happens.
-
-

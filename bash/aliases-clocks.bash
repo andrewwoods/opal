@@ -13,7 +13,6 @@
 alias utc="TZ=UTC date '+%c -- Universal Time'"
 alias gmt="TZ=GMT date '+%c -- Greenwich Mean Time'"
 
-
 #
 # North America
 #
@@ -75,4 +74,3 @@ alias guam="TZ=Pacific/Guam date '+%c -- Guam'"
 alias honolulu="TZ=Pacific/Honolulu date '+%c -- Honolulu'"
 
 alias pac_clocks="auckland; tahiti; guam; honolulu"
-
