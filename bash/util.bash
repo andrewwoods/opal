@@ -103,15 +103,15 @@ get_context() {
 #
 function mach() {
     echo -e "\nMachine information:"
-                                    uname -a
+    uname -a
     echo -e "\nUsers logged on:"
-                                w -h
+    w -h
     echo -e "\nCurrent date :"
-                              date
+    date
     echo -e "\nMachine status :"
-                                uptime
+    uptime
     echo -e "\nFilesystem status :"
-                                  df -h
+    df -h
 }
 
 #
@@ -200,7 +200,7 @@ function today() {
         echo $(date +"%s")
         ;;
     'custom')
-          :
+        :
         if [[ $2 == "date" ]]; then
             echo $(date +"%Y %b %d %a")
         else
@@ -216,7 +216,7 @@ function today() {
         fi
         ;;
     'world')
-         :
+        :
         if [[ $2 == "text" ]]; then
             echo $(date +"%d %b %Y %H:%M:%S")
         else
@@ -237,8 +237,18 @@ function today() {
     esac
 }
 
-function filedate() {
+function show_date() {
 
+    if [[ -z $1 ]]; then
+        echo "You forgot to the time in unix seconds"
+        return 1
+    fi
+    unixtime=$1
+
+    date -r $unixtime
+}
+
+function filedate() {
     if [[ $1 == "time" ]]; then
         echo $(date +"%Y-%m-%d-%H-%M-%S")
     else
@@ -386,4 +396,41 @@ function sunday_date {
         # Today is Sunday
         date "$format"
     fi
+}
+
+function opal_success() {
+    RED='\033[0;31m'   #'0;31' is Red's ANSI color code
+    GREEN='\033[0;32m' #'0;32' is Green's ANSI color code
+    NOCOLOR='\033[0m'
+    MESSAGE=$1
+
+    echo -e "${GREEN}${MESSAGE}${NOCOLOR}"
+}
+
+function opal_failure() {
+    RED='\033[0;31m' #'0;31' is Red's ANSI color code
+    NOCOLOR='\033[0m'
+    MESSAGE=$1
+
+    echo -e "${RED}${MESSAGE}${NOCOLOR}"
+}
+
+function opal_error() {
+    opal_failure "$@"
+}
+
+function opal_info() {
+    BLUE='\033[34;1m' #'0;31' is Red's ANSI color code
+    NOCOLOR='\033[0m'
+    MESSAGE=$1
+
+    echo -e "${BLUE}${MESSAGE}${NOCOLOR}"
+}
+
+function opal_warning() {
+    MAGENTA='\033[35;1m' #'0;31' is Red's ANSI color code
+    NOCOLOR='\033[0m'
+    MESSAGE=$1
+
+    echo -e "${MAGENTA}${MESSAGE}${NOCOLOR}"
 }
