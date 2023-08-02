@@ -1,126 +1,0 @@
-"
-" Opal Project
-" VIM Editor Settings for PHP
-" by Andrew Woods
-" Updated 2018 Feb 08 Thu
-"
-"-------------------------------------------------------------------------------
-"
-" Don't edit this file. Instead create .vimrc_php in your home directory
-" and read this file with the following line
-"
-" :source ~/opal/vimrc_php
-"
-" If you want to change the value, copy the line from this file and change the
-" value in your .vimrc_php This will allow you keep your changes after
-" updates.
-"
-" These settings help you write your code to comply to PSR-2 coding standard
-"
-" http://www.php-fig.org/psr/psr-2/
-"
-"-------------------------------------------------------------------------------
-
-
-source ~/opal/vim_functions/spacehi.vim
-source ~/opal/vimrc_files/_formatting.vim
-source ~/opal/vimrc_files/_ui-settings.vim
-source ~/opal/vimrc_files/vimrc
-source ~/opal/vimrc_files/html
-source ~/opal/vimrc_files/css
-
-"
-" --------[ General Vim Settings ]----------------------------------------------
-"
-
-syntax on
-
-
-
-"
-" --------[ PHP Settings ]----------------------------------------------
-"
-
-" Handles the settings for indentation
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-
-
-" When inserting a tab, expand it to spaces
-set expandtab
-
-
-"
-" --------[ Abbreviations ]-----------------------------------------------------
-"
-:ab c_class class Foo{// Your code here}
-:ab c_class_extends class Foo extends Parent implements InterfaceName{// Your code here}
-:ab c_closure $val = function ($p1, $p2) {// do something;}
-:ab c_closure_use $val = function ($arg1, $arg2) use ($var1, $var2) {// do something;}
-:ab c_interface interface Foo{// Your code here}
-:ab c_namespace  namespace Foo\Bar\subnamespace;
-:ab c_trait trait Foo{// Your code here}
-:ab c_function function foo($p1, $p2){// do something;}
-:ab c_method abstract final public/protected/private static function foo($p1, $p2){// do something;}
-
-:ab c_use use foo;
-:ab c_use_as use Foo as Name;
-
-:ab c_dowhile do {// do stuff} while (condtion);
-:ab c_for for ($i = 0; $i <= $max; $i++){// do stuff}
-:ab c_foreach foreach ($array_name as $key => $val){// do stuff}
-:ab c_if if (condtion){// do stuff}
-:ab c_ifelse if (condtion) {// do stuff} else {//something else}
-:ab c_ifelsif if (condtion) {// do stuff} elseif (other_condtion) {// do other stuff} else {//something else}
-:ab c_ifelseif if (condtion) {// do stuff} elseif (other_condtion) {// do other stuff} else {//something else}
-:ab c_ifelse_if if (condtion) {// do stuff} elseif (other_condtion) {// do other stuff} else {//something else}
-:ab c_switch switch ($i) {case 0:    // do zerobreak; hhhhicase 1:     // do onebreak;	hhhhhhhhidefault:    // do default;break;}
-:ab c_throw throw new Exception('This is the message');
-:ab c_trycatch try {// do stuff} catch(e) {//something else}
-:ab c_while while (condtion) {// do stuff}
-
-:ab c_property abstract/final protected static $value = '';
-:ab c_value abstract/final protected static $value = '';
-:ab c_var abstract/final protected static $value = '';
-:ab c_array $value = [];
-
-:ab grepfunc !grep -n function %
-
-
-
-"
-" --------[ Functions ]---------------------------------------------------------
-"
-
-"
-" Turn On Highlights
-"
-" Copy this function to your vimrc file and uncomment it
-" Update the functions it calls, but not its function name
-"
-"
-function! TurnOnHighlights()
-	:call HighlightLeadingTabs()
-	:call HighlightTrailingSpaces()
-
-    :call EnableSpaceHighlighting()
-endfunction
-
-"
-" Turn Off Highlights
-"
-" Copy this function to your vimrc file and uncomment it
-" Update the functions it calls, but not its function name
-"
-"
-function! TurnOffHighlights()
-	:call DisableHighlightLeadingTabs()
-	:call DisableHighlightTrailingSpaces()
-
-    :call DisableSpaceHighlighting()
-endfunction
-
-
-
-
