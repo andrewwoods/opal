@@ -15,15 +15,13 @@ source ~/opal/util.bash
 #
 ################################################################################
 
-
-
 #
 # Display info about the slide, usually the slide number.
 #
 function meta_info
 {
-	_s "$1"
-	spacer 1
+    _s "$1"
+    spacer 1
 }
 
 #
@@ -31,16 +29,14 @@ function meta_info
 #
 function present_help
 {
-	_n
-	_s " h | help - Display this help message"
-	_s " n | next - Display the next slide"
-	_s " p | previous - Display the previous slide"
-	_s " m | menu - Display menu of slides. Uses function names"
-	_s " q | quit - Exit present"
-	_n
+    _n
+    _s " h | help - Display this help message"
+    _s " n | next - Display the next slide"
+    _s " p | previous - Display the previous slide"
+    _s " m | menu - Display menu of slides. Uses function names"
+    _s " q | quit - Exit present"
+    _n
 }
-
-
 
 ################################################################################
 #
@@ -49,14 +45,12 @@ function present_help
 ################################################################################
 
 if [ -d $1 ]; then
-	PROJ_DIR=$1
+    PROJ_DIR=$1
 else
-	PROJ_DIR="."
+    PROJ_DIR="."
 fi
 
 source $PROJ_DIR/present-lib.bash
-
-
 
 clear
 
@@ -71,52 +65,50 @@ ${Slides[0]}
 
 while true
 do
-	read -p "> " op
+    read -p "> " op
 
-	if [[ $op == 'q' ||  $op == 'quit' ]]
-	then
-		break
-	else
+    if [[ $op == 'q' ||  $op == 'quit' ]]
+    then
+        break
+    else
 
-		if [[ $op == 'n'  ||  $op == 'next'  ]]
-		then
-			slide=$((slide+1))
-		elif [[ $op == 'p' ||  $op == 'previous'  ]]
-		then
-			slide=$((slide-1))
-		elif [[ $op == 'h' ||  $op == 'help'  ]]
-		then
-			present_help
-			continue
-		elif [[ $op == 'm' ||  $op == 'menu'  ]]
-		then
-			_e "    Menu"
-			_e "--------------------------"
-			for i in $(seq 1 $slides_last)
-			do
-				_e "$i - ${Slides[$i]}"
-			done
-			_n
-			continue
-		else
-			slide=$op
-		fi
+        if [[ $op == 'n'  ||  $op == 'next'  ]]
+        then
+            slide=$((slide+1))
+        elif [[ $op == 'p' ||  $op == 'previous'  ]]
+        then
+            slide=$((slide-1))
+        elif [[ $op == 'h' ||  $op == 'help'  ]]
+        then
+            present_help
+            continue
+        elif [[ $op == 'm' ||  $op == 'menu'  ]]
+        then
+            _e "    Menu"
+            _e "--------------------------"
+            for i in $(seq 1 $slides_last)
+            do
+                _e "$i - ${Slides[$i]}"
+            done
+            _n
+            continue
+        else
+            slide=$op
+        fi
 
-		clear
+        clear
 
-		if [ $slide -le $slides_max ]
-		then
-			meta_info "[$slide/$slides_max] "
-			${Slides[$slide]}
-		else
-			break
-		fi
-	fi
+        if [ $slide -le $slides_max ]
+        then
+            meta_info "[$slide/$slides_max] "
+            ${Slides[$slide]}
+        else
+            break
+        fi
+    fi
 
 done
 
 meta_info "Final Slide"
 ${Slides[$slides_last]}
 echo ""
-
-

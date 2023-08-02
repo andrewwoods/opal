@@ -1,5 +1,5 @@
 #
-#		ALIASES
+#       ALIASES
 #
 ################################################################################
 
@@ -15,21 +15,3 @@ alias number="nl -b a"
 alias nocomment="grep -v '^\s*[#;\"]'"
 alias vi="vim"
 alias weather="telnet rainmaker.wunderground.com 3000"
-
-#
-#    VIM ALIASES
-#
-
-alias bvi='vim -u ~/opal/vimrc_files/bash'
-alias docs='vim -u ~/opal/vimrc_files/docs.vim'
-alias druvi='vim -u ~/opal/vimrc_files/drupal'
-alias ghvi='vim -u ~/opal/vimrc_files/ghmd'
-alias jsvi='vim -u ~/opal/vimrc_files/js'
-alias lvi='vim -u ~/opal/vimrc_files/laravel'
-alias mdvi='vim -u ~/opal/vimrc_files/ghmd'
-alias phpvi='vim -u ~/opal/vimrc_files/php'
-alias pyvi='vim -u ~/opal/vimrc_files/python'
-alias svi='vim -u ~/opal/vimrc_files/symfony'
-alias wpvi='vim -u ~/opal/vimrc_files/wordpress'
-alias writer='vim -u ~/opal/vimrc_files/writer'
-

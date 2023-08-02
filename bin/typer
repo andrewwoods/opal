@@ -6,31 +6,29 @@ $options = getopt('f:');
 array_shift($argv);
 $mesg = implode(" ", $argv);
 
-if ( $options ) 
+if ( $options )
 {
-	if ( isset( $options['f'] ) )
-	{
-		$fh = fopen($options['f'], 'r' );	
-		while($line = fgets($fh))
-		{
-			display($line);
-		}
-	}
+    if ( isset( $options['f'] ) )
+    {
+        $fh = fopen($options['f'], 'r' );
+        while($line = fgets($fh))
+        {
+            display($line);
+        }
+    }
 }
-else 
+else
 {
-	display( $mesg );
+    display( $mesg );
 }
 print "\n";
 
 
 function display( $mesg )
 {
-	for ($i=0; $i<strlen($mesg); $i++)
-	{
-		print substr($mesg, $i, 1);
-		usleep(20000);
-	}
+    for ($i=0; $i<strlen($mesg); $i++)
+    {
+        print substr($mesg, $i, 1);
+        usleep(20000);
+    }
 }
-
-
