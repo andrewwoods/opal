@@ -96,3 +96,30 @@ function opal:message() {
 
     echo -e "${CYAN}${MESSAGE}${NOCOLOR}"
 }
+
+################################################################################
+#
+#   File Checks
+#
+#################################################################################
+
+function opal:dir_exists {
+    [[ -d "$1" ]]
+}
+
+function opal:file_exists {
+    [[ -e "$1" ]]
+}
+
+function opal:can_read {
+    [[ -r "$1" ]]
+}
+
+function opal:can_write {
+    [[ -w "$1" ]]
+}
+
+function opal:can_execute {
+    [[ -x "$1" ]]
+}
+
