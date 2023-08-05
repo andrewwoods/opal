@@ -23,46 +23,54 @@ function opal:arg_default {
 
 }
 
-function opal:emergency {
-    opal:log "EMERGENCY ${1}"
+################################################################################
+#
+#   Logging
+#
+#################################################################################
+
+function opal:log_emergency {
+    opal:log EMERGENCY "${1}"
 }
 
-function opal:alert {
-    opal:log "ALERT ${1}"
+function opal:log_alert {
+    opal:log ALERT "${1}"
 }
 
-function opal:critical {
-    opal:log "CRITICAL ${1}"
+function opal:log_critical {
+    opal:log CRITICAL "${1}"
 }
 
-function opal:error {
-    opal:log "ERROR ${1}"
+function opal:log_error {
+    opal:log ERROR "${1}"
 }
 
-function opal:warning {
-    opal:log "WARNING ${1}"
+function opal:log_warning {
+    opal:log WARNING "${1}"
 }
 
-function opal:notice {
-    opal:log "NOTICE ${1}"
+function opal:log_notice {
+    opal:log NOTICE "${1}"
 }
 
-function opal:info {
-    opal:log "INFO ${1}"
+function opal:log_info {
+    opal:log INFO "${1}"
 }
 
-function opal:debug {
-    opal:log "DEBUG ${1}"
+function opal:log_debug {
+    opal:log DEBUG "${1}"
 }
 
 function opal:log {
     local level="$1"
     local message="$2"
+    local file=$(echo "$level" | tr '[:upper:]' '[:lower:]')
 
     local date_format="+%Y-%m-%dT%H:%M:%S%z"
     local log_date=$(date ${date_format})
+    local log_file="${OPAL_LOG_DIR}/${file}.log"
 
-    echo "${log_date} ${level} ${message}"
+    echo "${log_date} ${level} ${message}" >> $log_file
 }
 
 function opal:success() {
