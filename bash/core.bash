@@ -73,8 +73,14 @@ function opal:log {
     echo "${log_date} ${level} ${message}" >> $log_file
 }
 
+################################################################################
+#
+#   User Experience
+#
+#################################################################################
+
 function opal:success() {
-    local GREEN='\033[0;32m'
+    local GREEN='\033[1;32m'
     local NOCOLOR='\033[0m'
     local MESSAGE="$1"
 
@@ -82,7 +88,7 @@ function opal:success() {
 }
 
 function opal:failure() {
-    local RED='\033[0;31m'
+    local RED='\033[1;31m'
     local NOCOLOR='\033[0m'
     local MESSAGE="$1"
 
@@ -90,7 +96,7 @@ function opal:failure() {
 }
 
 function opal:message() {
-    local CYAN='\033[0;36m'
+    local CYAN='\033[1;36m'
     local NOCOLOR='\033[0m'
     local MESSAGE="$1"
 
