@@ -75,6 +75,36 @@ function opal:log {
 
 ################################################################################
 #
+#   Numeric
+#
+#################################################################################
+
+function opal:number_equals {
+    [[ $1 -eq $2 ]]
+}
+
+function opal:number_at_least {
+    [[ $1 -ge $2 ]]
+}
+
+function opal:number_is_above {
+    [[ $1 -gt $2 ]]
+}
+
+function opal:number_at_most {
+    [[ $1 -le $2 ]]
+}
+
+function opal:number_is_below {
+    [[ $1 -lt $2 ]]
+}
+
+function opal:number_between {
+    opal:number_at_least $1 $2  && opal:number_at_most $1 $3
+}
+
+################################################################################
+#
 #   User Experience
 #
 #################################################################################
