@@ -152,18 +152,29 @@ function opal:dir_exists {
 }
 
 function opal:file_exists {
-    [[ -e "$1" ]]
+    [[ -f "$1" ]]
 }
 
-function opal:can_read {
+function opal:symlink_exists {
+    [[ -L "$1" ]]
+}
+
+function opal:file_has_read {
     [[ -r "$1" ]]
 }
 
-function opal:can_write {
+function opal:file_has_write {
     [[ -w "$1" ]]
 }
 
-function opal:can_execute {
+function opal:file_has_execute {
     [[ -x "$1" ]]
 }
 
+function opal:file_has_set_uid {
+    [[ -u "$1" ]]
+}
+
+function opal:file_has_set_gid {
+    [[ -g "$1" ]]
+}
