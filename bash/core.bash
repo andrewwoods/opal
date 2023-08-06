@@ -178,3 +178,29 @@ function opal:file_has_set_uid {
 function opal:file_has_set_gid {
     [[ -g "$1" ]]
 }
+
+################################################################################
+#
+#   Documentation
+#
+################################################################################
+
+function opal:version {
+    echo "Opal version: ${OPAL_VERSION}"
+}
+
+function opal:about {
+    opal:message "$(opal:version)"
+
+    cat <<-EOF
+
+    Opal is a command line framework. It's a foundation to provide a consistent
+    foundation across machines and users. It's meant to be extended. Version 3
+    improves the scripting experience.
+
+    For the most up-to-date version, and the full documentation, visit the
+    Github repo at https://github.com/andrewwoods/opal
+
+    Copyright (C) 2023 Andrew Woods
+EOF
+}
