@@ -23,6 +23,14 @@ function opal:arg_default {
 
 }
 
+function opal:is_set {
+    [[ -n "$1" ]]
+}
+
+function opal:is_unset {
+    [[ -z "$1" ]]
+}
+
 ################################################################################
 #
 #   Logging
