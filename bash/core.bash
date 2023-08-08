@@ -35,15 +35,6 @@ function opal:std_error {
     echo "$@" 1>&2
 }
 
-function opal:arg_default {
-    if [ -z "$2" ]; then
-        opal:std_error "Invalid Argument Error: 2 arguments are required"
-        return 1
-    fi
-    local value="$2"
-
-}
-
 function opal:is_set {
     [[ -n "$1" ]]
 }
