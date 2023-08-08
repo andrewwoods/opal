@@ -12,7 +12,7 @@
 function check_site() {
     declare -i i=0
 
-    if [ -z "$2" ]; then
+    if opal:is_unset "$2"; then
         # set the default interval, in seconds
         interval=10
     else
@@ -25,7 +25,7 @@ function check_site() {
         ans=$((i % 5))
         if [ $ans == 0 ]; then
             ts=$(date)
-            echo "Still down at $ts "
+            opal:std_error "Still down at $ts "
         fi
         i=$((i + 1))
         echo -n "."
@@ -56,10 +56,10 @@ function htstatus() {
 #
 function parse_git_branch() {
     branch_name=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
-    # trim white space
+    # @todo Trim white space.
     branch_name=$(echo -n "${branch_name}")
 
-    if [[ -n "$branch_name" ]]; then
+    if opal:is_set "$branch_name"; then
         echo -n "$branch_name"
     fi
 }
@@ -70,10 +70,10 @@ function parse_git_branch() {
 # @param String $filename the filename for which you want to know/generate it's sha1
 #
 function sha1() {
-    if [[ -n $(which openssl) ]]; then
-        openssl sha1 $@
+    if opal:is_set "$(which openssl)"; then
+        openssl sha1 "$@"
     else
-        echo "openssl is required, but not installed"
+        opal:std_error "openssl is required, but not installed"
     fi
 }
 
@@ -83,10 +83,10 @@ function sha1() {
 # @param String $url the address of the website you want to check
 #
 function traceurl() {
-    if [[ -n $1 ]]; then
+    if opal:is_set "$1"; then
         curl --location --head $1
     else
-        echo 'Whoops! You forgot to specify a short URL'
+        opal:std_error 'Whoops! You forgot to specify a short URL'
     fi
 }
 
@@ -97,13 +97,13 @@ function traceurl() {
 # @param int end_time
 #
 function calc_time_diff() {
-    if [ -z $1 ]; then
-        echo "What is your start time in epoch seconds (UNIX time)"
+    if opal:is_unset "$1"; then
+        opal:std:error "What is your start time in epoch seconds (UNIX time)"
         return 1
     fi
 
-    if [ -z $2 ]; then
-        echo "What is your end time in epoch seconds (UNIX time)"
+    if opal:is_unset "$2"; then
+        opel:std_error "What is your end time in epoch seconds (UNIX time)"
         return 2
     fi
 

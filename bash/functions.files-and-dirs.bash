@@ -28,7 +28,7 @@ function bak() {
     elif [ -f $1 ]; then
         cp $1 $filename
     else
-        echo "BAK: unsupported item type - must be file or directory"
+        opal:std_error "BAK: unsupported item type - must be file or directory"
     fi
 }
 
@@ -62,7 +62,7 @@ function extract() {
         *.7z) 7z x $1 ;;
         esac
     else
-        echo "File not found: '$1'"
+        opal:std_error "File not found: '$1'"
     fi
 }
 
@@ -170,7 +170,7 @@ function seg() {
 #        Allowed Values: arrays, defs, names, readonly, exports, integers
 #
 function show() {
-    echo -e "Inform the user what can be used"
+    opal:label "Inform the user what can be used"
     echo -e "--------------------------------"
 
     case "$1" in
