@@ -162,6 +162,12 @@ function opal:message() {
     echo -e "${CYAN}${MESSAGE}${NOCOLOR}"
 }
 
+function opal:label() {
+    local MESSAGE="$1"
+
+    echo -e "${BRIGHT_YELLOW}${MESSAGE}${NORMAL}"
+}
+
 ################################################################################
 #
 #   File Checks

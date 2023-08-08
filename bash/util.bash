@@ -102,15 +102,15 @@ get_context() {
 # mach - displays the basic information about the machine/system you're using.
 #
 function mach() {
-    echo -e "\nMachine information:"
+    opal:label "\nMachine information:"
     uname -a
-    echo -e "\nUsers logged on:"
+    opal:label "\nUsers logged on:"
     w -h
-    echo -e "\nCurrent date :"
     date
-    echo -e "\nMachine status :"
+    opal:label "\nCurrent date :"
+    opal:label "\nMachine status :"
     uptime
-    echo -e "\nFilesystem status :"
+    opal:label "\nFilesystem status :"
     df -h
 }
 
