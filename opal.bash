@@ -3,6 +3,8 @@
 #
 ################################################################################
 
+export OPAL_DIR="$HOME/opal"
+
 source $OPAL_DIR/bash/core.bash
 source $OPAL_DIR/bash/util.bash
 source $OPAL_DIR/bash/functions.developer.bash

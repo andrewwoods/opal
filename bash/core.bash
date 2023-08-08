@@ -10,7 +10,6 @@
 # Copyright (C) 2023 Andrew Woods
 ################################################################################
 
-export OPAL_DIR="$HOME/opal"
 export OPAL_VERSION="3.0.0-alpha"
 export OPAL_LOG_DIR="${HOME}/logs"
 export OPAL_LOG_LEVEL="error"
