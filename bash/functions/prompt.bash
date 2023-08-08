@@ -141,7 +141,7 @@ function default_prompt_dark() {
     PS1+="\h"             # host
     PS1+="\[\e[0m\] "
     PS1+="\n"
-    PS1+="\[\e[1;35m\]"
+    PS1+="\[\e[1;36m\]"
     PS1+="\W"             # base directory name
     PS1+="\[\e[1;36m\] "
     PS1+="> "
