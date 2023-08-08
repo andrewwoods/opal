@@ -18,7 +18,7 @@
 function opal:prompt() {
     local style="default"
 
-    if [ -n "$2" ]; then
+    if opal:is_set "$2"; then
         style="$2"
     fi
 
@@ -31,8 +31,13 @@ function opal:prompt() {
             opal:minimal_prompt $style
             ;;
 
+        default)
+            default_prompt_dark $style
+            ;;
+
         *)
             opal:std_error "Sorry, but '${1}' is not a valid prompt name"
+            return 1
             ;;
     esac
 }
