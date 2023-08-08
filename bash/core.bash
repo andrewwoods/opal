@@ -10,7 +10,6 @@
 # Copyright (C) 2023 Andrew Woods
 ################################################################################
 
-export OPAL_DIR="$HOME/opal"
 export OPAL_VERSION="3.0.0-alpha"
 export OPAL_LOG_DIR="${HOME}/logs"
 export OPAL_LOG_LEVEL="error"
@@ -81,7 +80,11 @@ function opal:log {
 
     local date_format="+%Y-%m-%dT%H:%M:%S%z"
     local log_date=$(date ${date_format})
-    local log_file="${OPAL_LOG_DIR}/${file}.log"
+    local log_file="${OPAL_LOG_DIR}/shell.log"
+    if ! opal:dir_exists "${OPAL_LOG_DIR}" ||
+        ! opal:has_write "${OPAL_LOG_DIR}"; then
+        std_error "${log_file} not available for writing"
+    fi
 
     echo "${log_date} ${level} ${message}" >> $log_file
 }
@@ -144,6 +147,11 @@ function opal:message() {
     local MESSAGE="$1"
 
     echo -e "${CYAN}${MESSAGE}${NOCOLOR}"
+}
+
+# @todo Add command detection, and default to echo
+function opal:speak {
+    say --interactive="black/cyan" "$@"
 }
 
 ################################################################################

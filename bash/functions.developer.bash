@@ -11,13 +11,9 @@
 #
 function check_site() {
     declare -i i=0
+    local interval
 
-    if [ -z "$2" ]; then
-        # set the default interval, in seconds
-        interval=10
-    else
-        interval=$2
-    fi
+    interval=${2:-10}
 
     # the -m option limits a connection attempt to  number of seconds on OS X
     while ! curl -m 5 $1 2>/dev/null; do
@@ -25,13 +21,13 @@ function check_site() {
         ans=$((i % 5))
         if [ $ans == 0 ]; then
             ts=$(date)
-            echo "Still down at $ts "
+            opal:std_error "Still down at $ts "
         fi
         i=$((i + 1))
         echo -n "."
     done
 
-    say_done 'OK! The site is up now!'
+    opal:speak 'OK! The site is up now!'
 }
 
 #
@@ -46,7 +42,7 @@ function check_site() {
 # $ htstatus 416
 #
 function htstatus() {
-    grep -A 1 ^$1 $OPAL_DIR/data/http-status-codes.txt
+    grep -A 1 ^"$1" "${OPAL_DIR}/data/http-status-codes.txt"
     echo " "
     echo "see http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html for more information"
 }
@@ -59,7 +55,7 @@ function parse_git_branch() {
     # trim white space
     branch_name=$(echo -n "${branch_name}")
 
-    if [[ -n "$branch_name" ]]; then
+    if opal:is_set "$branch_name"; then
         echo -n "$branch_name"
     fi
 }
@@ -73,7 +69,7 @@ function sha1() {
     if [[ -n $(which openssl) ]]; then
         openssl sha1 $@
     else
-        echo "openssl is required, but not installed"
+        opal:std_error "openssl is required, but not installed"
     fi
 }
 
@@ -86,7 +82,8 @@ function traceurl() {
     if [[ -n $1 ]]; then
         curl --location --head $1
     else
-        echo 'Whoops! You forgot to specify a short URL'
+        opal:std_error 'Whoops! You forgot to specify a short URL'
+        return 1
     fi
 }
 
@@ -97,13 +94,13 @@ function traceurl() {
 # @param int end_time
 #
 function calc_time_diff() {
-    if [ -z $1 ]; then
-        echo "What is your start time in epoch seconds (UNIX time)"
+    if opal:is_unset "$1" ; then
+        opal:std_error "What is your start time in epoch seconds (UNIX time)"
         return 1
     fi
 
-    if [ -z $2 ]; then
-        echo "What is your end time in epoch seconds (UNIX time)"
+    if opal:is_unset "$2"; then
+        opal:std_error "What is your end time in epoch seconds (UNIX time)"
         return 2
     fi
 
