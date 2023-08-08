@@ -89,12 +89,10 @@ function datadir() {
 get_context() {
     current_hour=$(date "+%H")
 
-    if [ $current_hour -ge '08' ]; then
-        if [ $current_hour -le '17' ]; then
-            echo 'work'
-        else
-            echo 'home'
-        fi
+    if  opal:number_between ${current_hour} 8 17 ; then
+        echo 'work'
+    else
+        echo 'home'
     fi
 }
 
