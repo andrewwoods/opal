@@ -31,7 +31,7 @@ function check_site() {
         echo -n "."
     done
 
-    say_done 'OK! The site is up now!'
+    opal:speak 'OK! The site is up now!'
 }
 
 #
