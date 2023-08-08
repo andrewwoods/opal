@@ -17,7 +17,7 @@ function _e {
 #
 # _l - Create a line prepended with padding.
 #
-# @param char  Optional. the character used to construc the line
+# @param char  Optional. the character used to construct the line
 # @param int Optional. The length of the line
 #
 function _l {

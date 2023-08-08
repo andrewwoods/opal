@@ -42,7 +42,7 @@ function cdls() {
 }
 
 #
-# extract - "uncompress" a file from a variety of common formats
+# extract - "un-compress" a file from a variety of common formats
 #
 # @param String $filename must be a common compressed file type like ZIP or Tar
 #
