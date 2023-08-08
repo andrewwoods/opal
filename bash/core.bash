@@ -159,6 +159,10 @@ function opal:label() {
     echo -e "${BRIGHT_YELLOW}${MESSAGE}${NORMAL}"
 }
 
+function opal:speak {
+    say --interactive="cyan/black" "$@"
+}
+
 ################################################################################
 #
 #   File Checks
