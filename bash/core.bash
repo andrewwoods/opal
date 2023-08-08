@@ -15,6 +15,23 @@ export OPAL_VERSION="3.0.0-alpha"
 export OPAL_LOG_DIR="${HOME}/logs"
 export OPAL_LOG_LEVEL="error"
 
+NORMAL=$(echo -e '\033[0m')
+
+RED=$(echo -e '\033[31m')
+BRIGHT_RED=$(echo -e '\033[1;31m')
+GREEN=$(echo -e '\033[0;32m')
+BRIGHT_GREEN=$(echo -e '\033[1;32m')
+YELLOW=$(echo -e '\033[0;33m')
+BRIGHT_YELLOW=$(echo -e '\033[1;33m')
+BLUE=$(echo -e '\033[0;34m')
+BRIGHT_BLUE=$(echo -e '\033[1;34m')
+PURPLE=$(echo -e '\033[0;35m')
+BRIGHT_PURPLE=$(echo -e '\033[1;35m')
+CYAN=$(echo -e '\033[0;36m')
+BRIGHT_CYAN=$(echo -e '\033[1;36m')
+WHITE=$(echo -e '\033[0;37m')
+BRIGHT_WHITE=$(echo -e '\033[1;37m')
+
 function opal:std_error {
     echo "$@" 1>&2
 }
