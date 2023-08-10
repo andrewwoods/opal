@@ -105,6 +105,20 @@ function opal:minimal_prompt() {
     PS4+="+>"
     PS4+=" "
 }
+
+#
+# Secondary / Continuation Prompt
+#
+function opal:prompt_continue {
+   PS2=""
+   PS2+="\[\e[1;36m\]"    # Color: Cyan
+   PS2+="\W"              #
+   PS2+=" >"               #
+   PS2+="\[\e[1;37m\]"    # Color: Bright White
+   PS2+=" > "              #
+   PS2+="\[\e[0m\] "
+}
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function bold_branch_prompt() {
