@@ -163,6 +163,15 @@ function opal:speak {
     say --interactive="cyan/black" "$@"
 }
 
+function opal:ask {
+    local prompt
+    prompt="${BRIGHT_YELLOW}${1}${NORMAL}"
+
+    read -p "${prompt}: " input
+
+    echo "${input}"
+}
+
 ################################################################################
 #
 #   File Checks
