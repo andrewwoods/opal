@@ -13,3 +13,5 @@ source $OPAL_DIR/bash/functions/prompt.bash
 source $OPAL_DIR/bash/bashrc.bash
 source $OPAL_DIR/bash/aliases
 source $OPAL_DIR/bash/aliases-clocks.bash
+
+opal:prompt default
