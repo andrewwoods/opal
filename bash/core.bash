@@ -10,11 +10,14 @@
 # Copyright (C) 2023 Andrew Woods
 ################################################################################
 
-export OPAL_VERSION="3.0.0-alpha"
-export OPAL_LOG_DIR="${HOME}/logs"
-export OPAL_LOG_LEVEL="error"
+export OPAL_VERSION
+export OPAL_LOG_DIR
+export OPAL_LOG_LEVEL
 
 NORMAL=$(echo -e '\033[0m')
+OPAL_VERSION="3.0.0-alpha"
+OPAL_LOG_DIR="${HOME}/logs"
+OPAL_LOG_LEVEL="error"
 
 RED=$(echo -e '\033[31m')
 BRIGHT_RED=$(echo -e '\033[1;31m')
