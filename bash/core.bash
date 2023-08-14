@@ -14,11 +14,13 @@ export OPAL_VERSION
 export OPAL_LOG_DIR
 export OPAL_LOG_LEVEL
 
-NORMAL=$(echo -e '\033[0m')
 OPAL_VERSION="3.0.0-alpha"
 OPAL_LOG_DIR="${HOME}/logs"
 OPAL_LOG_LEVEL="error"
 
+export NORMAL RED BRIGHT_RED GREEN BRIGHT_GREEN YELLOW BRIGHT_YELLOW
+export BLUE BRIGHT_BLUE PURPLE BRIGHT_PURPLE CYAN BRIGHT_CYAN WHITE BRIGHT_WHITE
+NORMAL=$(echo -e '\033[0m')
 RED=$(echo -e '\033[31m')
 BRIGHT_RED=$(echo -e '\033[1;31m')
 GREEN=$(echo -e '\033[0;32m')
@@ -85,15 +87,20 @@ function opal:log_debug {
 }
 
 function opal:log {
+    local log_date
+    local log_file
+    local file
+    local date_format
+
     local level="$1"
     local message="$2"
-    local file=$(echo "$level" | tr '[:upper:]' '[:lower:]')
 
-    local date_format="+%Y-%m-%dT%H:%M:%S%z"
-    local log_date=$(date ${date_format})
-    local log_file="${OPAL_LOG_DIR}/${file}.log"
+    file="error.log"
+    date_format="+%Y-%m-%dT%H:%M:%S%z"
 
     echo "${log_date} ${level} ${message}" >> $log_file
+    log_date="$(date ${date_format})"
+    log_file="${OPAL_LOG_DIR}/${file}"
 }
 
 ################################################################################
