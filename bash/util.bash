@@ -101,13 +101,19 @@ get_context() {
 #
 function mach() {
     opal:label "\nMachine information:"
+    # @todo Replace "uname -a" with a function to determine OS type and use it
+    #       to call most applicable about function e.g. opal:about_macos().
     uname -a
+
     opal:label "\nUsers logged on:"
     w -h
-    date
+
     opal:label "\nCurrent date :"
+    date
+
     opal:label "\nMachine status :"
     uptime
+
     opal:label "\nFilesystem status :"
     df -h
 }
