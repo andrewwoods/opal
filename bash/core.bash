@@ -57,6 +57,14 @@ function opal:command_exists {
     [ "$(type -t "$1")" = "file" ]
 }
 
+function opal:function_exists {
+    if opal:is_unset "$1"; then
+        opal:std_error "You forgot to specify which function you wish to check"
+    fi
+
+    [ "$(type -t "$1")" = "function" ]
+}
+
 ################################################################################
 #
 #   Logging
