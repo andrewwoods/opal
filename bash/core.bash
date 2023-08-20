@@ -20,6 +20,7 @@ OPAL_LOG_LEVEL="error"
 
 export NORMAL RED BRIGHT_RED GREEN BRIGHT_GREEN YELLOW BRIGHT_YELLOW
 export BLUE BRIGHT_BLUE PURPLE BRIGHT_PURPLE CYAN BRIGHT_CYAN WHITE BRIGHT_WHITE
+
 NORMAL=$(echo -e '\033[0m')
 RED=$(echo -e '\033[31m')
 BRIGHT_RED=$(echo -e '\033[1;31m')
@@ -46,6 +47,14 @@ function opal:is_set {
 
 function opal:is_unset {
     [[ -z "$1" ]]
+}
+
+function opal:command_exists {
+    if opal:is_unset "$1"; then
+        opal:std_error "You forgot to specify which command you wish to check"
+    fi
+
+    [ "$(type -t "$1")" = "file" ]
 }
 
 ################################################################################
