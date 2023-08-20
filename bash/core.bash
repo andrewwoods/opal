@@ -98,9 +98,10 @@ function opal:log {
     file="error.log"
     date_format="+%Y-%m-%dT%H:%M:%S%z"
 
-    echo "${log_date} ${level} ${message}" >> $log_file
     log_date="$(date ${date_format})"
     log_file="${OPAL_LOG_DIR}/${file}"
+
+    echo "${log_date} ${level} ${message}" >> "${log_file}"
 }
 
 ################################################################################
@@ -130,7 +131,7 @@ function opal:number_is_below {
 }
 
 function opal:number_between {
-    opal:number_at_least $1 $2  && opal:number_at_most $1 $3
+    opal:number_at_least "$1" "$2" && opal:number_at_most "$1" "$3"
 }
 
 ################################################################################
@@ -140,27 +141,21 @@ function opal:number_between {
 #################################################################################
 
 function opal:success() {
-    local GREEN='\033[1;32m'
-    local NOCOLOR='\033[0m'
     local MESSAGE="$1"
 
-    echo -e "${GREEN}${MESSAGE}${NOCOLOR}"
+    echo -e "${GREEN}${MESSAGE}${NORMAL}"
 }
 
 function opal:failure() {
-    local RED='\033[1;31m'
-    local NOCOLOR='\033[0m'
     local MESSAGE="$1"
 
-    echo -e "${RED}${MESSAGE}${NOCOLOR}"
+    echo -e "${RED}${MESSAGE}${NORMAL}"
 }
 
 function opal:message() {
-    local CYAN='\033[1;36m'
-    local NOCOLOR='\033[0m'
     local MESSAGE="$1"
 
-    echo -e "${CYAN}${MESSAGE}${NOCOLOR}"
+    echo -e "${CYAN}${MESSAGE}${NORMAL}"
 }
 
 function opal:label() {
