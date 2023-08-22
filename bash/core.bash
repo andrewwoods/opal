@@ -50,19 +50,25 @@ function opal:is_unset {
 }
 
 function opal:command_exists {
+    local type_result
     if opal:is_unset "$1"; then
         opal:std_error "You forgot to specify which command you wish to check"
     fi
 
-    [ "$(type -t "$1")" = "file" ]
+    type_result=$(type -t "$1")
+
+    [[ "$type_result" = "file" ]]
 }
 
 function opal:function_exists {
+    local type_result
     if opal:is_unset "$1"; then
         opal:std_error "You forgot to specify which function you wish to check"
     fi
 
-    [ "$(type -t "$1")" = "function" ]
+    type_result=$(type -t "$1")
+
+    [[ "$type_result" == "function" ]]
 }
 
 ################################################################################
