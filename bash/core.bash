@@ -159,6 +159,39 @@ function opal:number_between {
 
 ################################################################################
 #
+#   Operating System
+#
+#################################################################################
+
+function opal:about_macos {
+    opal:label "About MacOS"
+
+    if opal:command_exists "neofetch"; then
+        neofetch
+    else
+        system_profiler -detailLevel mini SPSoftwareDataType SPHardwareDataType
+    fi
+}
+
+function opal:about_ubuntu {
+    opal:label "About Ubuntu"
+
+    if opal:command_exists "neofetch"; then
+        neofetch
+    elif opal:command_exists "lshw"; then
+        lshw
+    else
+        # Fallback to generic ubuntu commands
+        hwinfo
+        lscpu
+        lspci
+        df -h
+        free -h
+    fi
+}
+
+################################################################################
+#
 #   User Experience
 #
 #################################################################################
