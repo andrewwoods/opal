@@ -29,10 +29,14 @@ function opal:prompt() {
 
         minimal)
             opal:minimal_prompt $style
+            opal:ps3_minimal
+            opal:ps4_default
             ;;
 
         default)
             default_prompt_dark $style
+            opal:ps3_minimal
+            opal:ps4_default
             ;;
 
         *)
@@ -92,13 +96,6 @@ function opal:minimal_prompt() {
     PS2+="\[\e[0m\] "
 
     #
-    # Use in select lists
-    #
-    PS3=""
-    PS3+="Choose a #>"
-    PS3+=" "
-
-    #
     # Debug Prompt - The default is ‘+ ’.
     #
     PS4=""
@@ -117,6 +114,14 @@ function opal:prompt_continue {
    PS2+="\[\e[1;37m\]"    # Color: Bright White
    PS2+=" > "              #
    PS2+="\[\e[0m\] "
+}
+
+function opal:ps3_minimal {
+    export PS3="\nChoose a #> "
+}
+
+function opal:ps4_default {
+    export PS4='\n${BRIGHT_YELLOW}DEBUG${NORMAL} source-file:${BASH_SOURCE} line#:${LINENO}\nfunction:${FUNCNAME[0]:+${FUNCNAME[0]}() }\nstatement: '
 }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
