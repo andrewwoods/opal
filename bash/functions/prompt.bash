@@ -121,7 +121,10 @@ function opal:ps3_minimal {
 }
 
 function opal:ps4_default {
-    export PS4='\n${BRIGHT_YELLOW}DEBUG${NORMAL} source-file:${BASH_SOURCE} line#:${LINENO}\nfunction:${FUNCNAME[0]:+${FUNCNAME[0]}() }\nstatement: '
+    export PS4='\n${BRIGHT_YELLOW}DEBUG${NORMAL}\n'
+    PS4+='${BRIGHT_CYAN}source-file:${NORMAL}${BASH_SOURCE} '
+    PS4+='line#: ${LINENO} \nfunction: ${FUNCNAME[0]:+${FUNCNAME[0]}() } '
+    PS4+='statement: '
 }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
