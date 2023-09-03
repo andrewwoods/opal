@@ -131,8 +131,11 @@ function opal:ps2_default_dark {
    PS2+="\[\e[0m\] "
 }
 
-function opal:ps3_minimal {
-    export PS3="\nChoose a #> "
+function opal:ps3_default {
+    PS3=""
+    PS3+="Choose a #> "
+
+    export PS3
 }
 
 function opal:ps4_default {
