@@ -136,6 +136,10 @@ function opal:ps4_simple {
     export PS4
 }
 
+function opal:ps4_minimal {
+    PS4='> '
+
+    export PS4
 }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
