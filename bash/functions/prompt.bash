@@ -121,13 +121,13 @@ function opal:minimal_prompt() {
 #
 # Secondary / Continuation Prompt
 #
-function opal:prompt_continue {
+function opal:ps2_default_dark {
    PS2=""
    PS2+="\[\e[1;36m\]"    # Color: Cyan
    PS2+="\W"              #
-   PS2+=" >"               #
+   PS2+=" >"              #
    PS2+="\[\e[1;37m\]"    # Color: Bright White
-   PS2+=" > "              #
+   PS2+=" > "             #
    PS2+="\[\e[0m\] "
 }
 
