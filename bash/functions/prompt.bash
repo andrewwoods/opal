@@ -97,25 +97,6 @@ function opal:minimal_prompt() {
     PS1+="\[\e[1;36m\]"    # Color: Cyan
     PS1+=" >"              # Prompt
     PS1+="\[\e[0m\] "      # Color: Default
-
-    #
-    # Secondary / Continuation Prompt
-    #
-    PS2=""
-    PS2+="\[\e[1;37m\]"    # Color: Bright White
-    PS2+="\W"              # base directory name
-    PS2+="\[\e[1;36m\]"    # Color: Cyan
-    PS2+=" >"              # PS1 prompt
-    PS2+="\[\e[1;33m\]"    # Yellow color: on
-    PS2+=" >"              # Prompt
-    PS2+="\[\e[0m\] "
-
-    #
-    # Debug Prompt - The default is ‘+ ’.
-    #
-    PS4=""
-    PS4+="+>"
-    PS4+=" "
 }
 
 #
