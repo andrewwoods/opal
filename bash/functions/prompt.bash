@@ -46,6 +46,21 @@ function opal:prompt() {
     esac
 }
 
+function opal:ps1_default_dark() {
+    PS1="\n"
+    PS1+="\[\e[1m\]"
+    PS1+="\u"             # username
+    PS1+="@"              # @
+    PS1+="\h"             # host
+    PS1+="\[\e[0m\] "
+    PS1+="\n"
+    PS1+="\[\e[1;36m\]"
+    PS1+="\W"             # base directory name
+    PS1+="\[\e[1;36m\] "
+    PS1+="> "
+    PS1+="\[\e[0m\]"
+}
+
 #
 #
 #
@@ -158,21 +173,6 @@ function compact_prompt() {
         PS1+="\[\033[1;35m\]\h\[\e[0m\]\n"
         PS1+="\[\033[1;36m\]\A \W\$(parse_git_branch)\[\e[0m\] \$ "
     fi
-}
-
-function default_prompt_dark() {
-    PS1="\n"
-    PS1+="\[\e[1m\]"
-    PS1+="\u"             # username
-    PS1+="@"              # @
-    PS1+="\h"             # host
-    PS1+="\[\e[0m\] "
-    PS1+="\n"
-    PS1+="\[\e[1;36m\]"
-    PS1+="\W"             # base directory name
-    PS1+="\[\e[1;36m\] "
-    PS1+="> "
-    PS1+="\[\e[0m\]"
 }
 
 function default_prompt_light() {
