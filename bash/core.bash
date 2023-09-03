@@ -233,6 +233,18 @@ function opal:ask {
     echo "${input}"
 }
 
+function opal:sleep {
+    local -i seconds
+
+    seconds="$1"
+    if opal:number_equals "$seconds" 0; then
+        opal:std_error "Using default value."
+        seconds=5
+    fi
+    opal:message "Sleeping for ${seconds} seconds"
+    sleep $seconds
+}
+
 ################################################################################
 #
 #   File Checks
