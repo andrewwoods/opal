@@ -124,6 +124,14 @@ function opal:ps4_default {
     PS4+='${BRIGHT_CYAN}source-file:${NORMAL}${BASH_SOURCE} '
     PS4+='line#: ${LINENO} \nfunction: ${FUNCNAME[0]:+${FUNCNAME[0]}() } '
     PS4+='statement: '
+
+function opal:ps4_simple {
+    PS4+="\n\[\e[1;37m\]"    # Color: Bright White
+    PS4='$0.$LINENO> '
+    PS4+="\[\e[0m\] "        # Color: Reset
+    export PS4
+}
+
 }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
