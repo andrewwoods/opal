@@ -39,7 +39,9 @@ LESS+="w" # Temporarily highlights the first "new" line after a forward
 #   movement of a full page.
 LESS+="x4" # Set tab stops to 4 spaces
 
-export EDITOR GIT_EDITOR SVN_EDITOR VISUAL LESS
+HISTTIMEFORMAT="%m-%d %a %H:%M:%S "
+
+export EDITOR GIT_EDITOR SVN_EDITOR VISUAL LESS HISTTIMEFORMAT
 
 ################################################################################
 #
