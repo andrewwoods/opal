@@ -86,7 +86,10 @@ echo 'clocks' >>~/.bashrc
 echo '' >>~/.bashrc
 echo '# Assumes your terminal has a dark background. Change to light if needed  ' >>~/.bashrc
 echo 'termbg dark' >>~/.bashrc
-echo 'set_prompt brief' >>~/.bashrc
+echo 'opal:ps1_default_dark' >>~/.bashrc
+echo 'opal:ps2_default_dark' >>~/.bashrc
+echo 'opal:ps3_default' >>~/.bashrc
+echo 'opal:ps4_default' >>~/.bashrc
 echo '' >>~/.bashrc
 
 intro ~/.bash_profile.bash
