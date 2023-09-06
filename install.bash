@@ -1,4 +1,5 @@
 source bashrc.bash
+source "bash/core.bash"
 
 #
 # intro()
@@ -59,19 +60,12 @@ fi
 #
 # Generate the new bash files in the user's home directory
 #
+opal:message "Generating .bashrc"
 intro ~/.bashrc
 
-echo "Are you new to UNIX or Linux (y/n)?"
-read is_new
-
-if [ $is_new == "y" ] || [ $is_new == "Y" ]; then
-    echo 'export OPAL_NOOB=1' >>~/.bashrc
-else
-    echo 'export OPAL_NOOB=0' >>~/.bashrc
-fi
-
-echo '' >>~/.bashrc
+heading_box 'INCLUDES' ~/.bashrc
 echo 'source ~/opal/opal.bash' >>~/.bashrc
+echo '# @TODO: Add other bash files below here ' >>~/.bashrc
 echo '' >>~/.bashrc
 
 heading_box 'VARIABLES' ~/.bashrc
@@ -92,6 +86,7 @@ echo 'opal:ps3_default' >>~/.bashrc
 echo 'opal:ps4_default' >>~/.bashrc
 echo '' >>~/.bashrc
 
+opal:message "Generating .bash_profile"
 intro ~/.bash_profile.bash
 
 echo '' >>~/.bash_profile.bash
@@ -103,6 +98,7 @@ echo '' >>~/.bash_profile.bash
 
 heading_box 'BASH PROFILE' ~/.bash_profile.bash
 
+opal:message "Generating .gitconfig"
 intro ~/.gitconfig
 
 echo '' >>~/.gitconfig
@@ -113,6 +109,7 @@ echo '[commit]' >>~/.gitconfig
 echo '    template = ~/opal/git/commit-message' >>~/.gitconfig
 echo '' >>~/.gitconfig
 
+opal:message "Generating .vimrc"
 vim_intro ~/.vimrc
 
 echo ':source ~/opal/vimrc_files/vimrc' >>~/.vimrc
