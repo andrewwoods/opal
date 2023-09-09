@@ -315,6 +315,25 @@ function opal:get_date_format {
     fi
 }
 
+function opal:today {
+    local date_format
+    local format_name
+    local format_style
+
+    format_name="opal-datetime"
+    if opal:is_set $1; then
+        format_name="$1"
+    fi
+
+    format_style=""
+    if opal:is_set "$2"; then
+        format_style="$2"
+    fi
+
+    date_format=$(opal:get_date_format "$format_name" "$format_style")
+    echo "$(date +"${date_format}")"
+}
+
 
 ################################################################################
 #
