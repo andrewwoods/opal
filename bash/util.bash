@@ -241,16 +241,6 @@ function today() {
     esac
 }
 
-function show_date() {
-
-    if [[ -z $1 ]]; then
-        echo "You forgot to the time in unix seconds"
-        return 1
-    fi
-    unixtime=$1
-
-    date -r $unixtime
-}
 
 function filedate() {
     if [[ $1 == "time" ]]; then
