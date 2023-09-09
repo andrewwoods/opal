@@ -122,6 +122,7 @@ function mach() {
 # ncal3 - Display the previous month, current month, and next month vertically
 #
 function ncal3() {
+    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     ncal -my $(date -v-1m "+%m %Y")
     _n
     ncal
@@ -133,6 +134,7 @@ function ncal3() {
 # preamble - Display a block message to the user about who and where they are
 #
 function preamble() {
+    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     name=$(whoami)
     host=$(hostname -f)
     thisday=$(today default)
@@ -198,6 +200,7 @@ function spacer {
 # @param String Optional $type Allowed values: text, numeric
 #
 function today() {
+    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
 
     case $1 in
     'unix')
@@ -243,6 +246,7 @@ function today() {
 
 
 function filedate() {
+    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     if [[ $1 == "time" ]]; then
         echo $(date +"%Y-%m-%d-%H-%M-%S")
     else
@@ -254,6 +258,7 @@ function filedate() {
 # filedate_to_day - Convert file stamp to determine the day of the week
 #
 function filedate_to_day {
+    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     if [[ $1 == "time" ]]; then
         date -j -f '%Y-%m-%d-%H-%M-%S' $2 '+%a'
     else
@@ -291,6 +296,7 @@ get_os() {
 #          and display LS_COLORS accordinly
 #
 termbg() {
+    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     if [[ -z $TERM_BG ]]; then
         TERM_BG="dark"
         echo "the terminal background is ${TERM_BG}"
@@ -346,6 +352,7 @@ termbg() {
 # monday_date - Determine the date for Mon of the current week
 #
 function monday_date {
+    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     day_of_week=$(date '+%a')
     format='+%Y %b %d %a'
 
@@ -371,6 +378,7 @@ function monday_date {
 # sunday_date - Determine the date for Sunday of the current week
 #
 function sunday_date {
+    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     day_of_week=$(date '+%a')
     format='+%Y %b %d %a'
 
