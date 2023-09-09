@@ -130,6 +130,24 @@ function ncal3() {
     ncal -my $(date -v+1m "+%m %Y")
 }
 
+function greeting {
+    local hour
+
+    hour=$(date +'%k')
+    if opal:number_is_below "$hour" 7; then
+        echo "You should be sleeping"
+
+    elif opal:number_between "$hour" 7 12 ; then
+        echo "Good morning"
+
+    elif opal:number_between "$hour" 12 18 ; then
+        echo "Good afternoon"
+    else
+        echo "Good evening"
+    fi
+
+}
+
 #
 # preamble - Display a block message to the user about who and where they are
 #
@@ -138,10 +156,11 @@ function preamble() {
     name=$(whoami)
     host=$(hostname -f)
     thisday=$(today default)
+    greet=$("greeting")
 
     echo '###########################################################'
     echo '# '
-    type_line "# Hello ${name}"
+    type_line "# ${greet} ${name}"
     type_line "# You are logged into ${host}"
     echo '# '
     type_line "# Today is ${thisday}"
