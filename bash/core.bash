@@ -273,6 +273,51 @@ function opal:file_has_set_gid {
 
 ################################################################################
 #
+#   Date Functions
+#
+################################################################################
+
+function opal:get_date_format {
+    local format_name
+
+    format_name="$1"
+    if [[ $format_name == "unix" ]]; then
+        echo "%s"
+    elif [[ $format_name == "opal-date" ]]; then
+        echo "%Y %b %d %a"
+    elif [[ $format_name == "opal-datetime" ]]; then
+        echo "%Y %b %d %a %H:%M"
+    elif [[ $format_name == "opal-timestamp" ]]; then
+        echo "%Y %b %d %a %H:%M:%S%z"
+    elif [[ $format_name == "iso-date" ]]; then
+        echo "%Y-%m-%d"
+    elif [[ $format_name == "iso-timestamp" ]]; then
+        echo "%Y-%m-%dT%H:%M:%S%z"
+    elif [[ $format_name == "world-date" ]]; then
+        echo "%d.%m.%Y"
+    elif [[ $format_name == "world-datetime" ]]; then
+        echo "%d.%m.%Y %H:%M"
+    elif [[ $format_name == "us-date" ]]; then
+        echo "%m/%d/%Y"
+    elif [[ $format_name == "us-datetime" ]]; then
+        echo "%m/%d/%Y %l:%M%p"
+    elif [[ $format_name == "us-timestamp" ]]; then
+        echo "%m/%d/%Y %l:%M:%S%p %z"
+    elif [[ $format_name == "filename-date" ]]; then
+        echo "%Y-%m-%d"
+    elif [[ $format_name == "filename-datetime" ]]; then
+        echo "%Y-%m-%d-%H-%M"
+    elif [[ $format_name == "filename-timestamp" ]]; then
+        echo "%Y-%m-%d-%H-%M-%S"
+    else
+        opal:std_error "Your specified format name is not available"
+        return 1
+    fi
+}
+
+
+################################################################################
+#
 #   Documentation
 #
 ################################################################################
