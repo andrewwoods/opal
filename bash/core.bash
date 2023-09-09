@@ -326,12 +326,26 @@ function opal:today {
 
     date_format=$(opal:get_date_format "$format_name")
     echo "$(date +"${date_format}")"
-    if opal:is_set "$2"; then
-        format_style="$2"
-    fi
+}
 
-    date_format=$(opal:get_date_format "$format_name" "$format_style")
-    echo "$(date +"${date_format}")"
+function opal:someday() {
+    local unix_time
+    local format_name
+    local date_format
+
+    if opal:is_unset "$1"; then
+        echo "You forgot to the time in unix seconds"
+        return 1
+    fi
+    unix_time=$1
+
+    format_name="opal-datetime"
+    if opal:is_set "$2"; then
+        format_name="$2"
+    fi
+    date_format="+$(opal:get_date_format "${format_name}")"
+
+    date -r "${unix_time}" "${date_format}"
 }
 
 
