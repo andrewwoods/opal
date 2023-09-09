@@ -315,7 +315,6 @@ function note() {
 
     if [[ $1 == "work" ]]; then
         MESG="$NOW "
-        shift
         if [[ -n $2 ]]; then
             MESG="$MESG $@"
         fi
@@ -323,7 +322,6 @@ function note() {
 
     elif [[ $1 == "dev" ]]; then
         MESG="$NOW "
-        shift
         if [[ -n $2 ]]; then
             MESG="$MESG $@"
         fi
@@ -331,7 +329,6 @@ function note() {
 
     elif [[ $1 == "home" ]]; then
         MESG="$NOW "
-        shift
         if [[ -n $2 ]]; then
             MESG="$MESG $@"
         fi

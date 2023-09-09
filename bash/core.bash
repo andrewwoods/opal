@@ -208,6 +208,12 @@ function opal:failure() {
     echo -e "${RED}${MESSAGE}${NORMAL}"
 }
 
+function opal:info() {
+    local MESSAGE="$1"
+
+    echo -e "${BRIGHT_PURPLE}${MESSAGE}${NORMAL}"
+}
+
 function opal:message() {
     local MESSAGE="$1"
 
@@ -231,6 +237,19 @@ function opal:ask {
     read -p "${prompt}: " input
 
     echo "${input}"
+}
+
+function opal:sleep {
+    local -i seconds
+
+    seconds="$1"
+    if opal:number_equals $seconds 0; then
+        # Set a default value when an invalid value was passed by the user.
+        seconds=5
+    fi
+
+    opal:message "Sleeping ${seconds} seconds"
+    sleep $seconds
 }
 
 ################################################################################
