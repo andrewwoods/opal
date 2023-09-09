@@ -316,16 +316,16 @@ function opal:get_date_format {
 }
 
 function opal:today {
-    local date_format
     local format_name
-    local format_style
+    local date_format
 
     format_name="opal-datetime"
     if opal:is_set $1; then
         format_name="$1"
     fi
 
-    format_style=""
+    date_format=$(opal:get_date_format "$format_name")
+    echo "$(date +"${date_format}")"
     if opal:is_set "$2"; then
         format_style="$2"
     fi
