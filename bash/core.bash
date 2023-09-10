@@ -273,6 +273,84 @@ function opal:file_has_set_gid {
 
 ################################################################################
 #
+#   Date Functions
+#
+################################################################################
+
+function opal:get_date_format {
+    local format_name
+
+    format_name="$1"
+    if [[ $format_name == "unix" ]]; then
+        echo "%s"
+    elif [[ $format_name == "opal-date" ]]; then
+        echo "%Y %b %d %a"
+    elif [[ $format_name == "opal-datetime" ]]; then
+        echo "%Y %b %d %a %H:%M"
+    elif [[ $format_name == "opal-timestamp" ]]; then
+        echo "%Y %b %d %a %H:%M:%S%z"
+    elif [[ $format_name == "iso-date" ]]; then
+        echo "%Y-%m-%d"
+    elif [[ $format_name == "iso-timestamp" ]]; then
+        echo "%Y-%m-%dT%H:%M:%S%z"
+    elif [[ $format_name == "world-date" ]]; then
+        echo "%d.%m.%Y"
+    elif [[ $format_name == "world-datetime" ]]; then
+        echo "%d.%m.%Y %H:%M"
+    elif [[ $format_name == "us-date" ]]; then
+        echo "%m/%d/%Y"
+    elif [[ $format_name == "us-datetime" ]]; then
+        echo "%m/%d/%Y %l:%M%p"
+    elif [[ $format_name == "us-timestamp" ]]; then
+        echo "%m/%d/%Y %l:%M:%S%p %z"
+    elif [[ $format_name == "filename-date" ]]; then
+        echo "%Y-%m-%d"
+    elif [[ $format_name == "filename-datetime" ]]; then
+        echo "%Y-%m-%d-%H-%M"
+    elif [[ $format_name == "filename-timestamp" ]]; then
+        echo "%Y-%m-%d-%H-%M-%S"
+    else
+        opal:std_error "Your specified format name is not available"
+        return 1
+    fi
+}
+
+function opal:today {
+    local format_name
+    local date_format
+
+    format_name="opal-datetime"
+    if opal:is_set $1; then
+        format_name="$1"
+    fi
+
+    date_format=$(opal:get_date_format "$format_name")
+    echo "$(date +"${date_format}")"
+}
+
+function opal:someday() {
+    local unix_time
+    local format_name
+    local date_format
+
+    if opal:is_unset "$1"; then
+        echo "You forgot to the time in unix seconds"
+        return 1
+    fi
+    unix_time=$1
+
+    format_name="opal-datetime"
+    if opal:is_set "$2"; then
+        format_name="$2"
+    fi
+    date_format="+$(opal:get_date_format "${format_name}")"
+
+    date -r "${unix_time}" "${date_format}"
+}
+
+
+################################################################################
+#
 #   Documentation
 #
 ################################################################################
