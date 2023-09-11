@@ -131,8 +131,8 @@ function opal:ps4_default {
 
 function opal:ps4_simple {
     PS4+="\n\[\e[1;37m\]"    # Color: Bright White
-    PS4='$0.$LINENO> '
-    PS4+="\[\e[0m\] "        # Color: Reset
+    PS4='${BASH_SOURCE}:${LINENO}> '
+    PS4+="\[\e[0m\]"         # Color: Reset
     export PS4
 }
 
