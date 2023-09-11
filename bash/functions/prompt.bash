@@ -64,7 +64,7 @@ function opal:ps1_default_dark() {
 #
 #
 #
-function opal:brief_prompt() {
+function opal:ps1_brief() {
     local style="$1"
 
     PS1="\[\e[1m\]\u"
@@ -82,7 +82,7 @@ function opal:brief_prompt() {
     fi
 }
 
-function opal:minimal_prompt() {
+function opal:ps1_minimal() {
     #
     # Primary Prompt
     #
@@ -236,7 +236,7 @@ function root_prompt() {
     fi
 }
 
-function vertical_prompt() {
+function opal:ps1_vertical() {
 
     PS1="\n"
     PS1+="\[\033[1m\]\u\[\e[0m\]"

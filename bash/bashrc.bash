@@ -178,9 +178,9 @@ function set_prompt() {
 
         vertical)
             if [[ -z "$use_color" || "$use_color" == "no" ]]; then
-                vertical_prompt
+                opal:ps1_vertical
             else
-                vertical_prompt color
+                opal:ps1_vertical color
             fi
             ;;
 
