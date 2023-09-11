@@ -57,7 +57,7 @@ function opal:ps1_default_dark() {
     PS1+="\[\e[1;36m\]"
     PS1+="\W"             # base directory name
     PS1+="\[\e[1;36m\] "
-    PS1+="> "
+    PS1+="\!:\$> "
     PS1+="\[\e[0m\]"
 }
 
