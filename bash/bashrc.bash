@@ -361,3 +361,26 @@ function matrix() {
 function strlen {
     echo ${#1}
 }
+
+
+function opal:note_view {
+    declare DATADIR
+    local file
+
+    DATADIR=$(datadir)
+    file="${DATADIR}/notes.txt"
+
+    if [[ "$1" == "work" ]]; then
+        file="${DATADIR}/notes.work.txt"
+
+    elif [[ "$1" == "dev" ]]; then
+        file="${DATADIR}/notes.development.txt"
+
+    elif [[ "$1" == "home" ]]; then
+        file="${DATADIR}/notes.home.txt"
+    fi
+
+    opal:message "File: $file"
+    bat "$file"
+}
+
