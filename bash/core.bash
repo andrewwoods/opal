@@ -173,6 +173,25 @@ function opal:about_macos {
     fi
 }
 
+function opal:about_popos {
+
+    if opal:command_exists "neofetch"; then
+        neofetch
+    else
+        # Fallback to generic Pop_OS commands
+        about_me="$(whoami)@$(hostname)"
+        opal:label "${about_me}"
+        _n
+        inxi
+        _n
+        hostnamectl | grep -e 'Hardware' -e 'Architecture' -e 'Chassis'
+        _n
+        opal:message "Memory"
+        free -h
+        _n
+    fi
+}
+
 function opal:about_ubuntu {
     opal:label "About Ubuntu"
 
