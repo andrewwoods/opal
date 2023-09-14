@@ -294,7 +294,9 @@ function show_dotfiles() {
             killall Finder
             ;;
 
-        *) echo "usage: show_dotfiles yes|no|true|false" 1>&2 ;;
+        *)
+            opal:std_error "usage: show_dotfiles yes|no|true|false"
+            ;;
 
     esac
 }
@@ -310,7 +312,7 @@ function show_dotfiles() {
 # $ note type a brief message here
 #
 function note() {
-    NOW=$(today iso)
+    NOW=$(opal:today iso-timestamp)
     DATADIR=$(datadir)
 
     if [[ $1 == "work" ]]; then
