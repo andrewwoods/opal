@@ -169,8 +169,12 @@ function opal:about_macos {
     if opal:command_exists "neofetch"; then
         neofetch
     else
-        system_profiler -detailLevel mini SPSoftwareDataType SPHardwareDataType
+        opal:about_macos_fallback
     fi
+}
+
+function opal:about_macos_fallback {
+    system_profiler -detailLevel mini SPSoftwareDataType SPHardwareDataType
 }
 
 function opal:about_popos {
