@@ -318,28 +318,29 @@ function note() {
     if [[ $1 == "work" ]]; then
         MESG="$NOW "
         if [[ -n $2 ]]; then
-            MESG="$MESG $@"
+            MESG="$MESG ${@:2}"
+            echo $MESG >> $DATADIR/notes.work.txt
         fi
-        echo $MESG >> $DATADIR/notes.work.txt
 
     elif [[ $1 == "dev" ]]; then
         MESG="$NOW "
         if [[ -n $2 ]]; then
-            MESG="$MESG $@"
+            MESG="$MESG ${@:2}"
+            echo $MESG >> $DATADIR/notes.development.txt
         fi
-        echo $MESG >> $DATADIR/notes.development.txt
 
     elif [[ $1 == "home" ]]; then
         MESG="$NOW "
         if [[ -n $2 ]]; then
             MESG="$MESG $@"
+            echo $MESG >> $DATADIR/notes.home.txt
         fi
-        echo $MESG >> $DATADIR/notes.home.txt
 
     else
         MESG="$NOW $@"
         echo $MESG >> $DATADIR/notes.txt
     fi
+
 }
 
 #
@@ -364,6 +365,27 @@ function strlen {
     echo ${#1}
 }
 
+function opal:note_edit {
+    declare DATADIR
+    local file
+
+    DATADIR=$(datadir)
+    file="${DATADIR}/notes.txt"
+
+    if [[ "$1" == "work" ]]; then
+        file="${DATADIR}/notes.work.txt"
+
+    elif [[ "$1" == "dev" ]]; then
+        file="${DATADIR}/notes.development.txt"
+
+    elif [[ "$1" == "home" ]]; then
+        file="${DATADIR}/notes.home.txt"
+    fi
+
+    opal:message "File: $file"
+
+    nvim "$file"
+}
 
 function opal:note_view {
     declare DATADIR
@@ -383,6 +405,10 @@ function opal:note_view {
     fi
 
     opal:message "File: $file"
-    bat "$file"
+    if opal:command_exists "bat"; then
+        bat --pager never "$file"
+    else
+        cat -n "$file"
+    fi
 }
 
