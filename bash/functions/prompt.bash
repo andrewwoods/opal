@@ -236,15 +236,19 @@ function root_prompt() {
     fi
 }
 
+#
+# This prompt is great for development, as it shows the git branch
+# and the full directory path
+#
+# @see https://wiki.archlinux.org/title/Bash/Prompt_customization#Colors
+#
 function vertical_prompt() {
 
     PS1="\n"
-    PS1+="\[\033[1m\]\u\[\e[0m\]"
-    PS1+="@"
-    PS1+="\[\033[1m\]\h\[\e[0m\]\n"
     PS1+="\[\033[1m\]\$(parse_git_branch)\[\e[0m\]\n"
-    PS1+="\[\033[1m\]\D{%b %d %H:%M:%S}\e[0m\] \[\033[4m\]\W\e[0m\]\n"
-    PS1+="\$ "
+    # The opal-datetime format
+    PS1+="\D{%Y %b %d %a %H:%M} >\n"
+    PS1+="\[\033[1m\]\!\[\e[0m\] > \w \$ "
 
     if [[ -n "$1" || "$1" == "color" ]]; then
         PS1="\n"
