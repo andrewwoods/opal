@@ -37,6 +37,70 @@ BRIGHT_CYAN=$(echo -e '\033[1;36m')
 WHITE=$(echo -e '\033[0;37m')
 BRIGHT_WHITE=$(echo -e '\033[1;37m')
 
+function opal:color {
+    local color
+    local style
+    local code
+
+    if opal:is_unset "$1"; then
+        opal:std_error 'You forgot to specify a color name'
+        return 1
+    fi
+    color="$1"
+    code=""
+    style=""
+
+    if opal:is_set "$2"; then
+        style="$2"
+    fi
+
+    if opal:string_equals "$color" "normal"; then
+        code="0"
+    fi
+
+    if opal:string_equals "$color" "red"; then
+        code="31"
+    fi
+
+    if opal:string_equals "$color" "green"; then
+        code="32"
+    fi
+
+    if opal:string_equals "$color" "yellow"; then
+        code="33"
+    fi
+
+    if opal:string_equals "$color" "blue"; then
+        code="34"
+    fi
+
+    if opal:string_equals "$color" "purple"; then
+        code="35"
+    fi
+
+    if opal:string_equals "$color" "cyan"; then
+        code="36"
+    fi
+
+    if opal:string_equals "$color" "white"; then
+        code="37"
+    fi
+
+    if opal:string_equals "$style" "bright"; then
+        code="1;${code}"
+    fi
+
+    if opal:string_equals "$style" "underline"; then
+        code="4;${code}"
+    fi
+
+    if opal:string_equals "$style" "reverse"; then
+        code="7;${code}"
+    fi
+
+    echo -e "\033[${code}m\]"
+}
+
 function opal:std_error {
     echo "$@" 1>&2
 }
@@ -125,6 +189,16 @@ function opal:log {
     log_file="${OPAL_LOG_DIR}/${file}"
 
     echo "${log_date} ${level} ${message}" >> "${log_file}"
+}
+
+################################################################################
+#
+#   String
+#
+################################################################################
+
+function opal:string_equals {
+    [[ $1 == $2 ]]
 }
 
 ################################################################################

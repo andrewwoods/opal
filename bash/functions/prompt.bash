@@ -47,18 +47,23 @@ function opal:prompt() {
 }
 
 function opal:ps1_default_dark() {
+    local normal
+    local bright_cyan
+    local bright_white
+
+    normal="$(opal:color normal)"
+    bright_blue="$(opal:color blue bright)"
+    bright_cyan="$(opal:color cyan bright)"
+    bright_white="$(opal:color white bright)"
+
     PS1="\n"
-    PS1+="\[\e[1m\]"
-    PS1+="\u"             # username
-    PS1+="@"              # @
-    PS1+="\h"             # host
-    PS1+="\[\e[0m\] "
-    PS1+="\n"
-    PS1+="\[\e[1;36m\]"
-    PS1+="\W"             # base directory name
-    PS1+="\[\e[1;36m\] "
-    PS1+="\!:\$> "
-    PS1+="\[\e[0m\]"
+    PS1+="${bright_white}"
+    PS1+="\t >"  # base directory name
+    PS1+="${bright_cyan}"
+    PS1+=" \w >" # base directory name
+    PS1+="${bright_blue}"
+    PS1+=" \! >${normal}\n"
+    PS1+="\[${bright_white}\$\[\033[0m\] "
 }
 
 #
@@ -104,11 +109,10 @@ function opal:ps1_minimal() {
 #
 function opal:ps2_default_dark {
    PS2=""
-   PS2+="\[\e[1;36m\]"    # Color: Cyan
-   PS2+="\W"              #
-   PS2+=" >"              #
    PS2+="\[\e[1;37m\]"    # Color: Bright White
-   PS2+=" > "             #
+   PS2+="\$"              #
+   PS2+="\[\e[1;36m\]"    # Color: Cyan
+   PS2+=" >"              #
    PS2+="\[\e[0m\] "
 }
 
