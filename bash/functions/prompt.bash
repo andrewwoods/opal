@@ -22,25 +22,31 @@ function opal:prompt() {
         style="$2"
     fi
 
+    opal:ps2_default_dark
+    opal:ps3_minimal
+    opal:ps4_default
     case ${1} in
         brief)
-            opal:brief_prompt $style
+            opal:ps1_brief $style
+            opal:ps4_simple
             ;;
 
         minimal)
-            opal:minimal_prompt $style
-            opal:ps3_minimal
-            opal:ps4_default
+            opal:ps1_minimal $style
+            opal:ps4_minimal
+            ;;
+
+        developer)
+            opal:ps1_developer $style
             ;;
 
         default)
-            default_prompt_dark $style
-            opal:ps3_minimal
-            opal:ps4_default
+            opal:ps1_default_dark $style
             ;;
 
         *)
             opal:std_error "Sorry, but '${1}' is not a valid prompt name"
+            opal:std_error "Try brief, minimal, developer, or default"
             return 1
             ;;
     esac
@@ -63,7 +69,7 @@ function opal:ps1_default_dark() {
     PS1+=" \w >" # base directory name
     PS1+="${bright_blue}"
     PS1+=" \! >${normal}\n"
-    PS1+="\[${bright_white}\$\[\033[0m\] "
+    PS1+="${bright_white}\$${normal} "
 }
 
 #
@@ -93,14 +99,11 @@ function opal:ps1_minimal() {
     #
     PS1="\n"
     PS1+="\[\e[1;36m\]"    # Color: Cyan
-    PS1+="\u"              # username
-    PS1+="@"               # @
-    PS1+="\h"              # host
-    PS1+="\n"
-    PS1+="\[\e[1;37m\]"    # Color: Bright White
     PS1+="\W"              # base directory name
     PS1+="\[\e[1;36m\]"    # Color: Cyan
-    PS1+=" >"              # Prompt
+    PS1+=" \!:\$"
+    PS1+="\[\e[1;37m\]"    # Color: Bright White
+    PS1+=">"         # Prompt
     PS1+="\[\e[0m\] "      # Color: Default
 }
 
@@ -123,13 +126,19 @@ function opal:ps3_default {
     export PS3
 }
 
+function opal:ps3_minimal {
+    PS3=""
+    PS3+="Select: "
+
+    export PS3
+}
+
 function opal:ps4_default {
-    PS4=""
-    PS4+='${BRIGHT_CYAN}source-file:${NORMAL}${BASH_SOURCE} '
-    PS4+='line#: ${LINENO} \nfunction: ${FUNCNAME[0]:+${FUNCNAME[0]}() } '
-    PS4+="\n\[\e[1;37m\]"    # Color: Bright White
-    PS4+=" >"                #
-    PS4+="\[\e[0m\] "        # Color: Reset
+    PS4="\n"
+    PS4+='source-file: ${BASH_SOURCE}\n'
+    PS4+='Function: ${FUNCNAME[0]:+${FUNCNAME[0]}} \n'
+    PS4+='Line: ${LINENO} \n'
+    PS4+="${BRIGHT_WHITE}>${NORMAL} "                 #
     export PS4
 }
 
@@ -156,45 +165,6 @@ function bold_branch_prompt() {
     PS1+=" \$(parse_git_branch)\$\[\e[0m\] "
 }
 
-function brief_prompt {
-    opal:std_error 'Use opal:brief_prompt or opal:prompt instead'
-    return 1
-}
-
-function compact_prompt() {
-    PS1="\n"
-    PS1+="\[\033[1m\]\u\[\e[0m\]"
-    PS1+="@"
-    PS1+="\[\033[1m\]\h\[\e[0m\]\n"
-    PS1+="\[\033[1m\]\A\[\e[0m\] "
-    PS1+="\[\033[4m\]\W\[\e[0m\]"
-    PS1+="\[\033[1m\]\n\$(parse_git_branch)\n\[\e[0m\]\$ "
-
-    if [[ -n "$1" || "$1" == "color" ]]; then
-        PS1="\n"
-        PS1+="\[\033[1;32m\]\u\[\e[0m\]"
-        PS1+="@"
-        PS1+="\[\033[1;35m\]\h\[\e[0m\]\n"
-        PS1+="\[\033[1;36m\]\A \W\$(parse_git_branch)\[\e[0m\] \$ "
-    fi
-}
-
-function default_prompt_light() {
-    PS1="\n"
-    PS1+="\[\e[1m\]"
-    PS1+="\u"             # username
-    PS1+="@"              # @
-    PS1+="\h"             # host
-    PS1+="\[\e[0m\] "
-    PS1+="\n"
-    PS1+="\[\e[1;34m\]"
-    PS1+="\W"             # base directory name
-    PS1+="\[\e[1;32m\] "
-    PS1+="> "
-    PS1+="\[\e[0m\]"
-
-}
-
 function full_prompt() {
 
     PS1="\n"
@@ -211,7 +181,7 @@ function full_prompt() {
 }
 
 function minimal_prompt {
-    opal:std_error "use opal:minimal_prompt instead"
+    opal:std_error "use opal:ps1_minimal instead"
     return 1
 }
 
