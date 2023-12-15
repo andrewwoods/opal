@@ -98,7 +98,7 @@ function opal:color {
         code="7;${code}"
     fi
 
-    echo -e "\033[${code}m\]"
+    echo -e "\[\e[${code}m\]"
 }
 
 function opal:std_error {
