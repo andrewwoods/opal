@@ -88,14 +88,23 @@ function opal:color {
 
     if opal:string_equals "$style" "bright"; then
         code="1;${code}"
+        if opal:string_equals "$color" "normal"; then
+            code="1"
+        fi
     fi
 
     if opal:string_equals "$style" "underline"; then
         code="4;${code}"
+        if opal:string_equals "$color" "normal"; then
+            code="4"
+        fi
     fi
 
     if opal:string_equals "$style" "reverse"; then
         code="7;${code}"
+        if opal:string_equals "$color" "normal"; then
+            code="7"
+        fi
     fi
 
     echo -e "\[\e[${code}m\]"
