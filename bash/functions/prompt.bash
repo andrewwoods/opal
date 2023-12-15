@@ -231,3 +231,41 @@ function opal:ps1_vertical() {
         PS1+="\$ "
     fi
 }
+
+function opal:ps1_developer {
+    local normal
+    local bold
+    local underline
+    local bright_cyan
+    local bright_white
+    local bright_green
+
+    normal="$(opal:color normal)"
+    bold="$(opal:color normal bright)"
+    underline="$(opal:color normal underline)"
+    bright_green="$(opal:color green bright)"
+    bright_cyan="$(opal:color cyan bright)"
+    bright_white="$(opal:color white bright)"
+
+
+    PS1="\n"
+    PS1+="${bold}\$(parse_git_branch)${normal}\n"
+    PS1+="${underline}\u"
+    PS1+="@"
+    PS1+="\h\n${normal}"
+    PS1+="\[\D{$(opal:get_date_format opal-datetime)}\] "
+    PS1+="${bold}\w\n"
+    PS1+="\$${normal} "
+
+    if [[ -n "$1" && "$1" == "color" ]]; then
+        PS1="\n"
+        PS1+="${bright_cyan}\$(parse_git_branch)\n"
+        PS1+="${bright_green}\u"
+        PS1+="@"
+        PS1+="\h\n"
+        PS1+="${bright_white}\[\D{$(opal:get_date_format opal-datetime)}\] "
+        PS1+="${bright_cyan}\w\n"
+        PS1+="${bright_white}\$${normal} "
+    fi
+}
+
