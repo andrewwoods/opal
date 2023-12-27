@@ -30,7 +30,6 @@ VISUAL=$EDITOR
 
 # NOTE: any options specified on the command line override these values
 LESS="-"
-LESS+="N" # Causes a line number to be displayed at the beginning of each line
 LESS+="g" # highlight only the particular string which was found
 #   by the last search command.
 LESS+="j.5" # .5 is the middle line. integer start from the top of screen
