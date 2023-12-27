@@ -22,7 +22,11 @@ function opal:prompt() {
         style="$2"
     fi
 
-    opal:ps2_default_dark
+    if opal:string_equals "${TERM_BG}" 'light'; then
+        opal:ps2_default_light $style
+    else
+        opal:ps2_default_dark $style
+    fi
     opal:ps3_minimal
     opal:ps4_default
     case ${1} in
@@ -37,11 +41,19 @@ function opal:prompt() {
             ;;
 
         developer)
-            opal:ps1_developer $style
+            if opal:string_equals "${TERM_BG}" 'light'; then
+                opal:ps1_developer_light $style
+            else
+                opal:ps1_developer $style
+            fi
             ;;
 
         default)
-            opal:ps1_default_dark $style
+            if opal:string_equals "${TERM_BG}" 'light'; then
+                opal:ps1_default_light $style
+            else
+                opal:ps1_default_dark $style
+            fi
             ;;
 
         *)
@@ -72,6 +84,28 @@ function opal:ps1_default_dark() {
     PS1+="${bright_white}\$${normal} "
 }
 
+
+function opal:ps1_default_light() {
+    local normal
+    local cyan
+    local green
+    local blue
+
+    normal="$(opal:color normal)"
+    blue="$(opal:color blue bright)"
+    cyan="$(opal:color cyan bright)"
+    green="$(opal:color green bright)"
+
+    PS1="\n"
+    PS1+="${green}"
+    PS1+="\t >"  # base directory name
+    PS1+="${cyan}"
+    PS1+=" \w >" # base directory name
+    PS1+="${blue}"
+    PS1+=" \! >${normal}\n"
+    PS1+="${green}\$${normal} "
+}
+
 #
 #
 #
@@ -93,6 +127,38 @@ function opal:ps1_brief() {
     fi
 }
 
+function opal:ps1_brief_light() {
+    local style="$1"
+
+    local normal
+    local cyan
+    local yellow
+    local blue
+    local red
+
+    normal="$(opal:color normal)"
+    bold="$(opal:color normal bright)"
+    underline="$(opal:color normal underline)"
+    blue="$(opal:color blue)"
+    cyan="$(opal:color cyan bright)"
+    red="$(opal:color red bright)"
+    yellow="$(opal:color yellow )"
+    green="$(opal:color green bright)"
+
+    PS1="${bold}\u"
+    PS1+="${normal}@"
+    PS1+="\h "
+    PS1+="${underline}\W${normal}"
+    PS1+="${bold} \$(parse_git_branch) \$${normal} "
+
+    if [[ -n "${style}" && "${style}" == "color" ]]; then
+        PS1="${yellow}\u"
+        PS1+="${normal}@"
+        PS1+="${green}\h "
+        PS1+="${red}\W"
+        PS1+="${cyan} \$(parse_git_branch) \$${normal} "
+    fi
+}
 function opal:ps1_minimal() {
     #
     # Primary Prompt
@@ -119,6 +185,23 @@ function opal:ps2_default_dark {
    PS2+="\[\e[0m\] "
 }
 
+#
+# Secondary / Continuation Prompt
+#
+function opal:ps2_default_light {
+
+    normal="$(opal:color normal)"
+    blue="$(opal:color blue bright)"
+    green="$(opal:color green bright)"
+
+    PS2=""
+    PS2+="${blue}"
+    PS2+="\$"
+    PS2+="${green}"
+    PS2+=" >"
+    PS2+="${normal} "
+}
+
 function opal:ps3_default {
     PS3=""
     PS3+="Choose a #> "
@@ -134,18 +217,30 @@ function opal:ps3_minimal {
 }
 
 function opal:ps4_default {
+    local normal
+    local blue
+
+    normal="$(opal:color normal)"
+    blue="$(opal:color blue bright)"
+
     PS4="\n"
     PS4+='source-file: ${BASH_SOURCE}\n'
     PS4+='Function: ${FUNCNAME[0]:+${FUNCNAME[0]}} \n'
     PS4+='Line: ${LINENO} \n'
-    PS4+="${BRIGHT_WHITE}>${NORMAL} "                 #
+    PS4+="${blue}>${normal} "
     export PS4
 }
 
 function opal:ps4_simple {
-    PS4+="\n\[\e[1;37m\]"    # Color: Bright White
+    local normal
+    local blue
+
+    normal="$(opal:color normal)"
+    blue="$(opal:color blue bright)"
+
+    PS4+="\n${blue}"
     PS4='${BASH_SOURCE}:${LINENO}> '
-    PS4+="\[\e[0m\]"         # Color: Reset
+    PS4+="${nromal}"
     export PS4
 }
 
@@ -196,3 +291,39 @@ function opal:ps1_developer {
     fi
 }
 
+function opal:ps1_developer_light {
+    local normal
+    local bold
+    local underline
+    local cyan
+    local blue
+    local bright_green
+
+    normal="$(opal:color normal)"
+    bold="$(opal:color normal bright)"
+    underline="$(opal:color normal underline)"
+    green="$(opal:color green bright )"
+    cyan="$(opal:color cyan bright)"
+    blue="$(opal:color blue bright)"
+
+
+    PS1="\n"
+    PS1+="${bold}\$(parse_git_branch)${normal}\n"
+    PS1+="${underline}\u"
+    PS1+="@"
+    PS1+="\h\n${normal}"
+    PS1+="\[\D{$(opal:get_date_format opal-datetime)}\] "
+    PS1+="${bold}\w\n"
+    PS1+="\$${normal} "
+
+    if [[ -n "$1" && "$1" == "color" ]]; then
+        PS1="\n"
+        PS1+="${cyan}\$(parse_git_branch)\n"
+        PS1+="${green}\u"
+        PS1+="@"
+        PS1+="\h\n"
+        PS1+="${blue}\[\D{$(opal:get_date_format opal-datetime)}\] "
+        PS1+="${green}\w\n"
+        PS1+="${blue}\$${normal} "
+    fi
+}
