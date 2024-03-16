@@ -168,16 +168,6 @@ function opal:preamble {
     echo '###########################################################'
 }
 
-#
-# prompt - an wrapper for type_line
-#
-# @deprecated 2.1.0
-# @param String $content multiple-word prompts must be enclosed in quotes
-#
-function prompt() {
-    type_line "$1"
-    echo "The prompt function is deprecated, please use type_line instead" >&2
-}
 
 #
 # type_file - Display an entire file, as if being typed quickly.
@@ -210,67 +200,6 @@ function opal:spacer {
     for ((i = 1; i <= $max; i++)); do
         echo ""
     done
-}
-
-#
-# today - display a date using the specified format
-#
-# @param String $style Allowed values: unix, iso, world, us, default
-# @param String Optional $type Allowed values: text, numeric
-#
-function today() {
-    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
-
-    case $1 in
-    'unix')
-        echo $(date +"%s")
-        ;;
-    'custom')
-        :
-        if [[ $2 == "date" ]]; then
-            echo $(date +"%Y %b %d %a")
-        else
-            echo $(date +"%Y %b %d %H:%M %z")
-        fi
-        ;;
-    'iso')
-        :
-        if [[ $2 == "date" ]]; then
-            echo $(date +"%Y-%m-%d")
-        else
-            echo $(date +"%Y-%m-%dT%H:%M:%S%z")
-        fi
-        ;;
-    'world')
-        :
-        if [[ $2 == "text" ]]; then
-            echo $(date +"%d %b %Y %H:%M:%S")
-        else
-            echo $(date +"%d/%m/%Y %H:%M:%S")
-        fi
-        ;;
-    'us')
-        :
-        if [[ $2 == "text" ]]; then
-            echo $(date +"%b %d, %Y %l:%M %p")
-        else
-            echo $(date +"%m/%d/%Y %l:%M %p")
-        fi
-        ;;
-    *)
-        echo $(date +"%Y %b %d %a %k:%M")
-        ;;
-    esac
-}
-
-
-function filedate() {
-    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
-    if [[ $1 == "time" ]]; then
-        echo $(date +"%Y-%m-%d-%H-%M-%S")
-    else
-        echo $(date +"%Y-%m-%d")
-    fi
 }
 
 #
