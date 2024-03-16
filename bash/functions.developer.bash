@@ -24,7 +24,7 @@ function opal:str_slug {
 # @param String $url the address of the website you want to check
 # @param Integer $interval the number of seconds to wait
 #
-function check_site() {
+function opal:check_site() {
     declare -i i=0
 
     if opal:is_unset "$2"; then
@@ -60,16 +60,16 @@ function check_site() {
 #
 # $ htstatus 416
 #
-function htstatus() {
+function opal:http_status {
     grep -A 1 ^$1 $OPAL_DIR/data/http-status-codes.txt
     echo " "
     echo "see http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html for more information"
 }
 
 #
-# parse_git_branch - get the current git branch your on
+# opal:parse_git_branch - get the current git branch your on
 #
-function parse_git_branch() {
+function opal:parse_git_branch {
     branch_name=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
     # @todo Trim white space.
     branch_name=$(echo -n "${branch_name}")
@@ -84,7 +84,7 @@ function parse_git_branch() {
 #
 # @param String $filename the filename for which you want to know/generate it's sha1
 #
-function sha1() {
+function opal:sha1 {
     if opal:is_set "$(which openssl)"; then
         openssl sha1 "$@"
     else
@@ -97,7 +97,7 @@ function sha1() {
 #
 # @param String $url the address of the website you want to check
 #
-function traceurl() {
+function opal:trace_url() {
     if opal:is_set "$1"; then
         curl --location --head $1
     else
@@ -111,7 +111,7 @@ function traceurl() {
 # @param int start_time
 # @param int end_time
 #
-function calc_time_diff() {
+function opal:duration {
     if opal:is_unset "$1"; then
         opal:std:error "What is your start time in epoch seconds (UNIX time)"
         return 1

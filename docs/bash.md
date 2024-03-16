@@ -51,47 +51,47 @@ Mon Mar 25 14:17:08 PDT 2019 -- Canada, Vancouver
 **CAL3**: a 3 month calendar display - previous month, current month, and next
 month
 
-	$ cal3
+	$ opal:cal3
 
 **DEFINE**: Retrieve the definition of a word
 
-	$ define ginger
+	$ opal:define ginger
 
 **LSKEYS**: Display a list of your SSH keys
 
-	$ lskeys
+	$ opal:lskeys
 
 **MACH**: display information about the current host.
 
-	$ mach
+	$ opal:mach
 
 **MKCD**: Create a directory and go into it. accepts a single directory name.
 
-	$ mkcd newdirectory
+	$ opal:mkcd newdirectory
 
 **NCAL3**: a 3 month calendar displayed vertically - previous month, current
 month, and next month
 
-	$ ncal3
+	$ opal:ncal3
 
 **NUMSEG**: display part of a file, with line numbers prepended
 
 display line 50, the 10 lines before/after it, with line numbers
 
-	$ numseg /etc/apache2/httpd.conf 50
+	$ opal:numseg /etc/apache2/httpd.conf 50
 
 display lines 32 through 48 with line numbers
 
-	$ numseg /etc/apache2/httpd.conf 32 48
+	$ opal:numseg /etc/apache2/httpd.conf 32 48
 
 **PARSE_GIT_BRANCH**: detects when you're in a git project and extracts the
 name of the active branch. Used by the set_prompt() function
 
-	$ parse_git_branch
+	$ opal:parse_git_branch
 
 **PREAMBLE**: Display a login message about who and where you are.
 
-	$ preamble
+	$ opal:preamble
 
 **PROMPT**: A great way to display a line to text. Like echo, but types out the
 characters one at a time, as if you typed it
@@ -138,8 +138,8 @@ output for each of the arguments depends on your system.
 
 **SHOW_DOTFILES**: enable/disable display of hidden dotfiles in OS X finder
 
-	$ show_dotfiles true
-	$ show_dotfiles false
+	$ opal:show_dotfiles true
+	$ opal:show_dotfiles false
 
 
 **TODAY**: display today's date in a number of formats. There are a few formats
@@ -157,22 +157,22 @@ to start of with. specify the type and optionally the format.
 	# world text    31 Mar 2012 13:07:59
 
 
-	$ today iso
-	2012 03 31 13:07:59
+	$ opal:today iso-timestamp
+	2012-03-31T13:07:59-0400
 
-	$ today world text
+	$ opal:today world text
 	31 Mar 2012 13:07:59
 
 **TOUCHX**: Create an empty file and make it executable
 
-	$ touchx filename.txt
-	$ touchx info.php phpinfo
-	$ touchx robots.txt
+	$ opal:touchx filename.txt
+	$ opal:touchx info.php phpinfo
+	$ opal:touchx robots.txt
 
 **TRUNCATE**: Remove the *contents* of a file without deleting it.
 'empty' is an alias
 
-	$ truncate myfile.txt
+	$ opal:truncate myfile.txt
 
 	# You can also use
-	$ empty myfile.txt
+	$ opal:empty myfile.txt

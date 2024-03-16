@@ -116,14 +116,14 @@ function opal:ps1_brief() {
     PS1+="\[\e[0m\]@"
     PS1+="\h "
     PS1+="\[\e[4m\]\W\[\e[0m\]"
-    PS1+="\[\e[1m\] \$(parse_git_branch) \$ \[\e[0m\]"
+    PS1+="\[\e[1m\] \$(opal:parse_git_branch) \$ \[\e[0m\]"
 
     if [[ -n "${style}" && "${style}" == "color" ]]; then
         PS1="\[\e[1;33m\]\u"
         PS1+="\[\e[1;37m\]@"
         PS1+="\[\e[1;32m\]\h "
         PS1+="\[\e[1;31m\]\W"
-        PS1+="\[\e[1;36m\] \$(parse_git_branch) \$ \[\e[0m\]"
+        PS1+="\[\e[1;36m\] \$(opal:parse_git_branch) \$ \[\e[0m\]"
     fi
 }
 
@@ -149,14 +149,14 @@ function opal:ps1_brief_light() {
     PS1+="${normal}@"
     PS1+="\h "
     PS1+="${underline}\W${normal}"
-    PS1+="${bold} \$(parse_git_branch) \$${normal} "
+    PS1+="${bold} \$(opal:parse_git_branch) \$${normal} "
 
     if [[ -n "${style}" && "${style}" == "color" ]]; then
         PS1="${yellow}\u"
         PS1+="${normal}@"
         PS1+="${green}\h "
         PS1+="${red}\W"
-        PS1+="${cyan} \$(parse_git_branch) \$${normal} "
+        PS1+="${cyan} \$(opal:parse_git_branch) \$${normal} "
     fi
 }
 function opal:ps1_minimal() {
@@ -271,7 +271,7 @@ function opal:ps1_developer {
 
 
     PS1="\n"
-    PS1+="${bold}\$(parse_git_branch)${normal}\n"
+    PS1+="${bold}\$(opal:parse_git_branch)${normal}\n"
     PS1+="${underline}\u"
     PS1+="@"
     PS1+="\h\n${normal}"
@@ -281,7 +281,7 @@ function opal:ps1_developer {
 
     if [[ -n "$1" && "$1" == "color" ]]; then
         PS1="\n"
-        PS1+="${bright_cyan}\$(parse_git_branch)\n"
+        PS1+="${bright_cyan}\$(opal:parse_git_branch)\n"
         PS1+="${bright_green}\u"
         PS1+="@"
         PS1+="\h\n"
@@ -308,7 +308,7 @@ function opal:ps1_developer_light {
 
 
     PS1="\n"
-    PS1+="${bold}\$(parse_git_branch)${normal}\n"
+    PS1+="${bold}\$(opal:parse_git_branch)${normal}\n"
     PS1+="${underline}\u"
     PS1+="@"
     PS1+="\h\n${normal}"
@@ -318,7 +318,7 @@ function opal:ps1_developer_light {
 
     if [[ -n "$1" && "$1" == "color" ]]; then
         PS1="\n"
-        PS1+="${cyan}\$(parse_git_branch)\n"
+        PS1+="${cyan}\$(opal:parse_git_branch)\n"
         PS1+="${green}\u"
         PS1+="@"
         PS1+="\h\n"

@@ -10,7 +10,7 @@
 # it's name. if path is a directory, a compressed tarball will be made of the
 # directory
 #
-function bak() {
+function opal:bak {
     bakfile="$1.bak"
     filename="$bakfile"
     i=1
@@ -37,7 +37,7 @@ function bak() {
 #
 # @param String $directory
 #
-function cdls() {
+function opal:cdls {
     cd "$1" && ls -F -G
 }
 
@@ -46,7 +46,7 @@ function cdls() {
 #
 # @param String $filename must be a common compressed file type like ZIP or Tar
 #
-function extract() {
+function opal:extract {
     if [ -f $1 ]; then
         case $1 in
         *.tar.bz2) tar xjf $1 ;;
@@ -73,7 +73,7 @@ function extract() {
 # @param String $directory the directory for which you want to recursively list
 #   the contents.
 #
-function lsd() {
+function opal:lsd {
     if [[ $1 ]]; then
         dir=$1
     else
@@ -89,7 +89,7 @@ function lsd() {
 #
 # @param String $directory
 #
-function mkcd() {
+function opal:mkcd {
     last="${@: -1}"
     mkdir -p "$@" && cd "${last}"
 }
@@ -114,7 +114,7 @@ function mkcd() {
 # $ seg error.log 100 140
 #
 #
-function numseg() {
+function opal:numseg {
     range=10
     filename=$1
 
@@ -148,7 +148,7 @@ function numseg() {
 # Display lines 100 through 140.
 # $ seg error.log 100 140
 #
-function seg() {
+function opal:seg {
     range=10
     filename=$1
 
@@ -169,7 +169,7 @@ function seg() {
 # @param String $type the type for information you want to display.
 #        Allowed Values: arrays, defs, names, readonly, exports, integers
 #
-function show() {
+function opal:show {
     opal:label "Inform the user what can be used"
     echo -e "--------------------------------"
 
@@ -215,7 +215,7 @@ function show() {
 # @param String $file_one
 # @param String $file_two
 #
-function swap() {
+function opal:swap {
     temp="temp.tmp"
 
     mv $1 $temp
@@ -231,7 +231,7 @@ function swap() {
 # @param String Optional $content The type of content to add to the file.
 #       'phpinfo' will inject PHP code into the file.
 #
-function touchx() {
+function opal:touchx {
     touch $1 && chmod ugo+x $1
 
     if [[ $1 == '.gitkeep' ]]; then
@@ -249,6 +249,6 @@ function touchx() {
 #
 # @param String $filename - file from which you want to remove the contents
 #
-function truncate() {
+function opal:truncate {
     cat /dev/null >$1
 }

@@ -64,7 +64,7 @@ function _s {
 # cal3 - Display the previous month, current month, and next month
 #        in vertical format. running 'cal -3' displays the months horizontally
 #
-function cal3() {
+function opal:cal3 {
     cal $(date -v-1m "+%m %Y")
     cal
     cal $(date -v+1m "+%m %Y")
@@ -73,7 +73,7 @@ function cal3() {
 #
 # datadir - Detect where to save your data.
 #
-function datadir() {
+function opal:data_dir {
     if [[ -d "$HOME/Dropbox" && -w "$HOME/Dropbox" ]]; then
         echo "$HOME/Dropbox"
     elif [[ -d "$HOME/data" && -w "$HOME/data" ]]; then
@@ -86,7 +86,7 @@ function datadir() {
 #
 # get_context - Are you in work hours, or personal time
 #
-get_context() {
+function opal:get_context {
     current_hour=$(date "+%H")
 
     if  opal:number_between ${current_hour} 8 17 ; then
@@ -99,7 +99,7 @@ get_context() {
 #
 # mach - displays the basic information about the machine/system you're using.
 #
-function mach() {
+function opal:mach() {
     opal:label "\nMachine information:"
     # @todo Replace "uname -a" with a function to determine OS type and use it
     #       to call most applicable about function e.g. opal:about_macos().
@@ -121,7 +121,7 @@ function mach() {
 #
 # ncal3 - Display the previous month, current month, and next month vertically
 #
-function ncal3() {
+function ooal:ncal3 {
     opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     ncal -my $(date -v-1m "+%m %Y")
     _n
@@ -130,7 +130,7 @@ function ncal3() {
     ncal -my $(date -v+1m "+%m %Y")
 }
 
-function greeting {
+function opal:greeting {
     local hour
 
     hour=$(date +'%k')
@@ -151,7 +151,7 @@ function greeting {
 #
 # preamble - Display a block message to the user about who and where they are
 #
-function preamble() {
+function opal:preamble {
     opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     name=$(whoami)
     host=$(hostname -f)
@@ -185,7 +185,7 @@ function prompt() {
 # @todo rename type_file as scribe. Fold prompt into scribe.
 # @param String $filename
 #
-function type_file() {
+function opal:type_file {
     $OPAL_DIR/typer -f $1
 }
 
@@ -194,14 +194,14 @@ function type_file() {
 #
 # @param String $content multiple-word prompts must be enclosed in quotes
 #
-function type_line() {
+function opal:type_line {
     $OPAL_DIR/bin/typer "$1"
 }
 
 #
 # Create a number of blank lines. Default = 1.
 #
-function spacer {
+function opal:spacer {
     max=1
     if [[ $1 != "" ]]; then
         max=$1
@@ -276,8 +276,7 @@ function filedate() {
 #
 # filedate_to_day - Convert file stamp to determine the day of the week
 #
-function filedate_to_day {
-    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
+function opal:filedate_to_day {
     if [[ $1 == "time" ]]; then
         date -j -f '%Y-%m-%d-%H-%M-%S' $2 '+%a'
     else
@@ -288,7 +287,7 @@ function filedate_to_day {
 #
 # get_os - Determine the Operating System. hat tip @alrra
 #
-get_os() {
+opal:get_os() {
 
     declare -r OS_NAME="$(uname -s)"
     local os=''
@@ -370,7 +369,7 @@ opal:term_bg() {
 #
 # monday_date - Determine the date for Mon of the current week
 #
-function monday_date {
+function opal:monday_date {
     opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     day_of_week=$(date '+%a')
     format='+%Y %b %d %a'
@@ -396,7 +395,7 @@ function monday_date {
 #
 # sunday_date - Determine the date for Sunday of the current week
 #
-function sunday_date {
+function opal:sunday_date {
     opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     day_of_week=$(date '+%a')
     format='+%Y %b %d %a'
