@@ -5,8 +5,7 @@
 
 alias please='sudo'
 alias diff='diff -bBs -U 3'
-alias empty='truncate'
-alias ls='ls -F'
+alias empty='opal:truncate'
 alias lsdir='ls -l | awk '\''/^d/ {print $9;}'\'''
 alias localip='ifconfig en0 | grep "inet " '
 alias myip="curl http://ifconfig.me"
