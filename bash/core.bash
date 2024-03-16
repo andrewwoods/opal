@@ -308,26 +308,42 @@ function opal:about_ubuntu {
 
 function opal:success() {
     local MESSAGE="$1"
+    local green
+    local normal
 
-    echo -e "${GREEN}${MESSAGE}${NORMAL}"
+    green="\033[1;32m"
+    normal="\033[0m"
+    echo -e "${green}${MESSAGE}${normal}"
 }
 
 function opal:failure() {
     local MESSAGE="$1"
+    local red
+    local normal
 
-    echo -e "${RED}${MESSAGE}${NORMAL}"
+    red="\033[1;31m"
+    normal="\033[0m"
+    echo -e "${red}${MESSAGE}${normal}"
 }
 
 function opal:message() {
     local MESSAGE="$1"
+    local cyan
+    local normal
 
-    echo -e "${CYAN}${MESSAGE}${NORMAL}"
+    cyan="\033[1;36m"
+    normal="\033[0m"
+    echo -e "${cyan}${MESSAGE}${normal}"
 }
 
 function opal:label() {
     local MESSAGE="$1"
+    local yellow
+    local normal
 
-    echo -e "${BRIGHT_YELLOW}${MESSAGE}${NORMAL}"
+    yellow="\033[1;33m"
+    normal="\033[0m"
+    echo -e "${yellow}${MESSAGE}${normal}"
 }
 
 function opal:speak {
@@ -336,7 +352,7 @@ function opal:speak {
 
 function opal:ask {
     local prompt
-    prompt="${BRIGHT_YELLOW}${1}${NORMAL}"
+    prompt="$(opal:label "$1")"
 
     read -p "${prompt}: " input
 
