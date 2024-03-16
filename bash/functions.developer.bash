@@ -3,6 +3,21 @@
 #
 ################################################################################
 
+function opal:str_lower {
+    if opal:is_unset "$1"; then
+        opal:message "Please specify the Jira ticket number e.g. CBSCONCMS-1234"
+    fi
+
+    echo "$1" | tr 'A-Z' 'a-z'
+}
+
+function opal:str_slug {
+    echo "$@" | iconv -t ascii//TRANSLIT \
+        | sed -E 's/[^a-zA-Z0-9-]+/-/g' \
+        | sed -E 's/^-+|-+$//g' \
+        | tr A-Z a-z
+}
+
 #
 # check_site - determine if a website is available yet. keep checking until it is
 #
