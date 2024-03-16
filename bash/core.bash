@@ -10,13 +10,9 @@
 # Copyright (C) 2023 Andrew Woods
 ################################################################################
 
-export OPAL_VERSION
-export OPAL_LOG_DIR
-export OPAL_LOG_LEVEL
-
-OPAL_VERSION="3.0.0-alpha"
-OPAL_LOG_DIR="${HOME}/logs"
-OPAL_LOG_LEVEL="error"
+export OPAL_VERSION="3.0.0-alpha"
+export OPAL_LOG_DIR="${HOME}/logs"
+export OPAL_LOG_LEVEL="error"
 
 export NORMAL RED BRIGHT_RED GREEN BRIGHT_GREEN YELLOW BRIGHT_YELLOW
 export BLUE BRIGHT_BLUE PURPLE BRIGHT_PURPLE CYAN BRIGHT_CYAN WHITE BRIGHT_WHITE
