@@ -50,7 +50,7 @@ function _n {
 # _p - write out the text with padding
 #
 function _p {
-    type_line "${PAD}$1"
+    opal:type_line "${PAD}$1"
 }
 
 #
@@ -155,15 +155,15 @@ function opal:preamble {
     opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     name=$(whoami)
     host=$(hostname -f)
-    thisday=$(today default)
-    greet=$("greeting")
+    thisday=$(opal:today opal-datetime)
+    greet=$("opal:greeting")
 
     echo '###########################################################'
     echo '# '
-    type_line "# ${greet} ${name}"
-    type_line "# You are logged into ${host}"
+    opal:type_line "# ${greet} ${name}"
+    opal:type_line "# You are logged into ${host}"
     echo '# '
-    type_line "# Today is ${thisday}"
+    opal:type_line "# Today is ${thisday}"
     echo '# '
     echo '###########################################################'
 }
