@@ -193,6 +193,11 @@ function opal:log {
     log_date="$(date ${date_format})"
     log_file="${OPAL_LOG_DIR}/${file}"
 
+    if ! opal:file_exists "${log_file}"; then
+        opal:std_error "Creating file: ${log_file}"
+        touch "${log_file}"
+    fi
+
     echo "${log_date} ${level} ${message}" >> "${log_file}"
 }
 
@@ -343,11 +348,21 @@ function opal:label() {
 }
 
 function opal:speak {
+    if opal:is_unset "$1"; then
+        opal:std_error 'What message do you like spoken?'
+        return 1
+    fi
     say --interactive="cyan/black" "$@"
 }
 
 function opal:ask {
     local prompt
+
+    if opal:is_unset "$1"; then
+        opal:std_error 'You forgot to specify a prompt'
+        return 1
+    fi
+
     prompt="$(opal:label "$1")"
 
     read -p "${prompt}: " input
