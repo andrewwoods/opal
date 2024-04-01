@@ -12,7 +12,6 @@
 
 export OPAL_VERSION="3.0.0-alpha"
 export OPAL_LOG_DIR="${HOME}/logs"
-export OPAL_LOG_LEVEL="error"
 
 export NORMAL RED BRIGHT_RED GREEN BRIGHT_GREEN YELLOW BRIGHT_YELLOW
 export BLUE BRIGHT_BLUE PURPLE BRIGHT_PURPLE CYAN BRIGHT_CYAN WHITE BRIGHT_WHITE
@@ -188,9 +187,9 @@ function opal:log {
     local message="$2"
 
     file="error.log"
-    date_format="+%Y-%m-%dT%H:%M:%S%z"
+    date_format="iso-timestamp"
 
-    log_date="$(date ${date_format})"
+    log_date="$(opal:today ${date_format})"
     log_file="${OPAL_LOG_DIR}/${file}"
 
     if ! opal:file_exists "${log_file}"; then
