@@ -11,6 +11,19 @@ function opal:str_lower {
     echo "$1" | tr 'A-Z' 'a-z'
 }
 
+#
+# str_upper - Convert a string to upper case
+#
+# @param string
+#
+function opal:str_upper {
+    if opal:is_unset "$1"; then
+        opal:message "Please specify the string to make UPPER CASE"
+    fi
+
+    echo "$1" | tr 'a-z' 'A-Z'
+}
+
 function opal:str_slug {
     echo "$@" | iconv -t ascii//TRANSLIT \
         | sed -E 's/[^a-zA-Z0-9-]+/-/g' \
