@@ -19,6 +19,15 @@ function opal:str_slug {
 }
 
 #
+# str_length - get the length of a string
+#
+# @param string
+#
+function opal:str_length {
+    echo ${#1}
+}
+
+#
 #  check_site - determine if a website is available yet. keep checking until it is
 #
 #  @param String $url the address of the website you want to check
