@@ -19,10 +19,10 @@ function opal:str_slug {
 }
 
 #
-# check_site - determine if a website is available yet. keep checking until it is
+#  check_site - determine if a website is available yet. keep checking until it is
 #
-# @param String $url the address of the website you want to check
-# @param Integer $interval the number of seconds to wait
+#  @param String $url the address of the website you want to check
+#  @param Integer $interval the number of seconds to wait
 #
 function opal:check_site() {
     declare -i i=0
