@@ -186,15 +186,16 @@ function opal:log {
     local level="$1"
     local message="$2"
 
+    local LOG_DIR=${XDG_STATE_HOME:-$HOME/.local/state}
     file="error.log"
     date_format="iso-timestamp"
 
     log_date="$(opal:today ${date_format})"
-    log_file="${OPAL_LOG_DIR}/${file}"
+    log_file="${LOG_DIR}/opal/${file}"
 
-    if ! opal:file_exists "${log_file}"; then
-        opal:std_error "Creating file: ${log_file}"
-        touch "${log_file}"
+    if ! opal:dir_exists "${LOG_DIR}/opal"; then
+        opal:std_error "Creating dir: ${LOG_DIR}/opal"
+        mkdir -p "${LOG_DIR}/opal"
     fi
 
     echo "${log_date} ${level} ${message}" >> "${log_file}"
