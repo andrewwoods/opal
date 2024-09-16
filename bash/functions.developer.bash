@@ -3,43 +3,6 @@
 #
 ################################################################################
 
-function opal:str_lower {
-    if opal:is_unset "$1"; then
-        opal:message "Please specify the Jira ticket number e.g. CBSCONCMS-1234"
-    fi
-
-    echo "$1" | tr 'A-Z' 'a-z'
-}
-
-#
-# str_upper - Convert a string to upper case
-#
-# @param string
-#
-function opal:str_upper {
-    if opal:is_unset "$1"; then
-        opal:message "Please specify the string to make UPPER CASE"
-    fi
-
-    echo "$1" | tr 'a-z' 'A-Z'
-}
-
-function opal:str_slug {
-    echo "$@" | iconv -t ascii//TRANSLIT \
-        | sed -E 's/[^a-zA-Z0-9-]+/-/g' \
-        | sed -E 's/^-+|-+$//g' \
-        | tr A-Z a-z
-}
-
-#
-# str_length - get the length of a string
-#
-# @param string
-#
-function opal:str_length {
-    echo ${#1}
-}
-
 #
 #  check_site - determine if a website is available yet. keep checking until it is
 #
@@ -101,18 +64,6 @@ function opal:parse_git_branch {
     fi
 }
 
-#
-# sha1 - Create a SHA1 digest of a file
-#
-# @param String $filename the filename for which you want to know/generate it's sha1
-#
-function opal:sha1 {
-    if opal:is_set "$(which openssl)"; then
-        openssl sha1 "$@"
-    else
-        opal:std_error "openssl is required, but not installed"
-    fi
-}
 
 #
 # traceurl - decode/unfurl a short url recursively to it's final destination
