@@ -501,6 +501,62 @@ function opal:someday() {
     date -r "${unix_time}" "${date_format}"
 }
 
+##
+## Calculate the duration of two epoch times.
+##
+## @param int start_time
+##   The starting UNIX timestamp.
+##
+## @param int end_time The
+##   The ending UNIX timestamp.
+##
+## @return string
+##
+function opal:duration {
+    if opal:is_unset "$1"; then
+        opal:std_error "What is your start time in epoch seconds (UNIX time)"
+        return 1
+    fi
+
+    if opal:is_unset "$2"; then
+        opel:std_error "What is your end time in epoch seconds (UNIX time)"
+        return 2
+    fi
+
+    duration=$(($2 - $1))
+
+    # Create Time Intervals
+    let minute_in_seconds=60
+    let hour_in_seconds=60*$minute_in_seconds
+    let day_in_seconds=24*$hour_in_seconds
+
+    let seconds=0
+    let minutes=0
+    let hours=0
+    let days=0
+    let temp=0
+
+    if [[ $duration -gt $day_in_seconds ]]; then
+        days=$(expr $duration / $day_in_seconds)
+        temp=$(expr $days \* $day_in_seconds)
+        duration=$(expr $duration - $temp)
+    fi
+
+    if [[ $duration -gt $hour_in_seconds ]]; then
+        hours=$(expr $duration / $hour_in_seconds)
+        temp=$(expr $hours \* $hour_in_seconds)
+        duration=$(expr $duration - $temp)
+    fi
+
+    if [[ $duration -gt $minute_in_seconds ]]; then
+        minutes=$(expr $duration / $minute_in_seconds)
+        temp=$(expr $minutes \* $minute_in_seconds)
+        duration=$(expr $duration - $temp)
+    fi
+    seconds=$duration
+
+    opal:message "${days} days ${hours} hours ${minutes} minutes ${seconds} seconds"
+}
 
 ################################################################################
 #
