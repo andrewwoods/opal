@@ -220,36 +220,32 @@ function show_dotfiles() {
 # $ note work "type a brief message here. quotes are required (for now)"
 # $ note type a brief message here
 #
-function note() {
-    NOW=$(today iso)
-    DATADIR=$(datadir)
+function opal:note {
+    NOW=$(opal:today opal-datetime)
 
+    DATADIR="${OPAL_DATA_HOME:=$HOME/.local/state/opal}"
+
+    if ! opal:dir_exists "$DATADIR"; then
+        mkdir -p "$DATADIR"
+    fi
+
+    MESG="$NOW "
     if [[ $1 == "work" ]]; then
-        MESG="$NOW "
         shift
-        if [[ -n $2 ]]; then
-            MESG="$MESG $@"
-        fi
-        echo $MESG >> $DATADIR/notes.work.txt
+        echo "$MESG $@" >> $DATADIR/notes.work.txt
 
     elif [[ $1 == "dev" ]]; then
-        MESG="$NOW "
         shift
-        if [[ -n $2 ]]; then
-            MESG="$MESG $@"
-        fi
+        MESG="$MESG $@"
         echo $MESG >> $DATADIR/notes.development.txt
 
     elif [[ $1 == "home" ]]; then
-        MESG="$NOW "
         shift
-        if [[ -n $2 ]]; then
-            MESG="$MESG $@"
-        fi
+        MESG="$MESG $@"
         echo $MESG >> $DATADIR/notes.home.txt
 
     else
-        MESG="$NOW $@"
+        MESG="$MESG $@"
         echo $MESG >> $DATADIR/notes.txt
     fi
 }
