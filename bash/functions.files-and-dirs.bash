@@ -164,6 +164,31 @@ function opal:seg {
 }
 
 #
+# Display the file and line number where a function was defined.
+#
+# @param string $function_name
+#
+# @return string
+#
+function opal:locate {
+    if opal:is_unset "$1" ; then
+       opal:std_error "What function are you trying to locate?"
+       return 1
+    fi
+    local item_type
+
+    item_type="$(type -t $1)"
+
+    if ! opal:string_equals "function" "$item_type"; then
+        opal:std_error "$1 is not a function"
+        return 2
+    fi
+
+    shopt -s extdebug
+    declare -F "$1"
+    shopt -u extdebug
+}
+#
 # show - display information about an aspect of the bash programming environment
 #
 # @param String $type the type for information you want to display.
