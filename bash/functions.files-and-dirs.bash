@@ -188,6 +188,38 @@ function opal:locate {
     declare -F "$1"
     shopt -u extdebug
 }
+
+#
+# Describe how something is defined.
+#
+# @param string $name
+#
+# @return string
+#
+function opal:describe {
+
+    if opal:is_unset "$1" ; then
+        opal:std_error "You forgot your item"
+    fi
+
+    item_type="$(type -t $1)"
+
+    if [[ "$item_type" == 'alias' ]]; then
+        alias "$1"
+    elif [[ "$item_type" == 'function' ]]; then
+        declare -f "$1"
+    elif [[ "$item_type" == 'builtin' ]]; then
+        type -a -f "$1"
+    elif [[ "$item_type" == 'keyword' ]]; then
+        echo "$1 is a keyword"
+    elif [[ "$item_type" == 'file' ]]; then
+        echo "$1 is a file"
+    else
+       opal:std_error 'Nothing to describe'
+       return 1
+    fi
+}
+
 #
 # show - display information about an aspect of the bash programming environment
 #
