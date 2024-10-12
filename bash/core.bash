@@ -11,7 +11,11 @@
 ################################################################################
 
 export OPAL_VERSION="3.0.0-alpha"
-export OPAL_LOG_DIR="${HOME}/logs"
+
+export OPAL_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/opal"
+export OPAL_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/opal"
+export OPAL_STATE_DIR="${XDG_DATA_HOME:-$HOME/.local/state}/opal"
+export OPAL_LOG_DIR="${OPAL_STATE_DIR}"
 
 export NORMAL RED BRIGHT_RED GREEN BRIGHT_GREEN YELLOW BRIGHT_YELLOW
 export BLUE BRIGHT_BLUE PURPLE BRIGHT_PURPLE CYAN BRIGHT_CYAN WHITE BRIGHT_WHITE
