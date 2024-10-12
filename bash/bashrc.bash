@@ -66,10 +66,18 @@ export EDITOR GIT_EDITOR SVN_EDITOR VISUAL LESS HISTTIMEFORMAT
 # $ punch out "type a brief message here"
 # $ punch note "type a brief message here"
 #
-function punch() {
-    DATADIR=$(datadir /Users/awoods/src/work/notebook-cbsi)
+function opal:punch() {
+    local DATESTAMP
+    local MESG
+    local MESG_OUT
+    local OUTFILE
+
     DATESTAMP=$(date +"%a %Y-%m-%d %H:%M:%S")
     MESG_OUT="Recorded at $DATESTAMP"
+    OUT_FILE="${OPAL_DATA_DIR}/timesheet.txt"
+
+    opal:ensure_dir_exists "$OPAL_DATA_DIR" || \
+        opal:log_error "opal:punch has a directory issue"
 
     if [[ $1 == "in" ]]; then
         MESG=$DATESTAMP
@@ -77,7 +85,8 @@ function punch() {
         if [[ -n $2 ]]; then
             MESG="$MESG $2"
         fi
-        echo $MESG >> $DATADIR/timesheet.txt
+        echo "$MESG"
+        echo $MESG >> "${OUT_FILE}"
         echo $MESG_OUT
 
     elif [[ $1 == "out" ]]; then
@@ -86,7 +95,7 @@ function punch() {
         if [[ -n $2 ]]; then
             MESG="$MESG $2"
         fi
-        echo $MESG >> $DATADIR/timesheet.txt
+        echo $MESG >> "$OUT_FILE"
         echo $MESG_OUT
 
     elif [[ $1 == "note" ]]; then
@@ -95,20 +104,20 @@ function punch() {
         if [[ -n $2 ]]; then
             MESG="$MESG $2"
         fi
-        echo $MESG >> $DATADIR/timesheet.txt
+        echo $MESG >> "$OUT_FILE"
         echo $MESG_OUT
 
     elif [[ $1 == "switch" ]]; then
         MESG=$DATESTAMP
         MESG="$MESG OUT"
-        echo $MESG >> $DATADIR/timesheet.txt
+        echo $MESG >> "$OUT_FILE"
 
         MESG=$DATESTAMP
         MESG="$MESG IN"
         if [[ -n $2 ]]; then
             MESG="$MESG $2"
         fi
-        echo $MESG >> $DATADIR/timesheet.txt
+        echo $MESG >> "$OUT_FILE"
         echo $MESG_OUT
 
     else
