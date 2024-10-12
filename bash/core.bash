@@ -143,6 +143,22 @@ function opal:function_exists {
     [[ "$type_result" == "function" ]]
 }
 
+function opal:ensure_dir_exists {
+    local dir
+    if opal:is_unset "$1"; then
+        opal:std_error "You forgot to specify which directory you need"
+        return 1
+    fi
+    dir="${1}"
+
+    if ! opal:dir_exists "$dir"; then
+        opal:std_error "Creating directory ${dir}"
+        mkdir -p "$dir"
+    else
+        opal:std_error "directory exists ${dir}"
+    fi
+}
+
 ################################################################################
 #
 #   Logging
