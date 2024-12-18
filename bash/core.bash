@@ -578,6 +578,73 @@ function opal:duration {
     opal:message "${days} days ${hours} hours ${minutes} minutes ${seconds} seconds"
 }
 
+##
+##  Get the number of seconds for a given quantity of time.
+##
+##  Many tools use the number of seconds for their operation. It can be useful
+##  to know number of seconds in a duration of time. This function makes it easy
+##  to calculate time intervals like 3 days or 2 weeks.
+##
+##  @param string $unit
+##      The unit of time you wish to convert to seconds
+##
+##  @param integer $quantity
+##      The number of time units time you wish to convert to seconds
+##
+##  @output integer
+##      The calculation result in seconds
+##
+##  @return error
+##      1: Argument is missing
+##
+##  @example opal:interval_to_seconds days 2
+##      output: 172800
+##
+function opal:interval_to_seconds {
+    local unit
+    local -i quantity
+    local -i duration
+    local -i base_value
+
+    # Time "Constants"
+    local MINUTE_IN_SECONDS=60
+    local HOUR_IN_SECONDS=60*$MINUTE_IN_SECONDS
+    local DAY_IN_SECONDS=24*$HOUR_IN_SECONDS
+    local WEEK_IN_SECONDS=7*$DAY_IN_SECONDS
+    local MONTH_IN_SECONDS=30*$DAY_IN_SECONDS
+
+    if opal:is_unset "$1"; then
+        opal:std_error "Please specify the units you want (minutes, hours, days, weeks, months)"
+        return 1
+    fi
+    unit="$1"
+
+    if opal:is_unset "$2"; then
+        opal:std_error "Please specify how many ${unit}"
+        return 1
+    fi
+    quantity="$2"
+
+    if opal:string_equals "$unit" "minutes"; then
+        base_value="$MINUTE_IN_SECONDS"
+    elif opal:string_equals "$unit" "hours"; then
+        base_value="$HOUR_IN_SECONDS"
+    elif opal:string_equals "$unit" "days"; then
+        base_value="$DAY_IN_SECONDS"
+    elif opal:string_equals "$unit" "weeks"; then
+        base_value="$WEEK_IN_SECONDS"
+    elif opal:string_equals "$unit" "months"; then
+        base_value="$MONTH_IN_SECONDS"
+    else
+        opal:std_error "$(opal:failure "Uh oh. '${unit}' is not a valid choice")"
+        return 1
+    fi
+
+    duration=$(($quantity * $base_value))
+
+    echo "$duration"
+}
+
 ################################################################################
 #
 #   Documentation
