@@ -145,6 +145,22 @@ function say_done() {
 
 
 #
+# Go up the directory tree a number of levels. default=1.
+#
+function opal:up {
+    declare -i level=1
+    declare path="$(pwd)"
+    if opal:is_set "$1"; then
+       level="$1"
+    fi
+
+    for i in $(seq 1 $level); do
+        path=$(dirname "${path}")
+    done
+    cd "$path"
+}
+
+#
 # lskeys - Display a list of your ssh keys.
 #
 function lskeys() {
