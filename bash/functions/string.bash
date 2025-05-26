@@ -41,6 +41,30 @@ function opal:str_upper {
 ##
 ## @return string
 ##
+function opal:str_trim {
+    echo "$@" | iconv -t ascii//TRANSLIT \
+        | sed -E 's/^ +| +$//g'
+}
+
+##
+## Convert a string to a path friendly slug.
+##
+## @param string $value
+##
+## @return string
+##
+function opal:str_trimmer {
+    echo "$(opal:str_trim "$@")" \
+        | sed -E 's/ +/ /g'
+}
+
+##
+## Convert a string to a path friendly slug.
+##
+## @param string $value
+##
+## @return string
+##
 function opal:str_slug {
     echo "$@" | iconv -t ascii//TRANSLIT \
         | sed -E 's/[^a-zA-Z0-9-]+/-/g' \
