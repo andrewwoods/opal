@@ -121,7 +121,7 @@ function opal:mach() {
 #
 # ncal3 - Display the previous month, current month, and next month vertically
 #
-function ooal:ncal3 {
+function opal:ncal3 {
     opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     ncal -my $(date -v-1m "+%m %Y")
     _n
@@ -152,7 +152,6 @@ function opal:greeting {
 # preamble - Display a block message to the user about who and where they are
 #
 function opal:preamble {
-    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     name=$(whoami)
     host=$(hostname -f)
     thisday=$(opal:today opal-datetime)
@@ -176,7 +175,7 @@ function opal:preamble {
 # @param String $filename
 #
 function opal:type_file {
-    $OPAL_DIR/typer -f $1
+    $OPAL_DIR/bin/typer -f $1
 }
 
 #
@@ -299,9 +298,8 @@ opal:term_bg() {
 # monday_date - Determine the date for Mon of the current week
 #
 function opal:monday_date {
-    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     day_of_week=$(date '+%a')
-    format='+%Y %b %d %a'
+    format="+$(opal:get_date_format "opal-date")"
 
     if [[ $day_of_week == "Tue" ]]; then
         date -v-1d "$format"
@@ -325,9 +323,8 @@ function opal:monday_date {
 # sunday_date - Determine the date for Sunday of the current week
 #
 function opal:sunday_date {
-    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
     day_of_week=$(date '+%a')
-    format='+%Y %b %d %a'
+    format="+$(opal:get_date_format "opal-date")"
 
     if [[ $day_of_week == "Mon" ]]; then
         date -v+6d "$format"

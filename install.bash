@@ -1,5 +1,5 @@
-source bashrc.bash
 source "bash/core.bash"
+source "bash/bashrc.bash"
 
 #
 # intro()
