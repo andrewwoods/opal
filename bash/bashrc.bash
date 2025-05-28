@@ -130,7 +130,7 @@ function opal:punch() {
 #
 # @param String Optional $message the message to be read out loud
 #
-function say_done() {
+function opal:say_done() {
     message="It is Done!"
     if [[ -n $1 ]]; then
         message=$@
@@ -163,8 +163,8 @@ function opal:up {
 #
 # lskeys - Display a list of your ssh keys.
 #
-function lskeys() {
-    type_line "My SSH Keys"
+function opal:list_keys() {
+    opal:type_line "My SSH Keys"
     ls -1 ~/.ssh/*.pub
 }
 
@@ -173,7 +173,7 @@ function lskeys() {
 #
 # @param String $word the term you want to define
 #
-function define() {
+function opal:define() {
     curl dict://dict.org/d:"$@"
 }
 
@@ -182,7 +182,7 @@ function define() {
 #
 # @param String $equation the equation you want to execute
 #
-function calc() {
+function opal:calc() {
     awk 'BEGIN { OFMT="%f"; print '"$*"'; exit}'
 }
 
@@ -191,7 +191,7 @@ function calc() {
 #
 # @param String $code the 2-letter or 3-letter country code
 #
-function country() {
+function opal:country() {
     awk -F "\t" -f $OPAL_DIR/country_lookup.awk -v country=$1 $OPAL_DIR/data/iso-country-codes.txt
 }
 
@@ -200,7 +200,7 @@ function country() {
 #
 # @param String $name the desired tab name. if more than 1 word, enclose with quotes
 #
-function tabname() {
+function opal:tab_name() {
     printf "\e]1;$1\a"
 }
 
@@ -209,7 +209,7 @@ function tabname() {
 #
 # @param String $name the desired window name. if more than 1 word, enclose with quotes
 #
-function winname() {
+function opal:win_name() {
     printf "\e]2;$1\a"
 }
 
