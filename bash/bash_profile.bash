@@ -1,7 +1,17 @@
 #
-# ~/.bash_profile - this file runs with login shells
+# Opal Bash Profile
 #
 
-if [ -f ~/.bashrc ]; then
-    source ~/.bashrc
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+#
+# Update the $PATH based on common directory conventions
+#
+if [ -d $HOME/opal/bin ]; then
+    PATH="$PATH:$HOME/opal/bin"
 fi
+
+if [ -d $HOME/.local/bin ]; then
+    PATH="$PATH:$HOME/.local/bin"
+fi
+
