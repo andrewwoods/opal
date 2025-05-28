@@ -50,6 +50,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.inccommand = "split"
+vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 vim.opt.termguicolors = true
 vim.opt.showmode = false
@@ -66,12 +67,12 @@ vim.opt.updatetime = 250
 
 vim.opt.list = false
 vim.opt.listchars = {
-    tab = "> ",
-    extends = "»",
-    precedes = "«",
-    trail = "·",
-    nbsp = "␣",
-    eol = "¶",
+	tab = "> ",
+	extends = "»",
+	precedes = "«",
+	trail = "·",
+	nbsp = "␣",
+	eol = "¶",
 }
 
 vim.opt.cursorline = true

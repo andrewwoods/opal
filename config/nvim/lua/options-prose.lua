@@ -10,8 +10,9 @@ to your dotfiles, so you can make local modifications.
 
 --]]
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.opt.textwidth = 72
+vim.opt.columns = 72
 
 vim.opt.scrolloff = 8
 vim.opt.sidescroll = 8
