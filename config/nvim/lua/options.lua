@@ -67,17 +67,16 @@ vim.opt.updatetime = 250
 
 vim.opt.list = false
 vim.opt.listchars = {
-	tab = "> ",
-	extends = "»",
-	precedes = "«",
-	trail = "·",
-	nbsp = "␣",
-	eol = "¶",
+    tab = ">¬",
+    extends = "»",
+    precedes = "«",
+    trail = "·",
+    nbsp = "␣",
+    eol = "¶",
 }
 
 vim.opt.cursorline = true
--- If your code hits column 81, then you may have gone too far.
--- If your code hits column 101 you have gone too far. Think about
--- how to adjust your code, so it's shorter than 80 columns.
-vim.opt.colorcolumn = "81,101"
-vim.cmd([[highlight ColorColumn ctermfg=4 ctermbg=235 guifg=#00ccff guibg=#2a002a]])
+
+vim.opt.fileformat = "unix"
+vim.opt.fileformats = "unix,dos"
+vim.opt.formatoptions = "tcq"
