@@ -553,12 +553,20 @@ function opal:duration {
     let minute_in_seconds=60
     let hour_in_seconds=60*$minute_in_seconds
     let day_in_seconds=24*$hour_in_seconds
+    let year_in_seconds=$((365*$day_in_seconds))
 
     let seconds=0
     let minutes=0
     let hours=0
     let days=0
+    let years=0
     let temp=0
+
+    if [[ $duration -gt $year_in_seconds ]]; then
+        years=$(expr $duration / $year_in_seconds)
+        temp=$(expr $years \* $year_in_seconds)
+        duration=$(expr $duration - $temp)
+    fi
 
     if [[ $duration -gt $day_in_seconds ]]; then
         days=$(expr $duration / $day_in_seconds)
@@ -579,7 +587,7 @@ function opal:duration {
     fi
     seconds=$duration
 
-    opal:message "${days} days ${hours} hours ${minutes} minutes ${seconds} seconds"
+    opal:message "${years} years ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds"
 }
 
 ##
