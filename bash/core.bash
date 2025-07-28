@@ -546,17 +546,23 @@ function opal:someday() {
 ## @return string
 ##
 function opal:duration {
+
     if opal:is_unset "$1"; then
         opal:std_error "What is your start time in epoch seconds (UNIX time)"
         return 1
     fi
+    local -i start_time
+    local -i end_time
+
+    start_time="$1"
 
     if opal:is_unset "$2"; then
-        opel:std_error "What is your end time in epoch seconds (UNIX time)"
+        opal:std_error "What is your end time in epoch seconds (UNIX time)"
         return 2
     fi
+    end_time="$2"
 
-    duration=$(($2 - $1))
+    duration=$(($end_time - $start_time))
 
     # Create Time Intervals
     let minute_in_seconds=60
