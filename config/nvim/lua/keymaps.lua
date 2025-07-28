@@ -20,6 +20,8 @@ vim.keymap.set("n", "<leader>dk", ":map<cr>", {
     desc = "[D]isplay [K]eymaps",
 })
 
+vim.keymap.set("n", "<Leader>wc", "g<C-g>", { desc = "[W]ord [C]ount" })
+
 -- Quick Fix List
 vim.keymap.set("n", "<leader>qo", ":copen<cr>", {
     desc = "[Q]uickfix List [O]pen",
