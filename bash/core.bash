@@ -480,6 +480,12 @@ function opal:get_date_format {
         echo "%m/%d/%Y %l:%M%p"
     elif [[ $format_name == "us-timestamp" ]]; then
         echo "%m/%d/%Y %l:%M:%S%p %z"
+    elif [[ $format_name == "cmos-date" ]]; then
+        echo "%e %B %Y"
+    elif [[ $format_name == "cmos-datetime" ]]; then
+        echo "%e %B %Y %l:%M %p"
+    elif [[ $format_name == "cmos-timestamp" ]]; then
+        echo "%e %B %Y %l:%M:%S %p (%Z)"
     elif [[ $format_name == "filename-date" ]]; then
         echo "%Y-%m-%d"
     elif [[ $format_name == "filename-datetime" ]]; then
