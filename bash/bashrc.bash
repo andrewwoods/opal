@@ -3,44 +3,12 @@
 #
 ################################################################################
 
-export cals=(/usr/share/calendar/calendar.computer
-    /usr/share/calendar/calendar.history
-    /usr/share/calendar/calendar.holiday
-    /usr/share/calendar/calendar.usholiday
-    /usr/share/calendar/calendar.music
-    /usr/share/calendar/calendar.judaic
-    /usr/share/calendar/calendar.christian)
 
 if [[ $OPAL_NOOB -eq '1' ]]; then
     echo "Loading Noob Settings"
     source $OPAL_DIR/bash/noob.bash
 fi
 
-################################################################################
-#
-#		ENVIRONMENT VARIABLES
-#
-################################################################################
-
-EDITOR="vim"
-PAGER="less"
-GIT_EDITOR=$EDITOR
-SVN_EDITOR=$EDITOR
-VISUAL=$EDITOR
-
-# NOTE: any options specified on the command line override these values
-LESS="-"
-LESS+="g" # highlight only the particular string which was found
-#   by the last search command.
-LESS+="j.5" # .5 is the middle line. integer start from the top of screen
-#
-LESS+="w" # Temporarily highlights the first "new" line after a forward
-#   movement of a full page.
-LESS+="x4" # Set tab stops to 4 spaces
-
-HISTTIMEFORMAT="%m-%d %a %H:%M:%S "
-
-export EDITOR GIT_EDITOR SVN_EDITOR VISUAL LESS HISTTIMEFORMAT
 
 ################################################################################
 #
