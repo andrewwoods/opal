@@ -120,14 +120,13 @@ function opal:mach() {
 
 #
 # ncal3 - Display the previous month, current month, and next month vertically
-#
+#         If you want the calendars horizontally, use `ncal -3`
 function opal:ncal3 {
-    opal:std_error 'Deprecated. Will be moving to the "opal:" namespace for v3'
-    ncal -my $(date -v-1m "+%m %Y")
+    ncal -m $(date -v-1m "+%m %Y")
     _n
     ncal
     _n
-    ncal -my $(date -v+1m "+%m %Y")
+    ncal -m $(date -v+1m "+%m %Y")
 }
 
 function opal:greeting {
