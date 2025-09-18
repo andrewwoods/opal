@@ -327,7 +327,11 @@ function opal:monday_date {
 #
 function opal:sunday_date {
     day_of_week=$(date '+%a')
-    format="+$(opal:get_date_format "opal-date")"
+    format_name='opal-date'
+    if opal:is_set "$1"; then
+        format_name="$1"
+    fi
+    format="+$(opal:get_date_format $format_name)"
 
     if [[ $day_of_week == "Mon" ]]; then
         date -v+6d "$format"
