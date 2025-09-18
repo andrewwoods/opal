@@ -299,7 +299,11 @@ opal:term_bg() {
 #
 function opal:monday_date {
     day_of_week=$(date '+%a')
-    format="+$(opal:get_date_format "opal-date")"
+    format_name='opal-date'
+    if opal:is_set "$1"; then
+        format_name="$1"
+    fi
+    format="+$(opal:get_date_format $format_name)"
 
     if [[ $day_of_week == "Tue" ]]; then
         date -v-1d "$format"
