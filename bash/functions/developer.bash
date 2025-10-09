@@ -55,9 +55,10 @@ function opal:http_status {
 # opal:parse_git_branch - get the current git branch your on
 #
 function opal:parse_git_branch {
-    branch_name=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+    local branch_name
+    branch_name="$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')"
     # @todo Trim white space.
-    branch_name=$(echo -n "${branch_name}")
+    branch_name="$(echo -n "${branch_name}")"
 
     if opal:is_set "$branch_name"; then
         echo -n "$branch_name"
