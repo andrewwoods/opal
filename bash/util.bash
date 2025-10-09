@@ -60,6 +60,45 @@ function _s {
     say -v Fred --interactive="cyan/black" "$@"
 }
 
+
+#
+# intro()
+#
+function intro() {
+    echo "#" >$1
+    echo "# Created by Opal on $(date)" >>$1
+    echo "#" >>$1
+    echo "" >>$1
+    echo "" >>$1
+}
+
+#
+# vim_intro ( filename )
+#
+function vim_intro() {
+    echo '' >>$1
+    echo '"' >>$1
+    echo '" Created by Opal on' $(date) >>$1
+    echo '"' >>$1
+    echo '' >>$1
+}
+
+#
+# heading_box ( title, filename )
+#
+function heading_box() {
+    cLine="################################################################################"
+
+    echo $cLine >>$2
+    echo "#" >>$2
+    echo "# $1" >>$2
+    echo "#" >>$2
+    echo $cLine >>$2
+    echo "" >>$2
+    echo "" >>$2
+    echo "" >>$2
+}
+
 #
 # cal3 - Display the previous month, current month, and next month
 #        in vertical format. running 'cal -3' displays the months horizontally
