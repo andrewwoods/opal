@@ -27,7 +27,11 @@ intro ~/.bashrc
 
 heading_box 'INCLUDES' ~/.bashrc
 echo 'source ~/opal/opal.bash' >>~/.bashrc
-echo '# @TODO: Add other bash files below here ' >>~/.bashrc
+echo '' >>~/.bashrc
+echo '# Look here for some suggested functionality' >>~/.bashrc
+echo 'source ~/opal/bash/bashrc.bash'
+echo '' >>~/.bashrc
+echo '# Add any other bash files below here ' >>~/.bashrc
 echo '' >>~/.bashrc
 
 heading_box 'VARIABLES' ~/.bashrc
