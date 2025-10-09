@@ -23,9 +23,9 @@ fi
 # Generate the new bash files in the user's home directory
 #
 opal:message "Generating .bashrc"
-intro ~/.bashrc
+opal:bash_intro ~/.bashrc
 
-heading_box 'INCLUDES' ~/.bashrc
+opal:heading_box 'INCLUDES' ~/.bashrc
 echo 'source ~/opal/opal.bash' >>~/.bashrc
 echo '' >>~/.bashrc
 echo '# Look here for some suggested functionality' >>~/.bashrc
@@ -34,13 +34,13 @@ echo '' >>~/.bashrc
 echo '# Add any other bash files below here ' >>~/.bashrc
 echo '' >>~/.bashrc
 
-heading_box 'VARIABLES' ~/.bashrc
-heading_box 'FUNCTIONS' ~/.bashrc
-heading_box 'ALIASES'  ~/.bashrc
+opal:heading_box 'VARIABLES' ~/.bashrc
+opal:heading_box 'FUNCTIONS' ~/.bashrc
+opal:heading_box 'ALIASES'  ~/.bashrc
 echo '# Look in ~/opal/bash/aliases-clocks.bash for a list of available clocks' >>~/.bashrc
 echo 'alias clocks="utc; eastern; paris; tokyo"' >>~/.bashrc
 
-heading_box 'MAIN' ~/.bashrc
+opal:heading_box 'MAIN' ~/.bashrc
 
 echo 'clocks' >>~/.bashrc
 echo '' >>~/.bashrc
@@ -53,19 +53,19 @@ echo 'opal:ps4_default' >>~/.bashrc
 echo '' >>~/.bashrc
 
 opal:message "Generating .bash_profile"
-intro ~/.bash_profile.bash
+opal:bash_intro ~/.bash_profile.bash
 
 echo '' >>~/.bash_profile.bash
 echo 'source ~/opal/bash/bash_profile.bash' >>~/.bash_profile.bash
 echo '' >>~/.bash_profile.bash
-echo 'preamble' >>~/.bash_profile.bash
+echo 'opal:preamble' >>~/.bash_profile.bash
 echo '' >>~/.bash_profile.bash
 echo '' >>~/.bash_profile.bash
 
-heading_box 'BASH PROFILE' ~/.bash_profile.bash
+opal:heading_box 'BASH PROFILE' ~/.bash_profile.bash
 
 opal:message "Generating .gitconfig"
-intro ~/.gitconfig
+opal:bash_intro ~/.gitconfig
 
 echo '' >>~/.gitconfig
 echo '[include]' >>~/.gitconfig
@@ -76,7 +76,7 @@ echo '    template = ~/opal/git/commit-message' >>~/.gitconfig
 echo '' >>~/.gitconfig
 
 opal:message "Generating .vimrc"
-vim_intro ~/.vimrc
+opal:vim_intro ~/.vimrc
 
 echo ':source ~/opal/vimrc_files/vimrc' >>~/.vimrc
 echo '' >>~/.vimrc

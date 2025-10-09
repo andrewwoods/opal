@@ -62,9 +62,9 @@ function _s {
 
 
 #
-# intro()
+# bash_intro()
 #
-function intro() {
+function opal:bash_intro() {
     echo "#" >$1
     echo "# Created by Opal on $(date)" >>$1
     echo "#" >>$1
@@ -75,7 +75,7 @@ function intro() {
 #
 # vim_intro ( filename )
 #
-function vim_intro() {
+function opal:vim_intro() {
     echo '' >>$1
     echo '"' >>$1
     echo '" Created by Opal on' $(date) >>$1
@@ -86,7 +86,7 @@ function vim_intro() {
 #
 # heading_box ( title, filename )
 #
-function heading_box() {
+function opal:heading_box() {
     cLine="################################################################################"
 
     echo $cLine >>$2
@@ -562,7 +562,7 @@ function opal:win_name() {
 # @param Boolean $view determines if hidden files should be displayed.
 #        Allowed values: yes, true, no, false
 #
-function show_dotfiles() {
+function opal:show_dotfiles() {
     case "$1" in
         true | yes)
             defaults write com.apple.finder AppleShowAllFiles $1
@@ -621,7 +621,7 @@ function opal:note {
 #
 # matrix - Display the Matrix code in your terminal
 #
-function matrix() {
+function opal:matrix() {
     echo -e "\e[1;40m"
     clear
     characters=$(jot -c 94 33 | tr -d '\n')
