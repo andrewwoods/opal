@@ -10,7 +10,7 @@
 # Copyright (C) 2023 Andrew Woods
 ################################################################################
 
-export OPAL_VERSION="3.0.0-alpha"
+export OPAL_VERSION="3.0.0-beta"
 
 # The $OPAL_CONFIG_DIR is not meant to replace the XDG_CONFIG_HOME directory.
 # Rather it's an additional directory - one that could be used in the
@@ -456,6 +456,8 @@ function opal:file_has_set_gid {
 function opal:get_date_format {
     local format_name
 
+    # @see man strftime for details.
+    # Designed on MacOS.
     format_name="$1"
     if [[ $format_name == "unix" ]]; then
         echo "%s"
