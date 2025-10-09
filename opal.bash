@@ -11,6 +11,5 @@ source $OPAL_DIR/bash/functions/developer.bash
 source $OPAL_DIR/bash/functions/system.bash
 source $OPAL_DIR/bash/functions/prompt.bash
 source $OPAL_DIR/bash/functions/string.bash
-source $OPAL_DIR/bash/bashrc.bash
 source $OPAL_DIR/bash/aliases
 source $OPAL_DIR/bash/aliases-clocks.bash
