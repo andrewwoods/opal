@@ -379,7 +379,7 @@ function opal:speak {
         opal:std_error 'What message do you like spoken?'
         return 1
     fi
-    say --interactive="cyan/black" "$@"
+    say --interactive="cyan/black" -v Nathan "$@"
 }
 
 function opal:ask {
