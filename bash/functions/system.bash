@@ -38,7 +38,7 @@ function opal:bak {
 # @param String $directory
 #
 function opal:cdls {
-    cd "$1" && ls -F -G
+    cd "$1" && ls -F --color=auto
 }
 
 #

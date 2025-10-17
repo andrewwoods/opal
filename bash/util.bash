@@ -89,13 +89,12 @@ function opal:vim_intro() {
 function opal:heading_box() {
     cLine="################################################################################"
 
+    echo "" >>$2
     echo $cLine >>$2
     echo "#" >>$2
     echo "# $1" >>$2
     echo "#" >>$2
     echo $cLine >>$2
-    echo "" >>$2
-    echo "" >>$2
     echo "" >>$2
 }
 
