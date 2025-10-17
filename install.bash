@@ -3,10 +3,10 @@ source "bash/util.bash"
 
 # Create a symbolic link to this directory in your home directory
 install_dir=$(pwd)
-ln -s $install_dir ~/opal
+cp -R $install_dir ~/opal
 
 # Create backups of your current files if they exist
-now=$(today unix)
+now=$(opal:today unix)
 if [ -f ~/.bashrc ]; then
     mv ~/.bashrc ~/.bashrc.${now}
 fi
@@ -29,7 +29,8 @@ opal:heading_box 'INCLUDES' ~/.bashrc
 echo 'source ~/opal/opal.bash' >>~/.bashrc
 echo '' >>~/.bashrc
 echo '# Look here for some suggested functionality' >>~/.bashrc
-echo 'source ~/opal/bash/bashrc.bash'
+echo 'source ~/opal/bash/bashrc.bash'  >>~/.bashrc
+
 echo '' >>~/.bashrc
 echo '# Add any other bash files below here ' >>~/.bashrc
 echo '' >>~/.bashrc
@@ -45,7 +46,7 @@ opal:heading_box 'MAIN' ~/.bashrc
 echo 'clocks' >>~/.bashrc
 echo '' >>~/.bashrc
 echo '# Assumes your terminal has a dark background. Change to light if needed  ' >>~/.bashrc
-echo 'termbg dark' >>~/.bashrc
+echo 'opal:term_bg dark' >>~/.bashrc
 echo 'opal:ps1_default_dark' >>~/.bashrc
 echo 'opal:ps2_default_dark' >>~/.bashrc
 echo 'opal:ps3_default' >>~/.bashrc
