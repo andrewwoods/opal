@@ -119,8 +119,8 @@ function opal:numseg {
     filename=$1
 
     if [[ -z $3 ]]; then
-        start=$(calc $2-$range)
-        end=$(calc $2+$range)
+        start=$(($2-$range))
+        end=$(($2+$range))
     else
         start=$2
         end=$3
@@ -153,8 +153,8 @@ function opal:seg {
     filename=$1
 
     if [[ -z $3 ]]; then
-        start=$(calc $2-$range)
-        end=$(calc $2+$range)
+        start=$(($2-$range))
+        end=$(($2+$range))
     else
         start=$2
         end=$3
