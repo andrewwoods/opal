@@ -54,16 +54,16 @@ echo 'opal:ps4_default' >>~/.bashrc
 echo '' >>~/.bashrc
 
 opal:message "Generating .bash_profile"
-opal:bash_intro ~/.bash_profile.bash
+opal:bash_intro ~/.bash_profile
 
-echo '' >>~/.bash_profile.bash
-echo 'source ~/opal/bash/bash_profile.bash' >>~/.bash_profile.bash
-echo '' >>~/.bash_profile.bash
-echo 'opal:preamble' >>~/.bash_profile.bash
-echo '' >>~/.bash_profile.bash
-echo '' >>~/.bash_profile.bash
+echo '' >>~/.bash_profile
+echo 'source ~/opal/bash/bash_profile.bash' >> ~/.bash_profile
+echo '' >> ~/.bash_profile
+echo 'opal:preamble' >> ~/.bash_profile
+echo '' >> ~/.bash_profile
+echo '' >> ~/.bash_profile
 
-opal:heading_box 'BASH PROFILE' ~/.bash_profile.bash
+opal:heading_box 'BASH PROFILE' ~/.bash_profile
 
 opal:message "Generating .gitconfig"
 opal:bash_intro ~/.gitconfig
