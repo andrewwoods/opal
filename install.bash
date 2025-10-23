@@ -26,32 +26,32 @@ opal:message "Generating .bashrc"
 opal:bash_intro ~/.bashrc
 
 opal:heading_box 'INCLUDES' ~/.bashrc
-echo 'source ~/opal/opal.bash' >>~/.bashrc
-echo '' >>~/.bashrc
-echo '# Look here for some suggested functionality' >>~/.bashrc
-echo 'source ~/opal/bash/bashrc.bash'  >>~/.bashrc
+echo 'source ~/opal/opal.bash' >> ~/.bashrc
+echo '' >> ~/.bashrc
+echo '# Look here for some suggested functionality' >> ~/.bashrc
+echo 'source ~/opal/bash/bashrc.bash'  >> ~/.bashrc
 
-echo '' >>~/.bashrc
-echo '# Add any other bash files below here ' >>~/.bashrc
-echo '' >>~/.bashrc
+echo '' >> ~/.bashrc
+echo '# Add any other bash files below here ' >> ~/.bashrc
+echo '' >> ~/.bashrc
 
 opal:heading_box 'VARIABLES' ~/.bashrc
 opal:heading_box 'FUNCTIONS' ~/.bashrc
 opal:heading_box 'ALIASES'  ~/.bashrc
-echo '# Look in ~/opal/bash/aliases-clocks.bash for a list of available clocks' >>~/.bashrc
-echo 'alias clocks="utc; eastern; paris; tokyo"' >>~/.bashrc
+echo '# Look in ~/opal/bash/aliases-clocks.bash for a list of available clocks' >> ~/.bashrc
+echo 'alias clocks="utc; eastern; paris; tokyo"' >> ~/.bashrc
 
 opal:heading_box 'MAIN' ~/.bashrc
 
-echo 'clocks' >>~/.bashrc
-echo '' >>~/.bashrc
+echo 'clocks' >> ~/.bashrc
+echo '' >> ~/.bashrc
 echo '# Assumes your terminal has a dark background. Change to light if needed  ' >>~/.bashrc
-echo 'opal:term_bg dark' >>~/.bashrc
-echo 'opal:ps1_default_dark' >>~/.bashrc
-echo 'opal:ps2_default_dark' >>~/.bashrc
-echo 'opal:ps3_default' >>~/.bashrc
-echo 'opal:ps4_default' >>~/.bashrc
-echo '' >>~/.bashrc
+echo 'opal:term_bg dark' >> ~/.bashrc
+echo 'opal:ps1_default_dark' >> ~/.bashrc
+echo 'opal:ps2_default_dark' >> ~/.bashrc
+echo 'opal:ps3_default' >> ~/.bashrc
+echo 'opal:ps4_default' >> ~/.bashrc
+echo '' >> ~/.bashrc
 
 opal:message "Generating .bash_profile"
 opal:bash_intro ~/.bash_profile
@@ -69,20 +69,20 @@ opal:message "Generating .gitconfig"
 opal:bash_intro ~/.gitconfig
 
 echo '' >>~/.gitconfig
-echo '[include]' >>~/.gitconfig
-echo '    path = ~/opal/git/config' >>~/.gitconfig
-echo '' >>~/.gitconfig
-echo '[commit]' >>~/.gitconfig
-echo '    template = ~/opal/git/commit-message' >>~/.gitconfig
-echo '' >>~/.gitconfig
+echo '[include]' >> ~/.gitconfig
+echo '    path = ~/opal/git/config' >> ~/.gitconfig
+echo '' >> ~/.gitconfig
+echo '[commit]' >> ~/.gitconfig
+echo '    template = ~/opal/git/commit-message' >> ~/.gitconfig
+echo '' >> ~/.gitconfig
 
 opal:message "Generating .vimrc"
 opal:vim_intro ~/.vimrc
 
-echo ':source ~/opal/vimrc_files/vimrc' >>~/.vimrc
-echo '' >>~/.vimrc
-echo '"' >>~/.vimrc
-echo '" Put your vim settings below here' >>~/.vimrc
-echo '"' >>~/.vimrc
-echo '' >>~/.vimrc
-echo '' >>~/.vimrc
+echo ':source ~/opal/vimrc_files/vimrc' >> ~/.vimrc
+echo '' >> ~/.vimrc
+echo '"' >> ~/.vimrc
+echo '" Put your vim settings below here' >> ~/.vimrc
+echo '"' >> ~/.vimrc
+echo '' >> ~/.vimrc
+echo '' >> ~/.vimrc
