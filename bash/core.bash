@@ -686,6 +686,7 @@ function opal:version {
 
 function opal:about {
     opal:message "$(opal:version)"
+    local year="$(date '+%Y')"
 
     cat <<-EOF
 
@@ -696,6 +697,6 @@ function opal:about {
     For the most up-to-date version, and the full documentation, visit the
     Github repo at https://github.com/andrewwoods/opal
 
-    Copyright (C) 2023 Andrew Woods
+    Copyright (C) 2023-${year} Andrew Woods
 EOF
 }
