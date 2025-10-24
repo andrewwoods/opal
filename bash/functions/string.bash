@@ -35,15 +35,22 @@ function opal:str_upper {
 }
 
 ##
-## Convert a string to a path friendly slug.
+## Remove all spaces and tabs from the start and end of the string
 ##
 ## @param string $value
 ##
 ## @return string
 ##
 function opal:str_trim {
-    echo "$@" | iconv -t ascii//TRANSLIT \
-        | sed -E 's/^ +| +$//g'
+    local trimmed
+
+    trimmed=$(echo "$1" | iconv -t ascii//TRANSLIT )
+    # Remove leading white spaces
+    trimmed="$(echo "$trimmed" | sed -E 's/^[[:blank:]]+//g')"
+    # Remove trailing white spaces
+    trimmed="$(echo "$trimmed" | sed -E 's/[[:blank:]]+$//g')"
+
+    echo "$trimmed"
 }
 
 ##

@@ -124,6 +124,20 @@ function opal:is_unset {
     [[ -z "$1" ]]
 }
 
+#
+# Determine if a value has no content or just white space.
+#
+function opal:is_empty {
+    local trimmed
+
+    # Remove leading white spaces
+    trimmed="$(echo "$1" | sed -E 's/^[[:blank:]]+//g')"
+    # Remove trailing white spaces
+    trimmed="$(echo "$trimmed" | sed -E 's/[[:blank:]]+$//g')"
+
+    [[ -z "$1" || -z "$trimmed" ]]
+}
+
 function opal:command_exists {
     local type_result
     if opal:is_unset "$1"; then
