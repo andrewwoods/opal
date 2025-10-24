@@ -3,6 +3,9 @@
 "
 " https://en.wiktionary.org/wiki/Appendix:English_words_with_diacritics
 "
+:ab Ill I'll
+:ab Im I'm
+:ab Youre You're
 :ab Liason Liaison
 :ab Wordpress WordPress
 
