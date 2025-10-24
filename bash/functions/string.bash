@@ -54,15 +54,14 @@ function opal:str_trim {
 }
 
 ##
-## Convert a string to a path friendly slug.
+## Remove a string of all extraneous white space
 ##
 ## @param string $value
 ##
 ## @return string
 ##
 function opal:str_trimmer {
-    echo "$(opal:str_trim "$@")" \
-        | sed -E 's/ +/ /g'
+    echo "$(opal:str_trim "$1")" | sed -E 's/[[:blank:]]+/ /g'
 }
 
 ##
