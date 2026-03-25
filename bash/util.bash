@@ -555,43 +555,4 @@ function opal:show_dotfiles() {
     esac
 }
 
-#
-# note - record a note to a file from the command line
-#
-# @param String Optional $destinationCode
-# @param String $note_text
-#
-# Examples:
-# $ note work "type a brief message here. quotes are required (for now)"
-# $ note type a brief message here
-#
-function opal:note {
-    NOW=$(opal:today opal-datetime)
-
-    DATADIR="${OPAL_DATA_HOME:=$HOME/.local/state/opal}"
-
-    if ! opal:dir_exists "$DATADIR"; then
-        mkdir -p "$DATADIR"
-    fi
-
-    MESG="$NOW "
-    if [[ $1 == "work" ]]; then
-        shift
-        echo "$MESG $@" >> $DATADIR/notes.work.txt
-
-    elif [[ $1 == "dev" ]]; then
-        shift
-        MESG="$MESG $@"
-        echo $MESG >> $DATADIR/notes.development.txt
-
-    elif [[ $1 == "home" ]]; then
-        shift
-        MESG="$MESG $@"
-        echo $MESG >> $DATADIR/notes.home.txt
-
-    else
-        MESG="$MESG $@"
-        echo $MESG >> $DATADIR/notes.txt
-    fi
-}
 
