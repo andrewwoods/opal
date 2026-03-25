@@ -109,15 +109,37 @@ function opal:cal3 {
 }
 
 #
-# datadir - Detect where to save your data.
+# Return the path to the directory $XDG_DATA_HOME.
+#
+# There is a single base directory relative to which user-specific data files
+# should be written. $XDG_DATA_HOME defines the base directory relative to which
+# user-specific data files should be stored.
+#
+# @return string $directory
+#
+function opal:xdg_data_dir {
+    local data_dir
+    local xdg_default="$HOME/.local/share"
+
+    data_dir="${XDG_DATA_HOME:-$xdg_default}"
+
+    opal:ensure_dir_exists "$data_dir"
+
+    echo "$data_dir"
+}
 #
 function opal:data_dir {
-    if [[ -d "$HOME/Dropbox" && -w "$HOME/Dropbox" ]]; then
-        echo "$HOME/Dropbox"
-    elif [[ -d "$HOME/data" && -w "$HOME/data" ]]; then
-        echo "$HOME/data"
-    else
-        echo $HOME
+    local data_dir
+
+    data_dir="$(opal:xdg_data_dir)"
+    if opal:is_unset "$data_dir"; then
+        return 1
+    fi
+    data_dir="${data_dir}/opal"
+
+    opal:ensure_dir_exists "$data_dir"
+
+    echo "$data_dir"
     fi
 }
 
