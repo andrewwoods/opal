@@ -481,14 +481,6 @@ function opal:up {
 }
 
 #
-# lskeys - Display a list of your ssh keys.
-#
-function opal:list_keys() {
-    opal:type_line "My SSH Keys"
-    ls -1 ~/.ssh/*.pub
-}
-
-#
 # define - lookup the dictionary definition of a word
 #
 # @param String $word the term you want to define
