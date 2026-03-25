@@ -504,7 +504,7 @@ function opal:calc() {
 # @param String $code the 2-letter or 3-letter country code
 #
 function opal:country() {
-    awk -F "\t" -f $OPAL_DIR/country_lookup.awk -v country=$1 $OPAL_DIR/data/iso-country-codes.txt
+    awk -F "\t" -f $OPAL_DIR/bin/country_lookup -v country=$1 $OPAL_DIR/data/iso-country-codes.txt
 }
 
 
