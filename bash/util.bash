@@ -6,59 +6,6 @@
 export PAD="    "
 export LINE_LENGTH=80
 
-#
-# _e - echo text with padding
-#
-# @param string
-function _e {
-    echo "${PAD}$1"
-}
-
-#
-# _l - Create a line prepended with padding.
-#
-# @param char  Optional. the character used to construct the line
-# @param int Optional. The length of the line
-#
-function _l {
-    max_length=$LINE_LENGTH
-    char="-"
-    line=""
-
-    if [[ $1 != "" ]]; then
-        char=$1
-    fi
-
-    if [[ $2 != "" ]]; then
-        max_length=$2
-    fi
-
-    for ((i = ${#PAD}; i <= $max_length; i++)); do
-        line+=$char
-    done
-    _e $line
-}
-
-#
-# _n - echo a blank line
-#
-function _n {
-    echo ""
-}
-
-#
-# _p - write out the text with padding
-#
-function _p {
-    opal:type_line "${PAD}$1"
-}
-
-#
-# _s - Speak the text aloud and highlight as it progresses
-#
-function _s {
-    say -v Fred --interactive="cyan/black" "$@"
-}
 
 
 #
@@ -723,19 +670,4 @@ function opal:note {
         echo $MESG >> $DATADIR/notes.txt
     fi
 }
-
-#
-# matrix - Display the Matrix code in your terminal
-#
-function opal:matrix() {
-    echo -e "\e[1;40m"
-    clear
-    characters=$(jot -c 94 33 | tr -d '\n')
-    while :; do
-        echo $LINES $COLUMNS $(($RANDOM % $COLUMNS)) $(($RANDOM % 72)) $characters
-        sleep 0.05
-    done | awk '{ letters=$5; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}'
-}
-
-
 
