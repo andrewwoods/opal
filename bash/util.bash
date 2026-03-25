@@ -507,23 +507,6 @@ function opal:country() {
     awk -F "\t" -f $OPAL_DIR/country_lookup.awk -v country=$1 $OPAL_DIR/data/iso-country-codes.txt
 }
 
-#
-# tabname - assign a name to the active terminal tab
-#
-# @param String $name the desired tab name. if more than 1 word, enclose with quotes
-#
-function opal:tab_name() {
-    printf "\e]1;$1\a"
-}
-
-#
-# winname - assign a name to the window your active terminal window
-#
-# @param String $name the desired window name. if more than 1 word, enclose with quotes
-#
-function opal:win_name() {
-    printf "\e]2;$1\a"
-}
 
 #
 # show_dotfiles - turn on/off OS X Finders ability to display hidden files
