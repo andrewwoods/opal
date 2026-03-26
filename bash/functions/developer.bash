@@ -14,7 +14,7 @@ function opal:check_site() {
 
     if opal:is_unset "$2"; then
         # set the default interval, in seconds
-        interval=10
+        interval=60
     else
         interval=$2
     fi
