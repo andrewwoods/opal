@@ -48,7 +48,7 @@ function opal:check_site() {
 function opal:http_status {
     grep -A 1 ^$1 $OPAL_DIR/data/http-status-codes.txt
     echo " "
-    echo "see http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html for more information"
+    opal:message "see https://www.rfc-editor.org/rfc/rfc9110.html#name-status-codes"
 }
 
 #
