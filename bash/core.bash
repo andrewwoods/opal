@@ -284,66 +284,6 @@ function opal:number_between {
 
 ################################################################################
 #
-#   Operating System
-#
-#################################################################################
-
-function opal:about_macos {
-    opal:label "About MacOS"
-
-    if opal:command_exists "neofetch"; then
-        neofetch
-    else
-        opal:about_macos_fallback
-    fi
-}
-
-function opal:about_macos_fallback {
-    system_profiler -detailLevel mini SPSoftwareDataType SPHardwareDataType
-}
-
-function opal:about_popos {
-
-    if opal:command_exists "neofetch"; then
-        neofetch
-    else
-        opal:about_popos_fallback
-    fi
-}
-
-function opal:about_popos_fallback {
-    about_me="$(whoami)@$(hostname)"
-    opal:label "${about_me}"
-    _n
-    inxi
-    _n
-    hostnamectl | grep -e 'Hardware' -e 'Architecture' -e 'Chassis'
-    _n
-    opal:message "Memory"
-    free -h
-    _n
-
-}
-
-function opal:about_ubuntu {
-    opal:label "About Ubuntu"
-
-    if opal:command_exists "neofetch"; then
-        neofetch
-    elif opal:command_exists "lshw"; then
-        lshw
-    else
-        # Fallback to generic ubuntu commands
-        hwinfo
-        lscpu
-        lspci
-        df -h
-        free -h
-    fi
-}
-
-################################################################################
-#
 #   User Experience
 #
 #################################################################################
