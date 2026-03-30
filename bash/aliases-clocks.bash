@@ -41,6 +41,19 @@ alias sao_paulo="TZ=America/Sao_Paulo date '+%c -- Sao Paulo'"
 alias sa_clocks="santiago; bogota; buenos_aires; sao_paulo"
 
 #
+# Africa
+#
+alias cairo="TZ=Africa/Cairo date '+%c -- Cairo'"
+alias casablanca="TZ=Africa/Casablanca date '+%c -- Morocco'"
+alias freetown="TZ=Africa/Freetown date '+%c -- Sierra Leone'"
+alias mogadishu="TZ=Africa/Mogadishu date '+%c -- Somalia'"
+alias nairobi="TZ=Africa/Nairobi date '+%c -- Kenya'"
+alias tripoli="TZ=Africa/Tripoli date '+%c -- Libya'"
+alias tunis="TZ=Africa/Tunis date '+%c -- Tunisia'"
+
+alias af_clocks="cairo; casablanca; freetown; mogadishu; nairobi; tripoli; tunis"
+
+#
 # Europe
 #
 alias paris="TZ=Europe/Paris date '+%c -- Paris'"
