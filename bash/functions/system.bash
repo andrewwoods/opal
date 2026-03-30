@@ -1,5 +1,5 @@
 #
-# File and Directory related functions
+# System related functions
 #
 ################################################################################
 
@@ -33,15 +33,6 @@ function opal:bak {
 }
 
 #
-# cdls - change to a directory and list its content
-#
-# @param String $directory
-#
-function opal:cdls {
-    cd "$1" && ls -F --color=auto
-}
-
-#
 # extract - "un-compress" a file from a variety of common formats
 #
 # @param String $filename must be a common compressed file type like ZIP or Tar
@@ -64,34 +55,6 @@ function opal:extract {
     else
         opal:std_error "File not found: '$1'"
     fi
-}
-
-#
-# lsd - get a recursive list of all directories under 'directory'.
-#   defaults to cwd.
-#
-# @param String $directory the directory for which you want to recursively list
-#   the contents.
-#
-function opal:lsd {
-    if [[ $1 ]]; then
-        dir=$1
-    else
-        dir="."
-    fi
-
-    find $dir -type d
-}
-
-#
-# mkcd - make a directory and go into it. For more than one directory
-#        go into the last one
-#
-# @param String $directory
-#
-function opal:mkcd {
-    last="${@: -1}"
-    mkdir -p "$@" && cd "${last}"
 }
 
 #
