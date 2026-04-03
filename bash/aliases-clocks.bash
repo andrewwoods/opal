@@ -65,8 +65,11 @@ alias london="TZ=Europe/London date '+%c -- London'"
 alias moscow="TZ=Europe/Moscow date '+%c -- Moscow'"
 alias kyiv="TZ=Europe/Kyiv date '+%c -- Kyiv'"
 alias belgrade="TZ=Europe/Belgrade date '+%c -- Belgrade'"
+alias lisbon="TZ=Europe/Lisbon date '+%c -- Lisbon'"
+alias dublin="TZ=Europe/Dublin date '+%c -- Dublin'"
+alias cardiff="TZ=Europe/Cardiff date '+%c -- Cardiff'"
 
-alias eu_clocks="london; paris; berlin; rome; zurich; madrid; moscow; kyiv; belgrade"
+alias eu_clocks="cardiff; dublin; london; lisbon; paris; berlin; rome; zurich; madrid; belgrade; moscow; kyiv"
 
 #
 # Asia
