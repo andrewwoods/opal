@@ -91,5 +91,11 @@ alias auckland="TZ=Pacific/Auckland date '+%c -- Auckland'"
 alias tahiti="TZ=Pacific/Tahiti date '+%c -- Tahiti'"
 alias guam="TZ=Pacific/Guam date '+%c -- Guam'"
 alias honolulu="TZ=Pacific/Honolulu date '+%c -- Honolulu'"
+alias adelaide="TZ=Australia/Adelaide date '+%c -- Adelaide'"
+alias brisbane="TZ=Australia/Brisbane date '+%c -- Brisbane'"
+alias melbourne="TZ=Australia/Melbourne date '+%c -- Melbourne'"
+alias perth="TZ=Australia/Perth date '+%c -- Perth'"
+alias sydney="TZ=Australia/Sydney date '+%c -- Sydney'"
 
-alias pac_clocks="auckland; tahiti; guam; honolulu"
+alias pac_clocks="tahiti; honolulu; perth; guam; brisbane; adelaide; melbourne; sydney; auckland"
+
