@@ -82,7 +82,7 @@ alias saigon="TZ=Asia/Saigon date '+%c -- Saigon'"
 alias jerusalem="TZ=Asia/jerusalem date '+%c -- Jerusalem'"
 alias baghdad="TZ=Asia/Baghdad date '+%c -- Baghdad'"
 
-alias asia_clocks="hong_kong; shanghai; jerusalem; baghdad"
+alias asia_clocks="hong_kong; shanghai; tokyo; saigon; jerusalem; baghdad"
 
 #
 # Pacific
