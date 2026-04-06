@@ -183,35 +183,35 @@ function opal:ensure_dir_exists {
 #################################################################################
 
 function opal:log_emergency {
-    opal:log EMERGENCY "${1}"
+    opal:log EMERGENCY "${1}" "${2}"
 }
 
 function opal:log_alert {
-    opal:log ALERT "${1}"
+    opal:log ALERT "${1}" "${2}"
 }
 
 function opal:log_critical {
-    opal:log CRITICAL "${1}"
+    opal:log CRITICAL "${1}" "${2}"
 }
 
 function opal:log_error {
-    opal:log ERROR "${1}"
+    opal:log ERROR "${1}" "${2}"
 }
 
 function opal:log_warning {
-    opal:log WARNING "${1}"
+    opal:log WARNING "${1}" "${2}"
 }
 
 function opal:log_notice {
-    opal:log NOTICE "${1}"
+    opal:log NOTICE "${1}" "${2}"
 }
 
 function opal:log_info {
-    opal:log INFO "${1}"
+    opal:log INFO "${1}" "${2}"
 }
 
 function opal:log_debug {
-    opal:log DEBUG "${1}"
+    opal:log DEBUG "${1}" "${2}"
 }
 
 function opal:log {
@@ -222,17 +222,22 @@ function opal:log {
 
     local level="$1"
     local message="$2"
+    local user_log_file="$3"
 
-    local LOG_DIR=${XDG_STATE_HOME:-$HOME/.local/state}
+    local LOG_DIR="$(opal:state_dir)"
     file="error.log"
     date_format="iso-timestamp"
 
     log_date="$(opal:today ${date_format})"
-    log_file="${LOG_DIR}/opal/${file}"
+    log_file="${LOG_DIR}/${file}"
 
-    if ! opal:dir_exists "${LOG_DIR}/opal"; then
-        opal:std_error "Creating dir: ${LOG_DIR}/opal"
-        mkdir -p "${LOG_DIR}/opal"
+    if opal:is_set "$user_log_file"; then
+        log_file="$user_log_file"
+    fi
+
+    if ! opal:dir_exists "${LOG_DIR}"; then
+        opal:std_error "Creating dir: ${LOG_DIR}"
+        mkdir -p "${LOG_DIR}"
     fi
 
     echo "${log_date} ${level} ${message}" >> "${log_file}"
