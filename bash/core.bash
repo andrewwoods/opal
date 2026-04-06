@@ -411,7 +411,7 @@ function opal:string_equals {
     [[ $1 == $2 ]]
 }
 
-function opal:string_unequal {
+function opal:string_unequals {
     [[ $1 != $2 ]]
 }
 
