@@ -799,6 +799,7 @@ function opal:interval_to_seconds {
 
 function opal:version {
     echo "Opal version: ${OPAL_VERSION}"
+    echo "Bash version: ${BASH_VERSION}"
 }
 
 function opal:about {
