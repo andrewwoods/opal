@@ -13,7 +13,7 @@ export LINE_LENGTH=80
 #
 function opal:bash_intro() {
     echo "#" >$1
-    echo "# Created by Opal on $(date)" >>$1
+    echo "# Created by Opal on $(opal:today opal-datetime)" >>$1
     echo "#" >>$1
     echo "" >>$1
     echo "" >>$1
@@ -23,17 +23,17 @@ function opal:bash_intro() {
 # vim_intro ( filename )
 #
 function opal:vim_intro() {
+    echo '"' >$1
+    echo '" Created by Opal on' $(opal:today opal-datetime) >>$1
+    echo '"' >>$1
     echo '' >>$1
-    echo '"' >>$1
-    echo '" Created by Opal on' $(date) >>$1
-    echo '"' >>$1
     echo '' >>$1
 }
 
 #
-# heading_box ( title, filename )
+# bash_heading_box ( title, filename )
 #
-function opal:heading_box() {
+function opal:bash_heading_box() {
     cLine="################################################################################"
 
     echo "" >>$2

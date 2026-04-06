@@ -25,7 +25,7 @@ fi
 opal:message "Generating .bashrc"
 opal:bash_intro ~/.bashrc
 
-opal:heading_box 'INCLUDES' ~/.bashrc
+opal:bash_heading_box 'INCLUDES' ~/.bashrc
 echo 'source ~/opal/opal.bash' >> ~/.bashrc
 echo '' >> ~/.bashrc
 echo '# Look here for some suggested functionality' >> ~/.bashrc
@@ -35,13 +35,13 @@ echo '' >> ~/.bashrc
 echo '# Add any other bash files below here ' >> ~/.bashrc
 echo '' >> ~/.bashrc
 
-opal:heading_box 'VARIABLES' ~/.bashrc
-opal:heading_box 'FUNCTIONS' ~/.bashrc
-opal:heading_box 'ALIASES'  ~/.bashrc
+opal:bash_heading_box 'VARIABLES' ~/.bashrc
+opal:bash_heading_box 'FUNCTIONS' ~/.bashrc
+opal:bash_heading_box 'ALIASES'  ~/.bashrc
 echo '# Look in ~/opal/bash/aliases-clocks.bash for a list of available clocks' >> ~/.bashrc
 echo 'alias clocks="utc; eastern; paris; tokyo"' >> ~/.bashrc
 
-opal:heading_box 'MAIN' ~/.bashrc
+opal:bash_heading_box 'MAIN' ~/.bashrc
 
 echo 'clocks' >> ~/.bashrc
 echo '' >> ~/.bashrc
@@ -63,7 +63,7 @@ echo 'opal:preamble' >> ~/.bash_profile
 echo '' >> ~/.bash_profile
 echo '' >> ~/.bash_profile
 
-opal:heading_box 'BASH PROFILE' ~/.bash_profile
+opal:bash_heading_box 'BASH PROFILE' ~/.bash_profile
 
 opal:message "Generating .gitconfig"
 opal:bash_intro ~/.gitconfig
