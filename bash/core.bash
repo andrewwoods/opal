@@ -116,6 +116,11 @@ function opal:std_error {
     echo "$@" 1>&2
 }
 
+function opal:std_log {
+     opal:log_error "$1"
+     opal:std_error "$1"
+}
+
 function opal:is_set {
     [[ -n "$1" ]]
 }
