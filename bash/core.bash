@@ -130,6 +130,69 @@ function opal:is_unset {
     [[ -z "$1" ]]
 }
 
+##
+## Provide a human message for numeric exit status codes provided by $?
+##
+## @param int $err_number
+##   The value captured by $?
+##
+## @return string
+##
+## @uses opal:std_log
+##
+## @see man errno
+##
+function opal:error_message {
+    local err_number
+    local message
+
+    if opal:is_unset $1; then
+        opal:std_log "The error status code was not passed to opal:error_message()"
+        return 1
+    fi
+
+    err_number="$1"
+    if ! [[ $err_number =~ [0-9]+ ]]; then
+        opal:std_log "The argument is not an integer."
+        return 22
+    fi
+
+    if opal:number_equals $err_number 0; then
+        return 0;
+    fi
+
+    if opal:number_equals $err_number 1; then
+        message="General Error."
+    elif opal:number_equals $err_number 2; then
+        message="Called incorrectly."
+    elif opal:number_equals $err_number 13; then
+        message="Permission Denied: cannot execute."
+    elif opal:number_equals $err_number 17; then
+        message="File already exists."
+    elif opal:number_equals $err_number 20; then
+        message="Not a directory."
+    elif opal:number_equals $err_number 21; then
+        message="Directory already exists."
+    elif opal:number_equals $err_number 22; then
+        message="Invalid argument."
+    elif opal:number_equals $err_number 126; then
+        message="Permission Denied: cannot execute."
+    elif opal:number_equals $err_number 127; then
+        message="Not available in PATH."
+    elif opal:number_equals $err_number 130; then
+        message="Script terminated by CTRL+C."
+    elif opal:number_equals $err_number 255 ; then
+        message="Exit status out of range."
+    elif opal:number_is_above $err_number 127 ; then
+        message="Fatal error occurred."
+    else
+        message="Failure occurred."
+    fi
+
+    echo "${message} Error code=${err_number}"
+    return 0
+}
+
 #
 # Determine if a value has no content or just white space.
 #
@@ -144,6 +207,13 @@ function opal:is_empty {
     [[ -z "$1" || -z "$trimmed" ]]
 }
 
+#
+# Check that a command is available on your system.
+#
+# @return bool
+#
+# @uses type
+#
 function opal:command_exists {
     local type_result
     if opal:is_unset "$1"; then
@@ -155,6 +225,13 @@ function opal:command_exists {
     [[ "$type_result" = "file" ]]
 }
 
+#
+# Check that a function is available on your shell.
+#
+# @return bool
+#
+# @uses type
+#
 function opal:function_exists {
     local type_result
     if opal:is_unset "$1"; then
@@ -166,6 +243,15 @@ function opal:function_exists {
     [[ "$type_result" == "function" ]]
 }
 
+#
+# Create a directory if it doesn't exist
+#
+# When you need a directory to be avaialable, this will create it if need be.
+#
+# @return bool
+#
+# @uses type
+#
 function opal:ensure_dir_exists {
     local dir
     if opal:is_unset "$1"; then
@@ -175,10 +261,7 @@ function opal:ensure_dir_exists {
     dir="${1}"
 
     if ! opal:dir_exists "$dir"; then
-        opal:std_error "Creating directory ${dir}"
         mkdir -p "$dir"
-    else
-        opal:std_error "directory exists ${dir}"
     fi
 }
 
