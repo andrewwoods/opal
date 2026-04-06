@@ -22,7 +22,7 @@ function opal:prompt() {
         style="$2"
     fi
 
-    if opal:string_equals "${TERM_BG}" 'light'; then
+    if opal:str_equals "${TERM_BG}" 'light'; then
         opal:ps2_default_light $style
     else
         opal:ps2_default_dark $style
@@ -41,7 +41,7 @@ function opal:prompt() {
             ;;
 
         developer)
-            if opal:string_equals "${TERM_BG}" 'light'; then
+            if opal:str_equals "${TERM_BG}" 'light'; then
                 opal:ps1_developer_light $style
             else
                 opal:ps1_developer $style
@@ -49,7 +49,7 @@ function opal:prompt() {
             ;;
 
         default)
-            if opal:string_equals "${TERM_BG}" 'light'; then
+            if opal:str_equals "${TERM_BG}" 'light'; then
                 opal:ps1_default_light $style
             else
                 opal:ps1_default_dark $style

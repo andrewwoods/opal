@@ -57,55 +57,55 @@ function opal:color {
         style="$2"
     fi
 
-    if opal:string_equals "$color" "normal"; then
+    if opal:str_equals "$color" "normal"; then
         code="0"
     fi
 
-    if opal:string_equals "$color" "red"; then
+    if opal:str_equals "$color" "red"; then
         code="31"
     fi
 
-    if opal:string_equals "$color" "green"; then
+    if opal:str_equals "$color" "green"; then
         code="32"
     fi
 
-    if opal:string_equals "$color" "yellow"; then
+    if opal:str_equals "$color" "yellow"; then
         code="33"
     fi
 
-    if opal:string_equals "$color" "blue"; then
+    if opal:str_equals "$color" "blue"; then
         code="34"
     fi
 
-    if opal:string_equals "$color" "purple"; then
+    if opal:str_equals "$color" "purple"; then
         code="35"
     fi
 
-    if opal:string_equals "$color" "cyan"; then
+    if opal:str_equals "$color" "cyan"; then
         code="36"
     fi
 
-    if opal:string_equals "$color" "white"; then
+    if opal:str_equals "$color" "white"; then
         code="37"
     fi
 
-    if opal:string_equals "$style" "bright"; then
+    if opal:str_equals "$style" "bright"; then
         code="1;${code}"
-        if opal:string_equals "$color" "normal"; then
+        if opal:str_equals "$color" "normal"; then
             code="1"
         fi
     fi
 
-    if opal:string_equals "$style" "underline"; then
+    if opal:str_equals "$style" "underline"; then
         code="4;${code}"
-        if opal:string_equals "$color" "normal"; then
+        if opal:str_equals "$color" "normal"; then
             code="4"
         fi
     fi
 
-    if opal:string_equals "$style" "reverse"; then
+    if opal:str_equals "$style" "reverse"; then
         code="7;${code}"
-        if opal:string_equals "$color" "normal"; then
+        if opal:str_equals "$color" "normal"; then
             code="7"
         fi
     fi
@@ -407,11 +407,11 @@ function opal:log {
 #
 ################################################################################
 
-function opal:string_equals {
+function opal:str_equals {
     [[ $1 == $2 ]]
 }
 
-function opal:string_unequals {
+function opal:str_unequals {
     [[ $1 != $2 ]]
 }
 
@@ -771,15 +771,15 @@ function opal:interval_to_seconds {
     fi
     quantity="$2"
 
-    if opal:string_equals "$unit" "minutes"; then
+    if opal:str_equals "$unit" "minutes"; then
         base_value="$MINUTE_IN_SECONDS"
-    elif opal:string_equals "$unit" "hours"; then
+    elif opal:str_equals "$unit" "hours"; then
         base_value="$HOUR_IN_SECONDS"
-    elif opal:string_equals "$unit" "days"; then
+    elif opal:str_equals "$unit" "days"; then
         base_value="$DAY_IN_SECONDS"
-    elif opal:string_equals "$unit" "weeks"; then
+    elif opal:str_equals "$unit" "weeks"; then
         base_value="$WEEK_IN_SECONDS"
-    elif opal:string_equals "$unit" "months"; then
+    elif opal:str_equals "$unit" "months"; then
         base_value="$MONTH_IN_SECONDS"
     else
         opal:std_error "$(opal:failure "Uh oh. '${unit}' is not a valid choice")"

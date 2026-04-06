@@ -142,7 +142,7 @@ function opal:locate {
 
     item_type="$(type -t $1)"
 
-    if ! opal:string_equals "function" "$item_type"; then
+    if ! opal:str_equals "function" "$item_type"; then
         opal:std_error "$1 is not a function"
         return 2
     fi
