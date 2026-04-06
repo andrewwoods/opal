@@ -17,8 +17,9 @@ export OPAL_VERSION="3.0.0-beta-0406"
 # XDG_CONFIG_DIRS list of directories.
 export OPAL_CONFIG_DIR="${HOME}/opal/config"
 export OPAL_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/opal"
-export OPAL_STATE_DIR="${XDG_DATA_HOME:-$HOME/.local/state}/opal"
+export OPAL_STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/opal"
 export OPAL_LOG_DIR="${OPAL_STATE_DIR}"
+export OPAL_LOG_FILE="${OPAL_LOG_DIR}/error.log"
 
 export NORMAL RED BRIGHT_RED GREEN BRIGHT_GREEN YELLOW BRIGHT_YELLOW
 export BLUE BRIGHT_BLUE PURPLE BRIGHT_PURPLE CYAN BRIGHT_CYAN WHITE BRIGHT_WHITE
