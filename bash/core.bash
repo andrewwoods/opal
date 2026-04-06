@@ -182,38 +182,107 @@ function opal:ensure_dir_exists {
 #
 #################################################################################
 
+#
+# Writes an EMERGENCY-level message to the log.
+#
+# @param string $message
+#
+# @param string $filepath
+#
 function opal:log_emergency {
     opal:log EMERGENCY "${1}" "${2}"
 }
 
+#
+# Writes a ALERT-level message to the log.
+#
+# @param string $message
+#
+# @param string $filepath
+#
 function opal:log_alert {
     opal:log ALERT "${1}" "${2}"
 }
 
+#
+# Writes a CRITICAL-level message to the log.
+#
+# @param string $message
+#
+# @param string $filepath
+#
 function opal:log_critical {
     opal:log CRITICAL "${1}" "${2}"
 }
 
+#
+# Writes a ERROR-level message to the log.
+#
+# @param string $message
+#
+# @param string $filepath
+#
 function opal:log_error {
     opal:log ERROR "${1}" "${2}"
 }
 
+#
+# Writes a WARNING-level message to the log.
+#
+# @param string $message
+#
+# @param string $filepath
+#
 function opal:log_warning {
     opal:log WARNING "${1}" "${2}"
 }
 
+#
+# Writes a NOTICE-level message to the log.
+#
+# @param string $message
+#
+# @param string $filepath
+#
 function opal:log_notice {
     opal:log NOTICE "${1}" "${2}"
 }
 
+#
+# Writes a INFO-level message to the log.
+#
+# @param string $message
+#
+# @param string $filepath
+#
 function opal:log_info {
     opal:log INFO "${1}" "${2}"
 }
 
+#
+# Writes a DEBUG-level message to the log.
+#
+# @param string $message
+#
+# @param string $filepath
+#
+# @uses opal:log
+#
 function opal:log_debug {
     opal:log DEBUG "${1}" "${2}"
 }
 
+#
+# @param string $level
+#   The logging level of the message. The RFC 5424 determines the levels.
+#
+# @param string $message
+#   The message you want to write to the error log.
+#
+# @param string $filepath
+#   Optional. The log file $HOME/.local/state/opal/error.log will be
+#   if not specified.
+#
 function opal:log {
     local log_date
     local log_file
