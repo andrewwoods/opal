@@ -15,11 +15,12 @@ export OPAL_VERSION="3.0.0-beta-0406"
 # The $OPAL_CONFIG_DIR is not meant to replace the XDG_CONFIG_HOME directory.
 # Rather it's an additional directory - one that could be used in the
 # XDG_CONFIG_DIRS list of directories.
-export OPAL_CONFIG_DIR="${HOME}/opal/config"
-export OPAL_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/opal"
-export OPAL_STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/opal"
-export OPAL_LOG_DIR="${OPAL_STATE_DIR}"
-export OPAL_LOG_FILE="${OPAL_LOG_DIR}/error.log"
+export OPAL_CONFIG_DIR="${OPAL_DIR}/config"
+
+# This makes the log file accessible as a variable. However, it's preferred that
+# the opal:data_dir, opal:state_dir, opal:cache_dir and opal:config_dir
+export OPAL_XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}/opal"
+export OPAL_LOG_FILE="${OPAL_XDG_STATE_HOME}/error.log"
 
 export NORMAL RED BRIGHT_RED GREEN BRIGHT_GREEN YELLOW BRIGHT_YELLOW
 export BLUE BRIGHT_BLUE PURPLE BRIGHT_PURPLE CYAN BRIGHT_CYAN WHITE BRIGHT_WHITE
