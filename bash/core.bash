@@ -637,6 +637,40 @@ function opal:someday() {
 }
 
 ##
+## Get the UNIX epoch seconds for a given Gregorian date in YYYY-MM-DD.
+##
+## @param string $date
+##   The desired date in YYYY-MM-DD format.
+##
+## @return int $seconds
+##   The corresponding date in UNIX epoch seconds
+##
+## @exit 0 | 1
+##
+function opal:epoch() {
+    local somedate
+    local iso_format
+    local unix_format
+
+    if opal:is_unset "$1"; then
+        opal:std_log "You forgot to specify the date in YYYY-MM-DD"
+        return 1
+    fi
+    if ! [[ "$1" =~ ^[1-2][0-9]{3}\-[0-9]{2}\-[0-9]{2} ]]; then
+        opal:std_log "The date must be in YYYY-MM-DD"
+        return 1
+    fi
+    somedate=$1
+
+    iso_format="$(opal:get_date_format "iso-timestamp")"
+    iso_format="%Y-%m-%dT%H:%M:%S"
+    unix_format="+$(opal:get_date_format "unix")"
+
+    date -j -f "${iso_format}" "${somedate}T00:00:00" "${unix_format}"
+}
+
+
+##
 ## Calculate the duration of two epoch times.
 ##
 ## @param int start_time
