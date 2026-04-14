@@ -3,12 +3,6 @@
 #
 ################################################################################
 
-
-if [[ $OPAL_NOOB -eq '1' ]]; then
-    echo "Loading Noob Settings"
-    source $OPAL_DIR/bash/noob.bash
-fi
-
 alias reload=". ~/.bashrc"
 
 ##
