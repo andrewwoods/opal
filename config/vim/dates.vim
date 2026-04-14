@@ -5,6 +5,7 @@
 
 :iab <expr> now_date strftime('%Y %b %d %a')
 :iab <expr> now_time strftime('%H:%M')
+:iab <expr> now_unix strftime('%s')
 
 :iab <expr> iso_date strftime('%Y-%m-%d')
 :iab <expr> iso_datetime strftime('%Y-%m-%dT%H:%M%z')

@@ -5,6 +5,7 @@
 
 vim.cmd("iab <expr> now_date strftime('%Y %b %d %a')")
 vim.cmd("iab <expr> now_time strftime('%H:%M')")
+vim.cmd("iab <expr> now_unix strftime('%s')")
 
 vim.cmd("iab <expr> iso_date strftime('%Y-%m-%d')")
 vim.cmd("iab <expr> iso_datetime strftime('%Y-%m-%dT%H:%M%z')")
