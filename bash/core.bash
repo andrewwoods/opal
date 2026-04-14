@@ -22,24 +22,6 @@ export OPAL_CONFIG_DIR="${OPAL_DIR}/config"
 export OPAL_XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}/opal"
 export OPAL_LOG_FILE="${OPAL_XDG_STATE_HOME}/error.log"
 
-export NORMAL RED BRIGHT_RED GREEN BRIGHT_GREEN YELLOW BRIGHT_YELLOW
-export BLUE BRIGHT_BLUE PURPLE BRIGHT_PURPLE CYAN BRIGHT_CYAN WHITE BRIGHT_WHITE
-
-NORMAL=$(echo -e '\033[0m')
-RED=$(echo -e '\033[31m')
-BRIGHT_RED=$(echo -e '\033[1;31m')
-GREEN=$(echo -e '\033[0;32m')
-BRIGHT_GREEN=$(echo -e '\033[1;32m')
-YELLOW=$(echo -e '\033[0;33m')
-BRIGHT_YELLOW=$(echo -e '\033[1;33m')
-BLUE=$(echo -e '\033[0;34m')
-BRIGHT_BLUE=$(echo -e '\033[1;34m')
-PURPLE=$(echo -e '\033[0;35m')
-BRIGHT_PURPLE=$(echo -e '\033[1;35m')
-CYAN=$(echo -e '\033[0;36m')
-BRIGHT_CYAN=$(echo -e '\033[1;36m')
-WHITE=$(echo -e '\033[0;37m')
-BRIGHT_WHITE=$(echo -e '\033[1;37m')
 
 function opal:color {
     local color
