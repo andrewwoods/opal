@@ -13,10 +13,13 @@ export LINE_LENGTH=80
 #
 function opal:bash_intro() {
     echo "#" >$1
-    echo "# Created by Opal on $(opal:today opal-datetime)" >>$1
+    echo "# Generator: Opal <https://github.com/andrewwoods/opal>" >>$1
+    echo "# Date-Created: $(opal:today opal-datetime)" >>$1
+    echo "# Author: $(whoami)" >>$1
     echo "#" >>$1
     echo "" >>$1
     echo "" >>$1
+
 }
 
 #
@@ -24,7 +27,9 @@ function opal:bash_intro() {
 #
 function opal:vim_intro() {
     echo '"' >$1
-    echo '" Created by Opal on' $(opal:today opal-datetime) >>$1
+    echo '" Generator: Opal <https://github.com/andrewwoods/opal>' >>$1
+    echo '" Date-Created:' $(opal:today opal-datetime) >>$1
+    echo '" Author:' $(whoami) >>$1
     echo '"' >>$1
     echo '' >>$1
     echo '' >>$1
