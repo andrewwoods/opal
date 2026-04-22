@@ -19,5 +19,7 @@ These are some of the popular techonologies and ideas of the internet.
 3339   Date and Time on the Internet: Timestamps  https://tools.ietf.org/html/rfc3339
 3629   UTF-8   https://tools.ietf.org/html/rfc3629
 4287   ATOM Syndication Format   https://tools.ietf.org/html/rfc4287
+5737   IPv4 Address Blocks Reserved for Documentation    https://tools.ietf.org/html/rfc5737
+6761   Special Use Domain Names    https://tools.ietf.org/html/rfc6761
 
 
