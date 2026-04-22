@@ -217,30 +217,21 @@ function opal:ps3_minimal {
 }
 
 function opal:ps4_default {
-    local normal
-    local blue
-
-    normal="$(opal:color normal)"
-    blue="$(opal:color blue bright)"
 
     PS4="\n"
     PS4+='source-file: ${BASH_SOURCE}\n'
     PS4+='Function: ${FUNCNAME[0]:+${FUNCNAME[0]}} \n'
     PS4+='Line: ${LINENO} \n'
-    PS4+="${blue}>${normal} "
+    PS4+="> "
     export PS4
 }
 
 function opal:ps4_simple {
-    local normal
-    local blue
 
-    normal="$(opal:color normal)"
-    blue="$(opal:color blue bright)"
 
-    PS4+="\n${blue}"
+    PS4+="\n"
     PS4='${BASH_SOURCE}:${LINENO}> '
-    PS4+="${nromal}"
+    PS4+=""
     export PS4
 }
 
