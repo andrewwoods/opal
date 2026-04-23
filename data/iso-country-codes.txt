@@ -1,8 +1,9 @@
-Some Codes from ISO 3166-1 
+Some Codes from ISO 3166-1
 
 Updated by the RIPE Network Coordination Centre.
 
-Source: ftp://ftp.ripe.net/iso3166-countrycodes.txt 
+Source: ISO 3166 Maintenance Agency
+Source: ftp://ftp.ripe.net/iso3166-countrycodes.txt
 
 Latest change: Sun Apr 1 2012
 
@@ -68,7 +69,7 @@ CROATIA (local name Hrvatska) 	HR 	HRV 	191
 CUBA 	CU 	CUB 	192
 CURAÇAO 	CW 	CUW 	531
 CYPRUS 	CY 	CYP 	196
-CZECH REPUBLIC 	CZ 	CZE 	203	
+CZECH REPUBLIC 	CZ 	CZE 	203
 DENMARK 	DK 	DNK 	208
 DJIBOUTI 	DJ 	DJI 	262
 DOMINICA 	DM 	DMA 	212
