@@ -23,3 +23,14 @@
 :ab souffle soufflé
 :ab touche touché
 :ab uber über
+
+
+"
+" Spanish Words
+"
+:ab jalapeno jalapeño
+:ab senor señor
+:ab senora señora
+:ab senorita señorita
+
+
