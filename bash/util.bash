@@ -387,9 +387,18 @@ function opal:calc() {
 #
 # country - lookup country code to retrieve the country name
 #
-# @param String $code the 2-letter or 3-letter country code
+# @param String $code the 2-letter or 3-letter ISO country code
+#
+# @return string
+#
+# @exit 0 | 1
 #
 function opal:country() {
+    if opal:is_empty "$1"; then
+        opal:std_error "Please enter a 2-letter or 3-letter country code"
+        return 1
+    fi
+
     awk -F "\t" -f $OPAL_DIR/bin/country_lookup -v country=$1 $OPAL_DIR/data/iso-country-codes.txt
 }
 
