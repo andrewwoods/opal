@@ -11,6 +11,7 @@
 
 :ab acceptible acceptable
 :ab alot a lot
+:ab anime animé
 :ab aquit acquit
 :ab awhile a while
 :ab basicly basically
