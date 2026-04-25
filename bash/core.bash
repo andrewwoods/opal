@@ -588,9 +588,9 @@ function opal:get_date_format {
     elif [[ $format_name == "us-date" ]]; then
         echo "%m/%d/%Y"
     elif [[ $format_name == "us-datetime" ]]; then
-        echo "%m/%d/%Y %l:%M%p"
+        echo "%m/%d/%Y %l:%M %p"
     elif [[ $format_name == "us-timestamp" ]]; then
-        echo "%m/%d/%Y %l:%M:%S%p %z"
+        echo "%m/%d/%Y %l:%M:%S %p %z"
     elif [[ $format_name == "filename-date" ]]; then
         echo "%Y-%m-%d"
     elif [[ $format_name == "filename-datetime" ]]; then
