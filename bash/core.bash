@@ -579,6 +579,12 @@ function opal:get_date_format {
         echo "%d/%m/%Y %H:%M"
     elif [[ $format_name == "world-timestamp" ]]; then
         echo "%d/%m/%Y %H:%M:%S%z"
+    elif [[ $format_name == "usa-date" ]]; then
+	    echo "%B %e, %Y"
+    elif [[ $format_name == "usa-datetime" ]]; then
+        echo "%B %e, %Y %l:%M %p"
+    elif [[ $format_name == "usa-timestamp" ]]; then
+        echo "%B %e, %Y %l:%M:%S %p %Z"
     elif [[ $format_name == "us-date" ]]; then
         echo "%m/%d/%Y"
     elif [[ $format_name == "us-datetime" ]]; then
