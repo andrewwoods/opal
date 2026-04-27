@@ -27,8 +27,7 @@ alias winnipeg="TZ=America/Winnipeg date '+%c -- Canada, Winnipeg'"
 alias mexico_city="TZ=America/Mexico_City date '+%c -- Mexico, Mexico City'"
 
 alias us_clocks="eastern; central; mountain; arizona; pacific"
-alias na_clocks="eastern; central; mountain; arizona; pacific; _n; toronto; mexico_city; winnipeg; vancouver
-"
+alias na_clocks="eastern; central; mountain; arizona; pacific; opal:spacer; toronto; mexico_city; winnipeg; vancouver"
 
 #
 # South America
@@ -97,5 +96,5 @@ alias melbourne="TZ=Australia/Melbourne date '+%c -- Melbourne'"
 alias perth="TZ=Australia/Perth date '+%c -- Perth'"
 alias sydney="TZ=Australia/Sydney date '+%c -- Sydney'"
 
-alias pac_clocks="tahiti; honolulu; perth; guam; brisbane; adelaide; melbourne; sydney; auckland"
+alias pac_clocks="tahiti; honolulu; perth; guam; opal:spacer; brisbane; adelaide; melbourne; sydney; auckland"
 
