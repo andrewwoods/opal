@@ -51,7 +51,7 @@ alias nairobi="TZ=Africa/Nairobi date '+%c -- Kenya'"
 alias tripoli="TZ=Africa/Tripoli date '+%c -- Libya'"
 alias tunis="TZ=Africa/Tunis date '+%c -- Tunisia'"
 
-alias af_clocks="cairo; casablanca; freetown; mogadishu; nairobi; tripoli; tunis"
+alias africa_clocks="cairo; casablanca; freetown; mogadishu; nairobi; tripoli; tunis"
 
 #
 # Europe
