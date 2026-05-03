@@ -178,18 +178,33 @@ function opal:ps1_brief_light() {
         PS1+="${cyan} \$(opal:parse_git_branch) \$${normal} "
     fi
 }
+
 function opal:ps1_minimal() {
-    #
-    # Primary Prompt
-    #
+    local style="$1"
+
+    normal="$(opal:color normal)"
+    bold="$(opal:color normal bright)"
+    cyan="$(opal:color cyan bright)"
+    white="$(opal:color white bright)"
+
     PS1="\n"
-    PS1+="\[\e[1;36m\]"    # Color: Cyan
-    PS1+="\W"              # base directory name
-    PS1+="\[\e[1;36m\]"    # Color: Cyan
-    PS1+=" \!:\$"
-    PS1+="\[\e[1;37m\]"    # Color: Bright White
-    PS1+=">"         # Prompt
-    PS1+="\[\e[0m\] "      # Color: Default
+    PS1+="${bold}"
+    PS1+="\W"
+    PS1+="${normal}"
+    PS1+=" \!:"
+    PS1+="${bold}"
+    PS1+="\$>"
+    PS1+="${normal} "
+    if [[ -n "${style}" && "${style}" == "color" ]]; then
+        PS1="\n"
+        PS1+="${cyan}"
+        PS1+="\W"
+        PS1+="${white}"
+        PS1+=" \!:"
+        PS1+="${cyan}"
+        PS1+=">"
+        PS1+="${normal} "
+    fi
 }
 
 #
@@ -248,7 +263,6 @@ function opal:ps4_default {
 function opal:ps4_simple {
 
 
-    PS4+="\n"
     PS4='${BASH_SOURCE}:${LINENO}> '
     PS4+=""
     export PS4
