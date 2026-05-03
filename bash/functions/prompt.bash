@@ -110,20 +110,39 @@ function opal:ps1_default_light() {
 #
 #
 function opal:ps1_brief() {
+    local normal
+    local blue
+    local cyan
+    local green
+    local red
+    local yellow
+    local white
     local style="$1"
 
-    PS1="\[\e[1m\]\u"
-    PS1+="\[\e[0m\]@"
+    normal="$(opal:color normal)"
+    bold="$(opal:color normal bright)"
+    uline="$(opal:color normal underline)"
+    reverse="$(opal:color normal reverse)"
+
+    blue="$(opal:color blue bright)"
+    cyan="$(opal:color cyan bright)"
+    green="$(opal:color green bright)"
+    red="$(opal:color red bright)"
+    white="$(opal:color white bright)"
+    yellow="$(opal:color yellow bright)"
+
+    PS1="${bold}\u"
+    PS1+="${normal}@"
     PS1+="\h "
-    PS1+="\[\e[4m\]\W\[\e[0m\]"
-    PS1+="\[\e[1m\] \$(opal:parse_git_branch) \$ \[\e[0m\]"
+    PS1+="${bold}\W${normal} "
+    PS1+="${uline}\$(opal:parse_git_branch)${normal} ${bold}\$${normal} "
 
     if [[ -n "${style}" && "${style}" == "color" ]]; then
-        PS1="\[\e[1;33m\]\u"
-        PS1+="\[\e[1;37m\]@"
-        PS1+="\[\e[1;32m\]\h "
-        PS1+="\[\e[1;31m\]\W"
-        PS1+="\[\e[1;36m\] \$(opal:parse_git_branch) \$ \[\e[0m\]"
+        PS1="${yellow}\u"
+        PS1+="${white}@"
+        PS1+="${green}\h "
+        PS1+="${red}\W"
+        PS1+="${cyan} \$(opal:parse_git_branch) \$${normal} "
     fi
 }
 
