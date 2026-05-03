@@ -22,7 +22,18 @@ set -x
 main() {
    echo "The first line"
    opal:message "The second line is the message"
+   level_one
    echo "The last line"
+}
+
+level_one() {
+    echo "This starts level one"
+    level_two
+    echo "This ends level one"
+}
+
+level_two() {
+    echo "Two levels deep."
 }
 
 # a normal statement
