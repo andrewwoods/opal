@@ -76,11 +76,11 @@ function opal:ps1_default_dark() {
 
     PS1="\n"
     PS1+="${bright_white}"
-    PS1+="\t >"  # base directory name
+    PS1+="\t>"
     PS1+="${bright_cyan}"
-    PS1+=" \w >" # base directory name
+    PS1+=" \W>"
     PS1+="${bright_blue}"
-    PS1+=" \! >${normal}\n"
+    PS1+=" \!>${normal}\n"
     PS1+="${bright_white}\$${normal} "
 }
 
