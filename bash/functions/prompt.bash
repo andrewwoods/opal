@@ -92,17 +92,17 @@ function opal:ps1_default_light() {
     local blue
 
     normal="$(opal:color normal)"
-    blue="$(opal:color blue bright)"
-    cyan="$(opal:color cyan bright)"
-    green="$(opal:color green bright)"
+    blue="$(opal:color blue)"
+    cyan="$(opal:color cyan)"
+    green="$(opal:color green)"
 
     PS1="\n"
     PS1+="${green}"
-    PS1+="\t >"  # base directory name
+    PS1+="\t>"  # base directory name
     PS1+="${cyan}"
-    PS1+=" \w >" # base directory name
+    PS1+=" \w>" # base directory name
     PS1+="${blue}"
-    PS1+=" \! >${normal}\n"
+    PS1+=" \!>${normal}\n"
     PS1+="${green}\$${normal} "
 }
 
