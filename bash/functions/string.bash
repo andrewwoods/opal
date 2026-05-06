@@ -67,15 +67,46 @@ function opal:str_trimmer {
 ##
 ## Convert a string to a path friendly slug.
 ##
-## @param string $value
+## A slug consists of only letters, numbers, and hyphens so a string can be
+## safely used is situations like file paths and URLs. Optionally, you can
+## pass the second parameter to convert the slug to lowercase or uppercase.
+##
+## @param string $content
+##
+## @param string $style
+##   Can be "lower" or "upper"
 ##
 ## @return string
 ##
 function opal:str_slug {
-    echo "$@" | iconv -t ascii//TRANSLIT \
+    local content
+    local style
+    local result
+
+    if opal:is_empty "$1"; then
+        opal:failure "Please pass a string to convert to a slug."
+        return 1
+    fi
+    content="$1"
+
+    style="none"
+    if opal:is_set "$2"; then
+        style="$2"
+    fi
+
+    result="$(echo "$1" | iconv -t ascii//TRANSLIT \
+        | sed -E 's/[[:punct:]]+//g' \
         | sed -E 's/[^a-zA-Z0-9-]+/-/g' \
         | sed -E 's/^-+|-+$//g' \
-        | tr A-Z a-z
+        | sed -E 's/-+/-/g' )"
+
+    if opal:str_equals "$style" "lower"; then
+        result="$(opal:str_lower "$result")"
+    elif opal:str_equals "$style" "upper"; then
+        result="$(opal:str_upper "$result")"
+    fi
+
+    echo "$result"
 }
 
 ##
