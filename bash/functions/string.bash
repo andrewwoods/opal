@@ -79,19 +79,6 @@ function opal:str_slug {
 }
 
 ##
-## Convert a string to a path friendly slug.
-##
-## @param string $value
-##
-## @return string
-##
-function opal:str_file_slug {
-    echo "$@" | iconv -t ascii//TRANSLIT \
-        | sed -E 's/[^a-zA-Z0-9-]+/-/g' \
-        | sed -E 's/^-+|-+$//g'
-}
-
-##
 ## Get the length of a string.
 ##
 ## @param string
