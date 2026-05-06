@@ -120,19 +120,4 @@ function opal:str_length {
     echo ${#1}
 }
 
-##
-## Create a SHA1 digest of a file.
-##
-## @param String $filename
-##   The file for which you want to know/generate a sha1.
-##
-## @return string
-##
-function opal:str_sha1 {
-    if opal:is_set "$(which openssl)"; then
-        openssl sha1 "$@"
-    else
-        opal:std_error "openssl is required, but not installed"
-    fi
-}
 
