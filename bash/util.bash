@@ -101,11 +101,12 @@ function opal:mach() {
 #         If you want the calendars horizontally, use `ncal -3`
 function opal:ncal3 {
     ncal -m $(date -v-1m "+%m %Y")
-    _n
+    opal:spacer
     ncal
-    _n
+    opal:spacer
     ncal -m $(date -v+1m "+%m %Y")
 }
+
 
 function opal:greeting {
     local hour
@@ -126,13 +127,15 @@ function opal:greeting {
 }
 
 #
-# preamble - Display a block message to the user about who and where they are
+# Display a system message to the user about who and where they are
+#
+# @return string
 #
 function opal:preamble {
-    name=$(whoami)
-    host=$(hostname -f)
-    thisday=$(opal:today opal-datetime)
-    greet=$("opal:greeting")
+    name="$(whoami)"
+    host="$(hostname -f)"
+    thisday="$(opal:today opal-datetime)"
+    greet="$(opal:greeting)"
 
     echo '###########################################################'
     echo '# '
@@ -222,9 +225,8 @@ opal:get_os() {
 # listins can display with enough default contrast.
 #
 opal:term_bg() {
-    if [[ -z $TERM_BG ]]; then
-        TERM_BG="dark"
-    else
+     TERM_BG="dark"
+    if opal:is_set "$TERM_BG"; then
         TERM_BG="$1"
     fi
     export TERM_BG
@@ -338,11 +340,11 @@ function opal:sunday_date {
 #
 function opal:say_done() {
     message="It is Done!"
-    if [[ -n $1 ]]; then
+    if opal:is_set "$1"; then
         message=$@
     fi
 
-    if [[ -n $(which say) ]]; then
+    if opal:command_exists "say"; then
         say $message
     else
         echo $message
@@ -352,6 +354,9 @@ function opal:say_done() {
 
 #
 # Go up the directory tree a number of levels. default=1.
+#
+# @param level
+#   Determine how many levels up the directory tree you want to go
 #
 function opal:up {
     declare -i level=1
@@ -376,16 +381,19 @@ function opal:define() {
 }
 
 #
-# calc - a floating point calculator
+# a floating point calculator
 #
-# @param String $equation the equation you want to execute
+# Enter a mathematical calculation
+#
+# @param string $equation
+#   the equation you want to calculate
 #
 function opal:calc() {
-    awk 'BEGIN { OFMT="%f"; print '"$*"'; exit}'
+    awk 'BEGIN { OFMT="%0.4f"; print '"$*"'; exit}'
 }
 
 #
-# country - lookup country code to retrieve the country name
+# lookup country code to retrieve the country name
 #
 # @param String $code the 2-letter or 3-letter ISO country code
 #
@@ -404,10 +412,11 @@ function opal:country() {
 
 
 #
-# show_dotfiles - turn on/off OS X Finders ability to display hidden files
+# Turn on/off OS X Finders ability to display hidden files
 #
-# @param Boolean $view determines if hidden files should be displayed.
-#        Allowed values: yes, true, no, false
+# @param Boolean $view
+#   determines if hidden files should be displayed.
+#   Allowed values: yes, true, no, false
 #
 function opal:show_dotfiles() {
     case "$1" in
