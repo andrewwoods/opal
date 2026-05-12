@@ -10,7 +10,7 @@
 # Copyright (C) 2023 Andrew Woods
 ################################################################################
 
-export OPAL_VERSION="3.0.0-beta-0406"
+export OPAL_VERSION="3.0.0"
 
 # The $OPAL_CONFIG_DIR is not meant to replace the XDG_CONFIG_HOME directory.
 # Rather it's an additional directory - one that could be used in the
