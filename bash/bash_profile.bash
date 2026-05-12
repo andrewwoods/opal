@@ -29,6 +29,10 @@ PAGER="less"
 export PAGER LESS
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+
+export HISTSIZE=5000
+export HISTFILESIZE=1000000
 export HISTTIMEFORMAT="%m-%d %a %H:%M:%S "
 
 #

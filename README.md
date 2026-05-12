@@ -2,19 +2,21 @@
 
 A command line framework for Bash users
 
+Each person creates their own dotfiles. There's often a lot of copying between
+them, and even between multiple configs for a specific person. Scripting in
+Bash can be challenging. Opal is a framework that fixes these two issues, by
+providing a cohesive set of files to create a strong, common foundation.
 
-Each developer creates their own dotfiles. There's often a lot of copying
-between developers, and even between multiple configs for a specific developer.
-Opal is a framework that fixes this, by providing a cohesive set of files to
-create a solid foundation. This foundation can be easily re-used across users
-and machines. Opal is designed to be easily extended, allowing you to add your
-custom configuration on top of it. Put simply, Opal is a collection of
-unix/linux dotfiles and utilities, reusable across machines and users, for
-people who love the command line
+This foundation is easily re-used across users and machines. Opal is designed
+to be easily extended, allowing you to add your custom configuration on top of
+it. Opal also provides a Bash scriptiong layer.
+
+__Put simply__, Opal is a collection of unix/linux dotfiles and utilities, reusable
+across machines and users, for people who love the command line.
 
 ## Current Version
 
-Version **2.2.0** is the latest version.
+Version **3.0.0** is the latest version.
 
 ## Getting Started
 
