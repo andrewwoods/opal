@@ -6,11 +6,13 @@
 export PAD="    "
 export LINE_LENGTH=80
 
-
-
-#
-# bash_intro()
-#
+##
+## Write the file header bash comment to the top of a bash file.
+##
+## @param String $filename
+##
+## @output void
+##
 function opal:bash_intro() {
     echo "#" >$1
     echo "# Generator: Opal <https://github.com/andrewwoods/opal>" >>$1
@@ -22,9 +24,13 @@ function opal:bash_intro() {
 
 }
 
-#
-# vim_intro ( filename )
-#
+##
+## Write the file header bash comment to the top of a Vim file.
+##
+## @param String $filename
+##
+## @output void
+##
 function opal:vim_intro() {
     echo '"' >$1
     echo '" Generator: Opal <https://github.com/andrewwoods/opal>' >>$1
@@ -35,9 +41,18 @@ function opal:vim_intro() {
     echo '' >>$1
 }
 
-#
-# bash_heading_box ( title, filename )
-#
+##
+## Write the file header bash comment to the top of a Vim file.
+##
+## This utility for creating a section header is best used in a script for
+## creating new files.
+##
+## @param String $heading
+##
+## @param String $filename
+##
+## @output void
+##
 function opal:bash_heading_box() {
     cLine="################################################################################"
 
@@ -50,10 +65,11 @@ function opal:bash_heading_box() {
     echo "" >>$2
 }
 
-#
-# cal3 - Display the previous month, current month, and next month
-#        in vertical format. running 'cal -3' displays the months horizontally
-#
+##
+## Display a current 3-month span. The previous month, current month, and the next
+## month. The output is displayed vertically. The command `cal -3` can be used
+## to display the calendars positioned horizontaly.
+##
 function opal:cal3 {
     cal $(date -v-1m "+%m %Y")
     cal
@@ -96,9 +112,11 @@ function opal:mach() {
     df -h
 }
 
-#
-# ncal3 - Display the previous month, current month, and next month vertically
-#         If you want the calendars horizontally, use `ncal -3`
+##
+## Display a current 3-month span. The previous month, current month, and the next
+## month. The output is displayed vertically. The command `ncal -3` can be used
+## to display the calendars positioned horizontaly.
+##
 function opal:ncal3 {
     ncal -m $(date -v-1m "+%m %Y")
     opal:spacer
@@ -107,7 +125,13 @@ function opal:ncal3 {
     ncal -m $(date -v+1m "+%m %Y")
 }
 
-
+##
+## Greet the user based on the time of day.
+##
+## @output String $greeting
+##
+## @uses opal:preamble
+##
 function opal:greeting {
     local hour
 
@@ -126,11 +150,11 @@ function opal:greeting {
 
 }
 
-#
-# Display a system message to the user about who and where they are
-#
-# @return string
-#
+##
+## Display a system message to the user about who and where they are
+##
+## @output string
+##
 function opal:preamble {
     name="$(whoami)"
     host="$(hostname -f)"
@@ -148,28 +172,44 @@ function opal:preamble {
 }
 
 
-#
-# type_file - Display an entire file, as if being typed quickly.
-#
-# @todo rename type_file as scribe. Fold prompt into scribe.
-# @param String $filename
-#
+##
+## Dynamically display a text file.
+##
+## An animated version of echo. Gives the sense of typing the file text to STDOUT.
+##
+## @param String $filename
+##
+## @uses bin/typer
+##
 function opal:type_file {
     $OPAL_DIR/bin/typer -f $1
 }
 
-#
-# type_line - display a dynamic prompt, in the interactive sense.
-#
-# @param String $content multiple-word prompts must be enclosed in quotes
-#
+##
+## Dynamically display a line of text.
+##
+## An animated version of echo. Gives the sense of typing the text to STDOUT.
+##
+## @param String $content
+##   A piece to text to display like it's being typed.
+##
+## @uses bin/typer
+##
 function opal:type_line {
     $OPAL_DIR/bin/typer "$1"
 }
 
-#
-# Create a number of blank lines. Default = 1.
-#
+##
+## Create a number of blank lines. By default, creates a single blank line.
+##
+## Sometimes you need to create vertical white space. This makes is easier to
+## add multiple blank lines with a single call.
+##
+## @param Integer $quantity
+##   The number of blank lines to create. Default = 1.
+##
+## @output string
+##
 function opal:spacer {
     max=1
     if [[ $1 != "" ]]; then
@@ -181,9 +221,18 @@ function opal:spacer {
     done
 }
 
-#
-# filedate_to_day - Convert file stamp to determine the day of the week
-#
+##
+## Sometimes, you need to know the day of the week for a given date.
+##
+## Convert the output of `opal:today filename-date` and `opal:today
+## filename-timestamp to a weekday. This is use for when you want to create a
+## report title based on the the use of dates.
+##
+## @param String $date
+##   The date must be formatted in YYYY-MM-DD for YYYY-MM-DD-hh-mm-ss format
+##
+## @output String
+##
 function opal:filedate_to_day {
     if [[ $1 == "time" ]]; then
         date -j -f '%Y-%m-%d-%H-%M-%S' $2 '+%a'
@@ -192,9 +241,16 @@ function opal:filedate_to_day {
     fi
 }
 
-#
-# get_os - Determine the Operating System. hat tip @alrra
-#
+##
+## Determine the Operating System. hat tip @alrra
+##
+## @output String
+##  The type of operating system.
+##
+## @uses uname
+##
+## @note The options of uname might mean different things across operating systems
+##
 opal:get_os() {
 
     declare -r OS_NAME="$(uname -s)"
@@ -273,9 +329,13 @@ opal:term_bg() {
     echo "the terminal background is ${TERM_BG}"
 }
 
-#
-# monday_date - Determine the date for Mon of the current week
-#
+##
+## Monday is the first day of the current week. Get Monday's date.
+##
+## @output String
+##
+## @uses date
+##
 function opal:monday_date {
     day_of_week=$(date '+%a')
     format_name='opal-date'
@@ -302,9 +362,13 @@ function opal:monday_date {
     fi
 }
 
-#
-# sunday_date - Determine the date for Sunday of the current week
-#
+##
+## Sunday is the last day of the current week. Get Sunday's date.
+##
+## @output String
+##
+## @uses date
+##
 function opal:sunday_date {
     day_of_week=$(date '+%a')
     format_name='opal-date'
@@ -333,11 +397,20 @@ function opal:sunday_date {
 
 
 
-#
-# say_done - Tell the user when a command is done
-#
-# @param String Optional $message the message to be read out loud
-#
+##
+## Use Mac's say command to read the message aloud
+##
+## By default, the message will say "It is Done!". This is useful when completing
+## a long running command, and you don't want to stare at your terminal.
+##
+## @param String $message
+##   *Optional*. The custom message to read aloud
+##
+## @output Audio | String
+##   If the say command is not available, echo will display the message.
+##
+## @uses say | echo
+##
 function opal:say_done() {
     message="It is Done!"
     if opal:is_set "$1"; then
@@ -352,12 +425,16 @@ function opal:say_done() {
 }
 
 
-#
-# Go up the directory tree a number of levels. default=1.
-#
-# @param level
-#   Determine how many levels up the directory tree you want to go
-#
+##
+## Go up the directory tree a number of levels. default=1.
+##
+## Often you want to travel up a number of directory levels.
+##
+## @param Integer $level
+##   Determine how many levels up the directory tree you want to go
+##
+## @output Void
+##
 function opal:up {
     declare -i level=1
     declare path="$(pwd)"
@@ -371,36 +448,43 @@ function opal:up {
     cd "$path"
 }
 
-#
-# define - lookup the dictionary definition of a word
-#
-# @param String $word the term you want to define
-#
+##
+## Lookup the definitions for an English word using dict.org
+##
+## @param String $word
+##   The term you want to define
+##
+## @output String
+##
 function opal:define() {
     curl dict://dict.org/d:"$@"
 }
 
-#
-# a floating point calculator
-#
-# Enter a mathematical calculation
-#
-# @param string $equation
-#   the equation you want to calculate
-#
+##
+## A floating point calculator
+##
+## Enter a mathematical calculation and display the result to 4 decimal places
+##
+## @param string $equation
+##   the equation you want to calculate
+##
+## @output Float
+##
+## @uses awk
+##
 function opal:calc() {
     awk 'BEGIN { OFMT="%0.4f"; print '"$*"'; exit}'
 }
 
-#
-# lookup country code to retrieve the country name
-#
-# @param String $code the 2-letter or 3-letter ISO country code
-#
-# @return string
-#
-# @exit 0 | 1
-#
+##
+## Lookup country code to retrieve the country name
+##
+## @param String $code the 2-letter or 3-letter ISO country code
+##
+## @output string
+##
+## @return 0 | 1
+##
 function opal:country() {
     if opal:is_empty "$1"; then
         opal:std_error "Please enter a 2-letter or 3-letter country code"
@@ -411,13 +495,15 @@ function opal:country() {
 }
 
 
-#
-# Turn on/off OS X Finders ability to display hidden files
-#
-# @param Boolean $view
-#   determines if hidden files should be displayed.
-#   Allowed values: yes, true, no, false
-#
+##
+## Allow you to turn on and off the display of hidden files in Apples Finder.
+##
+## Note: This doesn't affect the ls command.
+##
+## @param Boolean $view
+##   determines if hidden files should be displayed.
+##   Allowed values: yes, true, no, false
+##
 function opal:show_dotfiles() {
     case "$1" in
         true | yes)
