@@ -7,7 +7,7 @@
 # must be included if you want to use an Opal function. So while Opal strives
 # to be modular, this file is the only real dependency.
 #
-# Copyright (C) 2023 Andrew Woods
+# Copyright (C) 2023-2026 Andrew Woods
 ################################################################################
 
 export OPAL_VERSION="3.0.0"
@@ -24,6 +24,24 @@ export OPAL_XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}/opal"
 export OPAL_LOG_FILE="${OPAL_XDG_STATE_HOME}/error.log"
 
 
+##
+## Create a terminal escape code
+##
+## Escape codes are used to format text in the terminal. This function makes it
+## easier to create them for prompt strings or informational messages
+##
+## @param String $color
+##   The name of the color e.g. green to make the text. The value 'normal' is
+##   used to turn off color so the default text is used.
+##
+## @param String $style
+##   The values bright, underline, or reverse are allowed. The value "bright"
+##   is to used for bold text.
+##
+## @return 0 | 1
+##
+## @uses opal:std_error
+##
 function opal:color {
     local color
     local style
@@ -97,6 +115,21 @@ function opal:color {
     echo -e "\[\e[${code}m\]"
 }
 
+##
+## Write a message to STDERR
+##
+## Using STDERR message allows you to provide the user with information when
+## something goes wrong, without affecting the output.
+##
+## @param Type $message
+##   a simple message
+##
+## @output Void
+##
+## @uses STDERR
+##
+## @see man bash, the REDIRECTION section.
+##
 function opal:std_error {
     echo "$@" 1>&2
 }
@@ -117,12 +150,16 @@ function opal:is_unset {
 ##
 ## Provide a human message for numeric exit status codes provided by $?
 ##
-## @param int $err_number
+## @param Integer $err_number
 ##   The value captured by $?
 ##
-## @return string
+## @output String
+##
+## @return 0, 1, or 22
 ##
 ## @uses opal:std_log
+##
+## @uses opal:number_equals
 ##
 ## @see man errno
 ##
@@ -177,9 +214,22 @@ function opal:error_message {
     return 0
 }
 
-#
-# Determine if a value has no content or just white space.
-#
+##
+## Determine if a value has no content or just white space
+##
+## Trims all the leading and trailing white space from a string. Then the
+## string is test using Bash's -z test to see if the string has zero length.
+## So a string consising entirely of white space is considered empty.
+##
+## @param String $value
+##   A potentially empty string
+##
+## @output Bool
+##
+## @uses opal:function
+##
+## @see man page or URL
+##
 function opal:is_empty {
     local trimmed
 
@@ -191,13 +241,18 @@ function opal:is_empty {
     [[ -z "$1" || -z "$trimmed" ]]
 }
 
-#
-# Check that a command is available on your system.
-#
-# @return bool
-#
-# @uses type
-#
+##
+## Check that a command is available on your system.
+##
+## @param Type $name
+##   Describe the parameter
+##
+## @output Bool
+##
+## @uses type
+##
+## @see man type
+##
 function opal:command_exists {
     local type_result
     if opal:is_unset "$1"; then
@@ -209,13 +264,15 @@ function opal:command_exists {
     [[ "$type_result" = "file" ]]
 }
 
-#
-# Check that a function is available on your shell.
-#
-# @return bool
-#
-# @uses type
-#
+##
+## Check that a function is available on your shell.
+##
+## @return Bool
+##
+## @uses type
+##
+## @see man type
+##
 function opal:function_exists {
     local type_result
     if opal:is_unset "$1"; then
@@ -227,15 +284,22 @@ function opal:function_exists {
     [[ "$type_result" == "function" ]]
 }
 
-#
-# Create a directory if it doesn't exist
-#
-# When you need a directory to be avaialable, this will create it if need be.
-#
-# @return bool
-#
-# @uses type
-#
+##
+## Create a directory if it doesn't exist
+##
+## When you need a directory to be avaialable, this will create it if need be.
+##
+## @param String $directory
+##   The path to the directory you need to exist
+##
+## @return 0 | 1
+##
+## @uses mkdir
+##
+## @uses opal:dir_exists
+##
+## @uses opal:std_error
+##
 function opal:ensure_dir_exists {
     local dir
     if opal:is_unset "$1"; then
@@ -391,10 +455,36 @@ function opal:log {
 #
 ################################################################################
 
+##
+## Check if the first string equals the second
+##
+## This wraps Bash native functionality so you don't have to remember
+## how to construct the comparison.
+##
+## @param String
+##
+## @param String
+##
+## @output Bool
+##
 function opal:str_equals {
     [[ $1 == $2 ]]
 }
 
+##
+## Check if the first string is not equal to the second
+##
+## This wraps Bash native functionality so you don't have to remember how to
+## construct the comparison. In the spirit of Perl's `unless` keyword,
+## str_unequals positively states the negative condition. Sometimes it just
+## reads better.
+##
+## @param String
+##
+## @param String
+##
+## @output Bool
+##
 function opal:str_unequals {
     [[ $1 != $2 ]]
 }
@@ -405,26 +495,83 @@ function opal:str_unequals {
 #
 #################################################################################
 
+##
+## Check for the equality of two numbers.
+##
+## @param Integer
+##
+## @param Integer
+##
+## @output Bool
+##
 function opal:number_equals {
     [[ $1 -eq $2 ]]
 }
 
+##
+## The name `number_at_least` is a simpler way of saying `greater than or equal to`,
+## and without using an abbreviation.
+##
+## @param Integer $value
+##
+## @param Integer $minimum
+##
+## @output Bool
+##
 function opal:number_at_least {
     [[ $1 -ge $2 ]]
 }
 
+##
+## This is a simpler way to say greater than the minimum value.
+##
+## @param Integer $value
+##
+## @param Integer $minimum
+##
+## @output Bool
+##
 function opal:number_is_above {
     [[ $1 -gt $2 ]]
 }
 
+##
+## This is a simpler way to say less than or equal to the maximum value.
+##
+## @param Integer $value
+##
+## @param Integer $maximum
+##
+## **@output** Bool
+##
 function opal:number_at_most {
     [[ $1 -le $2 ]]
 }
 
+##
+## This is a simpler way to say less than a maximum value.
+##
+## @param Integer $value
+##
+## @param Integer $maximum
+##
+## @output Bool
+##
 function opal:number_is_below {
     [[ $1 -lt $2 ]]
 }
 
+##
+## Determine if a number is inclusively between a minimum and a maximum value.
+##
+## @param Integer $value
+##
+## @param Integer $minimum
+##
+## @param Integer $maximum
+##
+## @output Bool
+##
 function opal:number_between {
     opal:number_at_least "$1" "$2" && opal:number_at_most "$1" "$3"
 }
@@ -435,6 +582,15 @@ function opal:number_between {
 #
 #################################################################################
 
+##
+## Write a success message written in a bright green color.
+##
+## @param String $message
+##   The user-facing error message
+##
+## @output string
+##   The same message wrapped in terminal escape codes
+##
 function opal:success() {
     local MESSAGE="$1"
     local green
@@ -445,6 +601,15 @@ function opal:success() {
     echo -e "${green}${MESSAGE}${normal}"
 }
 
+##
+## Write a failure message written in a bright red color.
+##
+## @param String $message
+##   The user-facing error message
+##
+## @output String
+##   The same message wrapped in terminal escape codes
+##
 function opal:failure() {
     local MESSAGE="$1"
     local red
@@ -455,6 +620,15 @@ function opal:failure() {
     echo -e "${red}${MESSAGE}${normal}"
 }
 
+##
+## Write a failure message written in a bright red color.
+##
+## @param String $message
+##   The user-facing error message
+##
+## @output String
+##   The same message wrapped in terminal escape codes
+##
 function opal:message() {
     local MESSAGE="$1"
     local cyan
@@ -465,6 +639,15 @@ function opal:message() {
     echo -e "${cyan}${MESSAGE}${normal}"
 }
 
+##
+## Write a label written in a bright yellow color.
+##
+## @param String $message
+##   The user-facing error message
+##
+## @output String
+##   The same message wrapped in terminal escape codes
+##
 function opal:label() {
     local MESSAGE="$1"
     local yellow
@@ -475,6 +658,17 @@ function opal:label() {
     echo -e "${yellow}${MESSAGE}${normal}"
 }
 
+##
+## Read out loud a string of text. Assumes the ``say`` command is installed.
+##
+## @param String $message
+##   The user-facing content
+##
+## @output String
+##   The same message wrapped in terminal escape codes
+##
+## @uses say
+##
 function opal:speak {
     if opal:is_unset "$1"; then
         opal:std_error 'What message do you like spoken?'
@@ -483,6 +677,19 @@ function opal:speak {
     say --interactive="cyan/black" -v Nathan "$@"
 }
 
+##
+##  Prompt the user with a statement and receive their input
+##
+##  @param String $prompt
+##      What is your request of the user
+##
+##  @output String
+##      the user input
+##
+##  @uses opal:label
+##
+##  @uses read
+##
 function opal:ask {
     local prompt
 
@@ -498,6 +705,19 @@ function opal:ask {
     echo "${input}"
 }
 
+##
+## Pause execution for a limited number of seconds. Default is 5 seconds.
+##
+## This wraps the standard sleep command. The benefit is to tell you how long
+## it will sleep. It also prevents execution from sleeping forever, by ensuring
+## a default value is provided.
+##
+## @param Integer $seconds
+##   The number of seconds to stop executing. Default=5.
+##
+## @output String
+##   The same message wrapped in terminal escape codes
+##
 function opal:sleep {
     local -i seconds
 
@@ -516,34 +736,86 @@ function opal:sleep {
 #
 #################################################################################
 
+##
+## Check if the specified directory exists. It's simply a wrapper around Bash's
+## native file functionality.
+##
+## @return bool
+##
 function opal:dir_exists {
     [[ -d "$1" ]]
 }
 
+##
+## Check if the specified file exists. It's simply a wrapper for Bash native
+## functionality. It's much easier to remember this names versus a test operator.
+##
+## @return Bool
+##
 function opal:file_exists {
     [[ -f "$1" ]]
 }
 
+##
+## Check if a symlink exists
+##
+## @return Bool
+##
 function opal:symlink_exists {
     [[ -L "$1" ]]
 }
 
+##
+## Check if the current user can read a file.
+##
+## @param String $filepath
+##
+## @return Bool
+##
 function opal:file_has_read {
     [[ -r "$1" ]]
 }
 
+##
+## Check if the current user can write a file.
+##
+## @param string $filepath
+##
+## @return bool
+##
 function opal:file_has_write {
     [[ -w "$1" ]]
 }
 
+##
+## Check if the current user can execute a file.
+##
+## @param String $filepath
+##
+## @return Bool
+##
 function opal:file_has_execute {
     [[ -x "$1" ]]
 }
 
+##
+## Determine if the file has the Set UID bit set
+##
+## @param String $filepath
+##
+## @return Bool
+##
 function opal:file_has_set_uid {
     [[ -u "$1" ]]
 }
 
+##
+## Determine if the file has the Set GID bit set
+##
+## @param String $filepath
+##
+## @return Bool
+##
 function opal:file_has_set_gid {
     [[ -g "$1" ]]
 }
@@ -554,6 +826,21 @@ function opal:file_has_set_gid {
 #
 ################################################################################
 
+##
+## The ``opal:get_date_format`` provides a lookup to retrieve a date format by name.
+## There are many formats for you to choose from. It provides some logic for the
+## today and someday functions.
+##
+## @param String $formatname
+##   the name containing the date style and precision separated by a hypen e.g. opal-datetime
+##
+## @output String $duration
+##   The date formatted according to the given style and format
+##
+## @return 0 or 1
+##
+## @see strftime
+##
 function opal:get_date_format {
     local format_name
 
@@ -581,7 +868,7 @@ function opal:get_date_format {
     elif [[ $format_name == "world-timestamp" ]]; then
         echo "%d/%m/%Y %H:%M:%S%z"
     elif [[ $format_name == "usa-date" ]]; then
-	    echo "%B %e, %Y"
+        echo "%B %e, %Y"
     elif [[ $format_name == "usa-datetime" ]]; then
         echo "%B %e, %Y %l:%M %p"
     elif [[ $format_name == "usa-timestamp" ]]; then
@@ -604,6 +891,26 @@ function opal:get_date_format {
     fi
 }
 
+##
+## Display the current date in a variety of supported formats
+##
+## The `opal:today` function displays the current date/time based on the format.
+## By default, it uses the `opal-datetime` format. However, you specify a format
+## name as the first argument.
+##
+## One common value you'll want to know, is the current time in UNIX time. The
+## `opal:today` function takes a single parameter, which is the name of the
+## format.
+##
+## @param String $formatname
+##   the name containing the date style and precision separated by a hypen
+##   e.g. opal-datetime
+##
+## @return String $duration
+##   The date formatted according to the given style and format
+##
+## @uses opal:get_date_format
+##
 function opal:today {
     local format_name
     local date_format
@@ -617,6 +924,25 @@ function opal:today {
     echo "$(date +"${date_format}")"
 }
 
+##
+## It translates a UNIX timestamp into a recognizable format.
+##
+## The `opal:someday` function is a companion to the `opal:today` function. When
+## you already have a UNIX timestamp, use `opal:someday` to display the
+## corresponding date in your preferred format. If the second parameter is not
+## passed, the `opal:datetime` format will be used.
+##
+## @param Integer $unix_time
+##   Number of seconds since 1970-01-01T00:00:00-0000
+##
+## @param String $formatname
+##   Optional. The name containing the date style and precision separated by a hypen e.g. opal-datetime
+##
+## @return String $duration
+##   The date formatted according to the given style and format
+##
+## @uses opal:get_date_format
+##
 function opal:someday() {
     local unix_time
     local format_name
@@ -815,11 +1141,21 @@ function opal:interval_to_seconds {
 #
 ################################################################################
 
+##
+## Display the current version of the Opal framework. Uses the OPAL_VERSION variable.
+##
+## @output String
+##
 function opal:version {
     echo "Opal version: ${OPAL_VERSION}"
     echo "Bash version: ${BASH_VERSION}"
 }
 
+##
+## Display notice about what Opal is, where to find the repo, and copyright notice.
+##
+## @output String
+##
 function opal:about {
     opal:message "$(opal:version)"
     local year="$(date '+%Y')"
