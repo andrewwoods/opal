@@ -9,10 +9,10 @@ providing a cohesive set of files to create a strong, common foundation.
 
 This foundation is easily re-used across users and machines. Opal is designed
 to be easily extended, allowing you to add your custom configuration on top of
-it. Opal also provides a Bash scriptiong layer.
+it. Opal also provides a Bash scripting layer.
 
-__Put simply__, Opal is a collection of unix/linux dotfiles and utilities, reusable
-across machines and users, for people who love the command line.
+__Put simply__, Opal is a collection of unix/linux dotfiles and utilities,
+reusable across machines and users, for people who love the command line.
 
 ## Current Version
 
@@ -20,7 +20,7 @@ Version **3.0.0** is the latest version.
 
 ## Getting Started
 
-1. Download the opal and extract the tarball.
+1. Download the opal code and extract the tarball.
 
     You can download the [Opal](https://github.com/andrewwoods/opal) Zip file
     from Github with your browser, or run the following commands in your terminal
@@ -46,26 +46,32 @@ don't panic - your files were backed up.
 
 ## What's In Here
 
-This project is about more than just making vim easier to use. It's about
-making your life on the command line a little easier. This is done thru a
-variety of bash functions an eventually shell scripts. Here's a list of what's
-included
+There's a lot in this new version of Opal. In fact, I created the [Opal Documentation
+site](https://opal-documentation-rtd.readthedocs.io/en/latest/index.html)  to show you everything.
 
-### Project files
+After you install Opal, here's a few commands to help you explore
 
-* [Change Log](CHANGELOG.md)
-* [License](LICENSE.txt)
-* [Bash](docs/bash.md)
-* [Vim](docs/vim.md)
+Start with `show names` to see all the bash functions. Pro tip: use `fzf` to
+filter the list.
 
-## Present
+```bash
+$ show names
+```
 
-Present is a command line(CLI) tool written in Bash :)
+Pick one of those names and pass it to `desc`, to see how it's defined. For example,
+you'll see `opal:today` in the list.
 
-	$ present your_dir_name
+```bash
+$ desc opal:today
+```
 
-The 'your\_dir\_name' is a directory were you'll want to keep all the files
-related to this individual presentation. It needs a file called
-*present-lib.bash*.  At the top of present-lib.bash, there needs to be an array
-called Slides.  Each index in the Slides array, is the name of a bash function
-that you write.  This is where your magic happens.
+To see where it's defined, pass it to `loc`.
+
+```bash
+$ loc opal:today
+```
+
+The `cdls` function will change you to the directory you give it, then list the
+contents of that directory. The `up` command will navigate you up a number of
+directories of your file system.
+

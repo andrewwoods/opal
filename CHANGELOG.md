@@ -6,6 +6,45 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.0.0 - 2026-05-12
+
+Version 3.0 is a Major rewrite. A Bash scripting layer was added using the
+`opal:` namespace, with some improved configuration for Neovim and Vim.
+Some updates were made to the data directory content.
+
+### Added
+
+* Add a Bash scripting layer to help with the following
+    - Add logging functions for standard error levels
+    - Add string functions for easier string manipulation
+    - Add file system functions to simplify existence and permissions checks
+    - Add prompt functions to give control over your Bash prompt
+    - Add functions to improve your user experience
+    - Add developer related functions
+    - Add XDG support for your config files
+    - Add ps3-example.bash and ps4-example.bash for testing your prompts
+    - Add various aliases for displaying the current time in differnt timezones
+
+* Added quick config setup for Neovim and Vim without plugins
+    - Common settings for a usable UI
+    - Useful keymaps for a better experience
+
+* Added Git Config help
+* Added the Opal Dark and Opal Light theme files for iTerm2 users
+
+### Updated
+
+* Updated the PHP and WordPress versions history logs.
+* Updated the HTTP Status Codes list
+* Updated the RFCs list
+* Updated the ISO country codes list
+
+### Removed
+
+* Removed the present function
+* Removed the punch function for logging your task time
+* Removed some dev-related Vim functions
+
 ## 2.3.0 - 2022-04-24
 
 ### Added
@@ -31,7 +70,7 @@ TODO Review the git log to complete this section
 * updated time related aliases
 
 
-## 2.0.0 - 2017-01-02 
+## 2.0.0 - 2017-01-02
 
 ### Added
 
@@ -90,8 +129,8 @@ TODO Review the git log to complete this section
 - Improved documenation in README.md
 - bashrc
   * add ability to dispaly git branch in prompt
-  * add cal3 and ncal3 to display previous, current, and next months 
-- help/vim-reference.txt 
+  * add cal3 and ncal3 to display previous, current, and next months
+- help/vim-reference.txt
   * Add notes on Vim folding commands
 - install.bash
 - vimrc
@@ -107,13 +146,13 @@ TODO Review the git log to complete this section
 
 ## 1.0.0 - 2013-08-29
 
-First version of Opal.  
+First version of Opal.
 
 ### Added
 
 - README.md
 - LICENSE.txt
-- project specific vimrc files 
+- project specific vimrc files
 - bashrc and bash_profile
 - timecalc.php
 - typer
