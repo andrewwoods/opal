@@ -134,15 +134,50 @@ function opal:std_error {
     echo "$@" 1>&2
 }
 
+##
+## Write to both the default Opal error log location AND to STDERR.
+##
+## The same message is sent to STDERR and the default log. This is a convenience
+## to simplify logging on the command line. In a script, it's better to use the
+## appropriate log_level, and write to STDERR separately.
+##
+## @param String $message
+##   The message to write to the default log using the level ERROR. This
+##   same message is written to STDERR for the user's knowledge
+##
+## @output String
+##
+## @uses opal:log_error
+##
+## @uses opal:std_error
+##
 function opal:std_log {
      opal:log_error "$1"
      opal:std_error "$1"
 }
 
+##
+## Check if the value has a non-zero length string.
+##
+## @param Type $value
+##
+## @output Bool
+##
+## @see man bash, the read or URL
+##
 function opal:is_set {
     [[ -n "$1" ]]
 }
 
+##
+## Check if the value has a _zero_ length string.
+##
+## @param Type $value
+##
+## @output Bool
+##
+## @see man bash, the read or URL
+##
 function opal:is_unset {
     [[ -z "$1" ]]
 }
