@@ -6,7 +6,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.0.1 - 2026-09-15
+
+### Added
+
+* Add missing PHPDoc-inspired function comments to core.bash
+
+
+### Updated
+
+* Update Africa clocks with display name of the Time Zone
+* Update regional clock aliases to timezones display in numerical order
+* Update opal:numseg function to display numbers on all lines
+
+
 ## 3.0.0 - 2026-05-12
+
 
 Version 3.0 is a Major rewrite. A Bash scripting layer was added using the
 `opal:` namespace, with some improved configuration for Neovim and Vim.

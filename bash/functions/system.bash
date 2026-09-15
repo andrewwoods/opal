@@ -89,7 +89,7 @@ function opal:numseg {
         end=$3
     fi
 
-    nl $filename | awk "NR >= $start  && NR <=  $end  "
+    nl -b a  $filename | awk "NR >= $start  && NR <=  $end  "
 }
 
 #

@@ -27,7 +27,7 @@ alias winnipeg="TZ=America/Winnipeg date '+%c -- Canada, Winnipeg'"
 alias mexico_city="TZ=America/Mexico_City date '+%c -- Mexico, Mexico City'"
 
 alias us_clocks="eastern; central; mountain; arizona; pacific"
-alias na_clocks="eastern; central; mountain; arizona; pacific; opal:spacer; toronto; mexico_city; winnipeg; vancouver"
+alias na_clocks="eastern; central; mountain; arizona; pacific; opal:spacer; toronto; winnipeg; mexico_city; vancouver"
 
 #
 # South America
@@ -37,20 +37,20 @@ alias santiago="TZ=America/Santiago date '+%c -- Santiago'"
 alias buenos_aires="TZ=America/Argentina/Buenos_Aires date '+%c -- Buenos Aires'"
 alias sao_paulo="TZ=America/Sao_Paulo date '+%c -- Sao Paulo'"
 
-alias sa_clocks="santiago; bogota; buenos_aires; sao_paulo"
+alias sa_clocks="bogota; santiago; buenos_aires; sao_paulo"
 
 #
 # Africa
 #
 alias cairo="TZ=Africa/Cairo date '+%c -- Cairo'"
-alias casablanca="TZ=Africa/Casablanca date '+%c -- Morocco'"
-alias freetown="TZ=Africa/Freetown date '+%c -- Sierra Leone'"
-alias mogadishu="TZ=Africa/Mogadishu date '+%c -- Somalia'"
-alias nairobi="TZ=Africa/Nairobi date '+%c -- Kenya'"
-alias tripoli="TZ=Africa/Tripoli date '+%c -- Libya'"
-alias tunis="TZ=Africa/Tunis date '+%c -- Tunisia'"
+alias casablanca="TZ=Africa/Casablanca date '+%c -- Casablanca'"
+alias freetown="TZ=Africa/Freetown date '+%c -- Freetown'"
+alias mogadishu="TZ=Africa/Mogadishu date '+%c -- Mogadishu'"
+alias nairobi="TZ=Africa/Nairobi date '+%c -- Nairobi'"
+alias tripoli="TZ=Africa/Tripoli date '+%c -- Tripoli'"
+alias tunis="TZ=Africa/Tunis date '+%c -- Tunis'"
 
-alias africa_clocks="cairo; casablanca; freetown; mogadishu; nairobi; tripoli; tunis"
+alias af_clocks="cairo; mogadishu; nairobi; tripoli; casablanca; freetown; tunis"
 
 #
 # Europe
@@ -81,7 +81,7 @@ alias saigon="TZ=Asia/Saigon date '+%c -- Saigon'"
 alias jerusalem="TZ=Asia/jerusalem date '+%c -- Jerusalem'"
 alias baghdad="TZ=Asia/Baghdad date '+%c -- Baghdad'"
 
-alias asia_clocks="hong_kong; shanghai; tokyo; saigon; jerusalem; baghdad"
+alias asia_clocks="tokyo; hong_kong; shanghai; saigon; jerusalem; baghdad"
 
 #
 # Pacific
@@ -96,5 +96,5 @@ alias melbourne="TZ=Australia/Melbourne date '+%c -- Melbourne'"
 alias perth="TZ=Australia/Perth date '+%c -- Perth'"
 alias sydney="TZ=Australia/Sydney date '+%c -- Sydney'"
 
-alias pac_clocks="tahiti; honolulu; perth; guam; opal:spacer; brisbane; adelaide; melbourne; sydney; auckland"
+alias pac_clocks="tahiti; honolulu; perth; guam; opal:spacer; adelaide; brisbane; melbourne; sydney; auckland"
 
